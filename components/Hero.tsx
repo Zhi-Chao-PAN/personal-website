@@ -10,8 +10,8 @@ export default function Hero() {
 
   useGSAP(() => {
     // 1. Text Splitting for Character-level & Word-level animation
-    const titleSplit = new SplitType('.hero-title', { types: 'chars, words' });
-    const subtitleSplit = new SplitType('.hero-subtitle', { types: 'lines, words' });
+    const titleSplit = new SplitType('.hero-title', { types: 'chars,words' });
+    const subtitleSplit = new SplitType('.hero-subtitle', { types: 'lines,words' });
     
     // Set immediate CSS to ensure overflow hidden for the stagger reveal effect
     gsap.set(titleSplit.words, { overflow: 'hidden' });
