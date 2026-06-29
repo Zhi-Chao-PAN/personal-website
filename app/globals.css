@@ -60,6 +60,16 @@ html.lenis, html.lenis body {
   to { opacity: 1; }
 }
 
+/* Terminal cursor blink — used by the About `whoami` readout. */
+@keyframes ll-cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.ll-cursor {
+  animation: ll-cursor-blink 1.05s steps(1) infinite;
+}
+
 .ll-modal-panel {
   animation: ll-modal-in 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
 }

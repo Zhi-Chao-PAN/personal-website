@@ -33,6 +33,9 @@ export interface ProjectMeta {
 
 export const GITHUB_OWNER = 'Zhi-Chao-PAN';
 
+/** Contact email — the canonical address shown across the site (About + Outro). */
+export const CONTACT_EMAIL = '18652585856@163.com';
+
 export const LANGUAGE_COLORS: Record<ProjectLanguage, string> = {
   TypeScript: '#3178c6',
   Python: '#3572A5',

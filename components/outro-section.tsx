@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import SplitType from 'split-type';
-import { GITHUB_OWNER } from '@/lib/projects';
+import { GITHUB_OWNER, CONTACT_EMAIL } from '@/lib/projects';
 
 interface OutroSectionProps {
   totalRepos: number;
@@ -136,7 +136,7 @@ export function OutroSection({ totalRepos, totalStars, liveDemos, totalSizeMb }:
           </button>
           <span className="w-px h-4 bg-zinc-700" />
           <a
-            href={`mailto:${GITHUB_OWNER.toLowerCase().replace(/-/g, '.')}@gmail.com`}
+            href={`mailto:${CONTACT_EMAIL}`}
             className="font-mono text-[11px] tracking-[0.3em] text-zinc-500 hover:text-zinc-300 transition-colors uppercase flex items-center gap-2"
           >
             <span>say hello</span>
