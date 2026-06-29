@@ -12,12 +12,13 @@ gsap.registerPlugin(ScrollTrigger);
 /** `whoami` terminal readout rows — left column of the About section. */
 const WHOAMI: { k: string; v: string }[] = [
   { k: 'name', v: 'ZhiChao Pan · 潘志超' },
-  { k: 'loc', v: '扬州, 中国' },
-  { k: 'edu', v: '扬州大学广陵学院 · 计算机科学' },
-  { k: 'role', v: 'ai_product_engineer' },
+  { k: 'loc', v: '江苏, 扬州, 中国' },
+  { k: 'edu', v: '扬州大学 · 计算机科学与技术' },
+  { k: 'role', v: 'aspiring_ai_product_engineer' },
+  { k: 'goal', v: 'ai_product_engineer | full_stack_agent_architect' },
   { k: 'stack', v: 'ts · next · python · langgraph' },
   { k: 'thesis', v: 'measurable · reproducible · useful' },
-  { k: 'status', v: 'open_to_collaboration' },
+  { k: 'status', v: 'applying_ms_ai_2027 · open_to_collab' },
 ];
 
 /** Current focus — five lines drawn from the GitHub profile README. */
@@ -27,6 +28,13 @@ const FOCUS: string[] = [
   '检索增强生成 / 文档智能 / 评测',
   '全栈 TypeScript · Next.js · Prisma · Vercel',
   '可靠机器学习 / 不确定性量化 / 可复现实验',
+];
+
+/** Timeline accent — goal split into "mid" and "long" so the signal is
+ *  instantly readable by recruiters, admissions, and investors. */
+const TIMELINE: { k: string; v: string }[] = [
+  { k: 'mid', v: 'applying overseas MS in AI · intake 2027' },
+  { k: 'long', v: 'applied ai · multi-agent · ai product engineering' },
 ];
 
 /**
@@ -60,13 +68,11 @@ export function AboutSection() {
       const thesisSplit = new SplitType('.about-thesis', {
         types: 'chars,words',
       });
-      const accentSplit = new SplitType('.about-accent', { types: 'words' });
 
       if (reducedMotion) {
         return () => {
           promptSplit.revert();
           thesisSplit.revert();
-          accentSplit.revert();
         };
       }
 
@@ -74,7 +80,7 @@ export function AboutSection() {
       gsap.set(thesisSplit.words, { overflow: 'hidden' });
       gsap.set(promptSplit.chars, { opacity: 0 });
       gsap.set(thesisSplit.chars, { yPercent: 110, opacity: 0 });
-      gsap.set(accentSplit.words, { opacity: 0, y: 8 });
+      gsap.set('.about-accent > div', { opacity: 0, y: 8 });
       gsap.set(
         '.about-label, .about-line, .about-secondary, .about-focus-item, .about-contact',
         { opacity: 0, y: 12 },
@@ -116,9 +122,9 @@ export function AboutSection() {
         )
         .to('.about-secondary', { opacity: 1, y: 0, duration: 0.6 }, '-=0.4')
         .to(
-          accentSplit.words,
-          { opacity: 1, y: 0, duration: 0.5, stagger: 0.04 },
-          '-=0.4',
+          '.about-accent > div',
+          { opacity: 1, y: 0, duration: 0.5, stagger: 0.12 },
+          '-=0.3',
         )
         .to(
           '.about-focus-item',
@@ -130,7 +136,6 @@ export function AboutSection() {
       return () => {
         promptSplit.revert();
         thesisSplit.revert();
-        accentSplit.revert();
       };
     },
     { scope: container },
@@ -218,9 +223,18 @@ export function AboutSection() {
             的价值不在炫技，而在说得清它为什么对、做得出它能用、守得住它不翻车。
           </p>
 
-          <p className="about-accent mt-4 font-mono text-xs md:text-sm text-emerald-400/80 tracking-wider">
-            // measurable · reproducible · useful beyond demos
-          </p>
+          {/* Timeline accent — split into mid / long for instant scan by
+              recruiters, admissions, and investors. */}
+          <div className="about-accent mt-5 space-y-1.5 font-mono text-xs md:text-sm tracking-wider">
+            {TIMELINE.map((row) => (
+              <div key={row.k} className="flex gap-2 text-emerald-400/85">
+                <span className="text-zinc-600 select-none">//</span>
+                <span className="text-zinc-500 min-w-[3.5rem]">{row.k}</span>
+                <span className="text-zinc-600">:</span>
+                <span>{row.v}</span>
+              </div>
+            ))}
+          </div>
 
           {/* Current focus */}
           <div className="mt-10">
