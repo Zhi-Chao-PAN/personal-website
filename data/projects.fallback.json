@@ -70,7 +70,8 @@
       "demoUrl": "https://launchlens-ai-two.vercel.app",
       "featured": true,
       "imageType": "screenshot",
-      "imageLabel": "DESKTOP"
+      "imageLabel": "DESKTOP",
+      "pitchZh": "创业者最贵的成本是「想清楚再动手」。LaunchLens 把市场调研、用户画像、产品定位、首版文案一次性跑完，把过去两周的 GTM 工作压到一杯咖啡的时间。"
     },
     {
       "slug": "launchlens-research-studio",
@@ -139,7 +140,8 @@
       "demoUrl": "https://launchlens-research-studio.vercel.app",
       "featured": true,
       "imageType": "screenshot",
-      "imageLabel": "DARK MODE"
+      "imageLabel": "DARK MODE",
+      "pitchZh": "一个想法值不值得做，过去要请咨询公司写报告。Research Studio 派出 6 个 AI 角色并行调研，几分钟给出竞品、用户、风险三维结论。"
     },
     {
       "slug": "model-eval-studio",
@@ -203,7 +205,8 @@
       "demoUrl": "https://model-test-assistant.vercel.app",
       "featured": true,
       "imageType": "og-poster",
-      "imageLabel": "OG POSTER"
+      "imageLabel": "OG POSTER",
+      "pitchZh": "选 AI 模型像开盲盒——参数看不懂、跑分不可信。Model Eval Studio 截图即识别模型、自动跑多维度对比，给你一份能拍板的选型报告。"
     },
     {
       "slug": "codex-zcode-remote-relay",
@@ -271,7 +274,8 @@
       "demoUrl": null,
       "featured": false,
       "imageType": "og-poster",
-      "imageLabel": "OG POSTER"
+      "imageLabel": "OG POSTER",
+      "pitchZh": "多 AI 协作听起来很美，做起来全是协调成本。这套本地中继让 Codex 和 ZCode 像同事一样分工，结果可控、过程可审计。"
     },
     {
       "slug": "LangGraph-Financial-Swarm",
@@ -327,7 +331,8 @@
       "demoUrl": null,
       "featured": false,
       "imageType": "og-poster",
-      "imageLabel": "OG POSTER"
+      "imageLabel": "OG POSTER",
+      "pitchZh": "投研报告动辄几十页，谁来读、谁来核？五个 AI 专家分头扒数据、交叉验证、最后合成可追溯的结论，把人从重复劳动里解放出来。"
     },
     {
       "slug": "safety-critical-battery-prognostics",
@@ -389,7 +394,8 @@
       "demoUrl": null,
       "featured": false,
       "imageType": "benchmark",
-      "imageLabel": "BENCHMARK"
+      "imageLabel": "BENCHMARK",
+      "pitchZh": "电池剩余寿命预测的误差，是召回事故和保险理赔的分水岭。这套系统用三层物理约束把「幻觉预测」挡在门外，置信度低就主动报警。"
     },
     {
       "slug": "structure-aware-rag-empirical",
@@ -451,7 +457,8 @@
       "demoUrl": null,
       "featured": false,
       "imageType": "benchmark",
-      "imageLabel": "BENCHMARK"
+      "imageLabel": "BENCHMARK",
+      "pitchZh": "RAG 检索准不准，答案藏在文档结构里。这份实证研究证明：把表格、标题、章节结构喂给 RAG，金融问答准确率直接提升 37.5%。"
     }
   ]
 }

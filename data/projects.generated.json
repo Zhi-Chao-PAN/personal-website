@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-06-29T13:00:15.635Z",
-  "source": "github-api",
+  "generatedAt": "2026-06-29T13:02:38.516Z",
+  "source": "fallback",
   "stats": {
     "totalRepos": 7,
     "totalStars": 5,
     "liveDemos": 3,
-    "totalSizeMb": 119
+    "totalSizeMb": 119.5
   },
   "projects": [
     {
@@ -27,26 +27,20 @@
           "bytes": 10041,
           "color": "#563d7c",
           "percent": 1
-        },
-        {
-          "name": "JavaScript",
-          "bytes": 478,
-          "color": "#f1e05a",
-          "percent": 0
         }
       ],
       "stars": 1,
-      "commits": 1,
+      "commits": 30,
       "topics": [
         "ai-saas",
         "go-to-market",
         "llm",
         "minimax"
       ],
-      "createdAt": "2026-06-11T16:07:19Z",
-      "pushedAt": "2026-06-28T17:45:56Z",
-      "ageInDays": 17,
-      "pushedRelative": "19h ago",
+      "createdAt": "2026-06-11T00:00:00.000Z",
+      "pushedAt": "2026-06-28T17:45:56.000Z",
+      "ageInDays": 18,
+      "pushedRelative": "17h ago",
       "size": 4681,
       "sizeHuman": "4.6 MB",
       "license": "MIT",
@@ -63,10 +57,6 @@
         {
           "name": "react-dom",
           "source": "package.json"
-        },
-        {
-          "name": "@auth/core",
-          "source": "package.json"
         }
       ],
       "headline": {
@@ -76,11 +66,12 @@
       "references": [
         "launchlens-research-studio"
       ],
-      "imageType": "og-poster",
-      "imageLabel": "OG POSTER",
       "githubUrl": "https://github.com/Zhi-Chao-PAN/launchlens-ai",
       "demoUrl": "https://launchlens-ai-two.vercel.app",
-      "featured": true
+      "featured": true,
+      "imageType": "screenshot",
+      "imageLabel": "DESKTOP",
+      "pitchZh": "创业者最贵的成本是「想清楚再动手」。LaunchLens 把市场调研、用户画像、产品定位、首版文案一次性跑完，把过去两周的 GTM 工作压到一杯咖啡的时间。"
     },
     {
       "slug": "launchlens-research-studio",
@@ -92,34 +83,38 @@
       "languages": [
         {
           "name": "TypeScript",
-          "bytes": 2191647,
+          "bytes": 2200000,
           "color": "#3178c6",
           "percent": 88
         },
         {
           "name": "CSS",
-          "bytes": 206976,
+          "bytes": 207000,
           "color": "#563d7c",
           "percent": 8
         },
         {
           "name": "JavaScript",
-          "bytes": 91498,
+          "bytes": 91000,
           "color": "#f1e05a",
           "percent": 4
         }
       ],
       "stars": 0,
-      "commits": 1,
-      "topics": [],
-      "createdAt": "2026-06-15T19:58:50Z",
-      "pushedAt": "2026-06-28T17:40:42Z",
-      "ageInDays": 13,
-      "pushedRelative": "19h ago",
+      "commits": 30,
+      "topics": [
+        "multi-agent",
+        "nextjs",
+        "typescript"
+      ],
+      "createdAt": "2026-06-15T00:00:00.000Z",
+      "pushedAt": "2026-06-28T17:40:42.000Z",
+      "ageInDays": 14,
+      "pushedRelative": "18h ago",
       "size": 6312,
       "sizeHuman": "6.2 MB",
       "license": "MIT",
-      "defaultBranch": "master",
+      "defaultBranch": "main",
       "stack": [
         {
           "name": "next",
@@ -127,10 +122,6 @@
         },
         {
           "name": "react",
-          "source": "package.json"
-        },
-        {
-          "name": "react-dom",
           "source": "package.json"
         },
         {
@@ -145,11 +136,12 @@
       "references": [
         "launchlens-ai"
       ],
-      "imageType": "og-poster",
-      "imageLabel": "OG POSTER",
       "githubUrl": "https://github.com/Zhi-Chao-PAN/launchlens-research-studio",
       "demoUrl": "https://launchlens-research-studio.vercel.app",
-      "featured": true
+      "featured": true,
+      "imageType": "screenshot",
+      "imageLabel": "DARK MODE",
+      "pitchZh": "一个想法值不值得做，过去要请咨询公司写报告。Research Studio 派出 6 个 AI 角色并行调研，几分钟给出竞品、用户、风险三维结论。"
     },
     {
       "slug": "model-eval-studio",
@@ -161,30 +153,34 @@
       "languages": [
         {
           "name": "TypeScript",
-          "bytes": 1165061,
+          "bytes": 1200000,
           "color": "#3178c6",
           "percent": 90
         },
         {
           "name": "JavaScript",
-          "bytes": 115125,
+          "bytes": 115000,
           "color": "#f1e05a",
           "percent": 9
         },
         {
           "name": "CSS",
-          "bytes": 12628,
+          "bytes": 13000,
           "color": "#563d7c",
           "percent": 1
         }
       ],
       "stars": 0,
-      "commits": 1,
-      "topics": [],
-      "createdAt": "2026-06-18T14:53:56Z",
-      "pushedAt": "2026-06-24T13:05:33Z",
-      "ageInDays": 10,
-      "pushedRelative": "4d ago",
+      "commits": 30,
+      "topics": [
+        "ai",
+        "evaluation",
+        "typescript"
+      ],
+      "createdAt": "2026-06-18T00:00:00.000Z",
+      "pushedAt": "2026-06-24T13:05:33.000Z",
+      "ageInDays": 11,
+      "pushedRelative": "5d ago",
       "size": 981,
       "sizeHuman": "981 KB",
       "license": null,
@@ -199,21 +195,18 @@
           "source": "package.json"
         },
         {
-          "name": "react-dom",
-          "source": "package.json"
-        },
-        {
           "name": "zustand",
           "source": "package.json"
         }
       ],
       "headline": null,
       "references": [],
-      "imageType": "og-poster",
-      "imageLabel": "OG POSTER",
       "githubUrl": "https://github.com/Zhi-Chao-PAN/model-eval-studio",
       "demoUrl": "https://model-test-assistant.vercel.app",
-      "featured": true
+      "featured": true,
+      "imageType": "og-poster",
+      "imageLabel": "OG POSTER",
+      "pitchZh": "选 AI 模型像开盲盒——参数看不懂、跑分不可信。Model Eval Studio 截图即识别模型、自动跑多维度对比，给你一份能拍板的选型报告。"
     },
     {
       "slug": "codex-zcode-remote-relay",
@@ -225,35 +218,35 @@
       "languages": [
         {
           "name": "JavaScript",
-          "bytes": 160170,
+          "bytes": 160000,
           "color": "#f1e05a",
-          "percent": 97
-        },
-        {
-          "name": "PowerShell",
-          "bytes": 3373,
-          "color": "#8b8b8b",
-          "percent": 2
+          "percent": 95
         },
         {
           "name": "Python",
-          "bytes": 1938,
+          "bytes": 1900,
           "color": "#3572A5",
           "percent": 1
+        },
+        {
+          "name": "PowerShell",
+          "bytes": 3400,
+          "color": "#012456",
+          "percent": 2
         }
       ],
       "stars": 0,
-      "commits": 1,
+      "commits": 6,
       "topics": [
         "agent-orchestration",
         "ai-agents",
         "codex",
         "multi-agent"
       ],
-      "createdAt": "2026-06-25T15:17:49Z",
-      "pushedAt": "2026-06-25T15:17:54Z",
-      "ageInDays": 3,
-      "pushedRelative": "3d ago",
+      "createdAt": "2026-06-25T00:00:00.000Z",
+      "pushedAt": "2026-06-25T15:17:54.000Z",
+      "ageInDays": 4,
+      "pushedRelative": "4d ago",
       "size": 75,
       "sizeHuman": "75 KB",
       "license": "MIT",
@@ -277,11 +270,12 @@
         "value": "< 1k"
       },
       "references": [],
-      "imageType": "og-poster",
-      "imageLabel": "OG POSTER",
       "githubUrl": "https://github.com/Zhi-Chao-PAN/codex-zcode-remote-relay",
       "demoUrl": null,
-      "featured": false
+      "featured": false,
+      "imageType": "og-poster",
+      "imageLabel": "OG POSTER",
+      "pitchZh": "多 AI 协作听起来很美，做起来全是协调成本。这套本地中继让 Codex 和 ZCode 像同事一样分工，结果可控、过程可审计。"
     },
     {
       "slug": "LangGraph-Financial-Swarm",
@@ -293,29 +287,22 @@
       "languages": [
         {
           "name": "Python",
-          "bytes": 54303,
+          "bytes": 54000,
           "color": "#3572A5",
-          "percent": 98
-        },
-        {
-          "name": "Dockerfile",
-          "bytes": 570,
-          "color": "#384d54",
-          "percent": 1
-        },
-        {
-          "name": "Makefile",
-          "bytes": 377,
-          "color": "#8b8b8b",
-          "percent": 1
+          "percent": 100
         }
       ],
       "stars": 0,
-      "commits": 1,
-      "topics": [],
-      "createdAt": "2026-02-01T15:53:51Z",
-      "pushedAt": "2026-03-17T07:18:52Z",
-      "ageInDays": 147,
+      "commits": 30,
+      "topics": [
+        "langgraph",
+        "multi-agent",
+        "python",
+        "finance"
+      ],
+      "createdAt": "2026-02-01T00:00:00.000Z",
+      "pushedAt": "2026-03-17T07:18:52.000Z",
+      "ageInDays": 148,
       "pushedRelative": "3mo ago",
       "size": 117,
       "sizeHuman": "117 KB",
@@ -333,10 +320,6 @@
         {
           "name": "llama-index",
           "source": "pyproject"
-        },
-        {
-          "name": "pandas",
-          "source": "pyproject"
         }
       ],
       "headline": {
@@ -344,11 +327,12 @@
         "value": "5 agents"
       },
       "references": [],
-      "imageType": "og-poster",
-      "imageLabel": "OG POSTER",
       "githubUrl": "https://github.com/Zhi-Chao-PAN/LangGraph-Financial-Swarm",
       "demoUrl": null,
-      "featured": false
+      "featured": false,
+      "imageType": "og-poster",
+      "imageLabel": "OG POSTER",
+      "pitchZh": "投研报告动辄几十页，谁来读、谁来核？五个 AI 专家分头扒数据、交叉验证、最后合成可追溯的结论，把人从重复劳动里解放出来。"
     },
     {
       "slug": "safety-critical-battery-prognostics",
@@ -360,55 +344,31 @@
       "languages": [
         {
           "name": "Python",
-          "bytes": 1111718,
+          "bytes": 1100000,
           "color": "#3572A5",
           "percent": 99
         },
         {
-          "name": "Jupyter Notebook",
-          "bytes": 10156,
-          "color": "#8b8b8b",
+          "name": "Jupyter",
+          "bytes": 10000,
+          "color": "#DA5B0B",
           "percent": 1
-        },
-        {
-          "name": "Shell",
-          "bytes": 1153,
-          "color": "#89e051",
-          "percent": 0
-        },
-        {
-          "name": "CSS",
-          "bytes": 1049,
-          "color": "#563d7c",
-          "percent": 0
-        },
-        {
-          "name": "Dockerfile",
-          "bytes": 608,
-          "color": "#384d54",
-          "percent": 0
-        },
-        {
-          "name": "Makefile",
-          "bytes": 184,
-          "color": "#8b8b8b",
-          "percent": 0
         }
       ],
       "stars": 4,
-      "commits": 1,
+      "commits": 30,
       "topics": [
         "battery-management-system",
         "conformal-prediction",
         "iso-26262",
         "lithium-ion-batteries"
       ],
-      "createdAt": "2026-02-02T15:34:59Z",
-      "pushedAt": "2026-04-08T03:48:17Z",
-      "ageInDays": 146,
-      "pushedRelative": "2mo ago",
+      "createdAt": "2026-02-02T00:00:00.000Z",
+      "pushedAt": "2026-04-08T03:48:17.000Z",
+      "ageInDays": 147,
+      "pushedRelative": "3mo ago",
       "size": 46887,
-      "sizeHuman": "46 MB",
+      "sizeHuman": "46.9 MB",
       "license": "MIT",
       "defaultBranch": "main",
       "stack": [
@@ -423,10 +383,6 @@
         {
           "name": "pandas",
           "source": "pyproject"
-        },
-        {
-          "name": "scipy",
-          "source": "pyproject"
         }
       ],
       "headline": {
@@ -434,11 +390,12 @@
         "value": "VR 0.00%"
       },
       "references": [],
-      "imageType": "og-poster",
-      "imageLabel": "OG POSTER",
       "githubUrl": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics",
       "demoUrl": null,
-      "featured": false
+      "featured": false,
+      "imageType": "benchmark",
+      "imageLabel": "BENCHMARK",
+      "pitchZh": "电池剩余寿命预测的误差，是召回事故和保险理赔的分水岭。这套系统用三层物理约束把「幻觉预测」挡在门外，置信度低就主动报警。"
     },
     {
       "slug": "structure-aware-rag-empirical",
@@ -450,25 +407,31 @@
       "languages": [
         {
           "name": "Python",
-          "bytes": 1,
+          "bytes": 57000,
           "color": "#3572A5",
-          "percent": 100
+          "percent": 95
+        },
+        {
+          "name": "Dockerfile",
+          "bytes": 3000,
+          "color": "#384d54",
+          "percent": 5
         }
       ],
       "stars": 0,
-      "commits": 1,
+      "commits": 16,
       "topics": [
         "benchmark",
         "empirical-study",
         "financial-analysis",
         "llamaindex"
       ],
-      "createdAt": "2026-01-28T08:12:05Z",
-      "pushedAt": "2026-03-17T07:13:38Z",
+      "createdAt": "2026-01-28T00:00:00.000Z",
+      "pushedAt": "2026-03-17T07:13:38.000Z",
       "ageInDays": 152,
       "pushedRelative": "3mo ago",
       "size": 62823,
-      "sizeHuman": "61 MB",
+      "sizeHuman": "62.8 MB",
       "license": "MIT",
       "defaultBranch": "main",
       "stack": [
@@ -483,10 +446,6 @@
         {
           "name": "llama-index-core",
           "source": "pyproject"
-        },
-        {
-          "name": "pandas",
-          "source": "pyproject"
         }
       ],
       "headline": {
@@ -494,11 +453,12 @@
         "value": "+37.5%"
       },
       "references": [],
-      "imageType": "og-poster",
-      "imageLabel": "OG POSTER",
       "githubUrl": "https://github.com/Zhi-Chao-PAN/structure-aware-rag-empirical",
       "demoUrl": null,
-      "featured": false
+      "featured": false,
+      "imageType": "benchmark",
+      "imageLabel": "BENCHMARK",
+      "pitchZh": "RAG 检索准不准，答案藏在文档结构里。这份实证研究证明：把表格、标题、章节结构喂给 RAG，金融问答准确率直接提升 37.5%。"
     }
   ]
 }
