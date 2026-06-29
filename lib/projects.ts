@@ -5,7 +5,7 @@
  *
  * The order here defines the on-page order (live demos first, then by recency).
  */
-import type { ProjectLanguage } from './projects.types';
+import type { ProjectLanguage, ProjectHeadline } from './projects.types';
 
 export interface ProjectMeta {
   slug: string;
@@ -21,6 +21,10 @@ export interface ProjectMeta {
   fallbackTopics: string[];
   /** Pre-push fallback language. */
   fallbackLanguage: ProjectLanguage;
+  /** Hand-curated headline metric (null = no headline on card). */
+  headline: ProjectHeadline | null;
+  /** Cross-references to other project slugs. */
+  references: string[];
 }
 
 export const GITHUB_OWNER = 'Zhi-Chao-PAN';
@@ -29,6 +33,22 @@ export const LANGUAGE_COLORS: Record<ProjectLanguage, string> = {
   TypeScript: '#3178c6',
   Python: '#3572A5',
   JavaScript: '#f1e05a',
+  Other: '#8b8b8b',
+};
+
+/** Full GitHub language palette (used by language breakdown bar). */
+export const GITHUB_LANGUAGE_PALETTE: Record<string, string> = {
+  TypeScript: '#3178c6',
+  JavaScript: '#f1e05a',
+  Python: '#3572A5',
+  Jupyter: '#DA5B0B',
+  Shell: '#89e051',
+  Dockerfile: '#384d54',
+  CSS: '#563d7c',
+  HTML: '#e34c26',
+  SCSS: '#c6538c',
+  Rust: '#dea584',
+  Go: '#00ADD8',
   Other: '#8b8b8b',
 };
 
@@ -41,6 +61,8 @@ export const META: ProjectMeta[] = [
     fallbackStars: 1,
     fallbackTopics: ['nextjs', 'ai', 'typescript', 'tailwindcss'],
     fallbackLanguage: 'TypeScript',
+    headline: { label: 'release', value: 'v1.0.0' },
+    references: ['launchlens-research-studio'],
   },
   {
     slug: 'launchlens-research-studio',
@@ -50,6 +72,8 @@ export const META: ProjectMeta[] = [
     fallbackStars: 0,
     fallbackTopics: ['multi-agent', 'nextjs', 'typescript'],
     fallbackLanguage: 'TypeScript',
+    headline: { label: 'tests passing', value: '1,423' },
+    references: ['launchlens-ai'],
   },
   {
     slug: 'model-eval-studio',
@@ -59,6 +83,8 @@ export const META: ProjectMeta[] = [
     fallbackStars: 0,
     fallbackTopics: ['ai', 'evaluation', 'typescript'],
     fallbackLanguage: 'TypeScript',
+    headline: null,
+    references: [],
   },
   {
     slug: 'codex-zcode-remote-relay',
@@ -68,6 +94,8 @@ export const META: ProjectMeta[] = [
     fallbackStars: 0,
     fallbackTopics: ['multi-agent', 'nodejs', 'zcode', 'codex'],
     fallbackLanguage: 'JavaScript',
+    headline: { label: 'lines of code', value: '< 1k' },
+    references: [],
   },
   {
     slug: 'LangGraph-Financial-Swarm',
@@ -77,6 +105,8 @@ export const META: ProjectMeta[] = [
     fallbackStars: 0,
     fallbackTopics: ['langgraph', 'multi-agent', 'python', 'finance'],
     fallbackLanguage: 'Python',
+    headline: { label: 'specialists', value: '5 agents' },
+    references: [],
   },
   {
     slug: 'safety-critical-battery-prognostics',
@@ -86,6 +116,8 @@ export const META: ProjectMeta[] = [
     fallbackStars: 4,
     fallbackTopics: ['battery', 'pinn', 'conformal-prediction', 'pytorch'],
     fallbackLanguage: 'Python',
+    headline: { label: '3-layer defense', value: 'VR 0.00%' },
+    references: [],
   },
   {
     slug: 'structure-aware-rag-empirical',
@@ -95,6 +127,8 @@ export const META: ProjectMeta[] = [
     fallbackStars: 0,
     fallbackTopics: ['rag', 'llamaindex', 'nlp', 'benchmark'],
     fallbackLanguage: 'Python',
+    headline: { label: 'accuracy lift', value: '+37.5%' },
+    references: [],
   },
 ];
 
@@ -112,4 +146,35 @@ export function buildTagline(description: string | null, maxLen = 110): string {
   const trimmed = firstSentence.slice(0, maxLen);
   const lastSpace = trimmed.lastIndexOf(' ');
   return (lastSpace > 40 ? trimmed.slice(0, lastSpace) : trimmed).trimEnd() + '…';
+}
+
+/** Human-readable relative time, e.g. "2d ago" / "3mo ago" / "1y ago". */
+export function relativeTime(iso: string, now: Date = new Date()): string {
+  const then = new Date(iso).getTime();
+  const diffMs = now.getTime() - then;
+  if (Number.isNaN(then) || diffMs < 0) return 'just now';
+  const sec = Math.floor(diffMs / 1000);
+  if (sec < 60) return `${sec}s ago`;
+  const min = Math.floor(sec / 60);
+  if (min < 60) return `${min}m ago`;
+  const hr = Math.floor(min / 60);
+  if (hr < 24) return `${hr}h ago`;
+  const day = Math.floor(hr / 24);
+  if (day < 30) return `${day}d ago`;
+  const mo = Math.floor(day / 30);
+  if (mo < 12) return `${mo}mo ago`;
+  const yr = Math.floor(mo / 12);
+  return `${yr}y ago`;
+}
+
+/** Human-readable file size, e.g. "4.6 MB" / "75 KB" / "1.2 GB". */
+export function humanSize(bytes: number): string {
+  if (!Number.isFinite(bytes) || bytes < 0) return '—';
+  if (bytes < 1024) return `${bytes} B`;
+  const kb = bytes / 1024;
+  if (kb < 1024) return `${kb.toFixed(kb < 10 ? 1 : 0)} KB`;
+  const mb = kb / 1024;
+  if (mb < 1024) return `${mb.toFixed(mb < 10 ? 1 : 0)} MB`;
+  const gb = mb / 1024;
+  return `${gb.toFixed(gb < 10 ? 1 : 0)} GB`;
 }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-29T09:41:06.587Z",
+  "generatedAt": "2026-06-29T00:00:00.000Z",
   "source": "fallback",
   "stats": {
     "totalRepos": 7,
@@ -16,27 +16,12 @@
       "language": "TypeScript",
       "languageColor": "#3178c6",
       "languages": [
-        {
-          "name": "TypeScript",
-          "bytes": 1725395,
-          "color": "#3178c6",
-          "percent": 99
-        },
-        {
-          "name": "CSS",
-          "bytes": 10041,
-          "color": "#563d7c",
-          "percent": 1
-        }
+        { "name": "TypeScript", "bytes": 1725395, "color": "#3178c6", "percent": 99 },
+        { "name": "CSS", "bytes": 10041, "color": "#563d7c", "percent": 1 }
       ],
       "stars": 1,
       "commits": 30,
-      "topics": [
-        "ai-saas",
-        "go-to-market",
-        "llm",
-        "minimax"
-      ],
+      "topics": ["ai-saas", "go-to-market", "llm", "minimax"],
       "createdAt": "2026-06-11T00:00:00.000Z",
       "pushedAt": "2026-06-28T17:45:56.000Z",
       "ageInDays": 18,
@@ -46,26 +31,12 @@
       "license": "MIT",
       "defaultBranch": "main",
       "stack": [
-        {
-          "name": "next",
-          "source": "package.json"
-        },
-        {
-          "name": "react",
-          "source": "package.json"
-        },
-        {
-          "name": "react-dom",
-          "source": "package.json"
-        }
+        { "name": "next", "source": "package.json" },
+        { "name": "react", "source": "package.json" },
+        { "name": "react-dom", "source": "package.json" }
       ],
-      "headline": {
-        "label": "release",
-        "value": "v1.0.0"
-      },
-      "references": [
-        "launchlens-research-studio"
-      ],
+      "headline": { "label": "release", "value": "v1.0.0" },
+      "references": ["launchlens-research-studio"],
       "githubUrl": "https://github.com/Zhi-Chao-PAN/launchlens-ai",
       "demoUrl": "https://launchlens-ai-two.vercel.app",
       "featured": true
@@ -78,32 +49,13 @@
       "language": "TypeScript",
       "languageColor": "#3178c6",
       "languages": [
-        {
-          "name": "TypeScript",
-          "bytes": 2200000,
-          "color": "#3178c6",
-          "percent": 88
-        },
-        {
-          "name": "CSS",
-          "bytes": 207000,
-          "color": "#563d7c",
-          "percent": 8
-        },
-        {
-          "name": "JavaScript",
-          "bytes": 91000,
-          "color": "#f1e05a",
-          "percent": 4
-        }
+        { "name": "TypeScript", "bytes": 2200000, "color": "#3178c6", "percent": 88 },
+        { "name": "CSS", "bytes": 207000, "color": "#563d7c", "percent": 8 },
+        { "name": "JavaScript", "bytes": 91000, "color": "#f1e05a", "percent": 4 }
       ],
       "stars": 0,
       "commits": 30,
-      "topics": [
-        "multi-agent",
-        "nextjs",
-        "typescript"
-      ],
+      "topics": ["multi-agent", "nextjs", "typescript"],
       "createdAt": "2026-06-15T00:00:00.000Z",
       "pushedAt": "2026-06-28T17:40:42.000Z",
       "ageInDays": 14,
@@ -113,26 +65,12 @@
       "license": "MIT",
       "defaultBranch": "main",
       "stack": [
-        {
-          "name": "next",
-          "source": "package.json"
-        },
-        {
-          "name": "react",
-          "source": "package.json"
-        },
-        {
-          "name": "@upstash/redis",
-          "source": "package.json"
-        }
+        { "name": "next", "source": "package.json" },
+        { "name": "react", "source": "package.json" },
+        { "name": "@upstash/redis", "source": "package.json" }
       ],
-      "headline": {
-        "label": "tests passing",
-        "value": "1,423"
-      },
-      "references": [
-        "launchlens-ai"
-      ],
+      "headline": { "label": "tests passing", "value": "1,423" },
+      "references": ["launchlens-ai"],
       "githubUrl": "https://github.com/Zhi-Chao-PAN/launchlens-research-studio",
       "demoUrl": "https://launchlens-research-studio.vercel.app",
       "featured": true
@@ -145,32 +83,13 @@
       "language": "TypeScript",
       "languageColor": "#3178c6",
       "languages": [
-        {
-          "name": "TypeScript",
-          "bytes": 1200000,
-          "color": "#3178c6",
-          "percent": 90
-        },
-        {
-          "name": "JavaScript",
-          "bytes": 115000,
-          "color": "#f1e05a",
-          "percent": 9
-        },
-        {
-          "name": "CSS",
-          "bytes": 13000,
-          "color": "#563d7c",
-          "percent": 1
-        }
+        { "name": "TypeScript", "bytes": 1200000, "color": "#3178c6", "percent": 90 },
+        { "name": "JavaScript", "bytes": 115000, "color": "#f1e05a", "percent": 9 },
+        { "name": "CSS", "bytes": 13000, "color": "#563d7c", "percent": 1 }
       ],
       "stars": 0,
       "commits": 30,
-      "topics": [
-        "ai",
-        "evaluation",
-        "typescript"
-      ],
+      "topics": ["ai", "evaluation", "typescript"],
       "createdAt": "2026-06-18T00:00:00.000Z",
       "pushedAt": "2026-06-24T13:05:33.000Z",
       "ageInDays": 11,
@@ -180,18 +99,9 @@
       "license": null,
       "defaultBranch": "main",
       "stack": [
-        {
-          "name": "next",
-          "source": "package.json"
-        },
-        {
-          "name": "react",
-          "source": "package.json"
-        },
-        {
-          "name": "zustand",
-          "source": "package.json"
-        }
+        { "name": "next", "source": "package.json" },
+        { "name": "react", "source": "package.json" },
+        { "name": "zustand", "source": "package.json" }
       ],
       "headline": null,
       "references": [],
@@ -207,33 +117,13 @@
       "language": "JavaScript",
       "languageColor": "#f1e05a",
       "languages": [
-        {
-          "name": "JavaScript",
-          "bytes": 160000,
-          "color": "#f1e05a",
-          "percent": 95
-        },
-        {
-          "name": "Python",
-          "bytes": 1900,
-          "color": "#3572A5",
-          "percent": 1
-        },
-        {
-          "name": "PowerShell",
-          "bytes": 3400,
-          "color": "#012456",
-          "percent": 2
-        }
+        { "name": "JavaScript", "bytes": 160000, "color": "#f1e05a", "percent": 95 },
+        { "name": "Python", "bytes": 1900, "color": "#3572A5", "percent": 1 },
+        { "name": "PowerShell", "bytes": 3400, "color": "#012456", "percent": 2 }
       ],
       "stars": 0,
       "commits": 6,
-      "topics": [
-        "agent-orchestration",
-        "ai-agents",
-        "codex",
-        "multi-agent"
-      ],
+      "topics": ["agent-orchestration", "ai-agents", "codex", "multi-agent"],
       "createdAt": "2026-06-25T00:00:00.000Z",
       "pushedAt": "2026-06-25T15:17:54.000Z",
       "ageInDays": 4,
@@ -243,23 +133,11 @@
       "license": "MIT",
       "defaultBranch": "main",
       "stack": [
-        {
-          "name": "node",
-          "source": "manual"
-        },
-        {
-          "name": "json-rpc",
-          "source": "manual"
-        },
-        {
-          "name": "websocket",
-          "source": "manual"
-        }
+        { "name": "node", "source": "manual" },
+        { "name": "json-rpc", "source": "manual" },
+        { "name": "websocket", "source": "manual" }
       ],
-      "headline": {
-        "label": "lines of code",
-        "value": "< 1k"
-      },
+      "headline": { "label": "lines of code", "value": "< 1k" },
       "references": [],
       "githubUrl": "https://github.com/Zhi-Chao-PAN/codex-zcode-remote-relay",
       "demoUrl": null,
@@ -273,21 +151,11 @@
       "language": "Python",
       "languageColor": "#3572A5",
       "languages": [
-        {
-          "name": "Python",
-          "bytes": 54000,
-          "color": "#3572A5",
-          "percent": 100
-        }
+        { "name": "Python", "bytes": 54000, "color": "#3572A5", "percent": 100 }
       ],
       "stars": 0,
       "commits": 30,
-      "topics": [
-        "langgraph",
-        "multi-agent",
-        "python",
-        "finance"
-      ],
+      "topics": ["langgraph", "multi-agent", "python", "finance"],
       "createdAt": "2026-02-01T00:00:00.000Z",
       "pushedAt": "2026-03-17T07:18:52.000Z",
       "ageInDays": 148,
@@ -297,23 +165,11 @@
       "license": "MIT",
       "defaultBranch": "main",
       "stack": [
-        {
-          "name": "langchain",
-          "source": "pyproject"
-        },
-        {
-          "name": "langgraph",
-          "source": "pyproject"
-        },
-        {
-          "name": "llama-index",
-          "source": "pyproject"
-        }
+        { "name": "langchain", "source": "pyproject" },
+        { "name": "langgraph", "source": "pyproject" },
+        { "name": "llama-index", "source": "pyproject" }
       ],
-      "headline": {
-        "label": "specialists",
-        "value": "5 agents"
-      },
+      "headline": { "label": "specialists", "value": "5 agents" },
       "references": [],
       "githubUrl": "https://github.com/Zhi-Chao-PAN/LangGraph-Financial-Swarm",
       "demoUrl": null,
@@ -327,27 +183,12 @@
       "language": "Python",
       "languageColor": "#3572A5",
       "languages": [
-        {
-          "name": "Python",
-          "bytes": 1100000,
-          "color": "#3572A5",
-          "percent": 99
-        },
-        {
-          "name": "Jupyter",
-          "bytes": 10000,
-          "color": "#DA5B0B",
-          "percent": 1
-        }
+        { "name": "Python", "bytes": 1100000, "color": "#3572A5", "percent": 99 },
+        { "name": "Jupyter", "bytes": 10000, "color": "#DA5B0B", "percent": 1 }
       ],
       "stars": 4,
       "commits": 30,
-      "topics": [
-        "battery-management-system",
-        "conformal-prediction",
-        "iso-26262",
-        "lithium-ion-batteries"
-      ],
+      "topics": ["battery-management-system", "conformal-prediction", "iso-26262", "lithium-ion-batteries"],
       "createdAt": "2026-02-02T00:00:00.000Z",
       "pushedAt": "2026-04-08T03:48:17.000Z",
       "ageInDays": 147,
@@ -357,23 +198,11 @@
       "license": "MIT",
       "defaultBranch": "main",
       "stack": [
-        {
-          "name": "torch",
-          "source": "pyproject"
-        },
-        {
-          "name": "numpy",
-          "source": "pyproject"
-        },
-        {
-          "name": "pandas",
-          "source": "pyproject"
-        }
+        { "name": "torch", "source": "pyproject" },
+        { "name": "numpy", "source": "pyproject" },
+        { "name": "pandas", "source": "pyproject" }
       ],
-      "headline": {
-        "label": "3-layer defense",
-        "value": "VR 0.00%"
-      },
+      "headline": { "label": "3-layer defense", "value": "VR 0.00%" },
       "references": [],
       "githubUrl": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics",
       "demoUrl": null,
@@ -387,27 +216,12 @@
       "language": "Python",
       "languageColor": "#3572A5",
       "languages": [
-        {
-          "name": "Python",
-          "bytes": 57000,
-          "color": "#3572A5",
-          "percent": 95
-        },
-        {
-          "name": "Dockerfile",
-          "bytes": 3000,
-          "color": "#384d54",
-          "percent": 5
-        }
+        { "name": "Python", "bytes": 57000, "color": "#3572A5", "percent": 95 },
+        { "name": "Dockerfile", "bytes": 3000, "color": "#384d54", "percent": 5 }
       ],
       "stars": 0,
       "commits": 16,
-      "topics": [
-        "benchmark",
-        "empirical-study",
-        "financial-analysis",
-        "llamaindex"
-      ],
+      "topics": ["benchmark", "empirical-study", "financial-analysis", "llamaindex"],
       "createdAt": "2026-01-28T00:00:00.000Z",
       "pushedAt": "2026-03-17T07:13:38.000Z",
       "ageInDays": 152,
@@ -417,23 +231,11 @@
       "license": "MIT",
       "defaultBranch": "main",
       "stack": [
-        {
-          "name": "torch",
-          "source": "pyproject"
-        },
-        {
-          "name": "transformers",
-          "source": "pyproject"
-        },
-        {
-          "name": "llama-index-core",
-          "source": "pyproject"
-        }
+        { "name": "torch", "source": "pyproject" },
+        { "name": "transformers", "source": "pyproject" },
+        { "name": "llama-index-core", "source": "pyproject" }
       ],
-      "headline": {
-        "label": "accuracy lift",
-        "value": "+37.5%"
-      },
+      "headline": { "label": "accuracy lift", "value": "+37.5%" },
       "references": [],
       "githubUrl": "https://github.com/Zhi-Chao-PAN/structure-aware-rag-empirical",
       "demoUrl": null,

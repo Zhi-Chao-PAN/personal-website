@@ -7,6 +7,8 @@ import { useGSAP } from '@gsap/react';
 import type { Project } from '@/lib/projects.types';
 import { ProjectCard } from './project-card';
 import { SectionHeading } from './section-heading';
+import { ProjectModalProvider } from './modal-provider';
+import { ProjectModal } from './project-modal';
 
 interface ProjectsSectionProps {
   projects: Project[];
@@ -23,14 +25,20 @@ interface ProjectsSectionProps {
  * (once: true, fires when the section enters viewport).
  */
 export function ProjectsSection({ projects, stats }: ProjectsSectionProps) {
+  return (
+    <ProjectModalProvider>
+      <ProjectsContent projects={projects} stats={stats} />
+      <ProjectModal projects={projects} />
+    </ProjectModalProvider>
+  );
+}
+
+function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
   const container = useRef<HTMLElement>(null);
-  const grid = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    // Initial state: cards hidden & nudged down
     gsap.set('.project-card', { opacity: 0, y: 28 });
 
-    // ScrollTrigger — single trigger for the whole grid
     const trigger = ScrollTrigger.create({
       trigger: container.current,
       start: 'top 75%',
@@ -57,7 +65,6 @@ export function ProjectsSection({ projects, stats }: ProjectsSectionProps) {
       id="projects"
       className="relative w-full py-24 md:py-32 px-6 md:px-12 bg-[#030303]"
     >
-      {/* Faint background grid (full-bleed) */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.025]"
@@ -75,10 +82,7 @@ export function ProjectsSection({ projects, stats }: ProjectsSectionProps) {
           subtitle={subtitle}
         />
 
-        <div
-          ref={grid}
-          className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5"
-        >
+        <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {projects.map((project) => (
             <div key={project.slug} className="project-card">
               <ProjectCard project={project} />
@@ -86,7 +90,6 @@ export function ProjectsSection({ projects, stats }: ProjectsSectionProps) {
           ))}
         </div>
 
-        {/* Footer link */}
         <div className="mt-16 text-center font-mono text-xs text-zinc-600 tracking-[0.3em] uppercase">
           <span className="opacity-50">[ end_of_index ]</span>
         </div>

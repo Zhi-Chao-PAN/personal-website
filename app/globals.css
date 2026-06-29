@@ -42,3 +42,35 @@ html.lenis, html.lenis body {
 .lenis.lenis-smooth iframe {
   pointer-events: none;
 }
+
+/* Project Modal animations */
+@keyframes ll-modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes ll-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.ll-modal-panel {
+  animation: ll-modal-in 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.ll-modal-backdrop {
+  animation: ll-backdrop-in 0.22s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ll-modal-panel,
+  .ll-modal-backdrop {
+    animation: none;
+  }
+}
