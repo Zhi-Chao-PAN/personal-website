@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 import { GITHUB_OWNER } from '@/lib/projects';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -52,35 +52,31 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
   const fillRef = useRef<HTMLDivElement>(null);
 
   // The horizontal track has N project cards + 1 closing "outro" card.
-  // The outro reuses the same 720px-wide slot and lands at the very end of
-  // the canvas — so users never see an empty black void after the last card.
   const totalCards = projects.length + 1;
 
-  // Read viewport width on the client (avoids SSR mismatch with translateX math).
-  const [vw, setVw] = useState(1440);
-  useEffect(() => {
-    const onResize = () => setVw(window.innerWidth);
-    onResize();
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, []);
-
-  // Card sizing — single column when narrow, slightly larger when wide.
-  const cardWidth = Math.max(360, Math.min(720, vw * 0.78));
-  const gap = 24; // matches gap-6
-  const trackWidth = totalCards * cardWidth + (totalCards - 1) * gap;
-  // Distance the track must translate so the LAST (outro) card's right edge
-  // aligns with the viewport's right edge (with a comfortable inset).
-  const inset = 48; // px from viewport edge
-  const translateX = Math.max(0, trackWidth - vw + inset * 2);
+  // Layout constants — chosen to look great on a 1440×900 viewport and
+  // gracefully degrade on smaller screens. No need for state — these
+  // values are stable across resizes, and the few that DO need to track
+  // viewport width (translateX) are recomputed inside the GSAP effect.
+  const cardWidth = 640;
+  const gap = 24;
+  const inset = 48;
 
   useGSAP(
     () => {
       // Skip the heavy pin behavior on short viewports / touch-only devices
       // — fall back to a native horizontal scroll instead.
-      const isCompact = window.innerWidth < 768;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const isCompact = vw < 768;
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (isCompact || reducedMotion) return;
+
+      // Compute track width at effect-time (not render-time) so it always
+      // reflects the current viewport, even after resize / orientation.
+      const trackWidth = totalCards * cardWidth + (totalCards - 1) * gap;
+      const translateX = Math.max(0, trackWidth - vw + inset * 2);
+      const endDistance = translateX + vh * 0.6;
 
       // Initial state: cards faded in by their own translateX position
       // (gives a sense of depth as the track is loaded).
@@ -90,11 +86,22 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
       const trigger = ScrollTrigger.create({
         trigger: container.current,
         start: 'top top',
-        end: () => `+=${translateX + window.innerHeight * 0.6}`,
+        end: `+=${endDistance}`,
         pin: true,
+        pinSpacing: true,
         scrub: 1,
         anticipatePin: 1,
         invalidateOnRefresh: true,
+        onRefresh: (self) => {
+          // GSAP normally auto-expands the .pin-spacer to end-start, but
+          // Lenis + some Next 16 builds swallow the resize observer tick
+          // and the spacer stays at the section's natural height — which
+          // means the user can't scroll the canvas. Force it explicitly.
+          const pinEl = self.pin as { spacer?: HTMLElement } | undefined;
+          if (pinEl?.spacer) {
+            pinEl.spacer.style.height = `${self.end - self.start}px`;
+          }
+        },
         onUpdate: (self) => {
           const p = self.progress;
           // Drive the track translation
@@ -125,8 +132,8 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
         },
       });
 
-      // After the first paint, settle into the "rest" state so SSR users
-      // see the first card clearly before scrolling starts.
+      // Settle into the "rest" state so SSR users see the first card
+      // clearly before scrolling starts.
       requestAnimationFrame(() => {
         if (track.current) track.current.style.transform = 'translate3d(0,0,0)';
         const first = document.querySelector<HTMLElement>('.project-card');
@@ -134,11 +141,14 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
           first.style.opacity = '1';
           first.style.transform = 'translate3d(0,0,0)';
         }
+        // Force ScrollTrigger to recompute pin spacer after layout settles
+        // (cards are 640px wide and may shift the section's bounding box).
+        ScrollTrigger.refresh();
       });
 
       return () => trigger.kill();
     },
-    { scope: container, dependencies: [translateX, totalCards, vw] }
+    { scope: container, dependencies: [totalCards] }
   );
 
   const subtitle = `[ ${stats.totalRepos}_PUBLIC_REPOS · ${stats.liveDemos}_LIVE_DEMOS · ${stats.totalStars}_STARS_TOTAL ]`;
@@ -147,7 +157,7 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
     <section
       ref={container}
       id="projects"
-      className="relative w-full h-screen overflow-hidden bg-[#030303]"
+      className="relative w-full h-screen overflow-hidden bg-[#030303] flex flex-col"
     >
       {/* Background — subtle moving scanline + grid */}
       <div
@@ -167,7 +177,7 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
       />
 
       {/* Static top overlay: section heading + counter */}
-      <div className="absolute top-0 left-0 right-0 z-20 px-6 md:px-12 pt-20 md:pt-24">
+      <div className="relative z-20 px-6 md:px-12 pt-20 md:pt-24 shrink-0">
         <div className="relative max-w-7xl mx-auto">
           <SectionHeading
             label="[ INDEX_02 — PROJECTS ]"
@@ -190,14 +200,10 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
         </div>
       </div>
 
-      {/* SCROLL hint — bottom-left */}
-      <div className="absolute bottom-8 left-6 md:left-12 z-20 font-mono text-[10px] tracking-[0.4em] text-zinc-600 uppercase flex items-center gap-2">
-        <span>scroll → explore</span>
-        <span className="inline-block w-12 h-px bg-zinc-700" />
-      </div>
-
-      {/* Horizontal track — the actual scrollable canvas */}
-      <div className="absolute inset-x-0 top-[42%] md:top-[46%] -translate-y-1/2 z-10">
+      {/* Horizontal track — vertically centered in remaining space.
+          flex-1 + items-center + h-full lets the track inherit the
+          leftover height under the static header. */}
+      <div className="relative z-10 flex-1 flex items-center min-h-0">
         <div
           ref={track}
           className="flex will-change-transform"
@@ -213,7 +219,7 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
               className="project-card shrink-0"
               style={{ width: `${cardWidth}px` }}
             >
-              <ProjectCard project={project} priorityImage={i < 2} />
+              <ProjectCard project={project} priorityImage={i < 2} compact />
             </div>
           ))}
 
@@ -233,7 +239,11 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
         </div>
       </div>
 
-      {/* End-of-canvas marker — moved to the outro card itself */}
+      {/* SCROLL hint — bottom-left */}
+      <div className="relative z-20 px-6 md:px-12 pb-8 shrink-0 font-mono text-[10px] tracking-[0.4em] text-zinc-600 uppercase flex items-center gap-2">
+        <span>scroll → explore</span>
+        <span className="inline-block w-12 h-px bg-zinc-700" />
+      </div>
     </section>
   );
 }
