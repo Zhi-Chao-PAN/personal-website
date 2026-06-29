@@ -102,7 +102,7 @@ export function ProjectCard({ project, priorityImage = false }: ProjectCardProps
               aria-hidden
               className="absolute left-0 top-1 bottom-1 w-[2px] rounded-full bg-emerald-400/60"
             />
-            <p className="text-[13px] leading-relaxed text-zinc-300/90 line-clamp-3">
+            <p className="text-[13px] leading-relaxed text-zinc-300/90 line-clamp-5">
               {project.pitchZh}
             </p>
           </div>
