@@ -91,4 +91,10 @@ export interface Project {
   demoUrl: string | null;
   /** Whether this project has a live demo. */
   featured: boolean;
+
+  // ----- Imagery -----
+  /** Type of cover image ('screenshot' / 'benchmark' / 'og-poster'). */
+  imageType: 'screenshot' | 'benchmark' | 'og-poster';
+  /** Display label for the cover image, e.g. "DESKTOP" / "BENCHMARK" / "OG POSTER". */
+  imageLabel: string;
 }

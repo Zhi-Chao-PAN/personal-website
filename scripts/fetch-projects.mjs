@@ -236,6 +236,8 @@ async function main() {
       stack,
       headline: meta.headline ?? null,
       references: meta.references ?? [],
+      imageType: meta.imageType ?? 'og-poster',
+      imageLabel: meta.imageLabel ?? 'OG POSTER',
       githubUrl: api?.html_url ?? `https://github.com/${GITHUB_OWNER}/${meta.slug}`,
       demoUrl: meta.demoUrl,
       featured: meta.demoUrl !== null,

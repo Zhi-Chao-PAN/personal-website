@@ -82,10 +82,10 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
           subtitle={subtitle}
         />
 
-        <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-          {projects.map((project) => (
+        <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+          {projects.map((project, i) => (
             <div key={project.slug} className="project-card">
-              <ProjectCard project={project} />
+              <ProjectCard project={project} priorityImage={i < 2} />
             </div>
           ))}
         </div>

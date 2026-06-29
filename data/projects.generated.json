@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-29T09:41:06.587Z",
+  "generatedAt": "2026-06-29T12:34:01.749Z",
   "source": "fallback",
   "stats": {
     "totalRepos": 7,
@@ -68,7 +68,9 @@
       ],
       "githubUrl": "https://github.com/Zhi-Chao-PAN/launchlens-ai",
       "demoUrl": "https://launchlens-ai-two.vercel.app",
-      "featured": true
+      "featured": true,
+      "imageType": "screenshot",
+      "imageLabel": "DESKTOP"
     },
     {
       "slug": "launchlens-research-studio",
@@ -135,7 +137,9 @@
       ],
       "githubUrl": "https://github.com/Zhi-Chao-PAN/launchlens-research-studio",
       "demoUrl": "https://launchlens-research-studio.vercel.app",
-      "featured": true
+      "featured": true,
+      "imageType": "screenshot",
+      "imageLabel": "DARK MODE"
     },
     {
       "slug": "model-eval-studio",
@@ -197,7 +201,9 @@
       "references": [],
       "githubUrl": "https://github.com/Zhi-Chao-PAN/model-eval-studio",
       "demoUrl": "https://model-test-assistant.vercel.app",
-      "featured": true
+      "featured": true,
+      "imageType": "og-poster",
+      "imageLabel": "OG POSTER"
     },
     {
       "slug": "codex-zcode-remote-relay",
@@ -263,7 +269,9 @@
       "references": [],
       "githubUrl": "https://github.com/Zhi-Chao-PAN/codex-zcode-remote-relay",
       "demoUrl": null,
-      "featured": false
+      "featured": false,
+      "imageType": "og-poster",
+      "imageLabel": "OG POSTER"
     },
     {
       "slug": "LangGraph-Financial-Swarm",
@@ -317,7 +325,9 @@
       "references": [],
       "githubUrl": "https://github.com/Zhi-Chao-PAN/LangGraph-Financial-Swarm",
       "demoUrl": null,
-      "featured": false
+      "featured": false,
+      "imageType": "og-poster",
+      "imageLabel": "OG POSTER"
     },
     {
       "slug": "safety-critical-battery-prognostics",
@@ -377,7 +387,9 @@
       "references": [],
       "githubUrl": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics",
       "demoUrl": null,
-      "featured": false
+      "featured": false,
+      "imageType": "benchmark",
+      "imageLabel": "BENCHMARK"
     },
     {
       "slug": "structure-aware-rag-empirical",
@@ -437,7 +449,9 @@
       "references": [],
       "githubUrl": "https://github.com/Zhi-Chao-PAN/structure-aware-rag-empirical",
       "demoUrl": null,
-      "featured": false
+      "featured": false,
+      "imageType": "benchmark",
+      "imageLabel": "BENCHMARK"
     }
   ]
 }

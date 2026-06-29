@@ -25,6 +25,10 @@ export interface ProjectMeta {
   headline: ProjectHeadline | null;
   /** Cross-references to other project slugs. */
   references: string[];
+  /** Type of cover image — affects the corner label. */
+  imageType: 'screenshot' | 'benchmark' | 'og-poster';
+  /** Display label for the cover image. */
+  imageLabel: string;
 }
 
 export const GITHUB_OWNER = 'Zhi-Chao-PAN';
@@ -63,6 +67,8 @@ export const META: ProjectMeta[] = [
     fallbackLanguage: 'TypeScript',
     headline: { label: 'release', value: 'v1.0.0' },
     references: ['launchlens-research-studio'],
+    imageType: 'screenshot',
+    imageLabel: 'DESKTOP',
   },
   {
     slug: 'launchlens-research-studio',
@@ -74,6 +80,8 @@ export const META: ProjectMeta[] = [
     fallbackLanguage: 'TypeScript',
     headline: { label: 'tests passing', value: '1,423' },
     references: ['launchlens-ai'],
+    imageType: 'screenshot',
+    imageLabel: 'DARK MODE',
   },
   {
     slug: 'model-eval-studio',
@@ -85,6 +93,8 @@ export const META: ProjectMeta[] = [
     fallbackLanguage: 'TypeScript',
     headline: null,
     references: [],
+    imageType: 'og-poster',
+    imageLabel: 'OG POSTER',
   },
   {
     slug: 'codex-zcode-remote-relay',
@@ -96,6 +106,8 @@ export const META: ProjectMeta[] = [
     fallbackLanguage: 'JavaScript',
     headline: { label: 'lines of code', value: '< 1k' },
     references: [],
+    imageType: 'og-poster',
+    imageLabel: 'OG POSTER',
   },
   {
     slug: 'LangGraph-Financial-Swarm',
@@ -107,6 +119,8 @@ export const META: ProjectMeta[] = [
     fallbackLanguage: 'Python',
     headline: { label: 'specialists', value: '5 agents' },
     references: [],
+    imageType: 'og-poster',
+    imageLabel: 'OG POSTER',
   },
   {
     slug: 'safety-critical-battery-prognostics',
@@ -118,6 +132,8 @@ export const META: ProjectMeta[] = [
     fallbackLanguage: 'Python',
     headline: { label: '3-layer defense', value: 'VR 0.00%' },
     references: [],
+    imageType: 'benchmark',
+    imageLabel: 'BENCHMARK',
   },
   {
     slug: 'structure-aware-rag-empirical',
@@ -129,6 +145,8 @@ export const META: ProjectMeta[] = [
     fallbackLanguage: 'Python',
     headline: { label: 'accuracy lift', value: '+37.5%' },
     references: [],
+    imageType: 'benchmark',
+    imageLabel: 'BENCHMARK',
   },
 ];
 
