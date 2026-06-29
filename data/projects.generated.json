@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-06-29T17:00:29.542Z",
+  "generatedAt": "2026-06-29T17:58:58.809Z",
   "source": "github-api",
   "stats": {
     "totalRepos": 7,
     "totalStars": 5,
     "liveDemos": 3,
-    "totalSizeMb": 111.9
+    "totalSizeMb": 119.1
   },
   "projects": [
     {
@@ -18,9 +18,21 @@
       "languages": [
         {
           "name": "TypeScript",
-          "bytes": 1,
+          "bytes": 1853757,
           "color": "#3178c6",
-          "percent": 100
+          "percent": 99
+        },
+        {
+          "name": "CSS",
+          "bytes": 10041,
+          "color": "#563d7c",
+          "percent": 1
+        },
+        {
+          "name": "JavaScript",
+          "bytes": 478,
+          "color": "#f1e05a",
+          "percent": 0
         }
       ],
       "stars": 1,
@@ -32,9 +44,9 @@
         "minimax"
       ],
       "createdAt": "2026-06-11T16:07:19Z",
-      "pushedAt": "2026-06-28T17:45:56Z",
+      "pushedAt": "2026-06-29T17:15:02Z",
       "ageInDays": 18,
-      "pushedRelative": "23h ago",
+      "pushedRelative": "43m ago",
       "size": 4681,
       "sizeHuman": "4.6 MB",
       "license": "MIT",
@@ -74,33 +86,41 @@
     {
       "slug": "launchlens-research-studio",
       "name": "LaunchLens Research Studio",
-      "description": "",
+      "description": "Multi-agent market intelligence workspace - companion to launchlens-ai. 6 AI agents research any product idea in parallel.",
       "tagline": "Multi-agent market intelligence — 6 AI agents research any product in parallel.",
-      "language": "Other",
-      "languageColor": "#8b8b8b",
+      "language": "TypeScript",
+      "languageColor": "#3178c6",
       "languages": [
         {
           "name": "TypeScript",
-          "bytes": 1,
+          "bytes": 2272690,
           "color": "#3178c6",
-          "percent": 100
+          "percent": 88
+        },
+        {
+          "name": "CSS",
+          "bytes": 206976,
+          "color": "#563d7c",
+          "percent": 8
+        },
+        {
+          "name": "JavaScript",
+          "bytes": 91498,
+          "color": "#f1e05a",
+          "percent": 4
         }
       ],
       "stars": 0,
-      "commits": 0,
-      "topics": [
-        "multi-agent",
-        "nextjs",
-        "typescript"
-      ],
-      "createdAt": "2026-06-29T17:00:28.745Z",
-      "pushedAt": "2026-06-29T17:00:28.745Z",
-      "ageInDays": 0,
-      "pushedRelative": "0s ago",
-      "size": 0,
-      "sizeHuman": "0 B",
-      "license": null,
-      "defaultBranch": "main",
+      "commits": 1,
+      "topics": [],
+      "createdAt": "2026-06-15T19:58:50Z",
+      "pushedAt": "2026-06-29T13:02:12Z",
+      "ageInDays": 13,
+      "pushedRelative": "4h ago",
+      "size": 6408,
+      "sizeHuman": "6.3 MB",
+      "license": "MIT",
+      "defaultBranch": "master",
       "stack": [
         {
           "name": "next",
@@ -136,10 +156,10 @@
     {
       "slug": "model-eval-studio",
       "name": "Model Eval Studio",
-      "description": "",
+      "description": "AI-driven multi-model evaluation workspace. Upload screenshots and artifacts, let AI identify models, analyze hard metrics, and generate structured comparison reports.",
       "tagline": "Multi-model evaluation workspace — AI identifies models from screenshots & generates comparison reports.",
-      "language": "Other",
-      "languageColor": "#8b8b8b",
+      "language": "TypeScript",
+      "languageColor": "#3178c6",
       "languages": [
         {
           "name": "TypeScript",
@@ -161,18 +181,14 @@
         }
       ],
       "stars": 0,
-      "commits": 0,
-      "topics": [
-        "ai",
-        "evaluation",
-        "typescript"
-      ],
-      "createdAt": "2026-06-29T17:00:27.968Z",
-      "pushedAt": "2026-06-29T17:00:27.968Z",
-      "ageInDays": 0,
-      "pushedRelative": "0s ago",
-      "size": 0,
-      "sizeHuman": "0 B",
+      "commits": 1,
+      "topics": [],
+      "createdAt": "2026-06-18T14:53:56Z",
+      "pushedAt": "2026-06-24T13:05:33Z",
+      "ageInDays": 11,
+      "pushedRelative": "5d ago",
+      "size": 981,
+      "sizeHuman": "981 KB",
       "license": null,
       "defaultBranch": "main",
       "stack": [
@@ -230,7 +246,7 @@
         }
       ],
       "stars": 0,
-      "commits": 0,
+      "commits": 1,
       "topics": [
         "agent-orchestration",
         "ai-agents",
@@ -299,7 +315,7 @@
         }
       ],
       "stars": 0,
-      "commits": 0,
+      "commits": 1,
       "topics": [],
       "createdAt": "2026-02-01T15:53:51Z",
       "pushedAt": "2026-03-17T07:18:52Z",
@@ -440,9 +456,15 @@
       "languages": [
         {
           "name": "Python",
-          "bytes": 1,
+          "bytes": 56669,
           "color": "#3572A5",
-          "percent": 100
+          "percent": 98
+        },
+        {
+          "name": "Dockerfile",
+          "bytes": 1189,
+          "color": "#384d54",
+          "percent": 2
         }
       ],
       "stars": 0,

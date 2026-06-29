@@ -31,19 +31,44 @@ export function OutroSection({ totalRepos, totalStars, liveDemos, totalSizeMb }:
   useGSAP(() => {
     const headingSplit = new SplitType('.outro-heading', { types: 'chars,words' });
     const subSplit = new SplitType('.outro-subline', { types: 'words' });
+    const manifestoSplit = new SplitType('.outro-manifesto-line', {
+      types: 'chars',
+    });
 
     gsap.set(headingSplit.chars, { yPercent: 140, opacity: 0 });
     gsap.set(subSplit.words, { yPercent: 100, opacity: 0 });
+    gsap.set(manifestoSplit.chars, { opacity: 0 });
+    gsap.set('.outro-manifesto-coda', { opacity: 0, y: 14 });
     gsap.set('.outro-stat, .outro-cta', { opacity: 0, y: 24 });
+    gsap.set('.outro-credential', { opacity: 0 });
 
     const tl = gsap.timeline({ defaults: { ease: 'power4.out' }, delay: 0.3 });
     tl.to('.outro-grid', { opacity: 0.06, duration: 1.2, ease: 'expo.inOut' }, 0)
+      // Big English heading reveals first.
       .to(headingSplit.chars, { yPercent: 0, opacity: 1, duration: 1.2, stagger: 0.03, ease: 'expo.out' }, '-=0.8')
-      .to(subSplit.words, { yPercent: 0, opacity: 1, duration: 0.8, stagger: 0.02, ease: 'power3.out' }, '-=0.6')
+      // Chinese manifesto: each line fades in line-by-line, characters within
+      // a line tween quickly so it reads like a stamp, not a typewriter.
+      .to(
+        manifestoSplit.chars,
+        {
+          opacity: 1,
+          duration: 0.5,
+          stagger: { each: 0.005, from: 'start' },
+        },
+        '-=0.6',
+      )
+      .to('.outro-manifesto-coda', { opacity: 1, y: 0, duration: 0.7 }, '-=0.2')
+      // English subline then stats and ctas.
+      .to(subSplit.words, { yPercent: 0, opacity: 1, duration: 0.8, stagger: 0.02, ease: 'power3.out' }, '-=0.4')
       .to('.outro-stat', { opacity: 1, y: 0, duration: 0.6, stagger: 0.04, ease: 'power3.out' }, '-=0.3')
-      .to('.outro-cta', { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: 'power3.out' }, '-=0.2');
+      .to('.outro-cta', { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: 'power3.out' }, '-=0.2')
+      .to('.outro-credential', { opacity: 1, duration: 0.6 }, '-=0.3');
 
-    return () => { headingSplit.revert(); subSplit.revert(); };
+    return () => {
+      headingSplit.revert();
+      subSplit.revert();
+      manifestoSplit.revert();
+    };
   }, { scope: container });
 
   return (
@@ -77,18 +102,45 @@ export function OutroSection({ totalRepos, totalStars, liveDemos, totalSizeMb }:
       {/* Content stack */}
       <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl mx-auto">
         {/* Mono label */}
-        <span className="font-mono text-[10px] tracking-[0.4em] text-emerald-400/70 uppercase mb-8">
+        <span className="font-mono text-[10px] tracking-[0.4em] text-emerald-400/70 uppercase mb-6">
           [ closing_chapter ]
         </span>
 
         {/* Massive heading */}
-        <h2 className="outro-heading text-5xl md:text-7xl lg:text-[8rem] font-black text-white uppercase tracking-tighter leading-[0.9] mb-8">
+        <h2 className="outro-heading text-5xl md:text-7xl lg:text-[7.5rem] font-black text-white uppercase tracking-tighter leading-[0.9] mb-8">
           Let's build<br />
           <span className="text-zinc-600 block mt-2">the next one</span>
         </h2>
 
-        {/* Poetic subline */}
-        <p className="outro-subline max-w-3xl text-base md:text-lg text-zinc-400/90 font-mono tracking-wider leading-relaxed mb-16">
+        {/* Chinese manifesto — the main emotional close for Chinese readers.
+            Each line reveals char-by-char like a stamp, no typewriter jitter.
+            Kept short and verb-driven so it lands as posture, not pitch. */}
+        <div
+          aria-label="致读者"
+          className="outro-manifesto max-w-2xl mx-auto mb-8 space-y-1.5 text-left md:text-center"
+        >
+          {[
+            '我相信，把复杂的事拆到能讲清楚，AI 才真正开始有用。',
+            '我正走在从「能用」走向「敢交付」的路上，一年比一年走得深。',
+            '我愿意接难的、做新的、扛得住结果的事——挑战是把标准抬高的方式。',
+            '我开放任何方向的技术交流，听得进，也谈得动。',
+            '如果你也在做值得被认真做出来的东西——',
+          ].map((line) => (
+            <p
+              key={line}
+              className="outro-manifesto-line text-zinc-200/95 text-base md:text-lg leading-[1.6] tracking-wide"
+            >
+              {line}
+            </p>
+          ))}
+          <p className="outro-manifesto-coda mt-3 text-emerald-300 font-black text-base md:text-xl tracking-wide">
+            我们就一起把它做出来，给这个世界一些真正值得用的作品。
+          </p>
+        </div>
+
+        {/* English subline — visually downgraded, kept as a softer alternate
+            channel for non-Chinese readers. */}
+        <p className="outro-subline max-w-3xl text-[11px] md:text-xs text-zinc-500 font-mono tracking-wider leading-relaxed mb-8">
           [ seven projects is just a preface.{' '}
           if you are shaping something worth building,{' '}
           want to talk AI collaboration,{' '}
@@ -97,7 +149,7 @@ export function OutroSection({ totalRepos, totalStars, liveDemos, totalSizeMb }:
         </p>
 
         {/* Aggregate stats */}
-        <div className="outro-stats flex flex-wrap justify-center gap-6 md:gap-12 mb-16">
+        <div className="outro-stats flex flex-wrap justify-center gap-6 md:gap-12 mb-8">
           {[
             { v: String(totalRepos), l: 'PUBLIC REPOS' },
             { v: String(totalStars), l: 'STARS TOTAL' },
@@ -143,11 +195,12 @@ export function OutroSection({ totalRepos, totalStars, liveDemos, totalSizeMb }:
             <span aria-hidden>→</span>
           </a>
         </div>
-      </div>
 
-      {/* Bottom credential */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 font-mono text-[9px] tracking-[0.3em] text-zinc-700 uppercase">
-        [ panzhichao.com / digital_lab / 2026 ]
+        {/* Bottom credential — sits at the bottom of the content stack so
+            everything shares the 100vh budget instead of fighting pixels. */}
+        <div className="outro-credential mt-6 font-mono text-[9px] tracking-[0.3em] text-zinc-700 uppercase">
+          [ panzhichao.com / digital_lab / 2026 ]
+        </div>
       </div>
     </section>
   );
