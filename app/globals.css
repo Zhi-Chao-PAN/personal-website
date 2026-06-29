@@ -8,6 +8,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: #10b981; /* emerald-500 — used for "live demo" links */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

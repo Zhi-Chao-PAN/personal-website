@@ -1,17 +1,16 @@
 import Hero from '@/components/Hero';
+import { ProjectsSection } from '@/components/projects-section';
+import projectsData from '@/data/projects.generated.json';
+import type { Project } from '@/lib/projects.types';
 
 export default function Home() {
+  const projects = projectsData.projects as Project[];
+  const stats = projectsData.stats;
+
   return (
     <main className="flex min-h-screen flex-col bg-[#030303]">
       <Hero />
-      
-      {/* ScrollTrigger container pre-setup for future sections */}
-      <section className="h-screen w-full flex items-center justify-center bg-[#0a0a0a] border-t border-white/5">
-        <div className="text-center font-mono text-zinc-600 tracking-widest text-sm">
-          [ AWAITING_NEXT_MODULE ] <br />
-          /* SCROLL DOWN TO REVEAL MORE EXPERIMENTS */
-        </div>
-      </section>
+      <ProjectsSection projects={projects} stats={stats} />
     </main>
   );
 }

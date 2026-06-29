@@ -1,0 +1,129 @@
+{
+  "generatedAt": "2026-06-29T08:57:08.947Z",
+  "source": "github-api",
+  "stats": {
+    "totalRepos": 7,
+    "totalStars": 5,
+    "liveDemos": 3
+  },
+  "projects": [
+    {
+      "slug": "launchlens-ai",
+      "name": "LaunchLens AI",
+      "description": "AI-powered go-to-market workspace for product research, launch planning, positioning, and structured GTM briefs.",
+      "tagline": "AI-powered go-to-market workspace — research, positioning & GTM briefs.",
+      "language": "TypeScript",
+      "languageColor": "#3178c6",
+      "stars": 1,
+      "topics": [
+        "ai-saas",
+        "go-to-market",
+        "llm",
+        "minimax"
+      ],
+      "githubUrl": "https://github.com/Zhi-Chao-PAN/launchlens-ai",
+      "demoUrl": "https://launchlens-ai-two.vercel.app",
+      "featured": true,
+      "pushedAt": "2026-06-28T17:45:56Z"
+    },
+    {
+      "slug": "launchlens-research-studio",
+      "name": "LaunchLens Research Studio",
+      "description": "Multi-agent market intelligence workspace - companion to launchlens-ai. 6 AI agents research any product idea in parallel.",
+      "tagline": "Multi-agent market intelligence — 6 AI agents research any product in parallel.",
+      "language": "TypeScript",
+      "languageColor": "#3178c6",
+      "stars": 0,
+      "topics": [],
+      "githubUrl": "https://github.com/Zhi-Chao-PAN/launchlens-research-studio",
+      "demoUrl": "https://launchlens-research-studio.vercel.app",
+      "featured": true,
+      "pushedAt": "2026-06-28T17:40:42Z"
+    },
+    {
+      "slug": "model-eval-studio",
+      "name": "Model Eval Studio",
+      "description": "AI-driven multi-model evaluation workspace. Upload screenshots and artifacts, let AI identify models, analyze hard metrics, and generate structured comparison reports.",
+      "tagline": "Multi-model evaluation workspace — AI identifies models from screenshots & generates comparison reports.",
+      "language": "TypeScript",
+      "languageColor": "#3178c6",
+      "stars": 0,
+      "topics": [],
+      "githubUrl": "https://github.com/Zhi-Chao-PAN/model-eval-studio",
+      "demoUrl": "https://model-test-assistant.vercel.app",
+      "featured": true,
+      "pushedAt": "2026-06-24T13:05:33Z"
+    },
+    {
+      "slug": "codex-zcode-remote-relay",
+      "name": "Codex ↔ ZCode Remote Relay",
+      "description": "Local Codex-to-ZCode multi-agent relay experiment with bounded delegation, worker pools, and safety gates.",
+      "tagline": "Local Codex-to-ZCode multi-agent relay — bounded delegation, worker pools, safety gates.",
+      "language": "JavaScript",
+      "languageColor": "#f1e05a",
+      "stars": 0,
+      "topics": [
+        "agent-orchestration",
+        "ai-agents",
+        "codex",
+        "multi-agent"
+      ],
+      "githubUrl": "https://github.com/Zhi-Chao-PAN/codex-zcode-remote-relay",
+      "demoUrl": null,
+      "featured": false,
+      "pushedAt": "2026-06-25T15:17:54Z"
+    },
+    {
+      "slug": "LangGraph-Financial-Swarm",
+      "name": "LangGraph Financial Swarm",
+      "description": "Multi-agent financial research system built with LangGraph-style orchestration, local LLM workflows, tool use, and structured analysis.",
+      "tagline": "Multi-agent financial research system — LangGraph orchestration, local LLMs, tool use.",
+      "language": "Python",
+      "languageColor": "#3572A5",
+      "stars": 0,
+      "topics": [],
+      "githubUrl": "https://github.com/Zhi-Chao-PAN/LangGraph-Financial-Swarm",
+      "demoUrl": null,
+      "featured": false,
+      "pushedAt": "2026-03-17T07:18:52Z"
+    },
+    {
+      "slug": "safety-critical-battery-prognostics",
+      "name": "Safety-Critical Battery Prognostics",
+      "description": "A reproducible battery prognostics repository with a three-layer physics defense, bounded real-data reporting, and uncertainty-aware evaluation.",
+      "tagline": "Reproducible battery RUL — three-layer physics defense, uncertainty-aware evaluation.",
+      "language": "Python",
+      "languageColor": "#3572A5",
+      "stars": 4,
+      "topics": [
+        "battery-management-system",
+        "conformal-prediction",
+        "iso-26262",
+        "lithium-ion-batteries"
+      ],
+      "githubUrl": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics",
+      "demoUrl": null,
+      "featured": false,
+      "pushedAt": "2026-04-08T03:48:17Z"
+    },
+    {
+      "slug": "structure-aware-rag-empirical",
+      "name": "Structure-Aware RAG (Empirical)",
+      "description": "An empirical study improving Financial RAG accuracy by 37.5% (50.0% → 68.8%) using Structure-Aware Parsing. Benchmarking LlamaParse vs. PyPDF on complex cross-row tabular reasoning tasks.",
+      "tagline": "Empirical study — Structure-Aware Parsing lifts Financial RAG accuracy by 37.5%.",
+      "language": "Python",
+      "languageColor": "#3572A5",
+      "stars": 0,
+      "topics": [
+        "benchmark",
+        "empirical-study",
+        "financial-analysis",
+        "llamaindex"
+      ],
+      "githubUrl": "https://github.com/Zhi-Chao-PAN/structure-aware-rag-empirical",
+      "demoUrl": null,
+      "featured": false,
+      "pushedAt": "2026-03-17T07:13:38Z"
+    }
+  ]
+}
