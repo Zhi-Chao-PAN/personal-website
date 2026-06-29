@@ -60,7 +60,14 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
   // viewport width (translateX) are recomputed inside the GSAP effect.
   const cardWidth = 640;
   const gap = 24;
-  const inset = 48;
+
+  // Compute sideInset at render time using window (safe because we render
+  // on the client; SSR uses the default 1440 which is fine — the effect
+  // refreshes on mount). Centers the first/last card at canvas boundaries.
+  const sideInset =
+    typeof window === 'undefined'
+      ? (1440 - cardWidth) / 2
+      : (window.innerWidth - cardWidth) / 2;
 
   useGSAP(
     () => {
@@ -75,7 +82,9 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
       // Compute track width at effect-time (not render-time) so it always
       // reflects the current viewport, even after resize / orientation.
       const trackWidth = totalCards * cardWidth + (totalCards - 1) * gap;
-      const translateX = Math.max(0, trackWidth - vw + inset * 2);
+      // sideInset is computed at the component level (so SSR + JSX agree)
+      // and closed over here for the ScrollTrigger math.
+      const translateX = Math.max(0, trackWidth - vw + sideInset * 2);
       const endDistance = translateX + vh * 0.6;
 
       // Initial state: cards faded in by their own translateX position
@@ -172,7 +181,7 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
 
       return () => trigger.kill();
     },
-    { scope: container, dependencies: [totalCards] }
+    { scope: container, dependencies: [totalCards, sideInset] }
   );
 
   const subtitle = `[ ${stats.totalRepos}_PUBLIC_REPOS · ${stats.liveDemos}_LIVE_DEMOS · ${stats.totalStars}_STARS_TOTAL ]`;
@@ -233,8 +242,8 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
           className="flex will-change-transform"
           style={{
             gap: `${gap}px`,
-            paddingLeft: `${inset}px`,
-            paddingRight: `${inset}px`,
+            paddingLeft: `${sideInset}px`,
+            paddingRight: `${sideInset}px`,
           }}
         >
           {projects.map((project, i) => (

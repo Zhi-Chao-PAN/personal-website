@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-06-29T14:48:18.409Z",
-  "source": "fallback",
+  "generatedAt": "2026-06-29T14:58:51.719Z",
+  "source": "github-api",
   "stats": {
     "totalRepos": 7,
     "totalStars": 5,
     "liveDemos": 3,
-    "totalSizeMb": 119.5
+    "totalSizeMb": 119.1
   },
   "projects": [
     {
@@ -27,20 +27,26 @@
           "bytes": 10041,
           "color": "#563d7c",
           "percent": 1
+        },
+        {
+          "name": "JavaScript",
+          "bytes": 478,
+          "color": "#f1e05a",
+          "percent": 0
         }
       ],
       "stars": 1,
-      "commits": 30,
+      "commits": 1,
       "topics": [
         "ai-saas",
         "go-to-market",
         "llm",
         "minimax"
       ],
-      "createdAt": "2026-06-11T00:00:00.000Z",
-      "pushedAt": "2026-06-28T17:45:56.000Z",
-      "ageInDays": 18,
-      "pushedRelative": "17h ago",
+      "createdAt": "2026-06-11T16:07:19Z",
+      "pushedAt": "2026-06-28T17:45:56Z",
+      "ageInDays": 17,
+      "pushedRelative": "21h ago",
       "size": 4681,
       "sizeHuman": "4.6 MB",
       "license": "MIT",
@@ -57,6 +63,10 @@
         {
           "name": "react-dom",
           "source": "package.json"
+        },
+        {
+          "name": "@auth/core",
+          "source": "package.json"
         }
       ],
       "headline": {
@@ -66,12 +76,12 @@
       "references": [
         "launchlens-research-studio"
       ],
+      "pitchZh": "创业者最贵的成本是「想清楚再动手」——一份 GTM 报告要请咨询公司写 2–3 周、几十万元。LaunchLens 把市场调研、用户画像、竞品拆解、产品定位、首版营销文案一次性跑完，过去 2 周的工作压到一杯咖啡的时间。系统内置 30+ 行业模板和 6 套定位框架，AI 会主动追问并修正假设，最后输出一份能直接拿给投资人或团队开会的 BP 草稿。适合早期创业者、企划负责人、独立咨询顾问，5 分钟跑出过去需要 1 个分析师 1 周的产出。",
+      "imageType": "og-poster",
+      "imageLabel": "OG POSTER",
       "githubUrl": "https://github.com/Zhi-Chao-PAN/launchlens-ai",
       "demoUrl": "https://launchlens-ai-two.vercel.app",
-      "featured": true,
-      "imageType": "screenshot",
-      "imageLabel": "DESKTOP",
-      "pitchZh": "创业者最贵的成本是「想清楚再动手」——一份 GTM 报告要请咨询公司写 2–3 周、几十万元。LaunchLens 把市场调研、用户画像、竞品拆解、产品定位、首版营销文案一次性跑完，过去 2 周的工作压到一杯咖啡的时间。系统内置 30+ 行业模板和 6 套定位框架，AI 会主动追问并修正假设，最后输出一份能直接拿给投资人或团队开会的 BP 草稿。适合早期创业者、企划负责人、独立咨询顾问，5 分钟跑出过去需要 1 个分析师 1 周的产出。"
+      "featured": true
     },
     {
       "slug": "launchlens-research-studio",
@@ -83,38 +93,34 @@
       "languages": [
         {
           "name": "TypeScript",
-          "bytes": 2200000,
+          "bytes": 2272690,
           "color": "#3178c6",
           "percent": 88
         },
         {
           "name": "CSS",
-          "bytes": 207000,
+          "bytes": 206976,
           "color": "#563d7c",
           "percent": 8
         },
         {
           "name": "JavaScript",
-          "bytes": 91000,
+          "bytes": 91498,
           "color": "#f1e05a",
           "percent": 4
         }
       ],
       "stars": 0,
-      "commits": 30,
-      "topics": [
-        "multi-agent",
-        "nextjs",
-        "typescript"
-      ],
-      "createdAt": "2026-06-15T00:00:00.000Z",
-      "pushedAt": "2026-06-28T17:40:42.000Z",
-      "ageInDays": 14,
-      "pushedRelative": "18h ago",
-      "size": 6312,
-      "sizeHuman": "6.2 MB",
+      "commits": 1,
+      "topics": [],
+      "createdAt": "2026-06-15T19:58:50Z",
+      "pushedAt": "2026-06-29T13:02:12Z",
+      "ageInDays": 13,
+      "pushedRelative": "1h ago",
+      "size": 6408,
+      "sizeHuman": "6.3 MB",
       "license": "MIT",
-      "defaultBranch": "main",
+      "defaultBranch": "master",
       "stack": [
         {
           "name": "next",
@@ -122,6 +128,10 @@
         },
         {
           "name": "react",
+          "source": "package.json"
+        },
+        {
+          "name": "react-dom",
           "source": "package.json"
         },
         {
@@ -136,12 +146,12 @@
       "references": [
         "launchlens-ai"
       ],
+      "pitchZh": "一个想法值不值得做，过去要请咨询公司花几周时间、十几万元来验证。Research Studio 派出 6 个 AI 角色并行调研——市场分析师扒规模、竞品专家拆解对手、用户研究员还原真实使用场景、风控顾问挑刺、PM 估算落地难度——5 分钟内把竞品、用户、风险三个维度同时拉齐到一份决策级简报里。整套调研链路可审计、可重跑、可对比不同假设下的结论差异。适合产品经理、战略分析师、早期投资人快速判断「这个方向能不能投、要不要做」。",
+      "imageType": "og-poster",
+      "imageLabel": "OG POSTER",
       "githubUrl": "https://github.com/Zhi-Chao-PAN/launchlens-research-studio",
       "demoUrl": "https://launchlens-research-studio.vercel.app",
-      "featured": true,
-      "imageType": "screenshot",
-      "imageLabel": "DARK MODE",
-      "pitchZh": "一个想法值不值得做，过去要请咨询公司花几周时间、十几万元来验证。Research Studio 派出 6 个 AI 角色并行调研——市场分析师扒规模、竞品专家拆解对手、用户研究员还原真实使用场景、风控顾问挑刺、PM 估算落地难度——5 分钟内把竞品、用户、风险三个维度同时拉齐到一份决策级简报里。整套调研链路可审计、可重跑、可对比不同假设下的结论差异。适合产品经理、战略分析师、早期投资人快速判断「这个方向能不能投、要不要做」。"
+      "featured": true
     },
     {
       "slug": "model-eval-studio",
@@ -153,32 +163,28 @@
       "languages": [
         {
           "name": "TypeScript",
-          "bytes": 1200000,
+          "bytes": 1165061,
           "color": "#3178c6",
           "percent": 90
         },
         {
           "name": "JavaScript",
-          "bytes": 115000,
+          "bytes": 115125,
           "color": "#f1e05a",
           "percent": 9
         },
         {
           "name": "CSS",
-          "bytes": 13000,
+          "bytes": 12628,
           "color": "#563d7c",
           "percent": 1
         }
       ],
       "stars": 0,
-      "commits": 30,
-      "topics": [
-        "ai",
-        "evaluation",
-        "typescript"
-      ],
-      "createdAt": "2026-06-18T00:00:00.000Z",
-      "pushedAt": "2026-06-24T13:05:33.000Z",
+      "commits": 1,
+      "topics": [],
+      "createdAt": "2026-06-18T14:53:56Z",
+      "pushedAt": "2026-06-24T13:05:33Z",
       "ageInDays": 11,
       "pushedRelative": "5d ago",
       "size": 981,
@@ -195,18 +201,22 @@
           "source": "package.json"
         },
         {
+          "name": "react-dom",
+          "source": "package.json"
+        },
+        {
           "name": "zustand",
           "source": "package.json"
         }
       ],
       "headline": null,
       "references": [],
-      "githubUrl": "https://github.com/Zhi-Chao-PAN/model-eval-studio",
-      "demoUrl": "https://model-test-assistant.vercel.app",
-      "featured": true,
+      "pitchZh": "选 AI 模型像开盲盒——参数表看不懂、第三方跑分不可信、自己测又没时间。Model Eval Studio 让你截图就识别模型、自动跑多维度对比，给出一份能拍板的选型报告。系统支持自定义评测集（多模态、推理、代码、长上下文都能配），自动产出 leaderboard + 成本曲线 + 失败案例分析。适合 AI 应用团队的架构师、CTO、模型采购决策者，把过去 2 周的选型会压成一个下午的可视化对比。",
       "imageType": "og-poster",
       "imageLabel": "OG POSTER",
-      "pitchZh": "选 AI 模型像开盲盒——参数表看不懂、第三方跑分不可信、自己测又没时间。Model Eval Studio 让你截图就识别模型、自动跑多维度对比，给出一份能拍板的选型报告。系统支持自定义评测集（多模态、推理、代码、长上下文都能配），自动产出 leaderboard + 成本曲线 + 失败案例分析。适合 AI 应用团队的架构师、CTO、模型采购决策者，把过去 2 周的选型会压成一个下午的可视化对比。"
+      "githubUrl": "https://github.com/Zhi-Chao-PAN/model-eval-studio",
+      "demoUrl": "https://model-test-assistant.vercel.app",
+      "featured": true
     },
     {
       "slug": "codex-zcode-remote-relay",
@@ -218,35 +228,35 @@
       "languages": [
         {
           "name": "JavaScript",
-          "bytes": 160000,
+          "bytes": 160170,
           "color": "#f1e05a",
-          "percent": 95
-        },
-        {
-          "name": "Python",
-          "bytes": 1900,
-          "color": "#3572A5",
-          "percent": 1
+          "percent": 97
         },
         {
           "name": "PowerShell",
-          "bytes": 3400,
-          "color": "#012456",
+          "bytes": 3373,
+          "color": "#8b8b8b",
           "percent": 2
+        },
+        {
+          "name": "Python",
+          "bytes": 1938,
+          "color": "#3572A5",
+          "percent": 1
         }
       ],
       "stars": 0,
-      "commits": 6,
+      "commits": 1,
       "topics": [
         "agent-orchestration",
         "ai-agents",
         "codex",
         "multi-agent"
       ],
-      "createdAt": "2026-06-25T00:00:00.000Z",
-      "pushedAt": "2026-06-25T15:17:54.000Z",
-      "ageInDays": 4,
-      "pushedRelative": "4d ago",
+      "createdAt": "2026-06-25T15:17:49Z",
+      "pushedAt": "2026-06-25T15:17:54Z",
+      "ageInDays": 3,
+      "pushedRelative": "3d ago",
       "size": 75,
       "sizeHuman": "75 KB",
       "license": "MIT",
@@ -270,12 +280,12 @@
         "value": "< 1k"
       },
       "references": [],
-      "githubUrl": "https://github.com/Zhi-Chao-PAN/codex-zcode-remote-relay",
-      "demoUrl": null,
-      "featured": false,
+      "pitchZh": "让多个 AI 协作听起来很美，做起来全是协调成本——谁负责什么、中间怎么交接、错了谁背锅、上下文怎么隔离，全是要自己造的轮子。这套本地中继让 Codex 和 ZCode 像一支有分工的团队：主代理分任务、子代理并行执行、每个任务有边界（不允许碰什么、最多跑多久、失败了怎么收尾），整个过程可审计、可中断、可恢复。整套系统不到 1000 行代码，单机就能跑，没有云依赖。适合需要把 AI 协作从「玩具演示」推进到「生产级流水线」的工程团队。",
       "imageType": "og-poster",
       "imageLabel": "OG POSTER",
-      "pitchZh": "让多个 AI 协作听起来很美，做起来全是协调成本——谁负责什么、中间怎么交接、错了谁背锅、上下文怎么隔离，全是要自己造的轮子。这套本地中继让 Codex 和 ZCode 像一支有分工的团队：主代理分任务、子代理并行执行、每个任务有边界（不允许碰什么、最多跑多久、失败了怎么收尾），整个过程可审计、可中断、可恢复。整套系统不到 1000 行代码，单机就能跑，没有云依赖。适合需要把 AI 协作从「玩具演示」推进到「生产级流水线」的工程团队。"
+      "githubUrl": "https://github.com/Zhi-Chao-PAN/codex-zcode-remote-relay",
+      "demoUrl": null,
+      "featured": false
     },
     {
       "slug": "LangGraph-Financial-Swarm",
@@ -287,22 +297,29 @@
       "languages": [
         {
           "name": "Python",
-          "bytes": 54000,
+          "bytes": 54303,
           "color": "#3572A5",
-          "percent": 100
+          "percent": 98
+        },
+        {
+          "name": "Dockerfile",
+          "bytes": 570,
+          "color": "#384d54",
+          "percent": 1
+        },
+        {
+          "name": "Makefile",
+          "bytes": 377,
+          "color": "#8b8b8b",
+          "percent": 1
         }
       ],
       "stars": 0,
-      "commits": 30,
-      "topics": [
-        "langgraph",
-        "multi-agent",
-        "python",
-        "finance"
-      ],
-      "createdAt": "2026-02-01T00:00:00.000Z",
-      "pushedAt": "2026-03-17T07:18:52.000Z",
-      "ageInDays": 148,
+      "commits": 1,
+      "topics": [],
+      "createdAt": "2026-02-01T15:53:51Z",
+      "pushedAt": "2026-03-17T07:18:52Z",
+      "ageInDays": 147,
       "pushedRelative": "3mo ago",
       "size": 117,
       "sizeHuman": "117 KB",
@@ -320,6 +337,10 @@
         {
           "name": "llama-index",
           "source": "pyproject"
+        },
+        {
+          "name": "pandas",
+          "source": "pyproject"
         }
       ],
       "headline": {
@@ -327,12 +348,12 @@
         "value": "5 agents"
       },
       "references": [],
-      "githubUrl": "https://github.com/Zhi-Chao-PAN/LangGraph-Financial-Swarm",
-      "demoUrl": null,
-      "featured": false,
+      "pitchZh": "投研报告动辄几十页、引用链路散落十几个文件，谁来读、谁来核、结论怎么追溯？五个 AI 专家分头扒数据、交叉验证、最后合成可追溯的结论：宏观分析师讲周期、行业研究员拆赛道、公司专家读财报、风险官挑漏洞、PM 把结论落到投资决策。每一段结论都标注原始出处和推理路径，监管和合规可以直接审计。整套系统用 LangGraph 编排 + 本地 LLM，企业内网就能跑，数据不出域。适合券商研究所、买方投研、家族办公室，把分析师从 60% 的重复劳动里解放出来，专注真正的判断。",
       "imageType": "og-poster",
       "imageLabel": "OG POSTER",
-      "pitchZh": "投研报告动辄几十页、引用链路散落十几个文件，谁来读、谁来核、结论怎么追溯？五个 AI 专家分头扒数据、交叉验证、最后合成可追溯的结论：宏观分析师讲周期、行业研究员拆赛道、公司专家读财报、风险官挑漏洞、PM 把结论落到投资决策。每一段结论都标注原始出处和推理路径，监管和合规可以直接审计。整套系统用 LangGraph 编排 + 本地 LLM，企业内网就能跑，数据不出域。适合券商研究所、买方投研、家族办公室，把分析师从 60% 的重复劳动里解放出来，专注真正的判断。"
+      "githubUrl": "https://github.com/Zhi-Chao-PAN/LangGraph-Financial-Swarm",
+      "demoUrl": null,
+      "featured": false
     },
     {
       "slug": "safety-critical-battery-prognostics",
@@ -344,31 +365,55 @@
       "languages": [
         {
           "name": "Python",
-          "bytes": 1100000,
+          "bytes": 1111718,
           "color": "#3572A5",
           "percent": 99
         },
         {
-          "name": "Jupyter",
-          "bytes": 10000,
-          "color": "#DA5B0B",
+          "name": "Jupyter Notebook",
+          "bytes": 10156,
+          "color": "#8b8b8b",
           "percent": 1
+        },
+        {
+          "name": "Shell",
+          "bytes": 1153,
+          "color": "#89e051",
+          "percent": 0
+        },
+        {
+          "name": "CSS",
+          "bytes": 1049,
+          "color": "#563d7c",
+          "percent": 0
+        },
+        {
+          "name": "Dockerfile",
+          "bytes": 608,
+          "color": "#384d54",
+          "percent": 0
+        },
+        {
+          "name": "Makefile",
+          "bytes": 184,
+          "color": "#8b8b8b",
+          "percent": 0
         }
       ],
       "stars": 4,
-      "commits": 30,
+      "commits": 1,
       "topics": [
         "battery-management-system",
         "conformal-prediction",
         "iso-26262",
         "lithium-ion-batteries"
       ],
-      "createdAt": "2026-02-02T00:00:00.000Z",
-      "pushedAt": "2026-04-08T03:48:17.000Z",
-      "ageInDays": 147,
-      "pushedRelative": "3mo ago",
+      "createdAt": "2026-02-02T15:34:59Z",
+      "pushedAt": "2026-04-08T03:48:17Z",
+      "ageInDays": 146,
+      "pushedRelative": "2mo ago",
       "size": 46887,
-      "sizeHuman": "46.9 MB",
+      "sizeHuman": "46 MB",
       "license": "MIT",
       "defaultBranch": "main",
       "stack": [
@@ -383,6 +428,10 @@
         {
           "name": "pandas",
           "source": "pyproject"
+        },
+        {
+          "name": "scipy",
+          "source": "pyproject"
         }
       ],
       "headline": {
@@ -390,12 +439,12 @@
         "value": "VR 0.00%"
       },
       "references": [],
+      "pitchZh": "电池剩余寿命（RUL）预测的误差，是电动车召回事故和储能保险理赔的分水岭——预测过乐观，车在路上趴窝；预测过保守，整批电池提前报废。这套系统用三层物理约束把「AI 幻觉预测」挡在门外：底层是物理信息神经网络（PINN），把电化学方程写进损失函数；中层是不确定性量化（conformal prediction），模型不光给数字、还主动说「我有多大把握」；顶层是漂移检测，传感器一有异常就告警。整套 pipeline 在公开数据集（NASA PCoE、Stanford、MIT-Stanford 快充老化）上验证，VR 错误率 0.00%。适合动力电池厂商、储能集成商、保险定损机构，把「靠经验拍脑袋」的预测变成可追溯、可认证的工程指标。",
+      "imageType": "og-poster",
+      "imageLabel": "OG POSTER",
       "githubUrl": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics",
       "demoUrl": null,
-      "featured": false,
-      "imageType": "benchmark",
-      "imageLabel": "BENCHMARK",
-      "pitchZh": "电池剩余寿命（RUL）预测的误差，是电动车召回事故和储能保险理赔的分水岭——预测过乐观，车在路上趴窝；预测过保守，整批电池提前报废。这套系统用三层物理约束把「AI 幻觉预测」挡在门外：底层是物理信息神经网络（PINN），把电化学方程写进损失函数；中层是不确定性量化（conformal prediction），模型不光给数字、还主动说「我有多大把握」；顶层是漂移检测，传感器一有异常就告警。整套 pipeline 在公开数据集（NASA PCoE、Stanford、MIT-Stanford 快充老化）上验证，VR 错误率 0.00%。适合动力电池厂商、储能集成商、保险定损机构，把「靠经验拍脑袋」的预测变成可追溯、可认证的工程指标。"
+      "featured": false
     },
     {
       "slug": "structure-aware-rag-empirical",
@@ -407,31 +456,31 @@
       "languages": [
         {
           "name": "Python",
-          "bytes": 57000,
+          "bytes": 56669,
           "color": "#3572A5",
-          "percent": 95
+          "percent": 98
         },
         {
           "name": "Dockerfile",
-          "bytes": 3000,
+          "bytes": 1189,
           "color": "#384d54",
-          "percent": 5
+          "percent": 2
         }
       ],
       "stars": 0,
-      "commits": 16,
+      "commits": 1,
       "topics": [
         "benchmark",
         "empirical-study",
         "financial-analysis",
         "llamaindex"
       ],
-      "createdAt": "2026-01-28T00:00:00.000Z",
-      "pushedAt": "2026-03-17T07:13:38.000Z",
+      "createdAt": "2026-01-28T08:12:05Z",
+      "pushedAt": "2026-03-17T07:13:38Z",
       "ageInDays": 152,
       "pushedRelative": "3mo ago",
       "size": 62823,
-      "sizeHuman": "62.8 MB",
+      "sizeHuman": "61 MB",
       "license": "MIT",
       "defaultBranch": "main",
       "stack": [
@@ -446,6 +495,10 @@
         {
           "name": "llama-index-core",
           "source": "pyproject"
+        },
+        {
+          "name": "pandas",
+          "source": "pyproject"
         }
       ],
       "headline": {
@@ -453,12 +506,12 @@
         "value": "+37.5%"
       },
       "references": [],
+      "pitchZh": "RAG 检索准不准，答案藏在文档结构里——金融研报里一张利润表胜过三段话、一份招股书的目录结构比 10 页正文更值钱。这份实证研究对比了 5 种文档解析策略（纯文本 / OCR / 通用 layout / 结构感知 / 人工标注 ground truth），在 4 个金融问答 benchmark 上跑出完整数据：结构感知解析让 RAG 准确率从 52% 提升到 71.5%，相对提升 37.5%，且错误率降低 60%。整套实验脚本、数据集、评测代码全部开源可复现。适合做 RAG 的工程团队、企业知识库负责人、AI 投资尽调——少走 3 个月弯路。",
+      "imageType": "og-poster",
+      "imageLabel": "OG POSTER",
       "githubUrl": "https://github.com/Zhi-Chao-PAN/structure-aware-rag-empirical",
       "demoUrl": null,
-      "featured": false,
-      "imageType": "benchmark",
-      "imageLabel": "BENCHMARK",
-      "pitchZh": "RAG 检索准不准，答案藏在文档结构里——金融研报里一张利润表胜过三段话、一份招股书的目录结构比 10 页正文更值钱。这份实证研究对比了 5 种文档解析策略（纯文本 / OCR / 通用 layout / 结构感知 / 人工标注 ground truth），在 4 个金融问答 benchmark 上跑出完整数据：结构感知解析让 RAG 准确率从 52% 提升到 71.5%，相对提升 37.5%，且错误率降低 60%。整套实验脚本、数据集、评测代码全部开源可复现。适合做 RAG 的工程团队、企业知识库负责人、AI 投资尽调——少走 3 个月弯路。"
+      "featured": false
     }
   ]
 }
