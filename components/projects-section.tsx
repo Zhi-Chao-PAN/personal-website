@@ -120,29 +120,53 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
           if (fillRef.current) {
             fillRef.current.style.transform = `scaleX(${p})`;
           }
-          // Reveal each card as its left edge crosses the viewport center
+          // Drive per-card focus: the card nearest the viewport center is
+          // the "spotlight" — it scales up, lifts, glows emerald, and
+          // reaches full opacity. Cards further away fade, shrink back,
+          // and lose the glow. All four properties interpolate from a
+          // single `t` (closeness, 0..1) so the motion is smooth & unified.
+          const centerX = window.innerWidth / 2;
+          const focusRadius = window.innerWidth * 0.32; // how far the focus reaches
           document.querySelectorAll<HTMLElement>('.project-card').forEach((el) => {
             const r = el.getBoundingClientRect();
-            const center = window.innerWidth / 2;
-            const dist = Math.abs((r.left + r.right) / 2 - center);
-            const visible = Math.max(0, 1 - dist / (window.innerWidth * 0.6));
-            el.style.opacity = String(Math.max(0.15, visible));
-            el.style.transform = `translate3d(0, ${(1 - visible) * 24}px, 0)`;
+            const cardCenter = (r.left + r.right) / 2;
+            const dist = Math.abs(cardCenter - centerX);
+            // t=1 at center, t=0 at focusRadius or beyond (eased so falloff
+            // feels natural rather than linear).
+            const raw = Math.max(0, 1 - dist / focusRadius);
+            const t = raw * raw * (3 - 2 * raw); // smoothstep
+            // Scale 1.0 → 1.08, lift 0 → -8px, opacity 0.3 → 1.0
+            const scale = 1 + 0.08 * t;
+            const y = -8 * t;
+            const opacity = 0.3 + 0.7 * t;
+            el.style.transform = `translate3d(0, ${y}px, 0) scale(${scale})`;
+            el.style.opacity = String(opacity);
+            // Emerald glow only on the focused card (t > 0.55)
+            if (t > 0.55) {
+              const glow = (t - 0.55) / 0.45; // 0..1
+              const blur = 8 + glow * 20; // 8..28px
+              el.style.boxShadow = `0 0 ${blur}px rgba(52,211,153,${0.18 + glow * 0.32})`;
+              el.style.borderColor = `rgba(52,211,153,${0.25 + glow * 0.45})`;
+              el.style.zIndex = String(10 + Math.round(glow * 10));
+            } else {
+              el.style.boxShadow = 'none';
+              el.style.borderColor = '';
+              el.style.zIndex = '';
+            }
           });
         },
       });
 
       // Settle into the "rest" state so SSR users see the first card
-      // clearly before scrolling starts.
+      // clearly before scrolling starts. The focus interpolation in
+      // onUpdate will set the actual scale/lift/opacity once layout
+      // settles; here we just clear the initial gsap.set() hide.
       requestAnimationFrame(() => {
         if (track.current) track.current.style.transform = 'translate3d(0,0,0)';
-        const first = document.querySelector<HTMLElement>('.project-card');
-        if (first) {
-          first.style.opacity = '1';
-          first.style.transform = 'translate3d(0,0,0)';
-        }
-        // Force ScrollTrigger to recompute pin spacer after layout settles
-        // (cards are 640px wide and may shift the section's bounding box).
+        // Force ScrollTrigger to recompute pin spacer + run onUpdate
+        // (cards are 640px wide and may shift the section's bounding box,
+        // and the gsap.set opacity:0 we did above needs to be overwritten
+        // with the per-card focus values).
         ScrollTrigger.refresh();
       });
 
@@ -216,7 +240,7 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
           {projects.map((project, i) => (
             <div
               key={project.slug}
-              className="project-card shrink-0"
+              className="project-card shrink-0 origin-center will-change-transform"
               style={{ width: `${cardWidth}px` }}
             >
               <ProjectCard project={project} priorityImage={i < 2} compact />
@@ -226,7 +250,7 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
           {/* Outro card — lands at the end of the canvas so the user
               never sees an empty black void after the last project. */}
           <div
-            className="project-card shrink-0"
+            className="project-card shrink-0 origin-center will-change-transform"
             style={{ width: `${cardWidth}px` }}
           >
             <OutroCard
