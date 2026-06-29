@@ -236,6 +236,10 @@ async function main() {
       stack,
       headline: meta.headline ?? null,
       references: meta.references ?? [],
+      // Optional Chinese elevator pitch — hand-curated, written for non-technical
+      // visitors (investors, recruiters, friends). Stored alongside META so it
+      // round-trips through fetch → generated JSON → fallback JSON.
+      ...(meta.pitchZh ? { pitchZh: meta.pitchZh } : {}),
       imageType: meta.imageType ?? 'og-poster',
       imageLabel: meta.imageLabel ?? 'OG POSTER',
       githubUrl: api?.html_url ?? `https://github.com/${GITHUB_OWNER}/${meta.slug}`,

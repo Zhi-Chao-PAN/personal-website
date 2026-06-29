@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-06-29T12:34:01.749Z",
-  "source": "fallback",
+  "generatedAt": "2026-06-29T13:00:15.635Z",
+  "source": "github-api",
   "stats": {
     "totalRepos": 7,
     "totalStars": 5,
     "liveDemos": 3,
-    "totalSizeMb": 119.5
+    "totalSizeMb": 119
   },
   "projects": [
     {
@@ -27,20 +27,26 @@
           "bytes": 10041,
           "color": "#563d7c",
           "percent": 1
+        },
+        {
+          "name": "JavaScript",
+          "bytes": 478,
+          "color": "#f1e05a",
+          "percent": 0
         }
       ],
       "stars": 1,
-      "commits": 30,
+      "commits": 1,
       "topics": [
         "ai-saas",
         "go-to-market",
         "llm",
         "minimax"
       ],
-      "createdAt": "2026-06-11T00:00:00.000Z",
-      "pushedAt": "2026-06-28T17:45:56.000Z",
-      "ageInDays": 18,
-      "pushedRelative": "17h ago",
+      "createdAt": "2026-06-11T16:07:19Z",
+      "pushedAt": "2026-06-28T17:45:56Z",
+      "ageInDays": 17,
+      "pushedRelative": "19h ago",
       "size": 4681,
       "sizeHuman": "4.6 MB",
       "license": "MIT",
@@ -57,6 +63,10 @@
         {
           "name": "react-dom",
           "source": "package.json"
+        },
+        {
+          "name": "@auth/core",
+          "source": "package.json"
         }
       ],
       "headline": {
@@ -66,11 +76,11 @@
       "references": [
         "launchlens-research-studio"
       ],
+      "imageType": "og-poster",
+      "imageLabel": "OG POSTER",
       "githubUrl": "https://github.com/Zhi-Chao-PAN/launchlens-ai",
       "demoUrl": "https://launchlens-ai-two.vercel.app",
-      "featured": true,
-      "imageType": "screenshot",
-      "imageLabel": "DESKTOP"
+      "featured": true
     },
     {
       "slug": "launchlens-research-studio",
@@ -82,38 +92,34 @@
       "languages": [
         {
           "name": "TypeScript",
-          "bytes": 2200000,
+          "bytes": 2191647,
           "color": "#3178c6",
           "percent": 88
         },
         {
           "name": "CSS",
-          "bytes": 207000,
+          "bytes": 206976,
           "color": "#563d7c",
           "percent": 8
         },
         {
           "name": "JavaScript",
-          "bytes": 91000,
+          "bytes": 91498,
           "color": "#f1e05a",
           "percent": 4
         }
       ],
       "stars": 0,
-      "commits": 30,
-      "topics": [
-        "multi-agent",
-        "nextjs",
-        "typescript"
-      ],
-      "createdAt": "2026-06-15T00:00:00.000Z",
-      "pushedAt": "2026-06-28T17:40:42.000Z",
-      "ageInDays": 14,
-      "pushedRelative": "18h ago",
+      "commits": 1,
+      "topics": [],
+      "createdAt": "2026-06-15T19:58:50Z",
+      "pushedAt": "2026-06-28T17:40:42Z",
+      "ageInDays": 13,
+      "pushedRelative": "19h ago",
       "size": 6312,
       "sizeHuman": "6.2 MB",
       "license": "MIT",
-      "defaultBranch": "main",
+      "defaultBranch": "master",
       "stack": [
         {
           "name": "next",
@@ -121,6 +127,10 @@
         },
         {
           "name": "react",
+          "source": "package.json"
+        },
+        {
+          "name": "react-dom",
           "source": "package.json"
         },
         {
@@ -135,11 +145,11 @@
       "references": [
         "launchlens-ai"
       ],
+      "imageType": "og-poster",
+      "imageLabel": "OG POSTER",
       "githubUrl": "https://github.com/Zhi-Chao-PAN/launchlens-research-studio",
       "demoUrl": "https://launchlens-research-studio.vercel.app",
-      "featured": true,
-      "imageType": "screenshot",
-      "imageLabel": "DARK MODE"
+      "featured": true
     },
     {
       "slug": "model-eval-studio",
@@ -151,34 +161,30 @@
       "languages": [
         {
           "name": "TypeScript",
-          "bytes": 1200000,
+          "bytes": 1165061,
           "color": "#3178c6",
           "percent": 90
         },
         {
           "name": "JavaScript",
-          "bytes": 115000,
+          "bytes": 115125,
           "color": "#f1e05a",
           "percent": 9
         },
         {
           "name": "CSS",
-          "bytes": 13000,
+          "bytes": 12628,
           "color": "#563d7c",
           "percent": 1
         }
       ],
       "stars": 0,
-      "commits": 30,
-      "topics": [
-        "ai",
-        "evaluation",
-        "typescript"
-      ],
-      "createdAt": "2026-06-18T00:00:00.000Z",
-      "pushedAt": "2026-06-24T13:05:33.000Z",
-      "ageInDays": 11,
-      "pushedRelative": "5d ago",
+      "commits": 1,
+      "topics": [],
+      "createdAt": "2026-06-18T14:53:56Z",
+      "pushedAt": "2026-06-24T13:05:33Z",
+      "ageInDays": 10,
+      "pushedRelative": "4d ago",
       "size": 981,
       "sizeHuman": "981 KB",
       "license": null,
@@ -193,17 +199,21 @@
           "source": "package.json"
         },
         {
+          "name": "react-dom",
+          "source": "package.json"
+        },
+        {
           "name": "zustand",
           "source": "package.json"
         }
       ],
       "headline": null,
       "references": [],
+      "imageType": "og-poster",
+      "imageLabel": "OG POSTER",
       "githubUrl": "https://github.com/Zhi-Chao-PAN/model-eval-studio",
       "demoUrl": "https://model-test-assistant.vercel.app",
-      "featured": true,
-      "imageType": "og-poster",
-      "imageLabel": "OG POSTER"
+      "featured": true
     },
     {
       "slug": "codex-zcode-remote-relay",
@@ -215,35 +225,35 @@
       "languages": [
         {
           "name": "JavaScript",
-          "bytes": 160000,
+          "bytes": 160170,
           "color": "#f1e05a",
-          "percent": 95
-        },
-        {
-          "name": "Python",
-          "bytes": 1900,
-          "color": "#3572A5",
-          "percent": 1
+          "percent": 97
         },
         {
           "name": "PowerShell",
-          "bytes": 3400,
-          "color": "#012456",
+          "bytes": 3373,
+          "color": "#8b8b8b",
           "percent": 2
+        },
+        {
+          "name": "Python",
+          "bytes": 1938,
+          "color": "#3572A5",
+          "percent": 1
         }
       ],
       "stars": 0,
-      "commits": 6,
+      "commits": 1,
       "topics": [
         "agent-orchestration",
         "ai-agents",
         "codex",
         "multi-agent"
       ],
-      "createdAt": "2026-06-25T00:00:00.000Z",
-      "pushedAt": "2026-06-25T15:17:54.000Z",
-      "ageInDays": 4,
-      "pushedRelative": "4d ago",
+      "createdAt": "2026-06-25T15:17:49Z",
+      "pushedAt": "2026-06-25T15:17:54Z",
+      "ageInDays": 3,
+      "pushedRelative": "3d ago",
       "size": 75,
       "sizeHuman": "75 KB",
       "license": "MIT",
@@ -267,11 +277,11 @@
         "value": "< 1k"
       },
       "references": [],
+      "imageType": "og-poster",
+      "imageLabel": "OG POSTER",
       "githubUrl": "https://github.com/Zhi-Chao-PAN/codex-zcode-remote-relay",
       "demoUrl": null,
-      "featured": false,
-      "imageType": "og-poster",
-      "imageLabel": "OG POSTER"
+      "featured": false
     },
     {
       "slug": "LangGraph-Financial-Swarm",
@@ -283,22 +293,29 @@
       "languages": [
         {
           "name": "Python",
-          "bytes": 54000,
+          "bytes": 54303,
           "color": "#3572A5",
-          "percent": 100
+          "percent": 98
+        },
+        {
+          "name": "Dockerfile",
+          "bytes": 570,
+          "color": "#384d54",
+          "percent": 1
+        },
+        {
+          "name": "Makefile",
+          "bytes": 377,
+          "color": "#8b8b8b",
+          "percent": 1
         }
       ],
       "stars": 0,
-      "commits": 30,
-      "topics": [
-        "langgraph",
-        "multi-agent",
-        "python",
-        "finance"
-      ],
-      "createdAt": "2026-02-01T00:00:00.000Z",
-      "pushedAt": "2026-03-17T07:18:52.000Z",
-      "ageInDays": 148,
+      "commits": 1,
+      "topics": [],
+      "createdAt": "2026-02-01T15:53:51Z",
+      "pushedAt": "2026-03-17T07:18:52Z",
+      "ageInDays": 147,
       "pushedRelative": "3mo ago",
       "size": 117,
       "sizeHuman": "117 KB",
@@ -316,6 +333,10 @@
         {
           "name": "llama-index",
           "source": "pyproject"
+        },
+        {
+          "name": "pandas",
+          "source": "pyproject"
         }
       ],
       "headline": {
@@ -323,11 +344,11 @@
         "value": "5 agents"
       },
       "references": [],
+      "imageType": "og-poster",
+      "imageLabel": "OG POSTER",
       "githubUrl": "https://github.com/Zhi-Chao-PAN/LangGraph-Financial-Swarm",
       "demoUrl": null,
-      "featured": false,
-      "imageType": "og-poster",
-      "imageLabel": "OG POSTER"
+      "featured": false
     },
     {
       "slug": "safety-critical-battery-prognostics",
@@ -339,31 +360,55 @@
       "languages": [
         {
           "name": "Python",
-          "bytes": 1100000,
+          "bytes": 1111718,
           "color": "#3572A5",
           "percent": 99
         },
         {
-          "name": "Jupyter",
-          "bytes": 10000,
-          "color": "#DA5B0B",
+          "name": "Jupyter Notebook",
+          "bytes": 10156,
+          "color": "#8b8b8b",
           "percent": 1
+        },
+        {
+          "name": "Shell",
+          "bytes": 1153,
+          "color": "#89e051",
+          "percent": 0
+        },
+        {
+          "name": "CSS",
+          "bytes": 1049,
+          "color": "#563d7c",
+          "percent": 0
+        },
+        {
+          "name": "Dockerfile",
+          "bytes": 608,
+          "color": "#384d54",
+          "percent": 0
+        },
+        {
+          "name": "Makefile",
+          "bytes": 184,
+          "color": "#8b8b8b",
+          "percent": 0
         }
       ],
       "stars": 4,
-      "commits": 30,
+      "commits": 1,
       "topics": [
         "battery-management-system",
         "conformal-prediction",
         "iso-26262",
         "lithium-ion-batteries"
       ],
-      "createdAt": "2026-02-02T00:00:00.000Z",
-      "pushedAt": "2026-04-08T03:48:17.000Z",
-      "ageInDays": 147,
-      "pushedRelative": "3mo ago",
+      "createdAt": "2026-02-02T15:34:59Z",
+      "pushedAt": "2026-04-08T03:48:17Z",
+      "ageInDays": 146,
+      "pushedRelative": "2mo ago",
       "size": 46887,
-      "sizeHuman": "46.9 MB",
+      "sizeHuman": "46 MB",
       "license": "MIT",
       "defaultBranch": "main",
       "stack": [
@@ -378,6 +423,10 @@
         {
           "name": "pandas",
           "source": "pyproject"
+        },
+        {
+          "name": "scipy",
+          "source": "pyproject"
         }
       ],
       "headline": {
@@ -385,11 +434,11 @@
         "value": "VR 0.00%"
       },
       "references": [],
+      "imageType": "og-poster",
+      "imageLabel": "OG POSTER",
       "githubUrl": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics",
       "demoUrl": null,
-      "featured": false,
-      "imageType": "benchmark",
-      "imageLabel": "BENCHMARK"
+      "featured": false
     },
     {
       "slug": "structure-aware-rag-empirical",
@@ -401,31 +450,25 @@
       "languages": [
         {
           "name": "Python",
-          "bytes": 57000,
+          "bytes": 1,
           "color": "#3572A5",
-          "percent": 95
-        },
-        {
-          "name": "Dockerfile",
-          "bytes": 3000,
-          "color": "#384d54",
-          "percent": 5
+          "percent": 100
         }
       ],
       "stars": 0,
-      "commits": 16,
+      "commits": 1,
       "topics": [
         "benchmark",
         "empirical-study",
         "financial-analysis",
         "llamaindex"
       ],
-      "createdAt": "2026-01-28T00:00:00.000Z",
-      "pushedAt": "2026-03-17T07:13:38.000Z",
+      "createdAt": "2026-01-28T08:12:05Z",
+      "pushedAt": "2026-03-17T07:13:38Z",
       "ageInDays": 152,
       "pushedRelative": "3mo ago",
       "size": 62823,
-      "sizeHuman": "62.8 MB",
+      "sizeHuman": "61 MB",
       "license": "MIT",
       "defaultBranch": "main",
       "stack": [
@@ -440,6 +483,10 @@
         {
           "name": "llama-index-core",
           "source": "pyproject"
+        },
+        {
+          "name": "pandas",
+          "source": "pyproject"
         }
       ],
       "headline": {
@@ -447,11 +494,11 @@
         "value": "+37.5%"
       },
       "references": [],
+      "imageType": "og-poster",
+      "imageLabel": "OG POSTER",
       "githubUrl": "https://github.com/Zhi-Chao-PAN/structure-aware-rag-empirical",
       "demoUrl": null,
-      "featured": false,
-      "imageType": "benchmark",
-      "imageLabel": "BENCHMARK"
+      "featured": false
     }
   ]
 }

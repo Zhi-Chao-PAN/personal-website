@@ -37,6 +37,10 @@ export interface Project {
   description: string;
   /** Truncated, single-sentence tagline for cards. */
   tagline: string;
+  /** Optional 1–2 sentence Chinese elevator pitch — written for non-technical
+   *  visitors / investors. Renders right under the English tagline with a
+   *  distinct visual treatment (left emerald accent + lighter color). */
+  pitchZh?: string;
 
   // ----- Language & size -----
   /** Primary language (normalized). */

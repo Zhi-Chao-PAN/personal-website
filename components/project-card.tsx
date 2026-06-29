@@ -88,10 +88,25 @@ export function ProjectCard({ project, priorityImage = false }: ProjectCardProps
           ) : null}
         </div>
 
-        {/* Tagline */}
+        {/* Tagline (EN) */}
         <p className="text-sm text-zinc-400 leading-relaxed line-clamp-2">
           {project.tagline}
         </p>
+
+        {/* Chinese elevator pitch — written for non-technical visitors
+            (investors, recruiters, friends). Visually distinct: emerald
+            left accent + lighter text. Renders only when pitchZh is set. */}
+        {project.pitchZh ? (
+          <div className="relative pl-3 -mt-1">
+            <span
+              aria-hidden
+              className="absolute left-0 top-1 bottom-1 w-[2px] rounded-full bg-emerald-400/60"
+            />
+            <p className="text-[13px] leading-relaxed text-zinc-300/90 line-clamp-3">
+              {project.pitchZh}
+            </p>
+          </div>
+        ) : null}
 
         {/* Language breakdown bar */}
         <ProjectLanguageBar languages={project.languages} />
