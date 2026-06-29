@@ -36,9 +36,9 @@ export function ProjectCard({ project, priorityImage = false, compact = false }:
   const handleOpen = () => open(project.slug);
 
   // Compact = horizontal canvas (projects-section). Tighter padding & gaps,
-  // shorter title, single-line tagline, 2-line Chinese pitch.
+  // shorter title, single-line tagline, 4-line Chinese pitch.
   const shellCls = compact
-    ? 'group/card relative flex flex-col gap-3 p-3 md:p-4 rounded-xl border border-white/5 bg-[#0a0a0a] transition-all duration-300 ease-out cursor-pointer motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-white/15 motion-safe:hover:bg-[#0e0e10] overflow-hidden focus-visible:outline-none focus-visible:border-emerald-400/50 h-full'
+    ? 'group/card relative flex flex-col gap-2.5 p-2.5 md:p-3 rounded-xl border border-white/5 bg-[#0a0a0a] transition-all duration-300 ease-out cursor-pointer motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-white/15 motion-safe:hover:bg-[#0e0e10] overflow-hidden focus-visible:outline-none focus-visible:border-emerald-400/50 h-full'
     : 'group/card relative flex flex-col gap-5 p-4 md:p-5 rounded-xl border border-white/5 bg-[#0a0a0a] transition-all duration-300 ease-out cursor-pointer motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-white/15 motion-safe:hover:bg-[#0e0e10] overflow-hidden focus-visible:outline-none focus-visible:border-emerald-400/50';
 
   return (
@@ -70,11 +70,11 @@ export function ProjectCard({ project, priorityImage = false, compact = false }:
 
       {/* Top: cover image */}
       <div className="relative z-10">
-        <ProjectImage image={image} priority={priorityImage} />
+        <ProjectImage image={image} priority={priorityImage} compact={compact} />
       </div>
 
       {/* Bottom: 8-dimension info block */}
-      <div className={compact ? 'relative z-10 flex flex-col gap-2.5' : 'relative z-10 flex flex-col gap-4'}>
+      <div className={compact ? 'relative z-10 flex flex-col gap-2' : 'relative z-10 flex flex-col gap-4'}>
         {/* Top row: stack chips + live ribbon */}
         <div className="flex items-start justify-between gap-3">
           <ProjectStackChips stack={project.stack} max={3} />
@@ -121,7 +121,7 @@ export function ProjectCard({ project, priorityImage = false, compact = false }:
               className="absolute left-0 top-1 bottom-1 w-[2px] rounded-full bg-emerald-400/60"
             />
             <p className={compact
-              ? 'text-[12px] leading-snug text-zinc-300/90 line-clamp-2'
+              ? 'text-[12px] leading-snug text-zinc-300/90 line-clamp-4'
               : 'text-[13px] leading-relaxed text-zinc-300/90 line-clamp-5'
             }>
               {project.pitchZh}
@@ -135,8 +135,10 @@ export function ProjectCard({ project, priorityImage = false, compact = false }:
         {/* Headline metric (6 of 7 cards) */}
         {project.headline ? <ProjectHeadlineBox headline={project.headline} /> : null}
 
-        {/* Topics tags */}
-        {project.topics.length > 0 ? (
+        {/* Topics tags — hidden in compact mode to make room for the
+            4-line Chinese pitch (line-clamp-2 would have cut ~75 chars off
+            every pitch; we trade 1 row of topic tags for a complete story). */}
+        {!compact && project.topics.length > 0 ? (
           <div className="flex flex-wrap gap-1.5">
             {project.topics.map((topic) => (
               <span

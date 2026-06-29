@@ -51,8 +51,9 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
   const counterRef = useRef<HTMLSpanElement>(null);
   const fillRef = useRef<HTMLDivElement>(null);
 
-  // The horizontal track has N project cards + 1 closing "outro" card.
-  const totalCards = projects.length + 1;
+  // The horizontal track has N project cards (no trailing outro — that's
+  // now a standalone 100vh section after the canvas).
+  const totalCards = projects.length;
 
   // Layout constants — chosen to look great on a 1440×900 viewport and
   // gracefully degrade on smaller screens. No need for state — these
@@ -144,9 +145,9 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
             // feels natural rather than linear).
             const raw = Math.max(0, 1 - dist / focusRadius);
             const t = raw * raw * (3 - 2 * raw); // smoothstep
-            // Scale 1.0 → 1.08, lift 0 → -8px, opacity 0.3 → 1.0
-            const scale = 1 + 0.08 * t;
-            const y = -8 * t;
+            // Scale 1.0 → 1.15, lift 0 → -14px, opacity 0.3 → 1.0
+            const scale = 1 + 0.15 * t;
+            const y = -14 * t;
             const opacity = 0.3 + 0.7 * t;
             el.style.transform = `translate3d(0, ${y}px, 0) scale(${scale})`;
             el.style.opacity = String(opacity);
@@ -255,20 +256,6 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
               <ProjectCard project={project} priorityImage={i < 2} compact />
             </div>
           ))}
-
-          {/* Outro card — lands at the end of the canvas so the user
-              never sees an empty black void after the last project. */}
-          <div
-            className="project-card shrink-0 origin-center will-change-transform"
-            style={{ width: `${cardWidth}px` }}
-          >
-            <OutroCard
-              totalRepos={stats.totalRepos}
-              totalStars={stats.totalStars}
-              liveDemos={stats.liveDemos}
-              totalSizeMb={stats.totalSizeMb}
-            />
-          </div>
         </div>
       </div>
 

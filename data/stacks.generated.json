@@ -1,61 +1,10 @@
 {
-  "generatedAt": "2026-06-29T14:58:49.282Z",
+  "generatedAt": "2026-06-29T15:13:40.798Z",
   "source": "github-contents-api",
   "stacks": {
-    "launchlens-ai": [
-      {
-        "name": "next",
-        "source": "package.json"
-      },
-      {
-        "name": "react",
-        "source": "package.json"
-      },
-      {
-        "name": "react-dom",
-        "source": "package.json"
-      },
-      {
-        "name": "@auth/core",
-        "source": "package.json"
-      }
-    ],
-    "launchlens-research-studio": [
-      {
-        "name": "next",
-        "source": "package.json"
-      },
-      {
-        "name": "react",
-        "source": "package.json"
-      },
-      {
-        "name": "react-dom",
-        "source": "package.json"
-      },
-      {
-        "name": "@upstash/redis",
-        "source": "package.json"
-      }
-    ],
-    "model-eval-studio": [
-      {
-        "name": "next",
-        "source": "package.json"
-      },
-      {
-        "name": "react",
-        "source": "package.json"
-      },
-      {
-        "name": "react-dom",
-        "source": "package.json"
-      },
-      {
-        "name": "zustand",
-        "source": "package.json"
-      }
-    ],
+    "launchlens-ai": [],
+    "launchlens-research-studio": [],
+    "model-eval-studio": [],
     "codex-zcode-remote-relay": [
       {
         "name": "node",
@@ -70,59 +19,8 @@
         "source": "manual"
       }
     ],
-    "LangGraph-Financial-Swarm": [
-      {
-        "name": "langchain",
-        "source": "pyproject"
-      },
-      {
-        "name": "langgraph",
-        "source": "pyproject"
-      },
-      {
-        "name": "llama-index",
-        "source": "pyproject"
-      },
-      {
-        "name": "pandas",
-        "source": "pyproject"
-      }
-    ],
-    "safety-critical-battery-prognostics": [
-      {
-        "name": "torch",
-        "source": "pyproject"
-      },
-      {
-        "name": "numpy",
-        "source": "pyproject"
-      },
-      {
-        "name": "pandas",
-        "source": "pyproject"
-      },
-      {
-        "name": "scipy",
-        "source": "pyproject"
-      }
-    ],
-    "structure-aware-rag-empirical": [
-      {
-        "name": "torch",
-        "source": "pyproject"
-      },
-      {
-        "name": "transformers",
-        "source": "pyproject"
-      },
-      {
-        "name": "llama-index-core",
-        "source": "pyproject"
-      },
-      {
-        "name": "pandas",
-        "source": "pyproject"
-      }
-    ]
+    "LangGraph-Financial-Swarm": [],
+    "safety-critical-battery-prognostics": [],
+    "structure-aware-rag-empirical": []
   }
 }

@@ -7,17 +7,30 @@ import type { ProjectImage as ProjectImageType } from '@/lib/project-image';
 interface ProjectImageProps {
   image: ProjectImageType;
   priority?: boolean;
+  /**
+   * Compact mode uses a wider (21:9) aspect ratio to reduce card height
+   * for the horizontal pin-scroll canvas (projects-section).
+   */
+  compact?: boolean;
 }
 
 /** Card-top image: 16:9 cover with type label, skeleton placeholder,
  *  and a hover-only "view details →" overlay (the overlay signals the
- *  card is clickable rather than acting as a link itself).
+ *  card is clickable rather than acting as a link itself). In compact
+ *  mode the aspect ratio switches to 21:9 (cinematic) to save ~92px of
+ *  vertical space while keeping the image clearly visible.
  */
-export function ProjectImage({ image, priority = false }: ProjectImageProps) {
+export function ProjectImage({ image, priority = false, compact = false }: ProjectImageProps) {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className="relative aspect-video w-full overflow-hidden rounded-md border border-white/5 group-hover/card:border-white/15 transition-colors bg-[#0a0a0a]">
+    <div
+      className={
+        compact
+          ? 'relative aspect-[21/9] w-full overflow-hidden rounded-md border border-white/5 group-hover/card:border-white/15 transition-colors bg-[#0a0a0a]'
+          : 'relative aspect-video w-full overflow-hidden rounded-md border border-white/5 group-hover/card:border-white/15 transition-colors bg-[#0a0a0a]'
+      }
+    >
       {/* Skeleton shimmer */}
       {!loaded ? (
         <div className="absolute inset-0 bg-gradient-to-r from-white/[0.02] via-white/[0.05] to-white/[0.02] animate-pulse" />
