@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import SplitType from 'split-type';
+import { ParticleField } from './reactbits-particle-field';
 
 export default function Hero() {
   const container = useRef<HTMLDivElement>(null);
@@ -65,6 +66,7 @@ export default function Hero() {
       />
       <div aria-hidden className="reactbits-hero-aurora" />
       <div aria-hidden className="reactbits-hero-scan" />
+      <ParticleField className="reactbits-hero-particles" />
       <div aria-hidden className="reactbits-hero-frame">
         <span />
         <span />

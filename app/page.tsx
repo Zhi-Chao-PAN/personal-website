@@ -11,6 +11,7 @@ import {
 } from '@/components/profile-upgrade-sections';
 import { ProjectsSection } from '@/components/projects-section';
 import { OutroSection } from '@/components/outro-section';
+import { MomentumRibbon } from '@/components/momentum-ribbon';
 import projectsData from '@/data/projects.generated.json';
 import type { Project } from '@/lib/projects.types';
 
@@ -21,6 +22,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col bg-[#030303]">
       <Hero />
+      <MomentumRibbon />
       <AboutSection />
       <FocusSection />
       <FeaturedCaseStudiesSection />

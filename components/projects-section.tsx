@@ -115,6 +115,7 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
         },
         onUpdate: (self) => {
           const p = self.progress;
+          container.current?.style.setProperty('--gallery-progress', p.toFixed(4));
           // Drive the track translation
           if (track.current) {
             track.current.style.transform = `translate3d(${-p * translateX}px, 0, 0)`;
@@ -192,7 +193,7 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
     <section
       ref={container}
       id="projects"
-      className="relative w-full min-h-screen md:h-screen overflow-hidden bg-[#030303] flex flex-col"
+      className="reactbits-gallery-stage relative w-full min-h-screen md:h-screen overflow-hidden bg-[#030303] flex flex-col"
     >
       {/* Background — subtle moving scanline + grid */}
       <div
@@ -204,6 +205,12 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
           backgroundSize: '4vw 4vw',
         }}
       />
+      <div aria-hidden className="reactbits-gallery-beams">
+        <span />
+        <span />
+        <span />
+        <span />
+      </div>
       <div
         ref={fillRef}
         aria-hidden

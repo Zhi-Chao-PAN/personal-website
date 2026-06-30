@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, type PointerEvent } from 'react';
 import type { Project } from '@/lib/projects.types';
 import { getProjectImage } from '@/lib/project-image';
 import { useProjectModal } from './modal-provider';
@@ -34,12 +34,39 @@ export function ProjectCard({ project, priorityImage = false, compact = false }:
   const image = getProjectImage(project.slug, project.name);
 
   const handleOpen = () => open(project.slug);
+  const resetTilt = () => {
+    const el = cardRef.current;
+    if (!el) return;
+
+    el.style.setProperty('--tilt-x', '0deg');
+    el.style.setProperty('--tilt-y', '0deg');
+    el.style.setProperty('--tilt-glow-x', '50%');
+    el.style.setProperty('--tilt-glow-y', '50%');
+  };
+
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === 'touch') return;
+
+    const el = cardRef.current;
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    const px = (event.clientX - rect.left) / rect.width;
+    const py = (event.clientY - rect.top) / rect.height;
+    const rotateY = (px - 0.5) * 10;
+    const rotateX = (0.5 - py) * 8;
+
+    el.style.setProperty('--tilt-x', `${rotateX.toFixed(2)}deg`);
+    el.style.setProperty('--tilt-y', `${rotateY.toFixed(2)}deg`);
+    el.style.setProperty('--tilt-glow-x', `${(px * 100).toFixed(1)}%`);
+    el.style.setProperty('--tilt-glow-y', `${(py * 100).toFixed(1)}%`);
+  };
 
   // Compact = horizontal canvas (projects-section). Mobile gets a lighter
   // card; longer proof points move into the modal where they have room.
   const shellCls = compact
-    ? 'reactbits-glare-card group/card relative flex flex-col gap-2.5 p-2.5 md:p-3 rounded-xl border border-white/5 bg-[#0a0a0a] transition-all duration-300 ease-out cursor-pointer motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-white/15 motion-safe:hover:bg-[#0e0e10] overflow-hidden focus-visible:outline-none focus-visible:border-emerald-400/50 h-full'
-    : 'reactbits-glare-card group/card relative flex flex-col gap-5 p-4 md:p-5 rounded-xl border border-white/5 bg-[#0a0a0a] transition-all duration-300 ease-out cursor-pointer motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-white/15 motion-safe:hover:bg-[#0e0e10] overflow-hidden focus-visible:outline-none focus-visible:border-emerald-400/50';
+    ? 'reactbits-glare-card reactbits-tilt-card group/card relative flex flex-col gap-2.5 p-2.5 md:p-3 rounded-xl border border-white/5 bg-[#0a0a0a] transition-all duration-300 ease-out cursor-pointer motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-white/15 motion-safe:hover:bg-[#0e0e10] overflow-hidden focus-visible:outline-none focus-visible:border-emerald-400/50 h-full'
+    : 'reactbits-glare-card reactbits-tilt-card group/card relative flex flex-col gap-5 p-4 md:p-5 rounded-xl border border-white/5 bg-[#0a0a0a] transition-all duration-300 ease-out cursor-pointer motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-white/15 motion-safe:hover:bg-[#0e0e10] overflow-hidden focus-visible:outline-none focus-visible:border-emerald-400/50';
 
   return (
     <div
@@ -47,6 +74,9 @@ export function ProjectCard({ project, priorityImage = false, compact = false }:
       role="button"
       tabIndex={0}
       onClick={handleOpen}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={resetTilt}
+      onBlur={resetTilt}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
