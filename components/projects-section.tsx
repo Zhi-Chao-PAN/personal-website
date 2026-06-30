@@ -215,7 +215,7 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
       <div className="relative z-20 px-6 md:px-12 pt-20 md:pt-24 shrink-0">
         <div className="relative max-w-7xl mx-auto">
           <SectionHeading
-            label="[ INDEX_02 — PROJECTS ]"
+            label="[ INDEX_08 — PROJECTS ]"
             title="What I've Shipped"
             subtitle={subtitle}
           />

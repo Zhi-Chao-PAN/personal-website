@@ -1,11 +1,13 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import SplitType from 'split-type';
 import type { Project } from '@/lib/projects.types';
 import { getProjectDetail } from '@/lib/project-details';
+import { ProjectCaseStudy, SectionLabel } from './project-case-study';
 import { useProjectModal } from './modal-provider';
 
 interface ProjectModalProps {
@@ -154,116 +156,12 @@ export function ProjectModal({ projects }: ProjectModalProps) {
             </section>
           ) : null}
 
-          {/* Case study */}
-          {detail ? (
-            <section className="modal-section">
-              <SectionLabel>case study</SectionLabel>
-              <div className="mt-3 grid gap-3 md:grid-cols-3">
-                <CaseBlock label="problem" text={detail.problem} />
-                <CaseBlock label="approach" text={detail.approach} />
-                <CaseBlock label="outcome" text={detail.outcome} accent />
-              </div>
-            </section>
-          ) : null}
-
-          {/* Role */}
-          {detail?.role && detail.role.length > 0 ? (
-            <section className="modal-section">
-              <SectionLabel>my role</SectionLabel>
-              <ul className="mt-3 grid gap-2 md:grid-cols-3 text-sm text-zinc-400 leading-relaxed">
-                {detail.role.map((item, i) => (
-                  <li key={item} className="border border-white/5 bg-white/[0.02] rounded-md p-3">
-                    <span className="block font-mono text-[9px] uppercase tracking-[0.25em] text-zinc-600 mb-2">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ) : null}
-
-          {/* Philosophy */}
-          {detail?.philosophy ? (
-            <section className="modal-section">
-              <SectionLabel>why it matters</SectionLabel>
-              <p className="mt-3 text-zinc-200 text-base md:text-lg leading-relaxed font-light">
-                {detail.philosophy}
-              </p>
-            </section>
-          ) : null}
-
-          {/* Architecture */}
-          {detail?.architecture ? (
-            <section className="modal-section">
-              <SectionLabel>architecture</SectionLabel>
-              <p className="mt-3 text-zinc-400 text-sm leading-relaxed">
-                {detail.architecture}
-              </p>
-            </section>
-          ) : null}
-
-          {/* Notes */}
-          {detail?.notes && detail.notes.length > 0 ? (
-            <section className="modal-section">
-              <SectionLabel>notes</SectionLabel>
-              <ul className="mt-3 space-y-2 text-sm text-zinc-400 leading-relaxed">
-                {detail.notes.map((note, i) => (
-                  <li key={i} className="flex gap-2.5">
-                    <span className="text-zinc-700 font-mono shrink-0 select-none">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <span>{note}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ) : null}
-
-          {/* Stack */}
-          {detail?.stack && detail.stack.length > 0 ? (
-            <section className="modal-section">
-              <SectionLabel>stack</SectionLabel>
-              <div className="mt-3 border border-white/5 rounded-md divide-y divide-white/5">
-                {detail.stack.map((s) => (
-                  <div
-                    key={s.name}
-                    className="grid grid-cols-[1fr_auto] gap-3 px-4 py-2.5 hover:bg-white/[0.02] transition-colors"
-                  >
-                    <div className="font-mono text-sm text-zinc-200">{s.name}</div>
-                    <div className="font-mono text-[10px] uppercase tracking-widest text-zinc-600 self-center">
-                      {s.role}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-          ) : null}
-
-          {/* Headline numbers */}
-          {project.headline ? (
-            <section className="modal-section">
-              <SectionLabel>headline</SectionLabel>
-              <div className="mt-3 grid grid-cols-2 gap-3">
-                <div className="border border-white/10 bg-white/[0.02] rounded-md p-3">
-                  <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-zinc-600">
-                    {project.headline.label}
-                  </div>
-                  <div className="font-mono text-2xl font-black text-white tracking-tight mt-1">
-                    {project.headline.value}
-                  </div>
-                </div>
-                <div className="border border-white/10 bg-white/[0.02] rounded-md p-3">
-                  <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-zinc-600">
-                    repo
-                  </div>
-                  <div className="font-mono text-2xl font-black text-white tracking-tight mt-1">
-                    {project.sizeHuman}
-                  </div>
-                </div>
-              </div>
-            </section>
-          ) : null}
+          <ProjectCaseStudy
+            project={project}
+            detail={detail}
+            className="space-y-8"
+            sectionClassName="modal-section"
+          />
 
           {/* References */}
           {project.references && project.references.length > 0 ? (
@@ -301,6 +199,13 @@ export function ProjectModal({ projects }: ProjectModalProps) {
               <span aria-hidden>→</span>
             </a>
           ) : null}
+          <Link
+            href={`/projects/${project.slug}`}
+            className="flex-1 flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-sky-300 hover:text-sky-200 border border-sky-300/20 hover:border-sky-300/50 bg-sky-300/[0.04] hover:bg-sky-300/[0.08] rounded-md py-2.5 transition-colors"
+          >
+            <span>case page</span>
+            <span aria-hidden>↗</span>
+          </Link>
           <a
             href={project.githubUrl}
             target="_blank"
@@ -312,48 +217,6 @@ export function ProjectModal({ projects }: ProjectModalProps) {
           </a>
         </div>
       </div>
-    </div>
-  );
-}
-
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="flex items-center gap-2.5">
-      <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500">
-        {children}
-      </span>
-      <div className="flex-1 h-px bg-white/5" />
-    </div>
-  );
-}
-
-function CaseBlock({
-  label,
-  text,
-  accent = false,
-}: {
-  label: string;
-  text: string;
-  accent?: boolean;
-}) {
-  return (
-    <div
-      className={
-        accent
-          ? 'relative rounded-md border border-emerald-400/20 bg-emerald-400/[0.04] p-4'
-          : 'relative rounded-md border border-white/5 bg-white/[0.02] p-4'
-      }
-    >
-      <div
-        className={
-          accent
-            ? 'font-mono text-[9px] uppercase tracking-[0.3em] text-emerald-300/80'
-            : 'font-mono text-[9px] uppercase tracking-[0.3em] text-zinc-600'
-        }
-      >
-        {label}
-      </div>
-      <p className="mt-3 text-sm leading-relaxed text-zinc-300">{text}</p>
     </div>
   );
 }
