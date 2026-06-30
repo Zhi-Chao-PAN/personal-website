@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { CONTACT_EMAIL, GITHUB_OWNER } from '@/lib/projects';
 import { getFeaturedCaseStudies } from '@/lib/project-catalog';
 import { getProjectImage } from '@/lib/project-image';
+import { PixelCard } from './reactbits-pixel-card';
+import { SpotlightCard } from './reactbits-spotlight-card';
 
 const APPLICATION_ITEMS = [
   {
@@ -120,9 +122,12 @@ export function FeaturedCaseStudiesSection() {
               const image = getProjectImage(project.slug, project.name);
 
               return (
-                <article
+                <SpotlightCard
+                  as="article"
                   key={project.slug}
-                  className="grid gap-4 border border-white/[0.07] bg-white/[0.02] p-3 md:grid-cols-[13rem_1fr] rounded-md"
+                  spotlightColor="rgba(52, 211, 153, 0.16)"
+                  spotlightSize={460}
+                  className="grid gap-4 border border-white/[0.07] bg-white/[0.02] p-3 md:grid-cols-[13rem_1fr] rounded-md transition-colors hover:border-emerald-400/25 hover:bg-white/[0.035]"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden rounded-md border border-white/[0.08] bg-black">
                     <Image
@@ -162,7 +167,7 @@ export function FeaturedCaseStudiesSection() {
                       open case page ↗
                     </Link>
                   </div>
-                </article>
+                </SpotlightCard>
               );
             })}
           </div>
@@ -206,7 +211,13 @@ export function ApplicationKitSection() {
 
         <div className="divide-y divide-white/[0.07] border-y border-white/[0.07]">
           {APPLICATION_ITEMS.map((item) => (
-            <article key={item.label} className="py-6">
+            <SpotlightCard
+              as="article"
+              key={item.label}
+              spotlightColor="rgba(56, 189, 248, 0.12)"
+              spotlightSize={420}
+              className="py-6 px-0 md:px-2"
+            >
               <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-600">
                 {item.label}
               </div>
@@ -216,7 +227,7 @@ export function ApplicationKitSection() {
               <p className="mt-3 text-sm md:text-base leading-relaxed text-zinc-400">
                 {item.text}
               </p>
-            </article>
+            </SpotlightCard>
           ))}
         </div>
       </div>
@@ -242,9 +253,13 @@ export function SkillMatrixSection() {
 
         <div className="mt-10 grid gap-3 md:grid-cols-2">
           {SKILL_MATRIX.map((skill) => (
-            <article
+            <PixelCard
+              as="article"
               key={skill.label}
-              className="relative rounded-md border border-white/[0.07] bg-white/[0.02] p-5"
+              className="rounded-md border border-white/[0.07] bg-white/[0.02] p-5 transition-colors hover:border-emerald-400/25 hover:bg-white/[0.035]"
+              colors="#6ee7b7,#38bdf8,#fde68a,#f0abfc"
+              gap={14}
+              speed={24}
             >
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
@@ -269,7 +284,7 @@ export function SkillMatrixSection() {
               <div className="mt-4 font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-600">
                 case: <span className="text-zinc-400">{skill.proof}</span>
               </div>
-            </article>
+            </PixelCard>
           ))}
         </div>
       </div>

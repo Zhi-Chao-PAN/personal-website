@@ -38,8 +38,8 @@ export function ProjectCard({ project, priorityImage = false, compact = false }:
   // Compact = horizontal canvas (projects-section). Mobile gets a lighter
   // card; longer proof points move into the modal where they have room.
   const shellCls = compact
-    ? 'group/card relative flex flex-col gap-2.5 p-2.5 md:p-3 rounded-xl border border-white/5 bg-[#0a0a0a] transition-all duration-300 ease-out cursor-pointer motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-white/15 motion-safe:hover:bg-[#0e0e10] overflow-hidden focus-visible:outline-none focus-visible:border-emerald-400/50 h-full'
-    : 'group/card relative flex flex-col gap-5 p-4 md:p-5 rounded-xl border border-white/5 bg-[#0a0a0a] transition-all duration-300 ease-out cursor-pointer motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-white/15 motion-safe:hover:bg-[#0e0e10] overflow-hidden focus-visible:outline-none focus-visible:border-emerald-400/50';
+    ? 'reactbits-glare-card group/card relative flex flex-col gap-2.5 p-2.5 md:p-3 rounded-xl border border-white/5 bg-[#0a0a0a] transition-all duration-300 ease-out cursor-pointer motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-white/15 motion-safe:hover:bg-[#0e0e10] overflow-hidden focus-visible:outline-none focus-visible:border-emerald-400/50 h-full'
+    : 'reactbits-glare-card group/card relative flex flex-col gap-5 p-4 md:p-5 rounded-xl border border-white/5 bg-[#0a0a0a] transition-all duration-300 ease-out cursor-pointer motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-white/15 motion-safe:hover:bg-[#0e0e10] overflow-hidden focus-visible:outline-none focus-visible:border-emerald-400/50';
 
   return (
     <div

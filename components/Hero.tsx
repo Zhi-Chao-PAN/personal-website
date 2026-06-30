@@ -63,12 +63,19 @@ export default function Hero() {
           backgroundPosition: 'center center'
         }} 
       />
+      <div aria-hidden className="reactbits-hero-aurora" />
+      <div aria-hidden className="reactbits-hero-scan" />
+      <div aria-hidden className="reactbits-hero-frame">
+        <span />
+        <span />
+        <span />
+      </div>
 
       {/* Main Reveal Clip-path Panel */}
       <div className="clip-panel relative z-10 flex flex-col items-center text-center px-4 md:px-0">
         <h1 className="hero-title text-5xl md:text-7xl lg:text-[7rem] font-black text-white uppercase tracking-tighter leading-[0.9] mb-8">
           ZhiChao Pan&apos;s<br />
-          <span className="text-zinc-600 block mt-2">Digital Lab</span>
+          <span className="reactbits-title-glow block mt-2">Digital Lab</span>
         </h1>
         <p className="hero-subtitle max-w-2xl text-sm md:text-xl text-zinc-400 font-mono tracking-widest uppercase">
           [ Applied AI · Multi-Agent Systems · Product Engineering ]
