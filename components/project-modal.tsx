@@ -13,7 +13,7 @@ interface ProjectModalProps {
 }
 
 export function ProjectModal({ projects }: ProjectModalProps) {
-  const { openSlug, close } = useProjectModal();
+  const { openSlug, open, close } = useProjectModal();
   const project = openSlug ? projects.find((p) => p.slug === openSlug) ?? null : null;
   const detail = openSlug ? getProjectDetail(openSlug) ?? null : null;
   const panelRef = useRef<HTMLDivElement>(null);
@@ -71,8 +71,9 @@ export function ProjectModal({ projects }: ProjectModalProps) {
       aria-labelledby="modal-title"
     >
       <div
+        key={project.slug}
         ref={panelRef}
-        className="ll-modal-panel relative w-full max-w-3xl bg-[#0a0a0a] border border-white/10 rounded-2xl shadow-2xl shadow-black/50 my-auto"
+        className="ll-modal-panel relative w-full max-w-4xl bg-[#0a0a0a] border border-white/10 rounded-2xl shadow-2xl shadow-black/50 my-auto"
       >
         {/* Top bar */}
         <div className="sticky top-0 z-10 flex items-center justify-between px-6 md:px-8 py-4 border-b border-white/5 bg-[#0a0a0a]/95 backdrop-blur-sm rounded-t-2xl">
@@ -131,6 +132,9 @@ export function ProjectModal({ projects }: ProjectModalProps) {
               <span className="text-zinc-700">·</span>
               <span>pushed {project.pushedRelative}</span>
             </div>
+            <p className="max-w-2xl text-zinc-300 text-base md:text-lg leading-relaxed">
+              {project.pitchZh ?? project.tagline}
+            </p>
           </header>
 
           {/* Tagged */}
@@ -150,10 +154,39 @@ export function ProjectModal({ projects }: ProjectModalProps) {
             </section>
           ) : null}
 
+          {/* Case study */}
+          {detail ? (
+            <section className="modal-section">
+              <SectionLabel>case study</SectionLabel>
+              <div className="mt-3 grid gap-3 md:grid-cols-3">
+                <CaseBlock label="problem" text={detail.problem} />
+                <CaseBlock label="approach" text={detail.approach} />
+                <CaseBlock label="outcome" text={detail.outcome} accent />
+              </div>
+            </section>
+          ) : null}
+
+          {/* Role */}
+          {detail?.role && detail.role.length > 0 ? (
+            <section className="modal-section">
+              <SectionLabel>my role</SectionLabel>
+              <ul className="mt-3 grid gap-2 md:grid-cols-3 text-sm text-zinc-400 leading-relaxed">
+                {detail.role.map((item, i) => (
+                  <li key={item} className="border border-white/5 bg-white/[0.02] rounded-md p-3">
+                    <span className="block font-mono text-[9px] uppercase tracking-[0.25em] text-zinc-600 mb-2">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+
           {/* Philosophy */}
           {detail?.philosophy ? (
             <section className="modal-section">
-              <SectionLabel>philosophy</SectionLabel>
+              <SectionLabel>why it matters</SectionLabel>
               <p className="mt-3 text-zinc-200 text-base md:text-lg leading-relaxed font-light">
                 {detail.philosophy}
               </p>
@@ -243,11 +276,7 @@ export function ProjectModal({ projects }: ProjectModalProps) {
                   return (
                     <button
                       key={refSlug}
-                      onClick={() => {
-                        // Switch modal content to the related project
-                        const event = new CustomEvent('project-modal:switch', { detail: refSlug });
-                        window.dispatchEvent(event);
-                      }}
+                      onClick={() => open(refSlug)}
                       className="font-mono text-[10px] uppercase tracking-widest text-zinc-400 border border-white/10 bg-white/[0.02] rounded-md px-3 py-1.5 hover:border-emerald-400/40 hover:text-emerald-300 transition-colors"
                     >
                       ↔ {ref.name}
@@ -294,6 +323,37 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
         {children}
       </span>
       <div className="flex-1 h-px bg-white/5" />
+    </div>
+  );
+}
+
+function CaseBlock({
+  label,
+  text,
+  accent = false,
+}: {
+  label: string;
+  text: string;
+  accent?: boolean;
+}) {
+  return (
+    <div
+      className={
+        accent
+          ? 'relative rounded-md border border-emerald-400/20 bg-emerald-400/[0.04] p-4'
+          : 'relative rounded-md border border-white/5 bg-white/[0.02] p-4'
+      }
+    >
+      <div
+        className={
+          accent
+            ? 'font-mono text-[9px] uppercase tracking-[0.3em] text-emerald-300/80'
+            : 'font-mono text-[9px] uppercase tracking-[0.3em] text-zinc-600'
+        }
+      >
+        {label}
+      </div>
+      <p className="mt-3 text-sm leading-relaxed text-zinc-300">{text}</p>
     </div>
   );
 }

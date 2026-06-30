@@ -120,10 +120,10 @@ export function OutroSection({ totalRepos, totalStars, liveDemos, totalSizeMb }:
           className="outro-manifesto max-w-3xl mx-auto mb-8 space-y-1.5 text-left md:text-center"
         >
           {[
-            '这个网站不是作品集的终点，而是一个持续更新的工作台。',
-            '我在练习一件事：把模糊的问题拆清楚，把 AI 做成可验证、可交付的产品。',
-            '如果你正在做应用型 AI、多智能体、RAG、评测，或任何值得认真打磨的工具，',
-            '欢迎带着一个真实问题、一段代码，或者一个还没有完全成形的想法来聊。',
+            '这个网站不会停在“展示我做过什么”。',
+            '它会继续记录我怎样把问题拆开、把系统搭起来，',
+            '再把 AI 从演示推进到可验证、可交付、可迭代的产品。',
+            '如果你也在做应用型 AI、多智能体工作流、RAG、评测或产品工程，欢迎带着一个真实问题来聊。',
           ].map((line) => (
             <p
               key={line}
@@ -133,7 +133,7 @@ export function OutroSection({ totalRepos, totalStars, liveDemos, totalSizeMb }:
             </p>
           ))}
           <p className="outro-manifesto-coda mt-3 text-emerald-300 font-black text-base md:text-xl tracking-wide">
-            一起把它做成能被使用、能被衡量、也能继续迭代的东西。
+            我们可以从一个小问题开始，把它打磨成真正能用的东西。
           </p>
         </div>
 

@@ -35,8 +35,8 @@ export function ProjectCard({ project, priorityImage = false, compact = false }:
 
   const handleOpen = () => open(project.slug);
 
-  // Compact = horizontal canvas (projects-section). Tighter padding & gaps,
-  // shorter title, single-line tagline, 4-line Chinese pitch.
+  // Compact = horizontal canvas (projects-section). Mobile gets a lighter
+  // card; longer proof points move into the modal where they have room.
   const shellCls = compact
     ? 'group/card relative flex flex-col gap-2.5 p-2.5 md:p-3 rounded-xl border border-white/5 bg-[#0a0a0a] transition-all duration-300 ease-out cursor-pointer motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-white/15 motion-safe:hover:bg-[#0e0e10] overflow-hidden focus-visible:outline-none focus-visible:border-emerald-400/50 h-full'
     : 'group/card relative flex flex-col gap-5 p-4 md:p-5 rounded-xl border border-white/5 bg-[#0a0a0a] transition-all duration-300 ease-out cursor-pointer motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-white/15 motion-safe:hover:bg-[#0e0e10] overflow-hidden focus-visible:outline-none focus-visible:border-emerald-400/50';
@@ -103,9 +103,18 @@ export function ProjectCard({ project, priorityImage = false, compact = false }:
           ) : null}
         </div>
 
+        {compact ? (
+          <div className="md:hidden flex items-center justify-between gap-3 font-mono text-[9px] uppercase tracking-[0.22em] text-zinc-500">
+            <span className="truncate">{project.language}</span>
+            <span className={project.featured ? 'text-emerald-400/80' : 'text-zinc-600'}>
+              {project.featured ? 'live demo' : 'repo case'}
+            </span>
+          </div>
+        ) : null}
+
         {/* Tagline (EN) */}
         <p className={compact
-          ? 'text-[13px] text-zinc-400 leading-snug line-clamp-1'
+          ? 'text-[13px] text-zinc-400 leading-snug line-clamp-2 md:line-clamp-1'
           : 'text-sm text-zinc-400 leading-relaxed line-clamp-2'
         }>
           {project.tagline}
@@ -115,7 +124,7 @@ export function ProjectCard({ project, priorityImage = false, compact = false }:
             (investors, recruiters, friends). Visually distinct: emerald
             left accent + lighter text. Renders only when pitchZh is set. */}
         {project.pitchZh ? (
-          <div className="relative pl-3 -mt-1">
+          <div className={compact ? 'hidden md:block relative pl-3 -mt-1' : 'relative pl-3 -mt-1'}>
             <span
               aria-hidden
               className="absolute left-0 top-1 bottom-1 w-[2px] rounded-full bg-emerald-400/60"
@@ -133,7 +142,11 @@ export function ProjectCard({ project, priorityImage = false, compact = false }:
         <ProjectLanguageBar languages={project.languages} />
 
         {/* Headline metric (6 of 7 cards) */}
-        {project.headline ? <ProjectHeadlineBox headline={project.headline} /> : null}
+        {project.headline ? (
+          <div className={compact ? 'hidden md:block' : undefined}>
+            <ProjectHeadlineBox headline={project.headline} />
+          </div>
+        ) : null}
 
         {/* Topics tags — hidden in compact mode to make room for the
             4-line Chinese pitch (line-clamp-2 would have cut ~75 chars off
@@ -155,13 +168,15 @@ export function ProjectCard({ project, priorityImage = false, compact = false }:
         <div className="h-px bg-white/5" />
 
         {/* Repo stats */}
-        <ProjectStats
-          sizeHuman={project.sizeHuman}
-          commits={project.commits}
-          pushedRelative={project.pushedRelative}
-          ageInDays={project.ageInDays}
-          license={project.license}
-        />
+        <div className={compact ? 'hidden md:block' : undefined}>
+          <ProjectStats
+            sizeHuman={project.sizeHuman}
+            commits={project.commits}
+            pushedRelative={project.pushedRelative}
+            ageInDays={project.ageInDays}
+            license={project.license}
+          />
+        </div>
 
         {/* Action row */}
         <div className="flex items-center justify-between gap-3 mt-1 font-mono text-[11px] uppercase tracking-[0.2em]">

@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero';
 import { AboutSection } from '@/components/about-section';
+import { FocusSection } from '@/components/focus-section';
 import { ProjectsSection } from '@/components/projects-section';
 import { OutroSection } from '@/components/outro-section';
 import projectsData from '@/data/projects.generated.json';
@@ -13,6 +14,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col bg-[#030303]">
       <Hero />
       <AboutSection />
+      <FocusSection />
       <ProjectsSection projects={projects} stats={stats} />
       <OutroSection
         totalRepos={stats.totalRepos}
