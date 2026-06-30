@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/og";
 import projectsData from "@/data/projects.generated.json";
-import { getProjectDetail } from "@/lib/project-details";
 import type { Project } from "@/lib/projects.types";
 
 export const runtime = "edge";

@@ -284,7 +284,7 @@ interface OutroCardProps {
   totalSizeMb: number;
 }
 
-function OutroCard({ totalRepos, totalStars, liveDemos, totalSizeMb }: OutroCardProps) {
+export function OutroCard({ totalRepos, totalStars, liveDemos, totalSizeMb }: OutroCardProps) {
   const githubUrl = `https://github.com/${GITHUB_OWNER}`;
   // Replace with the user's real contact channel if/when available.
   // Kept as a "say hello" CTA so the link target can be added later
@@ -331,7 +331,7 @@ function OutroCard({ totalRepos, totalStars, liveDemos, totalSizeMb }: OutroCard
         </span>
 
         <h3 className="text-xl md:text-2xl font-black text-white tracking-tight leading-tight">
-          Let's build the next one
+          Let&apos;s build the next one
         </h3>
 
         <p className="text-sm text-zinc-400 leading-relaxed">

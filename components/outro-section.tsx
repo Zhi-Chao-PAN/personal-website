@@ -108,7 +108,7 @@ export function OutroSection({ totalRepos, totalStars, liveDemos, totalSizeMb }:
 
         {/* Massive heading */}
         <h2 className="outro-heading text-5xl md:text-7xl lg:text-[7.5rem] font-black text-white uppercase tracking-tighter leading-[0.9] mb-8">
-          Let's build<br />
+          Let&apos;s build<br />
           <span className="text-zinc-600 block mt-2">the next one</span>
         </h2>
 

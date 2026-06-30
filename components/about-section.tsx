@@ -228,7 +228,7 @@ export function AboutSection() {
           <div className="about-accent mt-5 space-y-1.5 font-mono text-xs md:text-sm tracking-wider">
             {TIMELINE.map((row) => (
               <div key={row.k} className="flex gap-2 text-emerald-400/85">
-                <span className="text-zinc-600 select-none">//</span>
+                <span className="text-zinc-600 select-none">{"//"}</span>
                 <span className="text-zinc-500 min-w-[3.5rem]">{row.k}</span>
                 <span className="text-zinc-600">:</span>
                 <span>{row.v}</span>

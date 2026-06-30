@@ -22,7 +22,7 @@ export function ProjectStackChips({ stack, max = 3 }: ProjectStackChipsProps) {
   }
   return (
     <div className="flex flex-wrap gap-1.5 items-center">
-      {visible.map((entry, i) => (
+      {visible.map((entry) => (
         <span
           key={entry.name}
           className="font-mono text-[10px] uppercase tracking-widest text-zinc-400 border border-white/10 bg-white/[0.02] rounded-md px-2 py-1"

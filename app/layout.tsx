@@ -13,9 +13,31 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://www.panzhichao.com";
+const siteTitle = "ZhiChao Pan's Digital Lab";
+const siteDescription =
+  "Applied AI portfolio, engineering notes, and multi-agent product experiments by ZhiChao Pan.";
+
 export const metadata: Metadata = {
-  title: "ZhiChao Pan's Digital Lab",
-  description: "Computing the Future with Ultra 9",
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    url: "/",
+    siteName: siteTitle,
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+  },
 };
 
 export default function RootLayout({
