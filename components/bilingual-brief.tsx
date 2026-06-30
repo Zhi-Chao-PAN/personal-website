@@ -36,7 +36,7 @@ export function BilingualBriefSection() {
   const brief = BRIEFS[language];
 
   return (
-    <section id="bilingual-brief" className="relative w-full border-y border-white/[0.06] bg-[#050505] py-24 md:py-28">
+    <section id="bilingual-brief" className="reactbits-brief-stage relative w-full border-y border-white/[0.06] bg-[#050505] py-24 md:py-28">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 lg:grid-cols-[0.78fr_1.22fr]">
         <div>
           <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-zinc-600">
@@ -68,7 +68,7 @@ export function BilingualBriefSection() {
           </div>
         </div>
 
-        <article className="rounded-md border border-white/[0.07] bg-white/[0.02] p-5 md:p-6">
+        <article className="reactbits-brief-panel rounded-md border border-white/[0.07] bg-white/[0.02] p-5 md:p-6">
           <p className="text-lg leading-relaxed text-zinc-200 md:text-2xl">
             {brief.intro}
           </p>

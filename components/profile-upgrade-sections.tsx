@@ -294,7 +294,7 @@ export function SkillMatrixSection() {
 
 export function RoadmapSection() {
   return (
-    <section id="next-90-days" className="relative w-full border-y border-white/[0.06] bg-[#050505] py-24 md:py-28">
+    <section id="next-90-days" className="reactbits-roadmap-stage relative w-full border-y border-white/[0.06] bg-[#050505] py-24 md:py-28">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 lg:grid-cols-[0.82fr_1.18fr]">
         <div>
           <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-zinc-600">
@@ -312,7 +312,7 @@ export function RoadmapSection() {
           {ROADMAP.map((item) => (
             <article
               key={item.horizon}
-              className="grid gap-3 rounded-md border border-white/[0.07] bg-white/[0.02] p-5 md:grid-cols-[8rem_1fr]"
+              className="reactbits-roadmap-item grid gap-3 rounded-md border border-white/[0.07] bg-white/[0.02] p-5 md:grid-cols-[8rem_1fr]"
             >
               <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-emerald-300/80">
                 {item.horizon}
@@ -335,7 +335,7 @@ export function RoadmapSection() {
 
 export function WorkingNotesSection() {
   return (
-    <section id="working-notes" className="relative w-full bg-[#030303] py-24 md:py-28">
+    <section id="working-notes" className="reactbits-notes-stage relative w-full bg-[#030303] py-24 md:py-28">
       <div className="mx-auto w-full max-w-6xl px-6">
         <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-12">
           <div>
@@ -355,7 +355,7 @@ export function WorkingNotesSection() {
               <Link
                 key={note.title}
                 href={note.href}
-                className="group grid gap-4 rounded-md border border-white/[0.07] bg-white/[0.02] p-5 transition-colors hover:border-emerald-400/35 hover:bg-white/[0.035] md:grid-cols-[8rem_1fr]"
+                className="reactbits-note-item group grid gap-4 rounded-md border border-white/[0.07] bg-white/[0.02] p-5 transition-colors hover:border-emerald-400/35 hover:bg-white/[0.035] md:grid-cols-[8rem_1fr]"
               >
                 <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-emerald-300/80">
                   {note.status}
