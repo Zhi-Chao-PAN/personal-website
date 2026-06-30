@@ -6,25 +6,25 @@ const BRIEFS = {
   en: {
     label: 'English',
     eyebrow: '[ index_03 / bilingual brief ]',
-    title: 'A short profile that travels well',
+    title: 'For readers who want the short version',
     intro:
-      'I am a Computer Science student at Guangling College, Yangzhou University, preparing for the UTS Master of Artificial Intelligence and building toward applied AI product engineering.',
+      'I am a Computer Science student at Guangling College, Yangzhou University, preparing for overseas graduate study in AI and computing while building applied AI products.',
     points: [
-      'My work focuses on multi-agent orchestration, RAG evaluation, and AI products that make model output reviewable and reusable.',
-      'I care about the system around the model: workflow design, validation gates, evidence surfaces, and failure recovery.',
-      'The long-term direction is AI Product Engineer / Full-Stack Agent Architect: someone who can connect product judgment, frontend experience, and agent infrastructure.',
+      'This site is organized around evidence: what problem each project tackles, how the system is built, and what outcome it can show.',
+      'The technical focus is multi-agent orchestration, RAG evaluation, and AI workflows where model output can be reviewed, reused, and improved.',
+      'The long-term direction is applied AI product engineering: connecting product judgment, frontend experience, and agent infrastructure.',
     ],
   },
   zh: {
     label: '中文',
     eyebrow: '[ index_03 / 双语简介 ]',
-    title: '一段能直接用于申请与合作沟通的简介',
+    title: '给第一次到访者的短版介绍',
     intro:
-      '我是扬州大学广陵学院计算机科学与技术专业学生，正在准备申请悉尼科技大学 UTS 的人工智能授课型硕士，并长期走向应用 AI 产品工程。',
+      '我是扬州大学广陵学院计算机科学与技术专业学生，正在准备海外高校 AI / 计算机相关硕士方向，同时持续构建应用型 AI 产品。',
     points: [
-      '目前关注多智能体编排、RAG 评测，以及让模型输出可审阅、可复用、可落地的 AI 产品。',
-      '我更看重模型之外的系统设计：工作流、验证门禁、证据展示、失败恢复和真实用户场景。',
-      '长期目标是成为 AI Product Engineer / Full-Stack Agent Architect，把产品判断、前端体验和智能体基础设施连接起来。',
+      '这个网站不是简单列项目，而是让读者看到每个项目解决什么问题、采用什么方法、能证明什么结果。',
+      '目前关注多智能体编排、RAG 评测，以及让模型输出可审阅、可复用、可迭代的 AI 工作流。',
+      '长期方向是应用 AI 产品工程：把产品判断、前端体验和智能体基础设施连接起来。',
     ],
   },
 } as const;

@@ -18,7 +18,7 @@ const WHOAMI: { k: string; v: string }[] = [
   { k: 'goal', v: 'ai_product_engineer | full_stack_agent_architect' },
   { k: 'stack', v: 'ts · next · python · langgraph' },
   { k: 'thesis', v: 'verifiable · reproducible · useful' },
-  { k: 'status', v: 'preparing_uts_master_ai · open_to_collab' },
+  { k: 'status', v: 'preparing_overseas_grad_study · open_to_collab' },
 ];
 
 /** Current focus — five lines drawn from the GitHub profile README. */
@@ -34,7 +34,7 @@ const FOCUS: string[] = [
  *  instantly readable by recruiters, admissions, and investors. */
 const TIMELINE: { k: string; v: string }[] = [
   { k: 'now', v: 'building applied AI products and agent workflows' },
-  { k: 'next', v: 'targeting UTS Master of Artificial Intelligence' },
+  { k: 'next', v: 'overseas graduate study in AI / computing' },
 ];
 
 /**

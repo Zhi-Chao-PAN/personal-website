@@ -8,17 +8,17 @@ const APPLICATION_ITEMS = [
   {
     label: 'identity',
     title: 'Computer Science student building applied AI products',
-    text: '扬州大学广陵学院计算机科学与技术专业学生，目标申请 UTS Master of Artificial Intelligence，并长期走向 AI Product Engineer / Full-Stack Agent Architect。',
+    text: '扬州大学广陵学院计算机科学与技术专业学生，正在准备海外高校 AI / 计算机相关硕士方向，并长期走向应用 AI 产品工程。',
   },
   {
     label: 'proof',
     title: 'Representative work is organized as case studies',
-    text: '每个项目都按 problem / approach / outcome / role 展开，让招生、合作方和招聘方能快速判断真实贡献，而不是只看技术栈列表。',
+    text: '每个项目都按 problem / approach / outcome / role 展开，方便读者判断真实贡献、技术取舍和可复用价值，而不是只看技术栈列表。',
   },
   {
     label: 'contact',
-    title: 'Application materials are ready to assemble',
-    text: '当前站点可以直接作为申请与合作入口；一页版英文简历、项目摘要或推荐材料可通过邮件请求，我会按具体场景整理。',
+    title: 'For graduate review, collaboration, and technical conversations',
+    text: '如果需要更正式的材料，可以通过邮件索取英文简历、项目摘要或补充说明；这个网站保留公开版本，便于快速了解方向和能力证据。',
   },
 ] as const;
 
@@ -60,8 +60,8 @@ const SKILL_MATRIX = [
 const ROADMAP = [
   {
     horizon: '0-30 days',
-    title: 'Turn project pages into reusable application proof',
-    text: '补齐每个项目的英文摘要、关键截图和可分享链接，用于 UTS 申请、邮件介绍和合作沟通。',
+    title: 'Make each case page easier to review from the outside',
+    text: '补齐更多项目的英文摘要、关键截图和可分享链接，让海外硕士申请、邮件介绍和合作沟通都能直接引用。',
   },
   {
     horizon: '31-60 days',
@@ -111,7 +111,7 @@ export function FeaturedCaseStudiesSection() {
               Three proofs worth opening first
             </h2>
             <p className="mt-6 max-w-md text-base md:text-lg leading-relaxed text-zinc-400">
-              这三个案例分别代表 AI 产品工程、多智能体编排和 RAG/评测能力。它们比“项目列表”更适合给招生、招聘和合作方快速判断。
+              这三个案例分别代表 AI 产品工程、多智能体编排和 RAG/评测能力。第一次访问时，可以先从这里判断我的技术方向、工程习惯和结果意识。
             </p>
           </div>
 
@@ -174,24 +174,24 @@ export function FeaturedCaseStudiesSection() {
 
 export function ApplicationKitSection() {
   const githubUrl = `https://github.com/${GITHUB_OWNER}`;
-  const mailto = `mailto:${CONTACT_EMAIL}?subject=Application%20Kit%20/%20Resume%20Request`;
+  const mailto = `mailto:${CONTACT_EMAIL}?subject=Portfolio%20/%20Resume%20Request`;
 
   return (
     <section id="application-kit" className="relative w-full border-y border-white/[0.06] bg-[#050505] py-24 md:py-28">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
             <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-zinc-600">
-            [ index_04 / application kit ]
+            [ index_04 / profile kit ]
           </span>
           <h2 className="mt-5 text-3xl md:text-5xl font-black tracking-tight text-white leading-[1.05]">
-            A compact proof pack for admissions and collaboration
+            A compact profile for readers who need signal fast
           </h2>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href={mailto}
               className="rounded-md border border-emerald-400/30 bg-emerald-400/[0.06] px-4 py-2.5 font-mono text-xs uppercase tracking-[0.2em] text-emerald-300 hover:border-emerald-300/60 transition-colors"
             >
-              request resume
+              resume / cv
             </a>
             <a
               href={githubUrl}
@@ -236,7 +236,7 @@ export function SkillMatrixSection() {
             Capability mapped to evidence
           </h2>
           <p className="mt-6 text-base md:text-lg leading-relaxed text-zinc-400">
-            技能矩阵不只是列工具，而是把能力和能证明它的项目绑定起来。
+            这里把能力直接绑定到项目证据。读者不需要先猜我会什么，可以顺着 proof 打开具体案例。
           </p>
         </div>
 
@@ -289,7 +289,7 @@ export function RoadmapSection() {
             What I am building next
           </h2>
           <p className="mt-6 max-w-md text-base md:text-lg leading-relaxed text-zinc-400">
-            这不是静态作品集。接下来三个月，我会把它继续推进成能支撑申请、合作和公开技术写作的个人工作台。
+            这个网站会继续更新。接下来三个月，重点是让案例页更完整、实验更可复现、公开技术写作更清晰。
           </p>
         </div>
 
@@ -328,10 +328,10 @@ export function WorkingNotesSection() {
               [ index_06 / working notes ]
             </span>
             <h2 className="mt-5 text-3xl md:text-5xl font-black tracking-tight text-white leading-[1.05]">
-              Research notes I can turn into public writing
+              Working notes behind the projects
             </h2>
             <p className="mt-6 max-w-md text-base md:text-lg leading-relaxed text-zinc-400">
-              这一组不是博客装饰，而是我接下来可以持续发布的技术判断：从实验、系统边界和产品工程里提炼出来。
+              这些笔记是理解项目背后判断的入口：为什么这样拆问题、如何验证结果、哪些边界值得继续研究。
             </p>
           </div>
 
