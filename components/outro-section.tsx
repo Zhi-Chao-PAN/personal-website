@@ -109,7 +109,7 @@ export function OutroSection({ totalRepos, totalStars, liveDemos, totalSizeMb }:
         {/* Massive heading */}
         <h2 className="outro-heading text-5xl md:text-7xl lg:text-[7.5rem] font-black text-white uppercase tracking-tighter leading-[0.9] mb-8">
           Let&apos;s build<br />
-          <span className="text-zinc-600 block mt-2">the next one</span>
+          <span className="text-zinc-600 block mt-2">something real</span>
         </h2>
 
         {/* Chinese manifesto — the main emotional close for Chinese readers.
@@ -117,35 +117,32 @@ export function OutroSection({ totalRepos, totalStars, liveDemos, totalSizeMb }:
             Kept short and verb-driven so it lands as posture, not pitch. */}
         <div
           aria-label="致读者"
-          className="outro-manifesto max-w-2xl mx-auto mb-8 space-y-1.5 text-left md:text-center"
+          className="outro-manifesto max-w-3xl mx-auto mb-8 space-y-1.5 text-left md:text-center"
         >
           {[
-            '我相信，把复杂的事拆到能讲清楚，AI 才真正开始有用。',
-            '我正走在从「能用」走向「敢交付」的路上，一年比一年走得深。',
-            '我愿意接难的、做新的、扛得住结果的事——挑战是把标准抬高的方式。',
-            '我开放任何方向的技术交流，听得进，也谈得动。',
-            '如果你也在做值得被认真做出来的东西——',
+            '这个网站不是作品集的终点，而是一个持续更新的工作台。',
+            '我在练习一件事：把模糊的问题拆清楚，把 AI 做成可验证、可交付的产品。',
+            '如果你正在做应用型 AI、多智能体、RAG、评测，或任何值得认真打磨的工具，',
+            '欢迎带着一个真实问题、一段代码，或者一个还没有完全成形的想法来聊。',
           ].map((line) => (
             <p
               key={line}
-              className="outro-manifesto-line text-zinc-200/95 text-base md:text-lg leading-[1.6] tracking-wide"
+              className="outro-manifesto-line text-zinc-200/95 text-base md:text-lg leading-[1.65] tracking-wide"
             >
               {line}
             </p>
           ))}
           <p className="outro-manifesto-coda mt-3 text-emerald-300 font-black text-base md:text-xl tracking-wide">
-            我们就一起把它做出来，给这个世界一些真正值得用的作品。
+            一起把它做成能被使用、能被衡量、也能继续迭代的东西。
           </p>
         </div>
 
         {/* English subline — visually downgraded, kept as a softer alternate
             channel for non-Chinese readers. */}
         <p className="outro-subline max-w-3xl text-[11px] md:text-xs text-zinc-500 font-mono tracking-wider leading-relaxed mb-8">
-          [ seven projects is just a preface.{' '}
-          if you are shaping something worth building,{' '}
-          want to talk AI collaboration,{' '}
-          or simply share an idea —{' '}
-          <span className="text-emerald-400/90">I am here</span>. ]
+          [ open to collaboration on applied AI, multi-agent workflows, RAG,
+          evaluation, and product engineering.{' '}
+          <span className="text-emerald-400/90">bring a real problem</span>. ]
         </p>
 
         {/* Aggregate stats */}

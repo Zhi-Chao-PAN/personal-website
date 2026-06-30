@@ -71,7 +71,7 @@ export default function Hero() {
           <span className="text-zinc-600 block mt-2">Digital Lab</span>
         </h1>
         <p className="hero-subtitle max-w-2xl text-sm md:text-xl text-zinc-400 font-mono tracking-widest uppercase">
-          [ Computing the Future with Ultra 9 ]
+          [ Applied AI · Multi-Agent Systems · Product Engineering ]
         </p>
       </div>
     </div>

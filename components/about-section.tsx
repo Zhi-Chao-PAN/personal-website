@@ -17,8 +17,8 @@ const WHOAMI: { k: string; v: string }[] = [
   { k: 'role', v: 'aspiring_ai_product_engineer' },
   { k: 'goal', v: 'ai_product_engineer | full_stack_agent_architect' },
   { k: 'stack', v: 'ts · next · python · langgraph' },
-  { k: 'thesis', v: 'measurable · reproducible · useful' },
-  { k: 'status', v: 'applying_ms_ai_2027 · open_to_collab' },
+  { k: 'thesis', v: 'verifiable · reproducible · useful' },
+  { k: 'status', v: 'preparing_uts_master_ai · open_to_collab' },
 ];
 
 /** Current focus — five lines drawn from the GitHub profile README. */
@@ -33,8 +33,8 @@ const FOCUS: string[] = [
 /** Timeline accent — goal split into "mid" and "long" so the signal is
  *  instantly readable by recruiters, admissions, and investors. */
 const TIMELINE: { k: string; v: string }[] = [
-  { k: 'mid', v: 'applying overseas MS in AI · intake 2027' },
-  { k: 'long', v: 'applied ai · multi-agent · ai product engineering' },
+  { k: 'now', v: 'building applied AI products and agent workflows' },
+  { k: 'next', v: 'targeting UTS Master of Artificial Intelligence' },
 ];
 
 /**
@@ -213,14 +213,14 @@ export function AboutSection() {
           </span>
 
           <h2 className="about-thesis mt-6 text-3xl md:text-5xl font-black text-white tracking-tight leading-[1.18]">
-            我做能被衡量、能被复现、
+            我把 AI 系统做成可验证、可复现、
             <br />
-            能真正用起来的 AI 系统。
+            能真正用起来的产品。
           </h2>
 
           <p className="about-secondary mt-6 text-zinc-400 text-base md:text-lg leading-relaxed max-w-xl">
-            从研报里的结构化检索，到多智能体的协作编排，到电池寿命的安全预测——AI
-            的价值不在炫技，而在说得清它为什么对、做得出它能用、守得住它不翻车。
+            从研报检索、多智能体协作，到电池寿命预测，我关注的不是把 AI
+            包装成演示，而是让它有清晰依据、稳定边界和可复现的结果。
           </p>
 
           {/* Timeline accent — split into mid / long for instant scan by

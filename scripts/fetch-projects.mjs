@@ -10,12 +10,13 @@
  *   - `prebuild` (Vercel CI)
  *   - local `npm run build`
  *
- * No GitHub token needed for public repos (60 req/h unauthenticated — we use ~21).
- * On rate-limit / 404 / network error, falls back to META values so the build
- * never breaks.
+ * No GitHub token required for public repos, but GH_TOKEN/GITHUB_TOKEN is used
+ * when available to avoid local and CI rate limits.
+ * On rate-limit / 404 / network error, falls back to the previous generated
+ * snapshot before META values so the build never breaks or erases good data.
  */
 
-import { writeFile, mkdir } from 'node:fs/promises';
+import { writeFile, mkdir, readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 
@@ -23,7 +24,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 
 const GITHUB_API = 'https://api.github.com';
-const TIMEOUT_MS = 8000;
+const TIMEOUT_MS = 20_000;
+const RETRY_DELAYS_MS = [500, 1500];
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN;
 
 // Mirror of lib/projects.ts META (kept inline so this script can be run without
 // TypeScript tooling). Keep in sync when adding new projects.
@@ -54,6 +57,22 @@ const GITHUB_LANGUAGE_PALETTE = {
 };
 
 const STACK_DATA = await loadStackData();
+const PREVIOUS_PROJECT_DATA = await loadPreviousProjectData();
+const PREVIOUS_BY_SLUG = new Map(
+  (PREVIOUS_PROJECT_DATA.projects ?? []).map((project) => [project.slug, project]),
+);
+
+function githubHeaders() {
+  return {
+    'User-Agent': 'panzhichao-portfolio-fetch',
+    'Accept': 'application/vnd.github+json',
+    ...(GITHUB_TOKEN ? { Authorization: `Bearer ${GITHUB_TOKEN}` } : {}),
+  };
+}
+
+function sleep(ms) {
+  return new Promise((resolveSleep) => setTimeout(resolveSleep, ms));
+}
 
 function buildTagline(description, maxLen = 110) {
   if (!description) return '';
@@ -101,7 +120,6 @@ function ageInDays(iso, now = new Date()) {
 
 async function loadStackData() {
   try {
-    const { readFile } = await import('node:fs/promises');
     const path = join(ROOT, 'data', 'stacks.generated.json');
     const text = await readFile(path, 'utf8');
     return JSON.parse(text);
@@ -110,28 +128,47 @@ async function loadStackData() {
   }
 }
 
-async function fetchJson(url, label) {
-  const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), TIMEOUT_MS);
+async function loadPreviousProjectData() {
   try {
-    const res = await fetch(url, {
-      headers: {
-        'User-Agent': 'panzhichao-portfolio-fetch',
-        'Accept': 'application/vnd.github+json',
-      },
-      signal: ctrl.signal,
-    });
-    if (!res.ok) {
-      console.warn(`[fetch-projects] ${label}: HTTP ${res.status}`);
-      return null;
-    }
-    return await res.json();
-  } catch (err) {
-    console.warn(`[fetch-projects] ${label}: ${err.message}`);
-    return null;
-  } finally {
-    clearTimeout(timer);
+    const path = join(ROOT, 'data', 'projects.generated.json');
+    const text = await readFile(path, 'utf8');
+    return JSON.parse(text);
+  } catch {
+    return { projects: [] };
   }
+}
+
+async function fetchJson(url, label) {
+  for (let attempt = 0; attempt <= RETRY_DELAYS_MS.length; attempt += 1) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), TIMEOUT_MS);
+    try {
+      const res = await fetch(url, {
+        headers: githubHeaders(),
+        signal: ctrl.signal,
+      });
+      if (res.status === 404) return null;
+      if (!res.ok) {
+        if (attempt < RETRY_DELAYS_MS.length && res.status >= 500) {
+          await sleep(RETRY_DELAYS_MS[attempt]);
+          continue;
+        }
+        console.warn(`[fetch-projects] ${label}: HTTP ${res.status}`);
+        return null;
+      }
+      return await res.json();
+    } catch (err) {
+      if (attempt < RETRY_DELAYS_MS.length) {
+        await sleep(RETRY_DELAYS_MS[attempt]);
+        continue;
+      }
+      console.warn(`[fetch-projects] ${label}: ${err.message}`);
+      return null;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+  return null;
 }
 
 function normalizeLanguage(lang) {
@@ -149,33 +186,41 @@ async function fetchLanguages(slug) {
 
 async function fetchCommitCount(slug) {
   // Use Link header from per_page=1 to get total count without fetching all commits.
-  const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), TIMEOUT_MS);
-  try {
-    const res = await fetch(`${GITHUB_API}/repos/${GITHUB_OWNER}/${slug}/commits?per_page=1`, {
-      headers: {
-        'User-Agent': 'panzhichao-portfolio-fetch',
-        'Accept': 'application/vnd.github+json',
-      },
-      signal: ctrl.signal,
-    });
-    if (!res.ok) {
-      console.warn(`[fetch-projects] commits/${slug}: HTTP ${res.status}`);
+  for (let attempt = 0; attempt <= RETRY_DELAYS_MS.length; attempt += 1) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), TIMEOUT_MS);
+    try {
+      const res = await fetch(`${GITHUB_API}/repos/${GITHUB_OWNER}/${slug}/commits?per_page=1`, {
+        headers: githubHeaders(),
+        signal: ctrl.signal,
+      });
+      if (!res.ok) {
+        if (attempt < RETRY_DELAYS_MS.length && res.status >= 500) {
+          await sleep(RETRY_DELAYS_MS[attempt]);
+          continue;
+        }
+        console.warn(`[fetch-projects] commits/${slug}: HTTP ${res.status}`);
+        return 0;
+      }
+      const link = res.headers.get('Link') ?? '';
+      // Link header format: <https://api.github.com/.../commits?page=42&per_page=1>; rel="last"
+      const match = link.match(/[?&]page=(\d+)[^>]*rel="last"/);
+      if (match) return Number(match[1]);
+      // If no Link header, the response only had 1 page; count = data length
+      const data = await res.json();
+      return Array.isArray(data) ? data.length : 0;
+    } catch (err) {
+      if (attempt < RETRY_DELAYS_MS.length) {
+        await sleep(RETRY_DELAYS_MS[attempt]);
+        continue;
+      }
+      console.warn(`[fetch-projects] commits/${slug}: ${err.message}`);
       return 0;
+    } finally {
+      clearTimeout(timer);
     }
-    const link = res.headers.get('Link') ?? '';
-    // Link header format: <https://api.github.com/.../commits?page=42&per_page=1>; rel="last"
-    const match = link.match(/[?&]page=(\d+)[^>]*rel="last"/);
-    if (match) return Number(match[1]);
-    // If no Link header, the response only had 1 page; count = data length
-    const data = await res.json();
-    return Array.isArray(data) ? data.length : 0;
-  } catch (err) {
-    console.warn(`[fetch-projects] commits/${slug}: ${err.message}`);
-    return 0;
-  } finally {
-    clearTimeout(timer);
   }
+  return 0;
 }
 
 function buildLanguageBreakdown(api, fallback) {
@@ -209,30 +254,38 @@ async function main() {
       fetchCommitCount(meta.slug),
     ]);
 
-    const language = normalizeLanguage(api?.language);
-    const pushedAt = api?.pushed_at ?? new Date().toISOString();
-    const createdAt = api?.created_at ?? new Date().toISOString();
-    const stack = STACK_DATA.stacks?.[meta.slug] ?? [];
+    const previous = PREVIOUS_BY_SLUG.get(meta.slug);
+    const description = api?.description ?? previous?.description ?? '';
+    const language = normalizeLanguage(api?.language ?? previous?.language ?? meta.fallbackLanguage);
+    const pushedAt = api?.pushed_at ?? previous?.pushedAt ?? new Date().toISOString();
+    const createdAt = api?.created_at ?? previous?.createdAt ?? new Date().toISOString();
+    const rawStack = STACK_DATA.stacks?.[meta.slug];
+    const stack = Array.isArray(rawStack) && rawStack.length > 0 ? rawStack : previous?.stack ?? [];
+    const hasLanguagePayload = languages && Object.keys(languages).length > 0;
+    const languageBreakdown = hasLanguagePayload
+      ? buildLanguageBreakdown(languages, meta.fallbackLanguage)
+      : previous?.languages ?? buildLanguageBreakdown(languages, meta.fallbackLanguage);
+    const size = api?.size ?? previous?.size ?? 0;
 
     return {
       slug: meta.slug,
       name: meta.displayName,
-      description: api?.description ?? '',
-      tagline: meta.taglineOverride ?? buildTagline(api?.description),
+      description,
+      tagline: meta.taglineOverride ?? (description ? buildTagline(description) : previous?.tagline ?? ''),
       language,
       languageColor: GITHUB_LANGUAGE_PALETTE[language] ?? '#8b8b8b',
-      languages: buildLanguageBreakdown(languages, meta.fallbackLanguage),
-      stars: api?.stargazers_count ?? meta.fallbackStars,
-      commits,
-      topics: (api?.topics ?? meta.fallbackTopics).slice(0, 4).map((t) => String(t).toLowerCase()),
+      languages: languageBreakdown,
+      stars: api?.stargazers_count ?? previous?.stars ?? meta.fallbackStars,
+      commits: commits > 0 ? commits : previous?.commits ?? 0,
+      topics: (api?.topics ?? previous?.topics ?? meta.fallbackTopics).slice(0, 4).map((t) => String(t).toLowerCase()),
       createdAt,
       pushedAt,
       ageInDays: ageInDays(createdAt),
       pushedRelative: relativeTime(pushedAt),
-      size: api?.size ?? 0,
-      sizeHuman: humanSize((api?.size ?? 0) * 1024), // GitHub reports size in KB
-      license: api?.license?.spdx_id ?? null,
-      defaultBranch: api?.default_branch ?? 'main',
+      size,
+      sizeHuman: api?.size !== undefined ? humanSize(size * 1024) : previous?.sizeHuman ?? humanSize(size * 1024), // GitHub reports size in KB
+      license: api?.license?.spdx_id ?? previous?.license ?? null,
+      defaultBranch: api?.default_branch ?? previous?.defaultBranch ?? 'main',
       stack,
       headline: meta.headline ?? null,
       references: meta.references ?? [],
@@ -242,7 +295,7 @@ async function main() {
       ...(meta.pitchZh ? { pitchZh: meta.pitchZh } : {}),
       imageType: meta.imageType ?? 'og-poster',
       imageLabel: meta.imageLabel ?? 'OG POSTER',
-      githubUrl: api?.html_url ?? `https://github.com/${GITHUB_OWNER}/${meta.slug}`,
+      githubUrl: api?.html_url ?? previous?.githubUrl ?? `https://github.com/${GITHUB_OWNER}/${meta.slug}`,
       demoUrl: meta.demoUrl,
       featured: meta.demoUrl !== null,
     };
@@ -253,7 +306,6 @@ async function main() {
   const failedCount = results.filter((r) => r.commits === 0 && r.size === 0 && r.description === '').length;
   if (failedCount >= 5) {
     console.warn(`[fetch-projects] ${failedCount}/7 GitHub API calls failed (likely rate-limited). Falling back to data/projects.fallback.json`);
-    const { readFile } = await import('node:fs/promises');
     const fallbackPath = join(ROOT, 'data', 'projects.fallback.json');
     const fallback = JSON.parse(await readFile(fallbackPath, 'utf8'));
     fallback.generatedAt = new Date().toISOString();

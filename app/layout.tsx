@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 const siteUrl = "https://www.panzhichao.com";
 const siteTitle = "ZhiChao Pan's Digital Lab";
 const siteDescription =
-  "Applied AI portfolio, engineering notes, and multi-agent product experiments by ZhiChao Pan.";
+  "Applied AI portfolio, multi-agent systems, and product engineering notes by ZhiChao Pan.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

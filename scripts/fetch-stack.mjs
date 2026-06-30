@@ -6,11 +6,13 @@
  * pyproject.toml (Python) from the GitHub contents API and extract the
  * top 3 runtime dependencies. Writes data/stacks.generated.json.
  *
- * No GitHub token needed for public repos (~7 requests).
- * Falls back to empty array on any failure.
+ * No GitHub token required for public repos, but GH_TOKEN/GITHUB_TOKEN is used
+ * when available to avoid local and CI rate limits.
+ * Falls back to the previous generated snapshot or manual values on any
+ * failure so transient GitHub/network errors do not erase visible tech stacks.
  */
 
-import { writeFile, mkdir } from 'node:fs/promises';
+import { writeFile, mkdir, readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 
@@ -18,8 +20,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 
 const GITHUB_API = 'https://api.github.com';
-const TIMEOUT_MS = 8000;
+const TIMEOUT_MS = 20_000;
+const RETRY_DELAYS_MS = [500, 1500];
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN;
 const GITHUB_OWNER = 'Zhi-Chao-PAN';
+const PREVIOUS_STACK_DATA = await loadPreviousStackData();
 
 // Same META as fetch-projects.mjs
 const META = [
@@ -40,6 +45,28 @@ const FALLBACK_STACKS = {
     { name: 'websocket', source: 'manual' },
   ],
 };
+
+function githubHeaders() {
+  return {
+    'User-Agent': 'panzhichao-portfolio-fetch',
+    'Accept': 'application/vnd.github+json',
+    ...(GITHUB_TOKEN ? { Authorization: `Bearer ${GITHUB_TOKEN}` } : {}),
+  };
+}
+
+function sleep(ms) {
+  return new Promise((resolveSleep) => setTimeout(resolveSleep, ms));
+}
+
+async function loadPreviousStackData() {
+  try {
+    const path = join(ROOT, 'data', 'stacks.generated.json');
+    const text = await readFile(path, 'utf8');
+    return JSON.parse(text);
+  } catch {
+    return { stacks: {} };
+  }
+}
 
 // Prefer these package names when they show up (frameworks > libs > tools)
 const TS_PREFERRED_ORDER = [
@@ -91,26 +118,37 @@ function cleanName(name) {
 }
 
 async function fetchFile(slug, path) {
-  const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), TIMEOUT_MS);
-  try {
-    const res = await fetch(`${GITHUB_API}/repos/${GITHUB_OWNER}/${slug}/contents/${path}`, {
-      headers: {
-        'User-Agent': 'panzhichao-portfolio-fetch',
-        'Accept': 'application/vnd.github+json',
-      },
-      signal: ctrl.signal,
-    });
-    if (!res.ok) return null;
-    const json = await res.json();
-    if (!json.content) return null;
-    return Buffer.from(json.content, 'base64').toString('utf8');
-  } catch (err) {
-    console.warn(`[fetch-stack] ${slug}/${path}: ${err.message}`);
-    return null;
-  } finally {
-    clearTimeout(timer);
+  for (let attempt = 0; attempt <= RETRY_DELAYS_MS.length; attempt += 1) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), TIMEOUT_MS);
+    try {
+      const res = await fetch(`${GITHUB_API}/repos/${GITHUB_OWNER}/${slug}/contents/${path}`, {
+        headers: githubHeaders(),
+        signal: ctrl.signal,
+      });
+      if (res.status === 404) return null;
+      if (!res.ok) {
+        if (attempt < RETRY_DELAYS_MS.length && res.status >= 500) {
+          await sleep(RETRY_DELAYS_MS[attempt]);
+          continue;
+        }
+        return null;
+      }
+      const json = await res.json();
+      if (!json.content) return null;
+      return Buffer.from(json.content, 'base64').toString('utf8');
+    } catch (err) {
+      if (attempt < RETRY_DELAYS_MS.length) {
+        await sleep(RETRY_DELAYS_MS[attempt]);
+        continue;
+      }
+      console.warn(`[fetch-stack] ${slug}/${path}: ${err.message}`);
+      return null;
+    } finally {
+      clearTimeout(timer);
+    }
   }
+  return null;
 }
 
 function parsePackageJsonDeps(text) {
@@ -180,6 +218,10 @@ async function main() {
   const entries = await Promise.all(META.map(async (meta) => {
     let top = await fetchStackForRepo(meta);
     let source = meta.lang === 'py' ? 'pyproject' : 'package.json';
+    const previous = PREVIOUS_STACK_DATA.stacks?.[meta.slug];
+    if (top.length === 0 && Array.isArray(previous) && previous.length > 0) {
+      return [meta.slug, previous];
+    }
     if (top.length === 0 && FALLBACK_STACKS[meta.slug]) {
       top = FALLBACK_STACKS[meta.slug].map((s) => s.name);
       source = 'manual';

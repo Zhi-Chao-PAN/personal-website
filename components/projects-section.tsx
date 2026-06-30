@@ -331,12 +331,12 @@ export function OutroCard({ totalRepos, totalStars, liveDemos, totalSizeMb }: Ou
         </span>
 
         <h3 className="text-xl md:text-2xl font-black text-white tracking-tight leading-tight">
-          Let&apos;s build the next one
+          Let&apos;s build something real
         </h3>
 
         <p className="text-sm text-zinc-400 leading-relaxed">
-          七个项目只是开始。如果你正在做一个值得认真做的产品、想聊 AI 协作、
-          或者只是想交换一些想法，我都在。
+          这些项目不是终点，而是一个持续打开的工作台。如果你正在做应用型 AI、
+          多智能体协作、RAG、评测或产品工程，欢迎带着一个真实问题来聊。
         </p>
 
         {/* Chinese elevator-pitch style: a 4-up stat grid */}
