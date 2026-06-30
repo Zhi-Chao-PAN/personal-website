@@ -11,9 +11,9 @@ const APPLICATION_ITEMS = [
     text: '扬州大学广陵学院计算机科学与技术专业学生，正在准备海外高校 AI / 计算机相关硕士方向，并长期走向应用 AI 产品工程。',
   },
   {
-    label: 'proof',
+    label: 'casework',
     title: 'Representative work is organized as case studies',
-    text: '每个项目都按 problem / approach / outcome / role 展开，方便读者判断真实贡献、技术取舍和可复用价值，而不是只看技术栈列表。',
+    text: '每个项目都按 problem / approach / outcome / role 展开，重点呈现真实贡献、技术取舍和可复用价值，而不是只展示技术栈列表。',
   },
   {
     label: 'contact',
@@ -108,10 +108,10 @@ export function FeaturedCaseStudiesSection() {
               [ index_02 / featured cases ]
             </span>
             <h2 className="mt-5 text-3xl md:text-5xl font-black tracking-tight text-white leading-[1.05]">
-              Three proofs worth opening first
+              Three case studies to open first
             </h2>
             <p className="mt-6 max-w-md text-base md:text-lg leading-relaxed text-zinc-400">
-              这三个案例分别代表 AI 产品工程、多智能体编排和 RAG/评测能力。第一次访问时，可以先从这里判断我的技术方向、工程习惯和结果意识。
+              这三个案例分别代表 AI 产品工程、多智能体编排和 RAG/评测能力，也构成我当前最清晰的技术主线。
             </p>
           </div>
 
@@ -184,7 +184,7 @@ export function ApplicationKitSection() {
             [ index_04 / profile kit ]
           </span>
           <h2 className="mt-5 text-3xl md:text-5xl font-black tracking-tight text-white leading-[1.05]">
-            A compact profile for readers who need signal fast
+            A compact profile, grounded in shipped work
           </h2>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
@@ -233,10 +233,10 @@ export function SkillMatrixSection() {
             [ index_05 / skill matrix ]
           </span>
           <h2 className="mt-5 text-3xl md:text-5xl font-black tracking-tight text-white leading-[1.05]">
-            Capability mapped to evidence
+            Capabilities shown through projects
           </h2>
           <p className="mt-6 text-base md:text-lg leading-relaxed text-zinc-400">
-            这里把能力直接绑定到项目证据。读者不需要先猜我会什么，可以顺着 proof 打开具体案例。
+            能力不单独罗列，而是落在可以打开的项目里：产品工作流、多智能体编排、RAG 评测和可靠性实验都有对应案例。
           </p>
         </div>
 
@@ -257,7 +257,7 @@ export function SkillMatrixSection() {
                   href={skill.href}
                   className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500 hover:text-emerald-300 transition-colors"
                 >
-                  proof ↗
+                  case ↗
                 </Link>
               </div>
               <h3 className="mt-4 text-xl md:text-2xl font-black tracking-tight text-white">
@@ -267,7 +267,7 @@ export function SkillMatrixSection() {
                 {skill.text}
               </p>
               <div className="mt-4 font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-600">
-                evidence: <span className="text-zinc-400">{skill.proof}</span>
+                case: <span className="text-zinc-400">{skill.proof}</span>
               </div>
             </article>
           ))}
@@ -331,7 +331,7 @@ export function WorkingNotesSection() {
               Working notes behind the projects
             </h2>
             <p className="mt-6 max-w-md text-base md:text-lg leading-relaxed text-zinc-400">
-              这些笔记是理解项目背后判断的入口：为什么这样拆问题、如何验证结果、哪些边界值得继续研究。
+              这些笔记补充项目页面没有展开的部分：问题如何拆解、结果如何验证、哪些边界还值得继续研究。
             </p>
           </div>
 

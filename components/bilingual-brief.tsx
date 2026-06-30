@@ -6,7 +6,7 @@ const BRIEFS = {
   en: {
     label: 'English',
     eyebrow: '[ index_03 / bilingual brief ]',
-    title: 'For readers who want the short version',
+    title: 'A concise profile in two languages',
     intro:
       'I am a Computer Science student at Guangling College, Yangzhou University, preparing for overseas graduate study in AI and computing while building applied AI products.',
     points: [
@@ -18,11 +18,11 @@ const BRIEFS = {
   zh: {
     label: '中文',
     eyebrow: '[ index_03 / 双语简介 ]',
-    title: '给第一次到访者的短版介绍',
+    title: '双语短版介绍',
     intro:
       '我是扬州大学广陵学院计算机科学与技术专业学生，正在准备海外高校 AI / 计算机相关硕士方向，同时持续构建应用型 AI 产品。',
     points: [
-      '这个网站不是简单列项目，而是让读者看到每个项目解决什么问题、采用什么方法、能证明什么结果。',
+      '这个网站不只是列项目，而是围绕问题、方法和结果来呈现每一项工作的完整脉络。',
       '目前关注多智能体编排、RAG 评测，以及让模型输出可审阅、可复用、可迭代的 AI 工作流。',
       '长期方向是应用 AI 产品工程：把产品判断、前端体验和智能体基础设施连接起来。',
     ],

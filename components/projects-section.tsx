@@ -243,6 +243,16 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
         aria-label="作品画卷"
         className="relative z-10 flex-1 flex items-center min-h-0 overflow-x-auto overflow-y-hidden md:overflow-visible snap-x snap-mandatory touch-pan-x pb-4 md:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
       >
+        <div className="project-gallery-cue" aria-hidden>
+          <span className="project-gallery-cue__rail">
+            <span className="project-gallery-cue__dot" />
+          </span>
+          <span className="project-gallery-cue__chevrons">
+            <span />
+            <span />
+            <span />
+          </span>
+        </div>
         <div
           ref={track}
           className="flex w-max will-change-transform"
@@ -267,7 +277,9 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
       <div className="project-scroll-hint relative z-20 px-6 md:px-12 pb-8 shrink-0 font-mono text-[10px] tracking-[0.4em] text-zinc-600 uppercase flex items-center gap-2">
         <span className="md:hidden">swipe -&gt; explore</span>
         <span className="hidden md:inline">scroll -&gt; explore</span>
-        <span className="inline-block w-12 h-px bg-zinc-700" />
+        <span className="project-scroll-line">
+          <span />
+        </span>
       </div>
     </section>
   );
