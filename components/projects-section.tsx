@@ -68,7 +68,8 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
   const sideInset =
     typeof window === 'undefined'
       ? (1440 - cardWidth) / 2
-      : (window.innerWidth - cardWidth) / 2;
+      : Math.max(16, (window.innerWidth - cardWidth) / 2);
+  const trackPadding = `max(1rem, calc((100vw - ${cardWidth}px) / 2))`;
 
   useGSAP(
     () => {
@@ -191,7 +192,7 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
     <section
       ref={container}
       id="projects"
-      className="relative w-full h-screen overflow-hidden bg-[#030303] flex flex-col"
+      className="relative w-full min-h-screen md:h-screen overflow-hidden bg-[#030303] flex flex-col"
     >
       {/* Background — subtle moving scanline + grid */}
       <div
@@ -237,21 +238,24 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
       {/* Horizontal track — vertically centered in remaining space.
           flex-1 + items-center + h-full lets the track inherit the
           leftover height under the static header. */}
-      <div className="relative z-10 flex-1 flex items-center min-h-0">
+      <div
+        data-lenis-prevent
+        aria-label="作品画卷"
+        className="relative z-10 flex-1 flex items-center min-h-0 overflow-x-auto overflow-y-hidden md:overflow-visible snap-x snap-mandatory touch-pan-x pb-4 md:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+      >
         <div
           ref={track}
-          className="flex will-change-transform"
+          className="flex w-max will-change-transform"
           style={{
             gap: `${gap}px`,
-            paddingLeft: `${sideInset}px`,
-            paddingRight: `${sideInset}px`,
+            paddingLeft: trackPadding,
+            paddingRight: trackPadding,
           }}
         >
           {projects.map((project, i) => (
             <div
               key={project.slug}
-              className="project-card shrink-0 origin-center will-change-transform"
-              style={{ width: `${cardWidth}px` }}
+              className="project-card shrink-0 snap-center origin-center will-change-transform w-[min(86vw,360px)] md:w-[640px]"
             >
               <ProjectCard project={project} priorityImage={i < 2} compact />
             </div>
@@ -260,8 +264,9 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
       </div>
 
       {/* SCROLL hint — bottom-left */}
-      <div className="relative z-20 px-6 md:px-12 pb-8 shrink-0 font-mono text-[10px] tracking-[0.4em] text-zinc-600 uppercase flex items-center gap-2">
-        <span>scroll → explore</span>
+      <div className="project-scroll-hint relative z-20 px-6 md:px-12 pb-8 shrink-0 font-mono text-[10px] tracking-[0.4em] text-zinc-600 uppercase flex items-center gap-2">
+        <span className="md:hidden">swipe -&gt; explore</span>
+        <span className="hidden md:inline">scroll -&gt; explore</span>
         <span className="inline-block w-12 h-px bg-zinc-700" />
       </div>
     </section>

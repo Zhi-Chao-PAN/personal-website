@@ -78,6 +78,14 @@ html.lenis, html.lenis body {
   animation: ll-backdrop-in 0.22s ease-out both;
 }
 
+@media (max-width: 767px) {
+  #projects .project-card {
+    opacity: 1 !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ll-modal-panel,
   .ll-modal-backdrop {
