@@ -61,22 +61,29 @@ export function ParticleField({
     let width = 0;
     let height = 0;
     let pixelRatio = 1;
+    let isVisible = false;
+    let pointerListening = false;
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
       width = Math.max(1, rect.width);
       height = Math.max(1, rect.height);
-      pixelRatio = Math.min(window.devicePixelRatio || 1, 1.75);
+      pixelRatio = Math.min(window.devicePixelRatio || 1, 1.4);
       canvas.width = Math.floor(width * pixelRatio);
       canvas.height = Math.floor(height * pixelRatio);
       context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
-      const compactLimit = width < 640 ? 46 : maxParticles;
-      const targetCount = Math.max(28, Math.min(compactLimit, Math.floor((width * height) / density)));
+      const compactLimit = width < 640 ? 36 : maxParticles;
+      const minParticles = width < 640 ? 18 : 28;
+      const targetCount = Math.max(
+        minParticles,
+        Math.min(compactLimit, Math.floor((width * height) / density)),
+      );
       particles = Array.from({ length: targetCount }, () => createParticle(width, height));
     };
 
     const handlePointerMove = (event: PointerEvent) => {
+      if (!isVisible) return;
       const rect = canvas.getBoundingClientRect();
       pointer.x = event.clientX - rect.left;
       pointer.y = event.clientY - rect.top;
@@ -91,11 +98,40 @@ export function ParticleField({
       pointer.active = false;
     };
 
+    const startPointerTracking = () => {
+      if (pointerListening) return;
+      window.addEventListener('pointermove', handlePointerMove, { passive: true });
+      window.addEventListener('pointerleave', handlePointerLeave);
+      pointerListening = true;
+    };
+
+    const stopPointerTracking = () => {
+      if (!pointerListening) return;
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('pointerleave', handlePointerLeave);
+      pointerListening = false;
+      pointer.active = false;
+    };
+
+    const stopAnimation = () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+        animationFrame = 0;
+      }
+    };
+
+    const schedule = () => {
+      if (reducedMotion || !isVisible || document.hidden || animationFrame) return;
+      animationFrame = requestAnimationFrame(draw);
+    };
+
     const draw = () => {
+      animationFrame = 0;
       context.clearRect(0, 0, width, height);
       context.globalCompositeOperation = 'lighter';
 
       const lineDistance = width < 640 ? 96 : 132;
+      const lineDistanceSquared = lineDistance * lineDistance;
 
       for (let i = 0; i < particles.length; i += 1) {
         const p = particles[i];
@@ -127,9 +163,10 @@ export function ParticleField({
           const n = particles[j];
           const dx = p.x - n.x;
           const dy = p.y - n.y;
-          const distance = Math.hypot(dx, dy);
+          const distanceSquared = dx * dx + dy * dy;
 
-          if (distance < lineDistance) {
+          if (distanceSquared < lineDistanceSquared) {
+            const distance = Math.sqrt(distanceSquared);
             const alpha = (1 - distance / lineDistance) * 0.16;
             context.strokeStyle = `rgba(110, 231, 183, ${alpha})`;
             context.lineWidth = 0.7;
@@ -165,22 +202,67 @@ export function ParticleField({
       }
 
       if (!reducedMotion) {
-        animationFrame = requestAnimationFrame(draw);
+        schedule();
       }
     };
 
-    resize();
-    draw();
+    const activate = () => {
+      if (isVisible) return;
+      isVisible = true;
+      startPointerTracking();
+      resize();
+      draw();
+      schedule();
+    };
 
-    window.addEventListener('resize', resize);
-    window.addEventListener('pointermove', handlePointerMove);
-    window.addEventListener('pointerleave', handlePointerLeave);
+    const deactivate = () => {
+      isVisible = false;
+      stopPointerTracking();
+      stopAnimation();
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stopAnimation();
+        return;
+      }
+      if (isVisible) schedule();
+    };
+
+    resize();
+
+    const resizeObserver =
+      typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(() => {
+        resize();
+        if (isVisible) draw();
+      });
+    resizeObserver?.observe(canvas);
+
+    const intersectionObserver =
+      typeof IntersectionObserver === 'undefined'
+        ? null
+        : new IntersectionObserver(
+            ([entry]) => {
+              if (entry.isIntersecting) activate();
+              else deactivate();
+            },
+            { rootMargin: '160px 0px', threshold: 0.01 },
+          );
+
+    if (intersectionObserver) {
+      intersectionObserver.observe(canvas);
+    } else {
+      activate();
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
-      cancelAnimationFrame(animationFrame);
-      window.removeEventListener('resize', resize);
-      window.removeEventListener('pointermove', handlePointerMove);
-      window.removeEventListener('pointerleave', handlePointerLeave);
+      stopAnimation();
+      stopPointerTracking();
+      resizeObserver?.disconnect();
+      intersectionObserver?.disconnect();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, [density, maxParticles]);
 

@@ -2,8 +2,11 @@
 
 import { useRef } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import SplitType from 'split-type';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface SectionHeadingProps {
   /** Bracketed label like "[ INDEX_02_PROJECTS ]" — terminal-style cue. */
@@ -24,17 +27,36 @@ export function SectionHeading({ label, title, subtitle, align = 'left' }: Secti
   const container = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const split = new SplitType('.section-title', { types: 'chars,words' });
+    const title = container.current?.querySelector<HTMLElement>('.section-title');
+    if (!title) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const split = new SplitType(title, { types: 'chars,words' });
+
+    if (reducedMotion) {
+      return () => split.revert();
+    }
+
     gsap.set(split.words, { overflow: 'hidden' });
     gsap.set(split.chars, { yPercent: 100 });
     gsap.set('.section-label, .section-subtitle', { opacity: 0, y: 8 });
 
-    const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+    const tl = gsap.timeline({
+      defaults: { ease: 'power4.out' },
+      scrollTrigger: {
+        trigger: container.current,
+        start: 'top 82%',
+        once: true,
+      },
+    });
     tl.to('.section-label', { opacity: 1, y: 0, duration: 0.5 })
       .to(split.chars, { yPercent: 0, duration: 0.9, stagger: 0.02, ease: 'expo.out' }, '-=0.2')
       .to('.section-subtitle', { opacity: 1, y: 0, duration: 0.5 }, '-=0.5');
 
-    return () => split.revert();
+    return () => {
+      tl.scrollTrigger?.kill();
+      split.revert();
+    };
   }, { scope: container });
 
   const alignment = align === 'center' ? 'text-center items-center' : 'text-left items-start';

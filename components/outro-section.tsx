@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -33,22 +33,35 @@ export function OutroSection({
   const container = useRef<HTMLElement>(null);
   const githubUrl = `https://github.com/${GITHUB_OWNER}`;
 
+  useEffect(() => {
+    const section = container.current;
+    if (!section || typeof IntersectionObserver === 'undefined') return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        section.dataset.active = entry.isIntersecting ? 'true' : 'false';
+      },
+      { rootMargin: '160px 0px', threshold: 0.01 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   useGSAP(
     () => {
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const titleSplit = new SplitType('.finale-title', { types: 'chars,words' });
-      const lineSplit = new SplitType('.finale-line', { types: 'chars' });
 
       if (reducedMotion) {
         return () => {
           titleSplit.revert();
-          lineSplit.revert();
         };
       }
 
       gsap.set(titleSplit.words, { overflow: 'hidden' });
       gsap.set(titleSplit.chars, { yPercent: 120, opacity: 0 });
-      gsap.set(lineSplit.chars, { opacity: 0, y: 8 });
+      gsap.set('.finale-line', { opacity: 0, y: 12 });
       gsap.set(
         '.finale-label, .finale-core, .finale-microcopy, .finale-stat, .finale-action, .finale-credit',
         { opacity: 0, y: 22 },
@@ -79,8 +92,8 @@ export function OutroSection({
         )
         .to('.finale-core', { opacity: 1, y: 0, duration: 0.65 }, '-=0.55')
         .to(
-          lineSplit.chars,
-          { opacity: 1, y: 0, duration: 0.34, stagger: { each: 0.004, from: 'start' } },
+          '.finale-line',
+          { opacity: 1, y: 0, duration: 0.44, stagger: 0.08, ease: 'power3.out' },
           '-=0.35',
         )
         .to('.finale-microcopy', { opacity: 1, y: 0, duration: 0.55 }, '-=0.18')
@@ -98,7 +111,6 @@ export function OutroSection({
 
       return () => {
         titleSplit.revert();
-        lineSplit.revert();
       };
     },
     { scope: container },
@@ -115,6 +127,7 @@ export function OutroSection({
     <section
       ref={container}
       id="outro"
+      data-active="false"
       className="finale-section relative flex min-h-[100svh] w-full items-center overflow-hidden bg-[#030303] py-20 md:py-24"
     >
       <div

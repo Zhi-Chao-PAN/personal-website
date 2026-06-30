@@ -322,6 +322,17 @@ html.lenis, html.lenis body {
   animation-delay: 3.2s;
 }
 
+.reactbits-hero-shell[data-active="false"] .reactbits-hero-aurora,
+.reactbits-hero-shell[data-active="false"] .reactbits-hero-scan,
+.reactbits-hero-shell[data-active="false"] .reactbits-hero-frame span,
+.reactbits-hero-shell[data-active="false"] .reactbits-title-glow,
+.reactbits-gallery-stage[data-active="false"] .reactbits-gallery-beams span,
+.finale-section[data-active="false"] .finale-field,
+.finale-section[data-active="false"] .finale-rings span,
+.finale-section[data-active="false"] .finale-core::after {
+  animation-play-state: paused;
+}
+
 .reactbits-title-glow {
   color: #52525b;
   animation: ll-title-shine 7s ease-in-out infinite;
@@ -465,6 +476,19 @@ html.lenis, html.lenis body {
     );
   filter: blur(18px) saturate(1.2);
   transform: translate3d(calc((var(--gallery-progress) - 0.5) * 4vw), 0, 0);
+}
+
+#projects .project-card {
+  transition: box-shadow 0.18s ease;
+}
+
+#projects .project-card.is-project-focused {
+  z-index: 20;
+  box-shadow: 0 0 24px rgba(52, 211, 153, 0.36);
+}
+
+#projects .project-card.is-project-focused > .reactbits-tilt-card {
+  border-color: rgba(52, 211, 153, 0.55);
 }
 
 .reactbits-gallery-beams {
@@ -897,6 +921,15 @@ html.lenis, html.lenis body {
     opacity: 1 !important;
     transform: none !important;
     box-shadow: none !important;
+  }
+
+  .reactbits-gallery-beams span:nth-child(n + 3) {
+    display: none;
+  }
+
+  .reactbits-hero-aurora {
+    opacity: 0.52;
+    filter: blur(10px) saturate(1.1);
   }
 
   .finale-rings {

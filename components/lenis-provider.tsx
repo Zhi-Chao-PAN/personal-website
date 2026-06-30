@@ -15,15 +15,19 @@ export function LenisProvider({ children }: LenisProviderProps) {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
     // Initialize Lenis
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.95,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Expo.easeOut
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
+      wheelMultiplier: 0.92,
+      touchMultiplier: 1.65,
     });
 
     lenisRef.current = lenis;
@@ -32,19 +36,19 @@ export function LenisProvider({ children }: LenisProviderProps) {
     lenis.on('scroll', ScrollTrigger.update);
 
     // Add Lenis to GSAP ticker
-    gsap.ticker.add((time) => {
+    const tick = (time: number) => {
       lenis.raf(time * 1000);
-    });
+    };
+    gsap.ticker.add(tick);
 
     // Disable GSAP lag smoothing to prevent conflicts
     gsap.ticker.lagSmoothing(0);
 
     return () => {
       // Cleanup
-      gsap.ticker.remove((time) => {
-        lenis.raf(time * 1000);
-      });
+      gsap.ticker.remove(tick);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
 

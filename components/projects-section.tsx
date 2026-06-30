@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { GITHUB_OWNER } from '@/lib/projects';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -71,6 +71,21 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
       : Math.max(16, (window.innerWidth - cardWidth) / 2);
   const trackPadding = `max(1rem, calc((100vw - ${cardWidth}px) / 2))`;
 
+  useEffect(() => {
+    const section = container.current;
+    if (!section || typeof IntersectionObserver === 'undefined') return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        section.dataset.active = entry.isIntersecting ? 'true' : 'false';
+      },
+      { rootMargin: '160px 0px', threshold: 0.01 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   useGSAP(
     () => {
       // Skip the heavy pin behavior on short viewports / touch-only devices
@@ -88,10 +103,17 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
       // and closed over here for the ScrollTrigger math.
       const translateX = Math.max(0, trackWidth - vw + sideInset * 2);
       const endDistance = translateX + vh * 0.6;
+      const cards = Array.from(
+        container.current?.querySelectorAll<HTMLElement>('.project-card') ?? [],
+      );
+      const cardStep = cardWidth + gap;
+      let focusedCard: HTMLElement | null = null;
+      let lastGalleryProgress = -1;
+      let lastCounterIndex = 0;
 
       // Initial state: cards faded in by their own translateX position
       // (gives a sense of depth as the track is loaded).
-      gsap.set('.project-card', { opacity: 0, x: 60 });
+      gsap.set(cards, { opacity: 0, x: 60 });
       gsap.set('.pscan-line', { scaleX: 0, transformOrigin: 'left center' });
 
       const trigger = ScrollTrigger.create({
@@ -115,7 +137,11 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
         },
         onUpdate: (self) => {
           const p = self.progress;
-          container.current?.style.setProperty('--gallery-progress', p.toFixed(4));
+          const galleryProgress = Math.round(p * 100) / 100;
+          if (galleryProgress !== lastGalleryProgress) {
+            container.current?.style.setProperty('--gallery-progress', galleryProgress.toFixed(2));
+            lastGalleryProgress = galleryProgress;
+          }
           // Drive the track translation
           if (track.current) {
             track.current.style.transform = `translate3d(${-p * translateX}px, 0, 0)`;
@@ -125,8 +151,9 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
             totalCards,
             Math.max(1, Math.ceil(p * totalCards) || 1)
           );
-          if (counterRef.current) {
+          if (counterRef.current && idx !== lastCounterIndex) {
             counterRef.current.textContent = String(idx).padStart(2, '0');
+            lastCounterIndex = idx;
           }
           // Drive the scanline (left -> right across the section)
           if (fillRef.current) {
@@ -137,11 +164,13 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
           // reaches full opacity. Cards further away fade, shrink back,
           // and lose the glow. All four properties interpolate from a
           // single `t` (closeness, 0..1) so the motion is smooth & unified.
-          const centerX = window.innerWidth / 2;
-          const focusRadius = window.innerWidth * 0.32; // how far the focus reaches
-          document.querySelectorAll<HTMLElement>('.project-card').forEach((el) => {
-            const r = el.getBoundingClientRect();
-            const cardCenter = (r.left + r.right) / 2;
+          const centerX = vw / 2;
+          const focusRadius = vw * 0.32; // how far the focus reaches
+          let nextFocusedIndex = -1;
+          let strongestFocus = 0;
+
+          cards.forEach((el, index) => {
+            const cardCenter = sideInset + cardWidth / 2 + index * cardStep - p * translateX;
             const dist = Math.abs(cardCenter - centerX);
             // t=1 at center, t=0 at focusRadius or beyond (eased so falloff
             // feels natural rather than linear).
@@ -153,19 +182,20 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
             const opacity = 0.3 + 0.7 * t;
             el.style.transform = `translate3d(0, ${y}px, 0) scale(${scale})`;
             el.style.opacity = String(opacity);
-            // Emerald glow only on the focused card (t > 0.55)
-            if (t > 0.55) {
-              const glow = (t - 0.55) / 0.45; // 0..1
-              const blur = 8 + glow * 20; // 8..28px
-              el.style.boxShadow = `0 0 ${blur}px rgba(52,211,153,${0.18 + glow * 0.32})`;
-              el.style.borderColor = `rgba(52,211,153,${0.25 + glow * 0.45})`;
-              el.style.zIndex = String(10 + Math.round(glow * 10));
-            } else {
-              el.style.boxShadow = 'none';
-              el.style.borderColor = '';
-              el.style.zIndex = '';
+            if (t > strongestFocus) {
+              strongestFocus = t;
+              nextFocusedIndex = index;
             }
           });
+
+          const nextFocusedCard =
+            strongestFocus >= 0.55 && nextFocusedIndex >= 0 ? cards[nextFocusedIndex] : null;
+
+          if (nextFocusedCard !== focusedCard) {
+            focusedCard?.classList.remove('is-project-focused');
+            nextFocusedCard?.classList.add('is-project-focused');
+            focusedCard = nextFocusedCard;
+          }
         },
       });
 
@@ -182,7 +212,10 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
         ScrollTrigger.refresh();
       });
 
-      return () => trigger.kill();
+      return () => {
+        focusedCard?.classList.remove('is-project-focused');
+        trigger.kill();
+      };
     },
     { scope: container, dependencies: [totalCards, sideInset] }
   );
@@ -193,6 +226,7 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
     <section
       ref={container}
       id="projects"
+      data-active="false"
       className="reactbits-gallery-stage relative w-full min-h-screen md:h-screen overflow-hidden bg-[#030303] flex flex-col"
     >
       {/* Background — subtle moving scanline + grid */}
@@ -269,12 +303,12 @@ function ProjectsContent({ projects, stats }: ProjectsSectionProps) {
             paddingRight: trackPadding,
           }}
         >
-          {projects.map((project, i) => (
+          {projects.map((project) => (
             <div
               key={project.slug}
-              className="project-card shrink-0 snap-center origin-center will-change-transform w-[min(86vw,360px)] md:w-[640px]"
+              className="project-card relative shrink-0 snap-center origin-center will-change-transform w-[min(86vw,360px)] md:w-[640px]"
             >
-              <ProjectCard project={project} priorityImage={i < 2} compact />
+              <ProjectCard project={project} priorityImage={false} compact />
             </div>
           ))}
         </div>

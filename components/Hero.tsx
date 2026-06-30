@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import SplitType from 'split-type';
@@ -8,6 +8,21 @@ import { ParticleField } from './reactbits-particle-field';
 
 export default function Hero() {
   const container = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = container.current;
+    if (!section || typeof IntersectionObserver === 'undefined') return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        section.dataset.active = entry.isIntersecting ? 'true' : 'false';
+      },
+      { rootMargin: '160px 0px', threshold: 0.01 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   useGSAP(() => {
     // 1. Text Splitting for Character-level & Word-level animation
@@ -54,7 +69,11 @@ export default function Hero() {
   }, { scope: container });
 
   return (
-    <div ref={container} className="relative w-full h-screen flex flex-col items-center justify-center bg-[#030303] overflow-hidden">
+    <div
+      ref={container}
+      data-active="true"
+      className="reactbits-hero-shell relative w-full h-screen flex flex-col items-center justify-center bg-[#030303] overflow-hidden"
+    >
       {/* Background Math Grid effect */}
       <div 
         className="absolute inset-0 opacity-[0.05] pointer-events-none" 
