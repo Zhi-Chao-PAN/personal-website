@@ -12,7 +12,11 @@ function RibbonRow({ reverse = false }: { reverse?: boolean }) {
   const items = [...RIBBON_TOPICS, ...RIBBON_TOPICS];
 
   return (
-    <div className="reactbits-velocity-row" data-reverse={reverse ? 'true' : undefined}>
+    <div
+      aria-hidden
+      className="reactbits-velocity-row"
+      data-reverse={reverse ? 'true' : undefined}
+    >
       <div className="reactbits-velocity-track">
         {items.map((item, index) => (
           <span key={`${item}-${index}`} className="reactbits-velocity-item">
@@ -27,6 +31,7 @@ function RibbonRow({ reverse = false }: { reverse?: boolean }) {
 export function MomentumRibbon() {
   return (
     <section aria-label="Current technical focus" className="reactbits-velocity-ribbon">
+      <p className="sr-only">{RIBBON_TOPICS.join(', ')}</p>
       <RibbonRow />
       <RibbonRow reverse />
     </section>
