@@ -234,6 +234,77 @@ html.lenis, html.lenis body {
   }
 }
 
+@keyframes ll-signature-grid-drift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 84px 42px, 0 120px;
+  }
+}
+
+@keyframes ll-signature-beam {
+  0% {
+    opacity: 0;
+    transform: translate3d(-24%, 0, 0) rotate(var(--signature-beam-rotate));
+  }
+  18%,
+  72% {
+    opacity: var(--signature-beam-alpha);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(24%, 0, 0) rotate(var(--signature-beam-rotate));
+  }
+}
+
+@keyframes ll-signature-scan {
+  0% {
+    transform: translateY(-110%);
+    opacity: 0;
+  }
+  22%,
+  64% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+}
+
+@keyframes ll-signature-screen-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes ll-proof-pulse {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+}
+
+@keyframes ll-signature-orbit {
+  from {
+    transform: rotateX(64deg) rotateZ(var(--orbit-start)) translateZ(-62px);
+  }
+  to {
+    transform: rotateX(64deg) rotateZ(calc(var(--orbit-start) + 1turn)) translateZ(-62px);
+  }
+}
+
 .reactbits-hero-aurora {
   pointer-events: none;
   position: absolute;
@@ -326,6 +397,10 @@ html.lenis, html.lenis body {
 .reactbits-hero-shell[data-active="false"] .reactbits-hero-scan,
 .reactbits-hero-shell[data-active="false"] .reactbits-hero-frame span,
 .reactbits-hero-shell[data-active="false"] .reactbits-title-glow,
+.signature-stage[data-active="false"] .signature-grid,
+.signature-stage[data-active="false"] .signature-beam-plane span,
+.signature-stage[data-active="false"] .signature-orbit span,
+.signature-stage[data-active="false"] .signature-screen-scan,
 .reactbits-gallery-stage[data-active="false"] .reactbits-gallery-beams span,
 .finale-section[data-active="false"] .finale-field,
 .finale-section[data-active="false"] .finale-rings span,
@@ -415,6 +490,411 @@ html.lenis, html.lenis body {
   border-radius: 999px;
   background: linear-gradient(135deg, rgba(110, 231, 183, 0.86), rgba(56, 189, 248, 0.86));
   box-shadow: 0 0 18px rgba(110, 231, 183, 0.36);
+}
+
+.signature-stage {
+  --signature-tone: #6ee7b7;
+  isolation: isolate;
+}
+
+.signature-grid {
+  pointer-events: none;
+  position: absolute;
+  inset: -12%;
+  z-index: 0;
+  opacity: 0.28;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    repeating-linear-gradient(
+      180deg,
+      transparent 0,
+      transparent 22px,
+      color-mix(in srgb, var(--signature-tone) 22%, transparent) 23px,
+      transparent 24px
+    );
+  background-size: 42px 42px, 100% 120px;
+  transform: skewY(-6deg);
+  animation: ll-signature-grid-drift 18s linear infinite;
+  mask-image: radial-gradient(ellipse at center, black 0%, black 62%, transparent 86%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, black 62%, transparent 86%);
+}
+
+.signature-beam-plane {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  mix-blend-mode: screen;
+}
+
+.signature-beam-plane span {
+  --signature-beam-rotate: -14deg;
+  --signature-beam-alpha: 0.34;
+  position: absolute;
+  left: -28%;
+  width: 156%;
+  height: 17vh;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--signature-tone) 32%, transparent),
+    rgba(56, 189, 248, 0.12),
+    transparent
+  );
+  filter: blur(14px);
+  transform-origin: center;
+  animation: ll-signature-beam 9.5s ease-in-out infinite;
+}
+
+.signature-beam-plane span:nth-child(1) {
+  top: 16%;
+}
+
+.signature-beam-plane span:nth-child(2) {
+  --signature-beam-rotate: 11deg;
+  --signature-beam-alpha: 0.24;
+  top: 48%;
+  animation-delay: 2.2s;
+}
+
+.signature-beam-plane span:nth-child(3) {
+  --signature-beam-rotate: -8deg;
+  --signature-beam-alpha: 0.3;
+  top: 74%;
+  animation-delay: 4.7s;
+}
+
+.signature-select-row {
+  position: relative;
+  overflow: hidden;
+}
+
+.signature-select-row::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, var(--signature-tone), transparent);
+  transition: opacity 0.22s ease;
+}
+
+.signature-select-row[aria-pressed="true"] {
+  border-color: color-mix(in srgb, var(--signature-tone) 56%, transparent);
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.035),
+    0 0 26px color-mix(in srgb, var(--signature-tone) 16%, transparent);
+}
+
+.signature-select-row[aria-pressed="true"]::after {
+  opacity: 0.75;
+}
+
+.signature-theater {
+  --mx: 50%;
+  --my: 42%;
+  --rx: 0deg;
+  --ry: 0deg;
+  perspective: 1300px;
+  transform-style: preserve-3d;
+}
+
+.signature-orbit {
+  pointer-events: none;
+  position: absolute;
+  inset: 2% -2% 0;
+  z-index: 1;
+  transform-style: preserve-3d;
+  opacity: 0.78;
+  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--signature-tone) 14%, transparent));
+}
+
+.signature-orbit span {
+  --orbit-start: 0deg;
+  position: absolute;
+  inset: 15% 4%;
+  border: 1px solid color-mix(in srgb, var(--signature-tone) 18%, transparent);
+  border-left-color: color-mix(in srgb, var(--signature-tone) 58%, transparent);
+  border-right-color: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  animation: ll-signature-orbit 18s linear infinite;
+}
+
+.signature-orbit span:nth-child(2) {
+  --orbit-start: 34deg;
+  inset: 20% 9%;
+  animation-duration: 25s;
+  animation-direction: reverse;
+  border-top-color: rgba(56, 189, 248, 0.34);
+}
+
+.signature-orbit span:nth-child(3) {
+  --orbit-start: -22deg;
+  inset: 25% 15%;
+  animation-duration: 14s;
+  border-bottom-color: rgba(244, 114, 182, 0.26);
+}
+
+.signature-theater::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 8% 3% 2%;
+  border: 1px solid color-mix(in srgb, var(--signature-tone) 18%, transparent);
+  transform: translateZ(-80px) rotateX(62deg);
+  transform-origin: center bottom;
+  opacity: 0.62;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(to top, black, transparent 78%);
+  -webkit-mask-image: linear-gradient(to top, black, transparent 78%);
+}
+
+.signature-depth-stack {
+  pointer-events: none;
+  position: absolute;
+  inset: 8% 7% 6%;
+  z-index: 2;
+  transform-style: preserve-3d;
+}
+
+.signature-depth-card {
+  position: absolute;
+  inset: 0;
+  border: 1px solid color-mix(in srgb, var(--depth-tone) 24%, transparent);
+  border-radius: 0.45rem;
+  transform:
+    translate3d(var(--depth-offset), calc(var(--depth-index) * 14px), calc(var(--depth-index) * -46px))
+    rotateX(58deg)
+    rotateZ(calc((var(--depth-index) - 1.5) * -2deg));
+  transform-origin: center bottom;
+  opacity: 0.22;
+}
+
+.signature-screen {
+  position: absolute;
+  inset: 5% 3% 7%;
+  z-index: 4;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--signature-tone) 36%, transparent);
+  border-radius: 0.5rem;
+  background: #050505;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 26px 80px rgba(0, 0, 0, 0.56),
+    0 0 54px color-mix(in srgb, var(--signature-tone) 18%, transparent);
+  transform:
+    perspective(1200px)
+    rotateX(var(--rx))
+    rotateY(var(--ry))
+    translateZ(40px);
+  transform-style: preserve-3d;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.16s ease;
+  animation: ll-signature-screen-enter 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.signature-screen::before,
+.signature-screen::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  z-index: 3;
+  width: 3.8rem;
+  height: 3.8rem;
+  border-color: color-mix(in srgb, var(--signature-tone) 62%, transparent);
+}
+
+.signature-screen::before {
+  left: 0;
+  top: 0;
+  border-left: 1px solid;
+  border-top: 1px solid;
+}
+
+.signature-screen::after {
+  right: 0;
+  bottom: 0;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.signature-screen-shade {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle at var(--mx) var(--my), color-mix(in srgb, var(--signature-tone) 18%, transparent), transparent 31%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.88));
+}
+
+.signature-screen-scan {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0,
+      transparent 15px,
+      rgba(255, 255, 255, 0.06) 16px,
+      transparent 17px
+    ),
+    linear-gradient(180deg, transparent, color-mix(in srgb, var(--signature-tone) 20%, transparent), transparent);
+  background-size: 100% 100%, 100% 34%;
+  animation: ll-signature-scan 4.8s ease-in-out infinite;
+  mix-blend-mode: screen;
+  opacity: 0.72;
+}
+
+.signature-metric-tower {
+  position: absolute;
+  right: -0.75rem;
+  top: 14%;
+  z-index: 6;
+  width: min(13rem, 38vw);
+  border: 1px solid color-mix(in srgb, var(--signature-tone) 36%, transparent);
+  border-radius: 0.45rem;
+  background: rgba(0, 0, 0, 0.66);
+  padding: 1rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--signature-tone) 14%, transparent);
+}
+
+.signature-metric-tower strong {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: clamp(2rem, 4.8vw, 4.6rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: 0;
+  color: #fff;
+  text-shadow:
+    0 0 18px color-mix(in srgb, var(--signature-tone) 35%, transparent),
+    0 0 46px color-mix(in srgb, var(--signature-tone) 18%, transparent);
+}
+
+.signature-proof-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.signature-proof-panel::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: linear-gradient(145deg, black, transparent 72%);
+  -webkit-mask-image: linear-gradient(145deg, black, transparent 72%);
+}
+
+.signature-proof-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.signature-status-dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--signature-tone);
+  box-shadow: 0 0 18px var(--signature-tone);
+  animation: ll-proof-pulse 1.8s ease-in-out infinite;
+}
+
+.signature-proof-lane-active {
+  border: 1px solid color-mix(in srgb, var(--signature-tone) 34%, transparent);
+  box-shadow: inset 3px 0 0 color-mix(in srgb, var(--signature-tone) 42%, transparent);
+}
+
+.signature-impact-callout {
+  border: 1px solid color-mix(in srgb, var(--signature-tone) 22%, transparent);
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--signature-tone) 13%, transparent), transparent 58%),
+    rgba(255, 255, 255, 0.025);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.signature-case-link {
+  border: 1px solid color-mix(in srgb, var(--signature-tone) 38%, transparent);
+  box-shadow: 0 0 26px color-mix(in srgb, var(--signature-tone) 12%, transparent);
+}
+
+.project-cover-shell {
+  isolation: isolate;
+}
+
+.project-cover-depth-grid {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  opacity: 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.11) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.11) 1px, transparent 1px);
+  background-size: 18px 18px;
+  mask-image: linear-gradient(140deg, black, transparent 68%);
+  -webkit-mask-image: linear-gradient(140deg, black, transparent 68%);
+  transition: opacity 0.24s ease;
+}
+
+.project-cover-proof {
+  pointer-events: none;
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 5;
+  display: grid;
+  justify-items: end;
+  gap: 0.15rem;
+  max-width: 48%;
+  border: 1px solid rgba(110, 231, 183, 0.24);
+  border-radius: 0.35rem;
+  background: rgba(0, 0, 0, 0.66);
+  padding: 0.55rem 0.65rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(110, 231, 183, 0.12);
+}
+
+.project-cover-proof span {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.52rem;
+  line-height: 1;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(161, 161, 170, 0.92);
+}
+
+.project-cover-proof strong {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: clamp(1rem, 2vw, 1.65rem);
+  line-height: 0.95;
+  font-weight: 900;
+  letter-spacing: 0;
+  color: white;
+}
+
+.reactbits-glare-card:hover .project-cover-depth-grid,
+.reactbits-glare-card:focus-visible .project-cover-depth-grid,
+.reactbits-glare-card:focus-within .project-cover-depth-grid {
+  opacity: 0.34;
 }
 
 .reactbits-tilt-card {
@@ -917,6 +1397,70 @@ html.lenis, html.lenis body {
 }
 
 @media (max-width: 767px) {
+  .signature-stage {
+    min-height: auto;
+  }
+
+  .signature-theater {
+    min-height: 27rem;
+  }
+
+  .signature-orbit {
+    inset: 8% -22% 0;
+    opacity: 0.48;
+  }
+
+  .signature-orbit span {
+    inset: 19% 2%;
+  }
+
+  .signature-depth-stack {
+    inset: 16% 4% 12%;
+  }
+
+  .signature-depth-card {
+    opacity: 0.12;
+  }
+
+  .signature-screen {
+    inset: 4rem 0 auto;
+    aspect-ratio: 16 / 10;
+    height: auto;
+  }
+
+  .signature-screen::before,
+  .signature-screen::after {
+    width: 2.7rem;
+    height: 2.7rem;
+  }
+
+  .signature-metric-tower {
+    right: 0.75rem;
+    top: auto;
+    bottom: 0.75rem;
+    width: min(12rem, 62vw);
+    padding: 0.78rem;
+  }
+
+  .signature-metric-tower strong {
+    font-size: clamp(1.7rem, 11vw, 2.8rem);
+  }
+
+  .project-cover-proof {
+    right: 0.5rem;
+    bottom: 0.5rem;
+    max-width: 62%;
+    padding: 0.45rem 0.5rem;
+  }
+
+  .project-cover-proof span {
+    font-size: 0.46rem;
+  }
+
+  .project-cover-proof strong {
+    font-size: clamp(0.9rem, 5.5vw, 1.35rem);
+  }
+
   #projects .project-card {
     opacity: 1 !important;
     transform: none !important;
@@ -960,6 +1504,12 @@ html.lenis, html.lenis body {
   .reactbits-hero-frame span,
   .reactbits-title-glow,
   .reactbits-velocity-track,
+  .signature-grid,
+  .signature-beam-plane span,
+  .signature-orbit span,
+  .signature-screen,
+  .signature-screen-scan,
+  .signature-status-dot,
   .reactbits-gallery-beams span,
   .finale-field,
   .finale-rings span,

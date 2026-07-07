@@ -4,15 +4,16 @@ import { BilingualBriefSection } from '@/components/bilingual-brief';
 import { FocusSection } from '@/components/focus-section';
 import {
   ApplicationKitSection,
-  FeaturedCaseStudiesSection,
   RoadmapSection,
   SkillMatrixSection,
   WorkingNotesSection,
 } from '@/components/profile-upgrade-sections';
+import { SignatureProjectsStage } from '@/components/signature-projects-stage';
 import { ProjectsSection } from '@/components/projects-section';
 import { OutroSection } from '@/components/outro-section';
 import { MomentumRibbon } from '@/components/momentum-ribbon';
 import projectsData from '@/data/projects.generated.json';
+import { getFeaturedCaseStudies } from '@/lib/project-catalog';
 import type { Project } from '@/lib/projects.types';
 
 export default function Home() {
@@ -25,7 +26,7 @@ export default function Home() {
       <MomentumRibbon />
       <AboutSection />
       <FocusSection />
-      <FeaturedCaseStudiesSection />
+      <SignatureProjectsStage cases={getFeaturedCaseStudies()} />
       <BilingualBriefSection />
       <ApplicationKitSection />
       <SkillMatrixSection />

@@ -99,8 +99,15 @@ export function ProjectCard({ project, priorityImage = false, compact = false }:
       />
 
       {/* Top: cover image */}
-      <div className="relative z-10">
+      <div className="project-cover-shell relative z-10">
         <ProjectImage image={image} priority={priorityImage} compact={compact} />
+        {project.headline ? (
+          <div className="project-cover-proof" aria-hidden>
+            <span>{project.headline.label}</span>
+            <strong>{project.headline.value}</strong>
+          </div>
+        ) : null}
+        <div className="project-cover-depth-grid" aria-hidden />
       </div>
 
       {/* Bottom: 8-dimension info block */}
