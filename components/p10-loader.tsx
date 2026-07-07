@@ -116,7 +116,7 @@ export function P10Loader() {
     };
   }, [isVisible]);
 
-  if (!isVisible) return null;
+  if (!isVisible) return <div data-p10-loader-root hidden aria-hidden />;
 
   return (
     <div ref={loaderRef} className="p10-loader" role="status" aria-label="Loading portfolio">
