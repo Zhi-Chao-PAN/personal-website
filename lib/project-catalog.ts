@@ -7,8 +7,9 @@ export const projectStats = projectsData.stats;
 
 export const FEATURED_CASE_STUDY_SLUGS = [
   'launchlens-ai',
+  'vision-centric-financial-swarm',
+  'deepnerve-3d',
   'codex-zcode-remote-relay',
-  'structure-aware-rag-empirical',
 ] as const;
 
 export function getProjectBySlug(slug: string): Project | undefined {

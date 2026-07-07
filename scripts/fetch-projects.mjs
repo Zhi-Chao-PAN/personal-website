@@ -38,7 +38,26 @@ const META = [
   { slug: 'LangGraph-Financial-Swarm', displayName: 'LangGraph Financial Swarm', demoUrl: null, taglineOverride: 'Multi-agent financial research system — LangGraph orchestration, local LLMs, tool use.', fallbackStars: 0, fallbackTopics: ['langgraph', 'multi-agent', 'python', 'finance'], fallbackLanguage: 'Python', headline: { label: 'specialists', value: '5 agents' }, references: [], pitchZh: '投研报告动辄几十页、引用链路散落十几个文件，谁来读、谁来核、结论怎么追溯？五个 AI 专家分头扒数据、交叉验证、最后合成可追溯的结论：宏观分析师讲周期、行业研究员拆赛道、公司专家读财报、风险官挑漏洞、PM 把结论落到投资决策。每一段结论都标注原始出处和推理路径，监管和合规可以直接审计。整套系统用 LangGraph 编排 + 本地 LLM，企业内网就能跑，数据不出域。适合券商研究所、买方投研、家族办公室，把分析师从 60% 的重复劳动里解放出来，专注真正的判断。' },
   { slug: 'safety-critical-battery-prognostics', displayName: 'Safety-Critical Battery Prognostics', demoUrl: null, taglineOverride: 'Reproducible battery RUL — three-layer physics defense, uncertainty-aware evaluation.', fallbackStars: 4, fallbackTopics: ['battery', 'pinn', 'conformal-prediction', 'pytorch'], fallbackLanguage: 'Python', headline: { label: '3-layer defense', value: 'VR 0.00%' }, references: [], pitchZh: '电池剩余寿命（RUL）预测的误差，是电动车召回事故和储能保险理赔的分水岭——预测过乐观，车在路上趴窝；预测过保守，整批电池提前报废。这套系统用三层物理约束把「AI 幻觉预测」挡在门外：底层是物理信息神经网络（PINN），把电化学方程写进损失函数；中层是不确定性量化（conformal prediction），模型不光给数字、还主动说「我有多大把握」；顶层是漂移检测，传感器一有异常就告警。整套 pipeline 在公开数据集（NASA PCoE、Stanford、MIT-Stanford 快充老化）上验证，VR 错误率 0.00%。适合动力电池厂商、储能集成商、保险定损机构，把「靠经验拍脑袋」的预测变成可追溯、可认证的工程指标。' },
   { slug: 'structure-aware-rag-empirical', displayName: 'Structure-Aware RAG (Empirical)', demoUrl: null, taglineOverride: 'Empirical study — Structure-Aware Parsing lifts Financial RAG accuracy by 37.5%.', fallbackStars: 0, fallbackTopics: ['rag', 'llamaindex', 'nlp', 'benchmark'], fallbackLanguage: 'Python', headline: { label: 'accuracy lift', value: '+37.5%' }, references: [], pitchZh: 'RAG 检索准不准，答案藏在文档结构里——金融研报里一张利润表胜过三段话、一份招股书的目录结构比 10 页正文更值钱。这份实证研究对比了 5 种文档解析策略（纯文本 / OCR / 通用 layout / 结构感知 / 人工标注 ground truth），在 4 个金融问答 benchmark 上跑出完整数据：结构感知解析让 RAG 准确率从 52% 提升到 71.5%，相对提升 37.5%，且错误率降低 60%。整套实验脚本、数据集、评测代码全部开源可复现。适合做 RAG 的工程团队、企业知识库负责人、AI 投资尽调——少走 3 个月弯路。' },
+  { slug: 'ai-life-progress-coach', displayName: 'AI Life Progress Coach', demoUrl: null, publicRepoUrl: null, taglineOverride: 'Local-first AI life operating system — goals, tasks, reviews, and privacy-safe progress evidence.', fallbackStars: 0, fallbackTopics: ['ai-coach', 'life-os', 'nextjs', 'local-first'], fallbackLanguage: 'TypeScript', headline: { label: 'tests', value: '830+' }, references: ['launchlens-ai', 'model-eval-studio'], pitchZh: '它不是又一个待办清单，而是把长期目标拆成每天可执行、可复盘、可解释的成长系统。任务、日记、恢复状态、周/月回顾和 AI 建议落在同一条证据链里，用户能看到自己为什么在前进、哪里卡住、下一步该做什么。', imageType: 'og-poster', imageLabel: 'CASE POSTER' },
+  { slug: 'CampusTradeAI', displayName: 'CampusTradeAI', demoUrl: null, publicRepoUrl: null, taglineOverride: 'Campus marketplace mini-program — trading, trust, moderation, payment gates, and ops workflows.', fallbackStars: 0, fallbackTopics: ['wechat-miniprogram', 'marketplace', 'cloud-functions', 'campus'], fallbackLanguage: 'JavaScript', headline: { label: 'files', value: '1.4k' }, references: ['ai-life-progress-coach'], pitchZh: '校园二手交易不是一个商品列表就够了，真正难的是信任、审核、增长、支付边界和运营闭环。CampusTradeAI 把闲置交易、求购、校园服务、聊天、举报审核、校园币、店铺和运营体检组织成一套小程序系统，展示复杂业务流和移动端产品落地能力。', imageType: 'og-poster', imageLabel: 'CASE POSTER' },
+  { slug: 'vision-centric-financial-swarm', displayName: 'Vision-Centric Financial Swarm', demoUrl: null, publicRepoUrl: null, taglineOverride: 'Multi-modal financial RAG — ColPali retrieval, ROI cropping, and agentic verification.', fallbackStars: 0, fallbackTopics: ['multimodal-rag', 'colpali', 'finance', 'langgraph'], fallbackLanguage: 'Python', headline: { label: 'token cost', value: '-80%' }, references: ['LangGraph-Financial-Swarm', 'structure-aware-rag-empirical'], pitchZh: '传统 RAG 把 PDF 当文本拆，最容易丢掉图表、表格和页面布局。这个项目直接把财报页面当视觉对象处理：用 ColPali 做多向量检索，再通过 ROI 裁剪把关键区域送给视觉模型，最后由 agent 做跨页推理和数值校验。', imageType: 'og-poster', imageLabel: 'CASE POSTER' },
+  { slug: 'deepnerve-3d', displayName: 'DeepNerve-3D', demoUrl: null, publicRepoUrl: null, taglineOverride: 'Research-style 3D medical segmentation — SwinUNETR, topology constraints, and CBCT nerve tracing.', fallbackStars: 0, fallbackTopics: ['medical-imaging', 'segmentation', 'pytorch', 'monai'], fallbackLanguage: 'Python', headline: { label: 'foreground', value: '<0.1%' }, references: ['safety-critical-battery-prognostics'], pitchZh: '这个项目的价值不在炫界面，而在把困难的医学影像问题讲清楚：3D CBCT 中下牙槽神经前景极少、对比度低、拓扑连续性要求高。DeepNerve-3D 用 SwinUNETR、滑窗推理和连通域约束，把研究思路落到可运行的分割 pipeline 里。', imageType: 'og-poster', imageLabel: 'CASE POSTER' },
 ];
+
+const DISPLAY_ORDER = [
+  'launchlens-ai',
+  'launchlens-research-studio',
+  'model-eval-studio',
+  'ai-life-progress-coach',
+  'vision-centric-financial-swarm',
+  'deepnerve-3d',
+  'CampusTradeAI',
+  'codex-zcode-remote-relay',
+  'LangGraph-Financial-Swarm',
+  'safety-critical-battery-prognostics',
+  'structure-aware-rag-empirical',
+];
+const DISPLAY_ORDER_INDEX = new Map(DISPLAY_ORDER.map((slug, index) => [slug, index]));
 
 const GITHUB_OWNER = 'Zhi-Chao-PAN';
 const GITHUB_LANGUAGE_PALETTE = {
@@ -244,10 +263,10 @@ function buildLanguageBreakdown(api, fallback) {
 }
 
 async function main() {
-  console.log('[fetch-projects] Fetching 7 repos + languages + commits from GitHub...');
+  console.log(`[fetch-projects] Fetching ${META.length} repos + languages + commits from GitHub...`);
   const started = Date.now();
 
-  const results = await Promise.all(META.map(async (meta) => {
+  const results = (await Promise.all(META.map(async (meta) => {
     const [api, languages, commits] = await Promise.all([
       fetchRepo(meta.slug),
       fetchLanguages(meta.slug),
@@ -295,17 +314,24 @@ async function main() {
       ...(meta.pitchZh ? { pitchZh: meta.pitchZh } : {}),
       imageType: meta.imageType ?? 'og-poster',
       imageLabel: meta.imageLabel ?? 'OG POSTER',
-      githubUrl: api?.html_url ?? previous?.githubUrl ?? `https://github.com/${GITHUB_OWNER}/${meta.slug}`,
+      githubUrl: meta.publicRepoUrl === null
+        ? null
+        : api?.html_url ?? previous?.githubUrl ?? meta.publicRepoUrl ?? `https://github.com/${GITHUB_OWNER}/${meta.slug}`,
       demoUrl: meta.demoUrl,
       featured: meta.demoUrl !== null,
     };
-  }));
+  }))).sort(
+    (a, b) =>
+      (DISPLAY_ORDER_INDEX.get(a.slug) ?? Number.MAX_SAFE_INTEGER) -
+      (DISPLAY_ORDER_INDEX.get(b.slug) ?? Number.MAX_SAFE_INTEGER),
+  );
 
   // Detect a catastrophic fetch failure (most repos came back with 0 commits + 0 size + empty description)
   // — typically caused by rate-limiting (HTTP 403). Fall back to a hand-curated snapshot.
   const failedCount = results.filter((r) => r.commits === 0 && r.size === 0 && r.description === '').length;
-  if (failedCount >= 5) {
-    console.warn(`[fetch-projects] ${failedCount}/7 GitHub API calls failed (likely rate-limited). Falling back to data/projects.fallback.json`);
+  const catastrophicFailureThreshold = Math.max(5, Math.ceil(META.length * 0.7));
+  if (failedCount >= catastrophicFailureThreshold) {
+    console.warn(`[fetch-projects] ${failedCount}/${META.length} GitHub API calls failed (likely rate-limited). Falling back to data/projects.fallback.json`);
     const fallbackPath = join(ROOT, 'data', 'projects.fallback.json');
     const fallback = JSON.parse(await readFile(fallbackPath, 'utf8'));
     fallback.generatedAt = new Date().toISOString();

@@ -244,6 +244,130 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
       { name: 'Bootstrap CI', role: 'Statistical reporting' },
     ],
   },
+  {
+    slug: 'ai-life-progress-coach',
+    philosophy:
+      'Personal productivity tools often stop at capture. This project treats long-term growth as a system of evidence: goals, daily execution, recovery, review, and AI feedback all remain connected.',
+    problem:
+      'People can track tasks for a few days, but long-range progress breaks down when goals, mood, journals, reviews, and next actions live in separate tools.',
+    approach:
+      'I built a local-first AI life operating system that turns personal data into daily and weekly feedback loops while keeping sensitive notes under user control.',
+    outcome:
+      'The project demonstrates a broad product surface, privacy-aware architecture, and 830+ tests around a personal AI workflow that has to be both useful and trustworthy.',
+    role: [
+      'Designed the goal-to-review workflow and the product information architecture.',
+      'Implemented the Next.js application, local data model, encryption path, and AI review surfaces.',
+      'Balanced motivational UX with privacy constraints so the app can be useful without exposing raw journals.',
+    ],
+    architecture:
+      'Next.js app with a local-first data layer, typed domain models, and AI review modules over bounded personal context. The system separates raw private entries from shareable summaries so progress evidence can be reviewed without leaking sensitive detail.',
+    notes: [
+      'Local-first posture keeps the product credible for personal data.',
+      'Daily, weekly, and monthly reviews create repeated feedback rather than one-off AI advice.',
+      'Test coverage is unusually strong for a personal product prototype, which makes it useful evidence of engineering discipline.',
+    ],
+    stack: [
+      { name: 'Next.js', role: 'Full-stack product surface' },
+      { name: 'TypeScript', role: 'Domain model and UI safety' },
+      { name: 'Prisma', role: 'Structured local data layer' },
+      { name: 'Vitest', role: 'Regression coverage' },
+      { name: 'AES-GCM', role: 'Local privacy boundary' },
+    ],
+    references: ['launchlens-ai', 'model-eval-studio'],
+  },
+  {
+    slug: 'CampusTradeAI',
+    philosophy:
+      'A campus marketplace is not only a listing feed. The harder work is trust, moderation, payment boundaries, account growth, and the operating tools that keep the marketplace healthy.',
+    problem:
+      'Student trading products often fail because they model supply and demand but underbuild identity, reporting, chat, moderation, and post-launch operations.',
+    approach:
+      'I organized the mini-program around real marketplace workflows: idle-item selling, wanted posts, campus services, shop pages, messaging, reporting, campus coin incentives, and admin review.',
+    outcome:
+      'The project is valuable as a complex business-flow case: 1,400+ tracked files across mini-program UI, cloud functions, server modules, and operational workflows.',
+    role: [
+      'Designed the marketplace feature map and user journeys.',
+      'Implemented mini-program pages, cloud-function boundaries, and server-side support modules.',
+      'Practiced product tradeoffs around trust, moderation, growth, and mobile usability.',
+    ],
+    architecture:
+      'WeChat mini-program front end with cloud functions and server modules behind the main marketplace actions. The system splits buyer/seller flows, moderation workflows, and operational data into separate modules rather than a single monolithic screen.',
+    notes: [
+      'The case is framed around marketplace operations instead of only item listing.',
+      'Trust, reporting, chat, incentives, and moderation are treated as core product mechanics.',
+      'The strongest evidence is workflow breadth: multiple roles, states, and operational loops working in one mobile product.',
+    ],
+    stack: [
+      { name: 'WeChat Mini Program', role: 'Mobile product surface' },
+      { name: 'JavaScript / TypeScript', role: 'Client and service logic' },
+      { name: 'Cloud Functions', role: 'Business workflow boundaries' },
+      { name: 'Node.js', role: 'Server support modules' },
+      { name: 'Marketplace Ops', role: 'Moderation and growth loops' },
+    ],
+    references: ['ai-life-progress-coach'],
+  },
+  {
+    slug: 'vision-centric-financial-swarm',
+    philosophy:
+      'Financial documents are visual artifacts. Tables, charts, page layout, and multi-page references are part of the answer, so treating PDFs as plain text throws away signal before retrieval begins.',
+    problem:
+      'Traditional RAG pipelines struggle with annual reports and investor decks because the critical evidence often lives in tables, figures, and page regions that text chunking destroys.',
+    approach:
+      'I built a multi-modal RAG prototype around ColPali-style visual retrieval, ROI cropping, and agentic verification over financial document evidence.',
+    outcome:
+      'This is the strongest candidate to add as a research-system project: it connects multi-modal retrieval, financial reasoning, and agent orchestration in one coherent case.',
+    role: [
+      'Modeled the document pipeline around page-level visual retrieval rather than text-only chunks.',
+      'Designed the agent loop for research, inspection, and cross-page verification.',
+      'Kept the presentation grounded in evidence paths and bounded claims rather than generic AI chat output.',
+    ],
+    architecture:
+      'Document pages are embedded as visual evidence, retrieved with multi-vector representations, cropped into regions of interest, and passed to downstream reasoning steps. The agent layer separates retrieval, inspection, synthesis, and verification so the final answer can point back to visual evidence.',
+    notes: [
+      'Visual retrieval keeps layout signal that text chunking often discards.',
+      'ROI cropping is framed as a cost-control and evidence-focus mechanism for vision model calls.',
+      'This project complements Structure-Aware RAG by moving from document structure to visual document understanding.',
+    ],
+    stack: [
+      { name: 'Python', role: 'Research pipeline' },
+      { name: 'ColPali-style Retrieval', role: 'Vision-centric document search' },
+      { name: 'LangGraph', role: 'Agent orchestration' },
+      { name: 'FastAPI', role: 'Service boundary' },
+      { name: 'Next.js', role: 'Review interface' },
+    ],
+    references: ['LangGraph-Financial-Swarm', 'structure-aware-rag-empirical'],
+  },
+  {
+    slug: 'deepnerve-3d',
+    philosophy:
+      'Medical AI prototypes should be judged by problem framing, constraints, and reproducible pipelines. The goal is not to overclaim clinical performance, but to show disciplined research engineering.',
+    problem:
+      'Mandibular nerve segmentation in CBCT is difficult because the target is tiny, low-contrast, and topologically continuous; a visually plausible mask can still fail if the nerve path breaks.',
+    approach:
+      'I used a SwinUNETR-based 3D segmentation pipeline with sliding-window inference, class-imbalance awareness, and topology-oriented post-processing constraints.',
+    outcome:
+      'The project adds a credible medical-imaging research case to the portfolio and shows that the AI direction is broader than web products alone.',
+    role: [
+      'Built the research-style training and inference pipeline.',
+      'Framed the task around foreground scarcity, topology continuity, and compute limits.',
+      'Presented the work as an engineering prototype with explicit constraints rather than a clinical claim.',
+    ],
+    architecture:
+      'PyTorch and MONAI pipeline for 3D CBCT volumes. SwinUNETR captures long-range anatomical context, sliding-window inference handles memory limits, and connected-component logic reduces fragmented false positives in post-processing.',
+    notes: [
+      'Topology matters because a locally plausible mask can still be wrong if the nerve path breaks.',
+      'Sliding-window inference and post-processing make the pipeline practical under limited GPU memory.',
+      'The case adds research depth to the applied product projects without overclaiming clinical readiness.',
+    ],
+    stack: [
+      { name: 'PyTorch', role: 'Model training' },
+      { name: 'MONAI', role: 'Medical-imaging pipeline' },
+      { name: 'SwinUNETR', role: '3D segmentation backbone' },
+      { name: 'SimpleITK', role: 'Volume IO and preprocessing' },
+      { name: 'Sliding Window Inference', role: '8GB-VRAM friendly inference' },
+    ],
+    references: ['safety-critical-battery-prognostics'],
+  },
 ];
 
 /** Lookup helper. */

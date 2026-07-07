@@ -206,15 +206,17 @@ export function ProjectModal({ projects }: ProjectModalProps) {
             <span>case page</span>
             <span aria-hidden>↗</span>
           </Link>
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-zinc-300 hover:text-white border border-white/10 hover:border-white/30 bg-white/[0.02] hover:bg-white/[0.05] rounded-md py-2.5 transition-colors"
-          >
-            <span>github repo</span>
-            <span aria-hidden>↗</span>
-          </a>
+          {project.githubUrl ? (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="flex-1 flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-zinc-300 hover:text-white border border-white/10 hover:border-white/30 bg-white/[0.02] hover:bg-white/[0.05] rounded-md py-2.5 transition-colors"
+            >
+              <span>github repo</span>
+              <span aria-hidden>↗</span>
+            </a>
+          ) : null}
         </div>
       </div>
     </div>

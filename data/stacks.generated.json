@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-30T13:57:32.886Z",
+  "generatedAt": "2026-07-07T13:49:17.477Z",
   "source": "github-contents-api",
   "stacks": {
     "launchlens-ai": [
@@ -54,6 +54,78 @@
       {
         "name": "zustand",
         "source": "package.json"
+      }
+    ],
+    "ai-life-progress-coach": [
+      {
+        "name": "next",
+        "source": "package.json"
+      },
+      {
+        "name": "react",
+        "source": "package.json"
+      },
+      {
+        "name": "react-dom",
+        "source": "package.json"
+      },
+      {
+        "name": "zustand",
+        "source": "package.json"
+      }
+    ],
+    "vision-centric-financial-swarm": [
+      {
+        "name": "colpali",
+        "source": "manual"
+      },
+      {
+        "name": "langgraph",
+        "source": "manual"
+      },
+      {
+        "name": "fastapi",
+        "source": "manual"
+      },
+      {
+        "name": "next",
+        "source": "manual"
+      }
+    ],
+    "deepnerve-3d": [
+      {
+        "name": "torch",
+        "source": "manual"
+      },
+      {
+        "name": "monai",
+        "source": "manual"
+      },
+      {
+        "name": "swinunetr",
+        "source": "manual"
+      },
+      {
+        "name": "simpleitk",
+        "source": "manual"
+      }
+    ],
+    "CampusTradeAI": [
+      {
+        "name": "wechat-miniprogram",
+        "source": "manual"
+      },
+      {
+        "name": "cloud-functions",
+        "source": "manual"
+      },
+      {
+        "name": "node",
+        "source": "manual"
+      },
+      {
+        "name": "typescript",
+        "source": "manual"
       }
     ],
     "codex-zcode-remote-relay": [

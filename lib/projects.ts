@@ -3,7 +3,7 @@
  * this META array, hits the GitHub API for each slug, and writes the merged
  * result to data/projects.generated.json. Components only import the JSON.
  *
- * The order here defines the on-page order (live demos first, then by recency).
+ * scripts/fetch-projects.mjs owns the final on-page display order.
  */
 import type { ProjectLanguage, ProjectHeadline } from './projects.types';
 
@@ -15,6 +15,10 @@ export interface ProjectMeta {
   demoUrl: string | null;
   /** Manual tagline override; falls back to GitHub description if blank. */
   taglineOverride?: string;
+  /** Null hides the repo link until the repository is intentionally public. */
+  publicRepoUrl?: string | null;
+  /** Chinese reader-facing pitch rendered on project cards and case pages. */
+  pitchZh?: string;
   /** Pre-push fallback stars (used when GitHub API fails or rate-limits). */
   fallbackStars: number;
   /** Pre-push fallback topics (used when GitHub API fails). */
@@ -150,6 +154,70 @@ export const META: ProjectMeta[] = [
     references: [],
     imageType: 'benchmark',
     imageLabel: 'BENCHMARK',
+  },
+  {
+    slug: 'ai-life-progress-coach',
+    displayName: 'AI Life Progress Coach',
+    demoUrl: null,
+    publicRepoUrl: null,
+    taglineOverride: 'Local-first AI life operating system — goals, tasks, reviews, and privacy-safe progress evidence.',
+    fallbackStars: 0,
+    fallbackTopics: ['ai-coach', 'life-os', 'nextjs', 'local-first'],
+    fallbackLanguage: 'TypeScript',
+    headline: { label: 'tests', value: '830+' },
+    references: ['launchlens-ai', 'model-eval-studio'],
+    imageType: 'og-poster',
+    imageLabel: 'CASE POSTER',
+    pitchZh:
+      '它不是又一个待办清单，而是把长期目标拆成每天可执行、可复盘、可解释的成长系统。任务、日记、恢复状态、周/月回顾和 AI 建议落在同一条证据链里，用户能看到自己为什么在前进、哪里卡住、下一步该做什么。',
+  },
+  {
+    slug: 'CampusTradeAI',
+    displayName: 'CampusTradeAI',
+    demoUrl: null,
+    publicRepoUrl: null,
+    taglineOverride: 'Campus marketplace mini-program — trading, trust, moderation, payment gates, and ops workflows.',
+    fallbackStars: 0,
+    fallbackTopics: ['wechat-miniprogram', 'marketplace', 'cloud-functions', 'campus'],
+    fallbackLanguage: 'JavaScript',
+    headline: { label: 'files', value: '1.4k' },
+    references: ['ai-life-progress-coach'],
+    imageType: 'og-poster',
+    imageLabel: 'CASE POSTER',
+    pitchZh:
+      '校园二手交易不是一个商品列表就够了，真正难的是信任、审核、增长、支付边界和运营闭环。CampusTradeAI 把闲置交易、求购、校园服务、聊天、举报审核、校园币、店铺和运营体检组织成一套小程序系统，展示复杂业务流和移动端产品落地能力。',
+  },
+  {
+    slug: 'vision-centric-financial-swarm',
+    displayName: 'Vision-Centric Financial Swarm',
+    demoUrl: null,
+    publicRepoUrl: null,
+    taglineOverride: 'Multi-modal financial RAG — ColPali retrieval, ROI cropping, and agentic verification.',
+    fallbackStars: 0,
+    fallbackTopics: ['multimodal-rag', 'colpali', 'finance', 'langgraph'],
+    fallbackLanguage: 'Python',
+    headline: { label: 'token cost', value: '-80%' },
+    references: ['LangGraph-Financial-Swarm', 'structure-aware-rag-empirical'],
+    imageType: 'og-poster',
+    imageLabel: 'CASE POSTER',
+    pitchZh:
+      '传统 RAG 把 PDF 当文本拆，最容易丢掉图表、表格和页面布局。这个项目直接把财报页面当视觉对象处理：用 ColPali 做多向量检索，再通过 ROI 裁剪把关键区域送给视觉模型，最后由 agent 做跨页推理和数值校验。',
+  },
+  {
+    slug: 'deepnerve-3d',
+    displayName: 'DeepNerve-3D',
+    demoUrl: null,
+    publicRepoUrl: null,
+    taglineOverride: 'Research-style 3D medical segmentation — SwinUNETR, topology constraints, and CBCT nerve tracing.',
+    fallbackStars: 0,
+    fallbackTopics: ['medical-imaging', 'segmentation', 'pytorch', 'monai'],
+    fallbackLanguage: 'Python',
+    headline: { label: 'foreground', value: '<0.1%' },
+    references: ['safety-critical-battery-prognostics'],
+    imageType: 'og-poster',
+    imageLabel: 'CASE POSTER',
+    pitchZh:
+      '这个项目的价值不在炫界面，而在把困难的医学影像问题讲清楚：3D CBCT 中下牙槽神经前景极少、对比度低、拓扑连续性要求高。DeepNerve-3D 用 SwinUNETR、滑窗推理和连通域约束，把研究思路落到可运行的分割 pipeline 里。',
   },
 ];
 

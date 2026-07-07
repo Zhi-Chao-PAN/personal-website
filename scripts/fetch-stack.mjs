@@ -31,6 +31,10 @@ const META = [
   { slug: 'launchlens-ai', lang: 'ts' },
   { slug: 'launchlens-research-studio', lang: 'ts' },
   { slug: 'model-eval-studio', lang: 'ts' },
+  { slug: 'ai-life-progress-coach', lang: 'ts' },
+  { slug: 'vision-centric-financial-swarm', lang: 'py' },
+  { slug: 'deepnerve-3d', lang: 'py' },
+  { slug: 'CampusTradeAI', lang: 'js' },
   { slug: 'codex-zcode-remote-relay', lang: 'js' },
   { slug: 'LangGraph-Financial-Swarm', lang: 'py' },
   { slug: 'safety-critical-battery-prognostics', lang: 'py' },
@@ -43,6 +47,30 @@ const FALLBACK_STACKS = {
     { name: 'node', source: 'manual' },
     { name: 'json-rpc', source: 'manual' },
     { name: 'websocket', source: 'manual' },
+  ],
+  'ai-life-progress-coach': [
+    { name: 'next', source: 'manual' },
+    { name: 'react', source: 'manual' },
+    { name: 'prisma', source: 'manual' },
+    { name: 'vitest', source: 'manual' },
+  ],
+  CampusTradeAI: [
+    { name: 'wechat-miniprogram', source: 'manual' },
+    { name: 'cloud-functions', source: 'manual' },
+    { name: 'node', source: 'manual' },
+    { name: 'typescript', source: 'manual' },
+  ],
+  'vision-centric-financial-swarm': [
+    { name: 'colpali', source: 'manual' },
+    { name: 'langgraph', source: 'manual' },
+    { name: 'fastapi', source: 'manual' },
+    { name: 'next', source: 'manual' },
+  ],
+  'deepnerve-3d': [
+    { name: 'torch', source: 'manual' },
+    { name: 'monai', source: 'manual' },
+    { name: 'swinunetr', source: 'manual' },
+    { name: 'simpleitk', source: 'manual' },
   ],
 };
 
@@ -212,7 +240,7 @@ async function fetchStackForRepo(meta) {
 }
 
 async function main() {
-  console.log('[fetch-stack] Fetching stacks for 7 repos...');
+  console.log(`[fetch-stack] Fetching stacks for ${META.length} repos...`);
   const started = Date.now();
 
   const entries = await Promise.all(META.map(async (meta) => {

@@ -37,7 +37,7 @@ export interface Project {
   description: string;
   /** Truncated, single-sentence tagline for cards. */
   tagline: string;
-  /** Optional 1–2 sentence Chinese elevator pitch — written for non-technical
+  /** Optional 1-2 sentence Chinese elevator pitch - written for non-technical
    *  visitors / investors. Renders right under the English tagline with a
    *  distinct visual treatment (left emerald accent + lighter color). */
   pitchZh?: string;
@@ -83,14 +83,14 @@ export interface Project {
   stack: ProjectStackEntry[];
 
   // ----- Hand-curated content -----
-  /** Per-project headline metric (only on 4 of 7). */
+  /** Per-project headline metric. */
   headline: ProjectHeadline | null;
   /** Cross-reference slugs to related projects. */
   references: string[];
 
   // ----- URLs -----
-  /** GitHub repo URL. */
-  githubUrl: string;
+  /** Public GitHub repo URL. Null when the case is visible but the repo is not public yet. */
+  githubUrl: string | null;
   /** Live demo URL (null when no deployment exists). */
   demoUrl: string | null;
   /** Whether this project has a live demo. */

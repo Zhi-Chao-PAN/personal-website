@@ -50,6 +50,22 @@ const SKILL_MATRIX = [
     accent: 'bg-amber-300',
   },
   {
+    label: 'Multimodal document AI',
+    level: 'vision retrieval',
+    proof: 'Financial Swarm',
+    href: '/projects/vision-centric-financial-swarm',
+    text: '把财报、表格和图表当作视觉证据处理，用检索、裁剪和 agent verification 保留页面结构里的关键信息。',
+    accent: 'bg-cyan-300',
+  },
+  {
+    label: 'Medical AI prototyping',
+    level: '3d segmentation',
+    proof: 'DeepNerve-3D',
+    href: '/projects/deepnerve-3d',
+    text: '围绕小目标、低对比度、拓扑连续性和显存限制设计 pipeline，展示研究问题落地成工程原型的能力。',
+    accent: 'bg-violet-300',
+  },
+  {
     label: 'ML reliability',
     level: 'uncertainty aware',
     proof: 'Battery Prognostics',
@@ -110,10 +126,10 @@ export function FeaturedCaseStudiesSection() {
               [ index_02 / featured cases ]
             </span>
             <h2 className="mt-5 text-3xl md:text-5xl font-black tracking-tight text-white leading-[1.05]">
-              Three case studies to open first
+              Four case studies to open first
             </h2>
             <p className="mt-6 max-w-md text-base md:text-lg leading-relaxed text-zinc-400">
-              这三个案例分别代表 AI 产品工程、多智能体编排和 RAG/评测能力，也构成我当前最清晰的技术主线。
+              这四个案例分别代表 AI 产品工程、多模态金融 RAG、医疗影像研究工程和多智能体编排，能更完整地说明我正在走向的技术方向。
             </p>
           </div>
 
@@ -247,7 +263,7 @@ export function SkillMatrixSection() {
             Capabilities shown through projects
           </h2>
           <p className="mt-6 text-base md:text-lg leading-relaxed text-zinc-400">
-            能力不单独罗列，而是落在可以打开的项目里：产品工作流、多智能体编排、RAG 评测和可靠性实验都有对应案例。
+            能力不单独罗列，而是落在可以打开的项目里：产品工作流、多智能体编排、多模态 RAG、医学影像和可靠性实验都有对应案例。
           </p>
         </div>
 

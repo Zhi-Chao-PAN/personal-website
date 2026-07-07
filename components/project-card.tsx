@@ -227,20 +227,22 @@ export function ProjectCard({ project, priorityImage = false, compact = false }:
                 </a>
               </span>
             ) : null}
-            <span
-              onClick={(e) => e.stopPropagation()}
-              className="flex items-center gap-1.5 text-zinc-500 group-hover/card:text-white transition-colors"
-            >
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-1.5"
+            {project.githubUrl ? (
+              <span
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center gap-1.5 text-zinc-500 group-hover/card:text-white transition-colors"
               >
-                <span>github</span>
-                <span aria-hidden>↗</span>
-              </a>
-            </span>
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-1.5"
+                >
+                  <span>github</span>
+                  <span aria-hidden>↗</span>
+                </a>
+              </span>
+            ) : null}
           </div>
           <span className="text-zinc-600 group-hover/card:text-emerald-400 transition-colors flex items-center gap-1.5">
             <span>details</span>

@@ -201,14 +201,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   live demo -&gt;
                 </a>
               ) : null}
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-md border border-white/10 bg-white/[0.02] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-zinc-300 transition-colors hover:border-white/30 hover:text-white"
-              >
-                github repo -&gt;
-              </a>
+              {project.githubUrl ? (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-md border border-white/10 bg-white/[0.02] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-zinc-300 transition-colors hover:border-white/30 hover:text-white"
+                >
+                  github repo -&gt;
+                </a>
+              ) : null}
               <a
                 href={mailto}
                 className="rounded-md border border-sky-300/20 bg-sky-300/[0.04] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-sky-300 transition-colors hover:border-sky-300/50"
