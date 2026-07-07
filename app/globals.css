@@ -22,6 +22,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html.p10-loader-active,
+html.p10-loader-active body {
+  overflow: hidden;
+}
+
 /* Lenis Recommended CSS */
 html.lenis, html.lenis body {
   height: auto;
@@ -296,6 +301,31 @@ html.lenis, html.lenis body {
   }
 }
 
+@keyframes ll-p10-grain {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(-1%, 1%, 0);
+  }
+  50% {
+    transform: translate3d(1%, -1%, 0);
+  }
+  75% {
+    transform: translate3d(1%, 1%, 0);
+  }
+}
+
+@keyframes ll-p10-rail {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 160px 0, 0 96px;
+  }
+}
+
 @keyframes ll-signature-orbit {
   from {
     transform: rotateX(64deg) rotateZ(var(--orbit-start)) translateZ(-62px);
@@ -303,6 +333,183 @@ html.lenis, html.lenis body {
   to {
     transform: rotateX(64deg) rotateZ(calc(var(--orbit-start) + 1turn)) translateZ(-62px);
   }
+}
+
+.p10-loader {
+  --p10-yellow: #f3e700;
+  --p10-black: #050505;
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100svh;
+  padding: clamp(1rem, 2vw, 1.75rem);
+  background: var(--p10-yellow);
+  color: var(--p10-black);
+  isolation: isolate;
+}
+
+.p10-loader__grain {
+  pointer-events: none;
+  position: absolute;
+  inset: -12%;
+  z-index: 0;
+  opacity: 0.12;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 5px),
+    radial-gradient(circle at 70% 64%, rgba(0, 0, 0, 0.16) 0 1px, transparent 1px 6px);
+  background-size: 17px 17px, 23px 23px;
+  animation: ll-p10-grain 0.42s steps(2) infinite;
+}
+
+.p10-loader__rail {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.2;
+  background:
+    linear-gradient(90deg, transparent 0 49%, rgba(0, 0, 0, 0.28) 49.5%, transparent 50.5%),
+    repeating-linear-gradient(
+      180deg,
+      transparent 0,
+      transparent 31px,
+      rgba(0, 0, 0, 0.18) 32px,
+      transparent 33px
+    );
+  background-size: 160px 100%, 100% 96px;
+  mix-blend-mode: multiply;
+  animation: ll-p10-rail 4.8s linear infinite;
+}
+
+.p10-loader__meta,
+.p10-loader__bottom,
+.p10-loader__stage {
+  position: relative;
+  z-index: 2;
+}
+
+.p10-loader__meta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: clamp(0.62rem, 0.8vw, 0.78rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.p10-loader__meta span {
+  min-width: 0;
+}
+
+.p10-loader__meta span:last-child {
+  text-align: right;
+}
+
+.p10-loader__stage {
+  display: grid;
+  align-content: center;
+  min-height: 0;
+  padding-block: 5vh;
+}
+
+.p10-loader__number {
+  overflow: hidden;
+  width: max-content;
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: clamp(5.8rem, 19vw, 19rem);
+  font-weight: 950;
+  line-height: 0.72;
+  letter-spacing: -0.04em;
+  color: var(--p10-black);
+  font-variant-numeric: tabular-nums;
+}
+
+.p10-loader__title {
+  margin-top: clamp(0.7rem, 1.2vw, 1.1rem);
+  display: grid;
+  gap: 0.05em;
+}
+
+.p10-loader__mask {
+  overflow: hidden;
+}
+
+.p10-loader__word {
+  display: block;
+  width: max-content;
+  font-size: clamp(4.1rem, 15.8vw, 17rem);
+  font-weight: 950;
+  line-height: 0.74;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: clamp(1px, 0.14vw, 2px) var(--p10-black);
+}
+
+.p10-loader__mask:nth-child(2) .p10-loader__word {
+  color: var(--p10-black);
+  -webkit-text-stroke: 0;
+  padding-left: clamp(1.2rem, 6vw, 7rem);
+}
+
+.p10-loader__mask:nth-child(3) .p10-loader__word {
+  padding-left: clamp(0.4rem, 2.5vw, 3rem);
+}
+
+.p10-loader__bottom {
+  display: grid;
+  grid-template-columns: max-content minmax(6rem, 1fr) max-content;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.4rem);
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: clamp(0.6rem, 0.82vw, 0.78rem);
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.p10-loader__bar {
+  position: relative;
+  display: block;
+  height: 2px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.p10-loader__bar span {
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: var(--p10-black);
+}
+
+.p10-loader__cuts {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: grid;
+  grid-template-rows: repeat(8, 1fr);
+}
+
+.p10-loader__cut {
+  display: block;
+  background: var(--p10-black);
+  transform-origin: left center;
+}
+
+.p10-loader__cut:nth-child(even) {
+  transform-origin: right center;
 }
 
 .reactbits-hero-aurora {
@@ -1397,6 +1604,47 @@ html.lenis, html.lenis body {
 }
 
 @media (max-width: 767px) {
+  .p10-loader {
+    padding: 1rem;
+  }
+
+  .p10-loader__meta {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.5rem;
+    max-width: 18rem;
+  }
+
+  .p10-loader__meta span:last-child {
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+
+  .p10-loader__stage {
+    align-content: end;
+    padding-bottom: 14vh;
+  }
+
+  .p10-loader__number {
+    font-size: clamp(4.8rem, 27vw, 7.4rem);
+  }
+
+  .p10-loader__word {
+    font-size: clamp(4.2rem, 25vw, 7.1rem);
+  }
+
+  .p10-loader__mask:nth-child(2) .p10-loader__word {
+    padding-left: 0.8rem;
+  }
+
+  .p10-loader__mask:nth-child(3) .p10-loader__word {
+    padding-left: 0;
+  }
+
+  .p10-loader__bottom {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
   .signature-stage {
     min-height: auto;
   }
@@ -1499,6 +1747,8 @@ html.lenis, html.lenis body {
 @media (prefers-reduced-motion: reduce) {
   .ll-modal-panel,
   .ll-modal-backdrop,
+  .p10-loader__grain,
+  .p10-loader__rail,
   .reactbits-hero-aurora,
   .reactbits-hero-scan,
   .reactbits-hero-frame span,
