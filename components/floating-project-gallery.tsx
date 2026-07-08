@@ -22,204 +22,204 @@ interface FloatingProjectGalleryProps {
 
 const LAYOUT = [
   {
-    left: '-1%',
-    top: '48%',
-    width: '12.6rem',
-    aspect: '1.45 / 1',
-    rotate: -3,
-    depth: 0.88,
-    start: 0.08,
-    end: 0.58,
-    entryX: -820,
-    entryY: 34,
-    exitX: 820,
-    exitY: -280,
-    radiusX: 575,
-    radiusY: 205,
-    angle: 2.96,
-    turn: -0.86,
-    lift: -18,
-    z: 15,
-  },
-  {
-    left: '14%',
-    top: '39%',
-    width: '12.4rem',
-    aspect: '1.35 / 1',
-    rotate: 2,
-    depth: 0.82,
-    start: 0.14,
-    end: 0.68,
-    entryX: -760,
-    entryY: 290,
-    exitX: 680,
-    exitY: -340,
-    radiusX: 520,
-    radiusY: 178,
-    angle: 2.38,
-    turn: -0.94,
-    lift: -38,
-    z: 14,
-  },
-  {
-    left: '33%',
-    top: '31%',
-    width: '12rem',
-    aspect: '1.62 / 1',
-    rotate: -2,
-    depth: 0.72,
-    start: 0.2,
-    end: 0.74,
-    entryX: -320,
-    entryY: -430,
-    exitX: 760,
-    exitY: 180,
-    radiusX: 465,
-    radiusY: 148,
-    angle: 1.75,
-    turn: -0.9,
-    lift: -78,
-    z: 13,
-  },
-  {
-    left: '52%',
-    top: '30%',
-    width: '12.8rem',
-    aspect: '1.28 / 1',
-    rotate: 1,
-    depth: 0.78,
-    start: 0.26,
-    end: 0.82,
-    entryX: 160,
-    entryY: -460,
-    exitX: -740,
-    exitY: 240,
-    radiusX: 442,
-    radiusY: 170,
-    angle: 0.98,
-    turn: -0.96,
-    lift: -62,
-    z: 13,
-  },
-  {
-    left: '75%',
-    top: '40%',
-    width: '12.8rem',
-    aspect: '1.7 / 1',
-    rotate: 2,
-    depth: 0.86,
-    start: 0.32,
-    end: 0.9,
-    entryX: 820,
-    entryY: -180,
-    exitX: -760,
-    exitY: -120,
-    radiusX: 520,
-    radiusY: 186,
-    angle: 0.24,
-    turn: -0.88,
-    lift: -30,
-    z: 15,
-  },
-  {
-    left: '94%',
-    top: '51%',
-    width: '11.6rem',
-    aspect: '0.82 / 1',
-    rotate: 3,
-    depth: 1,
-    start: 0.38,
-    end: 0.98,
-    entryX: 850,
-    entryY: 120,
-    exitX: -840,
-    exitY: 330,
-    radiusX: 610,
-    radiusY: 240,
-    angle: -0.34,
-    turn: -0.92,
-    lift: 8,
+    left: '20%',
+    top: '76%',
+    width: '21rem',
+    aspect: '1.78 / 1',
+    rotate: -1.6,
+    depth: 1.14,
+    phase: 0.18,
+    span: 0.62,
+    x: -530,
+    y: 278,
+    entryX: -900,
+    entryY: 430,
+    exitX: 660,
+    exitY: -265,
+    bendX: -82,
+    bendY: -130,
+    tilt: 6.8,
     z: 16,
   },
   {
-    left: '10%',
-    top: '77%',
-    width: '18.5rem',
-    aspect: '1.78 / 1',
-    rotate: -2,
-    depth: 1.14,
-    start: 0.44,
-    end: 1,
-    entryX: -860,
-    entryY: 520,
-    exitX: 760,
-    exitY: -420,
-    radiusX: 650,
-    radiusY: 270,
-    angle: -1.12,
-    turn: -0.82,
-    lift: 54,
-    z: 18,
+    left: '76%',
+    top: '45%',
+    width: '13.6rem',
+    aspect: '1.58 / 1',
+    rotate: 1.2,
+    depth: 0.86,
+    phase: 0.22,
+    span: 0.63,
+    x: 520,
+    y: -36,
+    entryX: 870,
+    entryY: 210,
+    exitX: -700,
+    exitY: 250,
+    bendX: 92,
+    bendY: -68,
+    tilt: -5.8,
+    z: 14,
   },
   {
-    left: '58%',
-    top: '78%',
-    width: '19.5rem',
+    left: '48%',
+    top: '30%',
+    width: '12.7rem',
+    aspect: '1.62 / 1',
+    rotate: -0.9,
+    depth: 0.76,
+    phase: 0.26,
+    span: 0.62,
+    x: -155,
+    y: -220,
+    entryX: -170,
+    entryY: -575,
+    exitX: 790,
+    exitY: 138,
+    bendX: -44,
+    bendY: 62,
+    tilt: 4.2,
+    z: 13,
+  },
+  {
+    left: '61%',
+    top: '31%',
+    width: '13rem',
+    aspect: '1.42 / 1',
+    rotate: 0.7,
+    depth: 0.82,
+    phase: 0.3,
+    span: 0.62,
+    x: 170,
+    y: -220,
+    entryX: 560,
+    entryY: -560,
+    exitX: -790,
+    exitY: 150,
+    bendX: 52,
+    bendY: 76,
+    tilt: -4.6,
+    z: 13,
+  },
+  {
+    left: '91%',
+    top: '52%',
+    width: '10.8rem',
+    aspect: '0.78 / 1',
+    rotate: 1.6,
+    depth: 0.98,
+    phase: 0.34,
+    span: 0.62,
+    x: 735,
+    y: 72,
+    entryX: 925,
+    entryY: -120,
+    exitX: -850,
+    exitY: -116,
+    bendX: 68,
+    bendY: -42,
+    tilt: -8.4,
+    z: 15,
+  },
+  {
+    left: '69%',
+    top: '79%',
+    width: '21.5rem',
     aspect: '1.7 / 1',
-    rotate: -1,
+    rotate: 1.2,
     depth: 1.18,
-    start: 0.5,
-    end: 1,
-    entryX: 820,
+    phase: 0.38,
+    span: 0.63,
+    x: 430,
+    y: 292,
+    entryX: 800,
     entryY: 520,
-    exitX: -780,
-    exitY: -390,
-    radiusX: 690,
-    radiusY: 294,
-    angle: -1.72,
-    turn: -0.86,
-    lift: 74,
+    exitX: -590,
+    exitY: -382,
+    bendX: 82,
+    bendY: -118,
+    tilt: -6.2,
     z: 17,
   },
   {
-    left: '86%',
-    top: '74%',
-    width: '13.2rem',
+    left: '9%',
+    top: '58%',
+    width: '10.8rem',
     aspect: '0.78 / 1',
-    rotate: 2,
-    depth: 1.06,
-    start: 0.54,
-    end: 1,
-    entryX: 900,
-    entryY: 360,
-    exitX: -520,
-    exitY: -500,
-    radiusX: 620,
-    radiusY: 280,
-    angle: -2.3,
-    turn: -0.8,
-    lift: 34,
-    z: 16,
+    rotate: -1.2,
+    depth: 0.94,
+    phase: 0.42,
+    span: 0.62,
+    x: -735,
+    y: 94,
+    entryX: -940,
+    entryY: 125,
+    exitX: 810,
+    exitY: -96,
+    bendX: -72,
+    bendY: 34,
+    tilt: 8.2,
+    z: 15,
   },
   {
-    left: '45%',
-    top: '78%',
-    width: '17.5rem',
+    left: '27%',
+    top: '42%',
+    width: '13.5rem',
+    aspect: '1.45 / 1',
+    rotate: -1.1,
+    depth: 0.88,
+    phase: 0.46,
+    span: 0.6,
+    x: -488,
+    y: -110,
+    entryX: -720,
+    entryY: -286,
+    exitX: 690,
+    exitY: 278,
+    bendX: -58,
+    bendY: 82,
+    tilt: 5.6,
+    z: 14,
+  },
+  {
+    left: '48%',
+    top: '90%',
+    width: '24rem',
+    aspect: '1.72 / 1',
+    rotate: -0.6,
+    depth: 1.22,
+    phase: 0.5,
+    span: 0.58,
+    x: -18,
+    y: 430,
+    entryX: 80,
+    entryY: 680,
+    exitX: 555,
+    exitY: -455,
+    bendX: -74,
+    bendY: -120,
+    tilt: 4.8,
+    z: 18,
+  },
+  {
+    left: '52%',
+    top: '15%',
+    width: '15rem',
     aspect: '1.45 / 1',
     rotate: 1,
-    depth: 1.1,
-    start: 0.02,
-    end: 0.46,
-    entryX: 120,
-    entryY: 620,
-    exitX: 760,
-    exitY: -500,
-    radiusX: 600,
-    radiusY: 250,
-    angle: -1.52,
-    turn: -0.9,
-    lift: 42,
-    z: 14,
+    depth: 0.8,
+    phase: 0.54,
+    span: 0.56,
+    x: 98,
+    y: -360,
+    entryX: 82,
+    entryY: -650,
+    exitX: -620,
+    exitY: 360,
+    bendX: 50,
+    bendY: 112,
+    tilt: -5.4,
+    z: 12,
   },
 ] as const;
 
@@ -230,12 +230,12 @@ const GALLERY_PROJECT_PRIORITY = [
   'launchlens-research-studio',
   'model-eval-studio',
   'ai-life-progress-coach',
-  'safety-critical-battery-prognostics',
-  'structure-aware-rag-empirical',
   'vision-centric-financial-swarm',
+  'safety-critical-battery-prognostics',
   'deepnerve-3d',
-  'CampusTradeAI',
   'codex-zcode-remote-relay',
+  'structure-aware-rag-empirical',
+  'CampusTradeAI',
 ] as const;
 
 function clamp01(value: number) {
@@ -245,6 +245,11 @@ function clamp01(value: number) {
 function smoothstep(value: number) {
   const x = clamp01(value);
   return x * x * (3 - 2 * x);
+}
+
+function easeInOutCubic(value: number) {
+  const x = clamp01(value);
+  return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
 }
 
 function lerp(start: number, end: number, value: number) {
@@ -298,15 +303,20 @@ function FloatingProjectGalleryContent({ projects, stats }: FloatingProjectGalle
 
       gsap.set(chromeItems, { opacity: 0, y: 18 });
       gsap.set(title, { opacity: 0 });
-      gsap.set(cards, { opacity: 0, y: 90, scale: 0.9 });
 
       if (reducedMotion || isCompact) {
         gsap.set(chromeItems, { opacity: 1, y: 0 });
         gsap.set(title, { opacity: 1 });
         gsap.set(ribbon, { opacity: 0 });
-        gsap.set(cards, { opacity: isCompact ? 0.64 : 1, y: 0, scale: 1 });
+        cards.forEach((card, index) => {
+          const layout = LAYOUT[index % LAYOUT.length];
+          card.style.opacity = String(isCompact ? 0.58 : 1);
+          card.style.transform = `translate(-50%, -50%) rotate(${layout.rotate}deg) scale(${isCompact ? 0.86 : 1})`;
+        });
         return;
       }
+
+      gsap.set(cards, { opacity: 0 });
 
       const enter = gsap.timeline({
         defaults: { ease: 'power4.out' },
@@ -339,75 +349,88 @@ function FloatingProjectGalleryContent({ projects, stats }: FloatingProjectGalle
         }
 
         if (ribbon) {
-          const ribbonExit = smoothstep((progress - 0.08) / 0.28);
-          const ribbonOpacity = 1 - ribbonExit;
-          const ribbonX = -70 - progress * 340;
-          const ribbonY = -18 - ribbonExit * 500;
-          const ribbonScale = 1.07 - progress * 0.1;
-          ribbon.style.opacity = (ribbonOpacity * 0.98).toFixed(3);
-          ribbon.style.transform = `translate3d(${ribbonX.toFixed(1)}px, ${ribbonY.toFixed(1)}px, 0) rotate(${(-4 - progress * 5).toFixed(2)}deg) scale(${ribbonScale.toFixed(3)})`;
+          const ribbonExit = smoothstep((progress - 0.12) / 0.24);
+          const ribbonOpacity = (1 - ribbonExit) * 0.62;
+          const ribbonX = -92 - progress * 300;
+          const ribbonY = -26 - ribbonExit * 470;
+          const ribbonScale = 1.08 - progress * 0.08;
+          ribbon.style.opacity = ribbonOpacity.toFixed(3);
+          ribbon.style.transform = `translate3d(${ribbonX.toFixed(1)}px, ${ribbonY.toFixed(1)}px, 0) rotate(${(-3.5 - progress * 2.4).toFixed(2)}deg) scale(${ribbonScale.toFixed(3)})`;
         }
 
         if (title) {
-          const revealIn = smoothstep((progress - 0.3) / 0.18);
-          const revealOut = 1 - smoothstep((progress - 0.94) / 0.08);
+          const revealIn = smoothstep((progress - 0.34) / 0.16);
+          const revealOut = 1 - smoothstep((progress - 0.97) / 0.06);
           const reveal = revealIn * revealOut;
-          const breathe = Math.sin(progress * Math.PI * 2) * 3;
+          const focus = smoothstep((progress - 0.41) / 0.1);
+          const breathe = Math.sin(progress * Math.PI * 1.6) * 2.2;
+          const blur = (1 - focus) * reveal * 4.2 + smoothstep((progress - 0.92) / 0.08) * 1.7;
           title.style.opacity = reveal.toFixed(3);
           title.style.setProperty('--floating-title-y', `${(24 - reveal * 24 + breathe).toFixed(2)}px`);
-          title.style.setProperty('--floating-title-scale', `${(0.94 + reveal * 0.06).toFixed(3)}`);
+          title.style.setProperty('--floating-title-scale', `${(0.965 + reveal * 0.035).toFixed(3)}`);
+          title.style.setProperty('--floating-title-blur', `${blur.toFixed(2)}px`);
         }
+
+        const pinWidth = pin.clientWidth;
+        const pinHeight = pin.clientHeight;
+        const viewportScale = Math.min(1, Math.max(0.72, pinWidth / 1600));
+        const sweep = smoothstep((progress - 0.16) / 0.78);
+        const cameraX = lerp(-48, 54, sweep) + Math.sin(progress * Math.PI * 1.15) * 18;
+        const cameraY = lerp(82, -72, sweep);
 
         cards.forEach((card, index) => {
           const layout = LAYOUT[index % LAYOUT.length];
-          const span = layout.end - layout.start;
-          const local = clamp01((progress - layout.start) / span);
-          const gateIn = smoothstep((progress - layout.start) / 0.08);
-          const gateOut = 1 - smoothstep((progress - layout.end) / 0.1);
+          const local = clamp01((progress - layout.phase) / layout.span);
+          const gateIn = smoothstep((progress - layout.phase) / 0.095);
+          const gateOut = 1 - smoothstep((progress - (layout.phase + layout.span * 0.9)) / 0.11);
           const visible = gateIn * gateOut;
-          const enterT = smoothstep(local / 0.18);
-          const orbitT = smoothstep((local - 0.12) / 0.7);
-          const exitT = smoothstep((local - 0.84) / 0.16);
-          const angle = layout.angle + orbitT * layout.turn * Math.PI * 1.86;
-          const orbitX = Math.cos(angle) * layout.radiusX;
-          const orbitY = Math.sin(angle) * layout.radiusY + layout.lift;
-          const pullX = lerp(layout.entryX, orbitX, enterT);
-          const pullY = lerp(layout.entryY, orbitY, enterT);
-          const targetX = lerp(pullX, layout.exitX, exitT) * 0.88;
-          const targetY = lerp(pullY, layout.exitY, exitT) * 0.84;
-          const wave = Math.sin(progress * Math.PI * 4 + index * 0.74);
-          const pinWidth = pin.clientWidth;
-          const pinHeight = pin.clientHeight;
+          const enterT = easeInOutCubic(Math.min(local * 2, 1));
+          const exitT = easeInOutCubic(Math.max(local * 2 - 1, 0));
+          const passT = smoothstep(local);
+          const nearT = Math.sin(local * Math.PI);
+          const travelX =
+            local < 0.5
+              ? lerp(layout.entryX, layout.x, enterT)
+              : lerp(layout.x, layout.exitX, exitT);
+          const travelY =
+            local < 0.5
+              ? lerp(layout.entryY, layout.y, enterT)
+              : lerp(layout.y, layout.exitY, exitT);
+          const arcX = Math.sin(local * Math.PI) * layout.bendX;
+          const arcY = Math.sin(local * Math.PI * 1.08) * layout.bendY;
+          const targetX = (travelX + arcX + cameraX * (0.5 + layout.depth * 0.24)) * viewportScale;
+          const targetY = (travelY + arcY + cameraY * (0.55 + layout.depth * 0.18)) * viewportScale;
           const anchorX = (parseFloat(layout.left) / 100) * pinWidth;
           const anchorY = (parseFloat(layout.top) / 100) * pinHeight;
-          const cardWidth = card.offsetWidth;
-          const cardHeight = card.offsetHeight;
-          const translateX = pinWidth / 2 + targetX - anchorX - cardWidth / 2;
-          const translateY = pinHeight / 2 + targetY - anchorY - cardHeight / 2;
-          const frontness = (Math.sin(angle) + 1) / 2;
+          const translateX = pinWidth / 2 + targetX - anchorX;
+          const translateY = pinHeight / 2 + targetY - anchorY;
           const scale =
-            lerp(0.58, 0.82 + layout.depth * 0.08 + frontness * 0.1, enterT) *
-            (1 - exitT * 0.08);
-          const z = lerp(-260, -64 + layout.depth * 72 + frontness * 118, enterT) - exitT * 108;
+            lerp(0.58, 0.88 + layout.depth * 0.12, nearT) *
+            (1 - exitT * 0.1);
+          const z = lerp(-520, -105 + layout.depth * 156, nearT) - exitT * 170;
           const rotate =
             layout.rotate +
-            Math.sin(angle) * (1.4 + layout.depth * 1.4) +
-            orbitT * layout.turn * 5 +
-            exitT * layout.turn * 3;
+            Math.sin((passT + index * 0.07) * Math.PI * 2) * 1.35 +
+            lerp(layout.entryX > layout.x ? 1.2 : -1.2, layout.exitX > layout.x ? 1.1 : -1.1, exitT);
           const mediaRy =
-            Math.cos(angle) * (5 + layout.depth * 4) +
-            lerp(layout.entryX > 0 ? 4 : -4, layout.exitX > 0 ? -4 : 4, exitT) * (1 - orbitT);
-          const mediaRx = -1 + frontness * 3 + wave * 0.55;
-          const titleCrossing = 1 - smoothstep((Math.hypot(targetX / 430, targetY / 245) - 0.58) / 0.78);
-          const titleDim = lerp(1, 0.62 + frontness * 0.16, titleCrossing);
-          const imageWeight = card.dataset.imageType === 'og-poster' ? 0.72 : 1;
+            lerp(layout.tilt, -layout.tilt * 0.72, passT) +
+            Math.sin(progress * Math.PI * 1.8 + index) * 0.7;
+          const mediaRx =
+            lerp(2.2, -1.6, passT) +
+            Math.cos(progress * Math.PI * 1.35 + index * 0.4) * 0.45;
+          const titleCrossing =
+            1 - smoothstep((Math.hypot(targetX / 460, targetY / 260) - 0.62) / 0.6);
+          const imageWeight = card.dataset.imageType === 'og-poster' ? 0.95 : 1;
+          const titleDim = lerp(1, 0.84, titleCrossing);
+          const blur = Math.max(0, lerp(2.3, 0.05, nearT) + exitT * 0.9 - layout.depth * 0.28);
           const opacity =
-            visible * Math.min(1, 0.56 + layout.depth * 0.12 + frontness * 0.22) * titleDim * imageWeight;
+            visible * Math.min(1, 0.78 + layout.depth * 0.18) * titleDim * imageWeight;
 
           card.style.zIndex = String(layout.z);
+          card.style.setProperty('--fg-card-blur', `${blur.toFixed(2)}px`);
           card.style.setProperty('--fg-media-rx', `${mediaRx.toFixed(2)}deg`);
           card.style.setProperty('--fg-media-ry', `${mediaRy.toFixed(2)}deg`);
-          card.style.transform = `translate3d(${translateX.toFixed(2)}px, ${translateY.toFixed(2)}px, ${z.toFixed(2)}px) rotate(${rotate.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
+          card.style.transform = `translate3d(${translateX.toFixed(2)}px, ${translateY.toFixed(2)}px, ${z.toFixed(2)}px) rotate(${rotate.toFixed(2)}deg) scale(${scale.toFixed(3)}) translate(-50%, -50%)`;
           card.style.opacity = opacity.toFixed(3);
         });
       };

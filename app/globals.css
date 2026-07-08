@@ -1373,16 +1373,16 @@ html.lenis, html.lenis body {
 
 .floating-gallery-section {
   --floating-progress: 0;
-  height: 520vh;
-  min-height: 4300px;
+  height: 560vh;
+  min-height: 4550px;
   isolation: isolate;
 }
 
 .floating-gallery-pin {
   isolation: isolate;
   background:
-    radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.025), transparent 30%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.015), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.018)),
+    radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.018), transparent 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.012)),
     #030303;
 }
 
@@ -1391,7 +1391,7 @@ html.lenis, html.lenis body {
   position: absolute;
   inset: -8%;
   z-index: 1;
-  opacity: 0.18;
+  opacity: 0.11;
   background:
     radial-gradient(circle at 18% 28%, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 4px),
     radial-gradient(circle at 70% 62%, rgba(255, 255, 255, 0.055) 0 1px, transparent 1px 5px);
@@ -1407,9 +1407,9 @@ html.lenis, html.lenis body {
   inset: 0;
   z-index: 6;
   background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.82), transparent 16%, transparent 84%, rgba(0, 0, 0, 0.86)),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.82), transparent 20%, transparent 80%, rgba(0, 0, 0, 0.86)),
-    radial-gradient(ellipse at center, transparent 0%, transparent 64%, rgba(0, 0, 0, 0.8) 100%);
+    linear-gradient(90deg, rgba(0, 0, 0, 0.76), transparent 17%, transparent 84%, rgba(0, 0, 0, 0.78)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.76), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.78)),
+    radial-gradient(ellipse at center, transparent 0%, transparent 64%, rgba(0, 0, 0, 0.68) 100%);
 }
 
 .floating-gallery-ribbon {
@@ -1432,10 +1432,10 @@ html.lenis, html.lenis body {
 
 .floating-gallery-ribbon path {
   fill: none;
-  stroke: #ff1c0a;
+  stroke: rgba(255, 255, 255, 0.9);
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 118;
+  stroke-width: 108;
 }
 
 .floating-gallery-kicker {
@@ -1454,7 +1454,9 @@ html.lenis, html.lenis body {
 .floating-gallery-title {
   --floating-title-y: 0px;
   --floating-title-scale: 1;
+  --floating-title-blur: 0px;
   isolation: isolate;
+  filter: blur(var(--floating-title-blur));
   transform: translate3d(0, calc(-50% + var(--floating-title-y)), 0) scale(var(--floating-title-scale));
   transform-origin: center center;
   text-shadow:
@@ -1471,9 +1473,9 @@ html.lenis, html.lenis body {
   z-index: -1;
   background: radial-gradient(
     ellipse at center,
-    rgba(0, 0, 0, 0.84),
-    rgba(0, 0, 0, 0.54) 42%,
-    transparent 72%
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.58) 42%,
+    transparent 74%
   );
 }
 
@@ -1551,31 +1553,34 @@ html.lenis, html.lenis body {
   position: absolute;
   inset: 0;
   z-index: 12;
-  perspective: 1400px;
-  perspective-origin: 50% 54%;
+  perspective: 1650px;
+  perspective-origin: 50% 52%;
   transform-style: preserve-3d;
 }
 
 .floating-gallery-card {
   --fg-media-rx: 0deg;
   --fg-media-ry: 0deg;
+  --fg-card-blur: 0px;
   position: absolute;
   left: var(--fg-left);
   top: var(--fg-top);
   z-index: var(--fg-z);
-  width: min(var(--fg-width), 20vw);
+  width: min(var(--fg-width), 30vw);
   min-width: 8rem;
   border: 0;
   background: transparent;
   padding: 0;
   color: inherit;
   cursor: pointer;
-  transform: translate3d(0, 0, 0) rotate(var(--fg-rotate)) scale(1);
+  transform: translate(-50%, -50%) rotate(var(--fg-rotate)) scale(1);
   transform-origin: center center;
+  backface-visibility: hidden;
   will-change: transform, opacity;
   filter:
-    drop-shadow(0 20px 26px rgba(0, 0, 0, 0.62))
-    drop-shadow(0 0 18px rgba(255, 255, 255, 0.025));
+    blur(var(--fg-card-blur))
+    drop-shadow(0 22px 30px rgba(0, 0, 0, 0.72))
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.025));
 }
 
 .floating-gallery-card__media {
@@ -1583,12 +1588,14 @@ html.lenis, html.lenis body {
   display: block;
   aspect-ratio: var(--fg-aspect, 1.45 / 1);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.045);
+  border-radius: 1px;
   background: #050505;
-  filter: brightness(1.04) contrast(1.04) saturate(1.08);
-  transform: perspective(1400px) rotateX(var(--fg-media-rx)) rotateY(var(--fg-media-ry));
+  filter: brightness(1.1) contrast(1.06) saturate(1.06);
+  transform: perspective(1650px) rotateX(var(--fg-media-rx)) rotateY(var(--fg-media-ry));
+  transform-origin: center center;
   transform-style: preserve-3d;
+  backface-visibility: hidden;
   transition:
     border-color 0.24s ease,
     filter 0.24s ease,
@@ -1602,7 +1609,7 @@ html.lenis, html.lenis body {
 
 .floating-gallery-card[data-image-type="og-poster"] .floating-gallery-card__media {
   background:
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05), transparent 62%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.075), transparent 62%),
     #030303;
 }
 
@@ -1612,10 +1619,10 @@ html.lenis, html.lenis body {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.13), transparent 28%, rgba(0, 0, 0, 0.32)),
-    radial-gradient(circle at 70% 20%, rgba(255, 255, 255, 0.18), transparent 28%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.11), transparent 28%, rgba(0, 0, 0, 0.24)),
+    radial-gradient(circle at 70% 20%, rgba(255, 255, 255, 0.13), transparent 28%);
   mix-blend-mode: screen;
-  opacity: 0.12;
+  opacity: 0.08;
 }
 
 .floating-gallery-card:hover,
@@ -1628,7 +1635,7 @@ html.lenis, html.lenis body {
 .floating-gallery-card:focus-visible .floating-gallery-card__media {
   border-color: rgba(255, 255, 255, 0.38);
   filter: brightness(1.14) saturate(1.18) contrast(1.1);
-  transform: perspective(1400px) rotateX(0deg) rotateY(0deg) scale(1.04);
+  transform: perspective(1650px) rotateX(0deg) rotateY(0deg) scale(1.04);
 }
 
 .floating-gallery-card__caption {
