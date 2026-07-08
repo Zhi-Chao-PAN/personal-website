@@ -1373,8 +1373,8 @@ html.lenis, html.lenis body {
 
 .floating-gallery-section {
   --floating-progress: 0;
-  height: 430vh;
-  min-height: 3400px;
+  height: 520vh;
+  min-height: 4300px;
   isolation: isolate;
 }
 
@@ -1454,6 +1454,7 @@ html.lenis, html.lenis body {
 .floating-gallery-title {
   --floating-title-y: 0px;
   --floating-title-scale: 1;
+  isolation: isolate;
   transform: translate3d(0, calc(-50% + var(--floating-title-y)), 0) scale(var(--floating-title-scale));
   transform-origin: center center;
   text-shadow:
@@ -1462,7 +1463,22 @@ html.lenis, html.lenis body {
   will-change: transform, opacity;
 }
 
+.floating-gallery-title::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: -3.4rem 8%;
+  z-index: -1;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.84),
+    rgba(0, 0, 0, 0.54) 42%,
+    transparent 72%
+  );
+}
+
 .floating-gallery-title-text {
+  position: relative;
   max-width: 48rem;
   font-size: 3rem;
 }
@@ -1535,12 +1551,14 @@ html.lenis, html.lenis body {
   position: absolute;
   inset: 0;
   z-index: 12;
-  perspective: 1120px;
+  perspective: 980px;
   perspective-origin: 50% 54%;
   transform-style: preserve-3d;
 }
 
 .floating-gallery-card {
+  --fg-media-rx: 5deg;
+  --fg-media-ry: -10deg;
   position: absolute;
   left: var(--fg-left);
   top: var(--fg-top);
@@ -1569,7 +1587,7 @@ html.lenis, html.lenis body {
   border-radius: 2px;
   background: #050505;
   filter: brightness(1.08) contrast(1.08) saturate(1.14);
-  transform: perspective(960px) rotateX(5deg) rotateY(-10deg);
+  transform: perspective(960px) rotateX(var(--fg-media-rx)) rotateY(var(--fg-media-ry));
   transform-style: preserve-3d;
   transition:
     border-color 0.24s ease,
@@ -1577,8 +1595,9 @@ html.lenis, html.lenis body {
     transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.floating-gallery-card:nth-child(even) .floating-gallery-card__media {
-  transform: perspective(960px) rotateX(-4deg) rotateY(10deg);
+.floating-gallery-card:nth-child(even) {
+  --fg-media-rx: -4deg;
+  --fg-media-ry: 10deg;
 }
 
 .floating-gallery-card__media::after {
