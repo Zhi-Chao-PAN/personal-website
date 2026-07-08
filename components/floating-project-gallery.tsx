@@ -24,9 +24,9 @@ const LAYOUT = [
   {
     left: '-1%',
     top: '48%',
-    width: '14.4rem',
+    width: '12.6rem',
     aspect: '1.45 / 1',
-    rotate: -10,
+    rotate: -3,
     depth: 0.88,
     start: 0.08,
     end: 0.58,
@@ -44,9 +44,9 @@ const LAYOUT = [
   {
     left: '14%',
     top: '39%',
-    width: '14rem',
+    width: '12.4rem',
     aspect: '1.35 / 1',
-    rotate: 4,
+    rotate: 2,
     depth: 0.82,
     start: 0.14,
     end: 0.68,
@@ -64,9 +64,9 @@ const LAYOUT = [
   {
     left: '33%',
     top: '31%',
-    width: '13.4rem',
+    width: '12rem',
     aspect: '1.62 / 1',
-    rotate: -3,
+    rotate: -2,
     depth: 0.72,
     start: 0.2,
     end: 0.74,
@@ -84,9 +84,9 @@ const LAYOUT = [
   {
     left: '52%',
     top: '30%',
-    width: '15rem',
+    width: '12.8rem',
     aspect: '1.28 / 1',
-    rotate: 3,
+    rotate: 1,
     depth: 0.78,
     start: 0.26,
     end: 0.82,
@@ -104,9 +104,9 @@ const LAYOUT = [
   {
     left: '75%',
     top: '40%',
-    width: '14.6rem',
+    width: '12.8rem',
     aspect: '1.7 / 1',
-    rotate: 7,
+    rotate: 2,
     depth: 0.86,
     start: 0.32,
     end: 0.9,
@@ -124,9 +124,9 @@ const LAYOUT = [
   {
     left: '94%',
     top: '51%',
-    width: '13.2rem',
+    width: '11.6rem',
     aspect: '0.82 / 1',
-    rotate: 16,
+    rotate: 3,
     depth: 1,
     start: 0.38,
     end: 0.98,
@@ -144,9 +144,9 @@ const LAYOUT = [
   {
     left: '10%',
     top: '77%',
-    width: '24rem',
+    width: '18.5rem',
     aspect: '1.78 / 1',
-    rotate: -5,
+    rotate: -2,
     depth: 1.14,
     start: 0.44,
     end: 1,
@@ -164,9 +164,9 @@ const LAYOUT = [
   {
     left: '58%',
     top: '78%',
-    width: '27rem',
+    width: '19.5rem',
     aspect: '1.7 / 1',
-    rotate: -3,
+    rotate: -1,
     depth: 1.18,
     start: 0.5,
     end: 1,
@@ -184,9 +184,9 @@ const LAYOUT = [
   {
     left: '86%',
     top: '74%',
-    width: '17rem',
+    width: '13.2rem',
     aspect: '0.78 / 1',
-    rotate: 10,
+    rotate: 2,
     depth: 1.06,
     start: 0.54,
     end: 1,
@@ -204,9 +204,9 @@ const LAYOUT = [
   {
     left: '45%',
     top: '78%',
-    width: '22rem',
+    width: '17.5rem',
     aspect: '1.45 / 1',
-    rotate: 2,
+    rotate: 1,
     depth: 1.1,
     start: 0.02,
     end: 0.46,
@@ -225,6 +225,18 @@ const LAYOUT = [
 
 const GALLERY_COUNTER_BASE = 42;
 const GALLERY_COUNTER_RANGE = 17;
+const GALLERY_PROJECT_PRIORITY = [
+  'launchlens-ai',
+  'launchlens-research-studio',
+  'model-eval-studio',
+  'ai-life-progress-coach',
+  'safety-critical-battery-prognostics',
+  'structure-aware-rag-empirical',
+  'vision-centric-financial-swarm',
+  'deepnerve-3d',
+  'CampusTradeAI',
+  'codex-zcode-remote-relay',
+] as const;
 
 function clamp01(value: number) {
   return Math.max(0, Math.min(1, value));
@@ -258,7 +270,18 @@ function FloatingProjectGalleryContent({ projects, stats }: FloatingProjectGalle
   const railFillRef = useRef<HTMLSpanElement>(null);
   const { open } = useProjectModal();
 
-  const galleryProjects = useMemo(() => projects.slice(0, Math.min(10, projects.length)), [projects]);
+  const galleryProjects = useMemo(() => {
+    const priority = new Map<string, number>(
+      GALLERY_PROJECT_PRIORITY.map((slug, index) => [slug, index]),
+    );
+    return [...projects]
+      .sort((a, b) => {
+        const aRank = priority.get(a.slug) ?? Number.MAX_SAFE_INTEGER;
+        const bRank = priority.get(b.slug) ?? Number.MAX_SAFE_INTEGER;
+        return aRank - bRank;
+      })
+      .slice(0, Math.min(LAYOUT.length, projects.length));
+  }, [projects]);
 
   useGSAP(
     () => {
@@ -345,13 +368,13 @@ function FloatingProjectGalleryContent({ projects, stats }: FloatingProjectGalle
           const enterT = smoothstep(local / 0.18);
           const orbitT = smoothstep((local - 0.12) / 0.7);
           const exitT = smoothstep((local - 0.84) / 0.16);
-          const angle = layout.angle + orbitT * layout.turn * Math.PI * 2.16;
+          const angle = layout.angle + orbitT * layout.turn * Math.PI * 1.86;
           const orbitX = Math.cos(angle) * layout.radiusX;
           const orbitY = Math.sin(angle) * layout.radiusY + layout.lift;
           const pullX = lerp(layout.entryX, orbitX, enterT);
           const pullY = lerp(layout.entryY, orbitY, enterT);
-          const targetX = lerp(pullX, layout.exitX, exitT);
-          const targetY = lerp(pullY, layout.exitY, exitT);
+          const targetX = lerp(pullX, layout.exitX, exitT) * 0.88;
+          const targetY = lerp(pullY, layout.exitY, exitT) * 0.84;
           const wave = Math.sin(progress * Math.PI * 4 + index * 0.74);
           const pinWidth = pin.clientWidth;
           const pinHeight = pin.clientHeight;
@@ -363,22 +386,23 @@ function FloatingProjectGalleryContent({ projects, stats }: FloatingProjectGalle
           const translateY = pinHeight / 2 + targetY - anchorY - cardHeight / 2;
           const frontness = (Math.sin(angle) + 1) / 2;
           const scale =
-            lerp(0.48, 0.78 + layout.depth * 0.18 + frontness * 0.19, enterT) *
-            (1 - exitT * 0.12);
-          const z = lerp(-520, -150 + layout.depth * 132 + frontness * 260, enterT) - exitT * 240;
+            lerp(0.58, 0.82 + layout.depth * 0.08 + frontness * 0.1, enterT) *
+            (1 - exitT * 0.08);
+          const z = lerp(-260, -64 + layout.depth * 72 + frontness * 118, enterT) - exitT * 108;
           const rotate =
             layout.rotate +
-            Math.sin(angle) * (3 + layout.depth * 4) +
-            orbitT * layout.turn * 16 +
-            exitT * layout.turn * 8;
+            Math.sin(angle) * (1.4 + layout.depth * 1.4) +
+            orbitT * layout.turn * 5 +
+            exitT * layout.turn * 3;
           const mediaRy =
-            Math.cos(angle) * (34 + layout.depth * 24) +
-            lerp(layout.entryX > 0 ? 18 : -18, layout.exitX > 0 ? -16 : 16, exitT) * (1 - orbitT);
-          const mediaRx = -7 + frontness * 14 + wave * 1.4;
+            Math.cos(angle) * (5 + layout.depth * 4) +
+            lerp(layout.entryX > 0 ? 4 : -4, layout.exitX > 0 ? -4 : 4, exitT) * (1 - orbitT);
+          const mediaRx = -1 + frontness * 3 + wave * 0.55;
           const titleCrossing = 1 - smoothstep((Math.hypot(targetX / 430, targetY / 245) - 0.58) / 0.78);
-          const titleDim = lerp(1, 0.48 + frontness * 0.2, titleCrossing);
+          const titleDim = lerp(1, 0.62 + frontness * 0.16, titleCrossing);
+          const imageWeight = card.dataset.imageType === 'og-poster' ? 0.72 : 1;
           const opacity =
-            visible * Math.min(1, 0.26 + layout.depth * 0.18 + frontness * 0.56) * titleDim;
+            visible * Math.min(1, 0.56 + layout.depth * 0.12 + frontness * 0.22) * titleDim * imageWeight;
 
           card.style.zIndex = String(layout.z);
           card.style.setProperty('--fg-media-rx', `${mediaRx.toFixed(2)}deg`);
@@ -461,6 +485,7 @@ function FloatingProjectGalleryContent({ projects, stats }: FloatingProjectGalle
                 key={project.slug}
                 type="button"
                 className="floating-gallery-card group"
+                data-image-type={image.type}
                 onClick={() => open(project.slug)}
                 style={
                   {
@@ -481,7 +506,7 @@ function FloatingProjectGalleryContent({ projects, stats }: FloatingProjectGalle
                     alt={image.alt}
                     fill
                     sizes="(min-width: 1024px) 24vw, 54vw"
-                    className="object-cover"
+                    className={image.type === 'og-poster' ? 'object-contain' : 'object-cover'}
                     priority={index < 4}
                     unoptimized={
                       image.src.startsWith('/api/og') ||

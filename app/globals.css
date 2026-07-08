@@ -1551,20 +1551,20 @@ html.lenis, html.lenis body {
   position: absolute;
   inset: 0;
   z-index: 12;
-  perspective: 980px;
+  perspective: 1400px;
   perspective-origin: 50% 54%;
   transform-style: preserve-3d;
 }
 
 .floating-gallery-card {
-  --fg-media-rx: 5deg;
-  --fg-media-ry: -10deg;
+  --fg-media-rx: 0deg;
+  --fg-media-ry: 0deg;
   position: absolute;
   left: var(--fg-left);
   top: var(--fg-top);
   z-index: var(--fg-z);
-  width: min(var(--fg-width), 24vw);
-  min-width: 9rem;
+  width: min(var(--fg-width), 20vw);
+  min-width: 8rem;
   border: 0;
   background: transparent;
   padding: 0;
@@ -1574,8 +1574,8 @@ html.lenis, html.lenis body {
   transform-origin: center center;
   will-change: transform, opacity;
   filter:
-    drop-shadow(0 28px 32px rgba(0, 0, 0, 0.66))
-    drop-shadow(0 0 28px rgba(255, 255, 255, 0.03));
+    drop-shadow(0 20px 26px rgba(0, 0, 0, 0.62))
+    drop-shadow(0 0 18px rgba(255, 255, 255, 0.025));
 }
 
 .floating-gallery-card__media {
@@ -1586,8 +1586,8 @@ html.lenis, html.lenis body {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 2px;
   background: #050505;
-  filter: brightness(1.08) contrast(1.08) saturate(1.14);
-  transform: perspective(960px) rotateX(var(--fg-media-rx)) rotateY(var(--fg-media-ry));
+  filter: brightness(1.04) contrast(1.04) saturate(1.08);
+  transform: perspective(1400px) rotateX(var(--fg-media-rx)) rotateY(var(--fg-media-ry));
   transform-style: preserve-3d;
   transition:
     border-color 0.24s ease,
@@ -1596,8 +1596,14 @@ html.lenis, html.lenis body {
 }
 
 .floating-gallery-card:nth-child(even) {
-  --fg-media-rx: -4deg;
-  --fg-media-ry: 10deg;
+  --fg-media-rx: 0deg;
+  --fg-media-ry: 0deg;
+}
+
+.floating-gallery-card[data-image-type="og-poster"] .floating-gallery-card__media {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05), transparent 62%),
+    #030303;
 }
 
 .floating-gallery-card__media::after {
@@ -1609,7 +1615,7 @@ html.lenis, html.lenis body {
     linear-gradient(180deg, rgba(255, 255, 255, 0.13), transparent 28%, rgba(0, 0, 0, 0.32)),
     radial-gradient(circle at 70% 20%, rgba(255, 255, 255, 0.18), transparent 28%);
   mix-blend-mode: screen;
-  opacity: 0.24;
+  opacity: 0.12;
 }
 
 .floating-gallery-card:hover,
@@ -1622,7 +1628,7 @@ html.lenis, html.lenis body {
 .floating-gallery-card:focus-visible .floating-gallery-card__media {
   border-color: rgba(255, 255, 255, 0.38);
   filter: brightness(1.14) saturate(1.18) contrast(1.1);
-  transform: perspective(960px) rotateX(0deg) rotateY(0deg) scale(1.04);
+  transform: perspective(1400px) rotateX(0deg) rotateY(0deg) scale(1.04);
 }
 
 .floating-gallery-card__caption {
