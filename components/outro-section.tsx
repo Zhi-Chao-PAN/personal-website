@@ -6,7 +6,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import SplitType from 'split-type';
 import { CONTACT_EMAIL, GITHUB_OWNER } from '@/lib/projects';
-import { ParticleField } from './reactbits-particle-field';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,12 +16,260 @@ interface OutroSectionProps {
   totalSizeMb: number;
 }
 
-const FINALE_LINES = [
-  '我不想把 AI 停留在演示里。',
-  '我要把它推进到可以验证、可以交付、可以被真实使用的系统。',
-  '如果你也在做应用型 AI、多智能体工作流、RAG、评测或产品工程，',
-  '带一个真实问题来，我们从那里开始。',
-] as const;
+interface AsciiHandCanvasProps {
+  side: 'left' | 'right';
+}
+
+const ASCII_CHARS = ' .,:;irsXA253hMHGS#@';
+
+function createHandSvg(side: 'left' | 'right') {
+  const flip = side === 'right' ? 'transform="translate(520 0) scale(-1 1)"' : '';
+
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 760">
+      <rect width="520" height="760" fill="none"/>
+      <g ${flip} fill="#fff">
+        <rect x="-58" y="548" width="282" height="128" rx="62"/>
+        <ellipse cx="210" cy="462" rx="126" ry="154"/>
+        <rect x="134" y="118" width="58" height="310" rx="29" transform="rotate(-13 163 274)"/>
+        <rect x="204" y="74" width="60" height="352" rx="30" transform="rotate(-4 234 250)"/>
+        <rect x="276" y="104" width="57" height="322" rx="28.5" transform="rotate(7 305 260)"/>
+        <rect x="342" y="165" width="52" height="264" rx="26" transform="rotate(16 368 296)"/>
+        <path d="M96 434C48 404 31 357 47 322C65 282 121 319 157 382C176 416 155 463 96 434Z"/>
+        <path d="M115 610C147 669 206 700 292 692C225 738 104 720 30 666Z"/>
+      </g>
+    </svg>
+  `)}`;
+}
+
+function AsciiHandCanvas({ side }: AsciiHandCanvasProps) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const context = canvas.getContext('2d');
+    if (!context) return;
+
+    const image = new Image();
+    image.decoding = 'async';
+    image.src = createHandSvg(side);
+
+    const sampleCanvas = document.createElement('canvas');
+    const sampleContext = sampleCanvas.getContext('2d', { willReadFrequently: true });
+    if (!sampleContext) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const pointer = {
+      x: 0,
+      y: 0,
+      targetX: 0,
+      targetY: 0,
+      active: false,
+    };
+
+    let width = 0;
+    let height = 0;
+    let pixelRatio = 1;
+    let cellSize = 12;
+    let columns = 0;
+    let rows = 0;
+    let sampleData: Uint8ClampedArray | null = null;
+    let imageReady = false;
+    let isVisible = false;
+    let animationFrame = 0;
+    let lastDraw = 0;
+
+    const rebuildSamples = () => {
+      if (!imageReady || width <= 0 || height <= 0) return;
+
+      columns = Math.min(92, Math.max(18, Math.floor(width / cellSize)));
+      rows = Math.min(118, Math.max(20, Math.floor(height / cellSize)));
+      sampleCanvas.width = columns;
+      sampleCanvas.height = rows;
+      sampleContext.clearRect(0, 0, columns, rows);
+      sampleContext.drawImage(image, 0, 0, columns, rows);
+      sampleData = sampleContext.getImageData(0, 0, columns, rows).data;
+    };
+
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect();
+      const maxWidth = Math.min(window.innerWidth * 0.72, 920);
+      const maxHeight = Math.min(window.innerHeight * 0.82, 820);
+      width = Math.max(1, Math.min(rect.width, maxWidth));
+      height = Math.max(1, Math.min(rect.height, maxHeight));
+      pixelRatio = Math.min(window.devicePixelRatio || 1, 1.45);
+      cellSize = width < 420 ? 13 : width < 720 ? 12 : 11;
+
+      const backingWidth = Math.min(1400, Math.floor(width * pixelRatio));
+      const backingHeight = Math.min(1400, Math.floor(height * pixelRatio));
+      canvas.width = backingWidth;
+      canvas.height = backingHeight;
+      context.setTransform(backingWidth / width, 0, 0, backingHeight / height, 0, 0);
+      context.textAlign = 'center';
+      context.textBaseline = 'middle';
+      context.font = `${width < 420 ? 700 : 800} ${Math.max(8, cellSize - 1)}px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`;
+
+      if (!pointer.active) {
+        pointer.x = width / 2;
+        pointer.y = height / 2;
+        pointer.targetX = pointer.x;
+        pointer.targetY = pointer.y;
+      }
+
+      rebuildSamples();
+    };
+
+    const stopAnimation = () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+        animationFrame = 0;
+      }
+    };
+
+    const schedule = () => {
+      if (!isVisible || document.hidden || animationFrame) return;
+      animationFrame = requestAnimationFrame(draw);
+    };
+
+    const draw = (time = performance.now()) => {
+      animationFrame = 0;
+      if (!sampleData) return;
+
+      if (time - lastDraw < 30 && !reducedMotion) {
+        schedule();
+        return;
+      }
+
+      lastDraw = time;
+      context.clearRect(0, 0, width, height);
+      pointer.x += (pointer.targetX - pointer.x) * 0.16;
+      pointer.y += (pointer.targetY - pointer.y) * 0.16;
+
+      const drift = Math.sin(time / 1800) * 4;
+      const parallaxX = pointer.active
+        ? ((pointer.x / width) - 0.5) * (side === 'left' ? -28 : 28)
+        : drift;
+      const parallaxY = pointer.active ? ((pointer.y / height) - 0.5) * -18 : Math.cos(time / 2100) * 5;
+      const radius = width < 520 ? 96 : 154;
+      const radiusSquared = radius * radius;
+
+      for (let row = 0; row < rows; row += 1) {
+        for (let column = 0; column < columns; column += 1) {
+          const index = (row * columns + column) * 4;
+          const alpha = sampleData[index + 3] / 255;
+          if (alpha < 0.08) continue;
+
+          const x = column * cellSize + cellSize * 0.5 + parallaxX;
+          const y = row * cellSize + cellSize * 0.5 + parallaxY;
+          const dx = pointer.x - x;
+          const dy = pointer.y - y;
+          const distanceSquared = dx * dx + dy * dy;
+          const heat = pointer.active && distanceSquared < radiusSquared
+            ? 1 - Math.sqrt(distanceSquared) / radius
+            : 0;
+          const cluster =
+            heat > 0 &&
+            Math.sin(column * 12.9898 + row * 78.233 + time * 0.006) >
+              0.34 - heat * 0.68;
+          const charIndex = Math.min(
+            ASCII_CHARS.length - 1,
+            Math.floor(alpha * (ASCII_CHARS.length - 1)),
+          );
+
+          context.fillStyle = cluster
+            ? `rgba(255, 129, 71, ${0.42 + heat * 0.58})`
+            : `rgba(245, 245, 244, ${0.16 + alpha * 0.66})`;
+          context.shadowBlur = cluster ? 14 : 0;
+          context.shadowColor = cluster ? 'rgba(255, 129, 71, 0.65)' : 'transparent';
+          context.fillText(cluster ? ASCII_CHARS[ASCII_CHARS.length - 1] : ASCII_CHARS[charIndex], x, y);
+        }
+      }
+
+      context.shadowBlur = 0;
+      if (!reducedMotion) schedule();
+    };
+
+    const handlePointerMove = (event: PointerEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      pointer.targetX = event.clientX - rect.left;
+      pointer.targetY = event.clientY - rect.top;
+      pointer.active =
+        pointer.targetX >= 0 &&
+        pointer.targetY >= 0 &&
+        pointer.targetX <= rect.width &&
+        pointer.targetY <= rect.height;
+      schedule();
+    };
+
+    const handlePointerLeave = () => {
+      pointer.active = false;
+    };
+
+    const activate = () => {
+      if (isVisible) return;
+      isVisible = true;
+      draw();
+      if (!reducedMotion) schedule();
+    };
+
+    const deactivate = () => {
+      isVisible = false;
+      stopAnimation();
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) stopAnimation();
+      else if (isVisible) schedule();
+    };
+
+    image.onload = () => {
+      imageReady = true;
+      resize();
+      draw();
+    };
+
+    resize();
+    window.addEventListener('pointermove', handlePointerMove, { passive: true });
+    window.addEventListener('pointerleave', handlePointerLeave);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    const resizeObserver =
+      typeof ResizeObserver === 'undefined'
+        ? null
+        : new ResizeObserver(() => {
+            resize();
+            if (isVisible) draw();
+          });
+    resizeObserver?.observe(canvas);
+
+    const intersectionObserver =
+      typeof IntersectionObserver === 'undefined'
+        ? null
+        : new IntersectionObserver(
+            ([entry]) => {
+              if (entry.isIntersecting) activate();
+              else deactivate();
+            },
+            { rootMargin: '180px 0px', threshold: 0.01 },
+          );
+
+    if (intersectionObserver) intersectionObserver.observe(canvas);
+    else activate();
+
+    return () => {
+      deactivate();
+      resizeObserver?.disconnect();
+      intersectionObserver?.disconnect();
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('pointerleave', handlePointerLeave);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [side]);
+
+  return <canvas ref={canvasRef} aria-hidden className="ascii-hand__canvas" />;
+}
 
 export function OutroSection({
   totalRepos,
@@ -31,6 +278,7 @@ export function OutroSection({
   totalSizeMb,
 }: OutroSectionProps) {
   const container = useRef<HTMLElement>(null);
+  const pinRef = useRef<HTMLDivElement>(null);
   const githubUrl = `https://github.com/${GITHUB_OWNER}`;
 
   useEffect(() => {
@@ -41,7 +289,7 @@ export function OutroSection({
       ([entry]) => {
         section.dataset.active = entry.isIntersecting ? 'true' : 'false';
       },
-      { rootMargin: '160px 0px', threshold: 0.01 },
+      { rootMargin: '180px 0px', threshold: 0.01 },
     );
 
     observer.observe(section);
@@ -50,67 +298,95 @@ export function OutroSection({
 
   useGSAP(
     () => {
+      const section = container.current;
+      const pin = pinRef.current;
+      if (!section || !pin) return;
+
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const titleSplit = new SplitType('.finale-title', { types: 'chars,words' });
+      const isCompact = window.innerWidth < 768;
+      const titleSplit = new SplitType('.ascii-footer-title', { types: 'lines,words,chars' });
+      const copySplit = new SplitType('.ascii-footer-copy', { types: 'lines' });
+      const titleChars = titleSplit.chars ?? [];
+      const copyLines = copySplit.lines ?? [];
 
       if (reducedMotion) {
+        gsap.set('.ascii-footer-stage, .ascii-hand, .ascii-footer-nav a, .ascii-footer-kicker, .ascii-footer-copy, .ascii-footer-meta, .ascii-footer-stat, .ascii-footer-credit', {
+          opacity: 1,
+          clearProps: 'transform,clipPath',
+        });
         return () => {
           titleSplit.revert();
+          copySplit.revert();
         };
       }
 
-      gsap.set(titleSplit.words, { overflow: 'hidden' });
-      gsap.set(titleSplit.chars, { yPercent: 120, opacity: 0 });
-      gsap.set('.finale-line', { opacity: 0, y: 12 });
+      gsap.set('.ascii-footer-stage', {
+        clipPath: isCompact ? 'inset(0% 0% 0% 0%)' : 'inset(18% 8% 18% 8%)',
+        scale: isCompact ? 1 : 0.965,
+      });
+      gsap.set('.ascii-hand--left', { xPercent: -32, yPercent: 8, rotate: -4, opacity: 0 });
+      gsap.set('.ascii-hand--right', { xPercent: 32, yPercent: 8, rotate: 4, opacity: 0 });
+      gsap.set(titleChars, { yPercent: 112, opacity: 0 });
+      gsap.set(copyLines, { y: 36, opacity: 0 });
       gsap.set(
-        '.finale-label, .finale-core, .finale-microcopy, .finale-stat, .finale-action, .finale-credit',
-        { opacity: 0, y: 22 },
+        '.ascii-footer-kicker, .ascii-footer-nav a, .ascii-footer-meta, .ascii-footer-stat, .ascii-footer-credit',
+        { y: 22, opacity: 0 },
       );
-      gsap.set('.finale-rings span', { scale: 0.72, opacity: 0 });
-      gsap.set('.finale-beam', { scaleX: 0, transformOrigin: 'center' });
+      gsap.set('.ascii-footer-rule', { scaleX: 0, transformOrigin: 'left center' });
 
       const tl = gsap.timeline({
-        defaults: { ease: 'power4.out' },
-        scrollTrigger: {
-          trigger: container.current,
-          start: 'top 62%',
-          once: true,
-        },
+        defaults: { ease: 'power3.out' },
+        scrollTrigger: isCompact
+          ? {
+              trigger: section,
+              start: 'top 78%',
+              once: true,
+            }
+          : {
+              trigger: section,
+              start: 'top bottom',
+              end: 'bottom bottom',
+              scrub: 0.95,
+              invalidateOnRefresh: true,
+            },
       });
 
-      tl.to('.finale-beam', { scaleX: 1, duration: 0.8, ease: 'expo.inOut' })
-        .to('.finale-label', { opacity: 1, y: 0, duration: 0.45 }, '-=0.3')
+      tl.to('.ascii-footer-stage', {
+        clipPath: 'inset(0% 0% 0% 0%)',
+        scale: 1,
+        duration: 0.28,
+        ease: 'expo.inOut',
+      })
         .to(
-          titleSplit.chars,
-          { yPercent: 0, opacity: 1, duration: 1.05, stagger: 0.018, ease: 'expo.out' },
-          '-=0.2',
+          '.ascii-hand--left',
+          { xPercent: 0, yPercent: 0, rotate: 0, opacity: 0.92, duration: 0.34 },
+          0.04,
         )
         .to(
-          '.finale-rings span',
-          { opacity: 1, scale: 1, duration: 0.8, stagger: 0.08, ease: 'back.out(1.4)' },
-          '-=0.72',
+          '.ascii-hand--right',
+          { xPercent: 0, yPercent: 0, rotate: 0, opacity: 0.92, duration: 0.34 },
+          0.06,
         )
-        .to('.finale-core', { opacity: 1, y: 0, duration: 0.65 }, '-=0.55')
+        .to('.ascii-footer-rule', { scaleX: 1, duration: 0.22, ease: 'expo.inOut' }, 0.15)
         .to(
-          '.finale-line',
-          { opacity: 1, y: 0, duration: 0.44, stagger: 0.08, ease: 'power3.out' },
-          '-=0.35',
-        )
-        .to('.finale-microcopy', { opacity: 1, y: 0, duration: 0.55 }, '-=0.18')
-        .to(
-          '.finale-stat',
-          { opacity: 1, y: 0, duration: 0.52, stagger: 0.055, ease: 'power3.out' },
-          '-=0.24',
+          '.ascii-footer-kicker, .ascii-footer-nav a',
+          { y: 0, opacity: 1, duration: 0.2, stagger: 0.018 },
+          0.18,
         )
         .to(
-          '.finale-action',
-          { opacity: 1, y: 0, duration: 0.46, stagger: 0.08, ease: 'power3.out' },
-          '-=0.22',
+          titleChars,
+          { yPercent: 0, opacity: 1, duration: 0.42, stagger: 0.008, ease: 'expo.out' },
+          0.24,
         )
-        .to('.finale-credit', { opacity: 1, y: 0, duration: 0.48 }, '-=0.25');
+        .to(copyLines, { y: 0, opacity: 1, duration: 0.24, stagger: 0.045 }, 0.42)
+        .to('.ascii-footer-meta, .ascii-footer-stat', { y: 0, opacity: 1, duration: 0.22, stagger: 0.035 }, 0.5)
+        .to('.ascii-footer-credit', { y: 0, opacity: 1, duration: 0.2 }, 0.62);
+
+      ScrollTrigger.refresh();
 
       return () => {
         titleSplit.revert();
+        copySplit.revert();
       };
     },
     { scope: container },
@@ -118,130 +394,84 @@ export function OutroSection({
 
   const stats = [
     { value: String(totalRepos), label: 'public repos' },
-    { value: String(totalStars), label: 'stars total' },
     { value: String(liveDemos), label: 'live demos' },
+    { value: String(totalStars), label: 'stars' },
     { value: totalSizeMb > 0 ? totalSizeMb.toFixed(1) : '-', label: 'mb shipped' },
   ];
 
   return (
-    <section
+    <footer
       ref={container}
       id="outro"
       data-active="false"
-      className="finale-section relative flex min-h-[100svh] w-full items-center overflow-hidden bg-[#030303] py-20 md:py-24"
+      className="finale-section ascii-footer relative bg-[#030303] text-white"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.055]"
-        style={{
-          backgroundImage:
-            'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
-          backgroundSize: '4vw 4vw',
-          backgroundPosition: 'center center',
-        }}
-      />
-      <ParticleField className="finale-particles" maxParticles={72} density={15000} />
-      <div aria-hidden className="finale-field" />
-      <div aria-hidden className="finale-beam" />
-      <div aria-hidden className="finale-rings">
-        <span />
-        <span />
-        <span />
-      </div>
-
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-10 px-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:gap-14">
-        <div>
-          <span className="finale-label block font-mono text-[11px] uppercase tracking-[0.36em] text-emerald-300/80">
-            [ final signal / next system ]
-          </span>
-
-          <h2 className="finale-title mt-5 max-w-5xl text-[clamp(3rem,8.2vw,8.2rem)] font-black uppercase leading-[0.86] tracking-normal text-white">
-            Not a demo.
-            <span className="finale-title-accent block">A system.</span>
-          </h2>
-
-          <div className="mt-6 max-w-3xl space-y-1.5">
-            {FINALE_LINES.map((line) => (
-              <p
-                key={line}
-                className="finale-line text-base font-semibold leading-[1.55] tracking-wide text-zinc-100 md:text-lg"
-              >
-                {line}
-              </p>
-            ))}
+      <div ref={pinRef} className="ascii-footer-pin relative overflow-hidden">
+        <div className="ascii-footer-stage">
+          <div className="ascii-footer-grain" aria-hidden />
+          <div className="ascii-footer-hands" aria-hidden>
+            <div className="ascii-hand ascii-hand--left">
+              <AsciiHandCanvas side="left" />
+            </div>
+            <div className="ascii-hand ascii-hand--right">
+              <AsciiHandCanvas side="right" />
+            </div>
           </div>
 
-          <p className="finale-microcopy mt-4 max-w-2xl font-mono text-[11px] uppercase leading-relaxed tracking-[0.24em] text-zinc-500 md:text-xs">
-            bring a real problem / make the boundary explicit / ship the useful version
-          </p>
-        </div>
+          <div className="ascii-footer-content">
+            <header className="ascii-footer-top">
+              <span className="ascii-footer-kicker">ZhiChao Pan / Digital Lab</span>
+              <nav className="ascii-footer-nav" aria-label="Footer navigation">
+                <a href="#projects">Projects</a>
+                <a href="#focus">Focus</a>
+                <a href={githubUrl} target="_blank" rel="noreferrer">
+                  GitHub
+                </a>
+                <a href={`mailto:${CONTACT_EMAIL}`}>Contact</a>
+              </nav>
+            </header>
 
-        <div className="finale-core relative overflow-hidden rounded-md border border-white/[0.08] bg-black/45 p-5 shadow-2xl shadow-black/45 backdrop-blur-sm md:p-6">
-          <div className="finale-core-grid" aria-hidden />
-          <div className="relative z-10">
-            <div className="flex items-center justify-between gap-4 border-b border-white/[0.08] pb-4 font-mono text-[10px] uppercase tracking-[0.24em] text-zinc-500">
-              <span>system handoff</span>
-              <span className="text-emerald-300">ready</span>
-            </div>
+            <span className="ascii-footer-rule" aria-hidden />
 
-            <div className="grid grid-cols-2 gap-3 py-5">
-              {stats.map((stat) => (
-                <div key={stat.label} className="finale-stat border border-white/[0.07] bg-white/[0.025] p-4">
-                  <div className="text-3xl font-black tracking-tight text-white md:text-4xl">
-                    {stat.value}
+            <div className="ascii-footer-body">
+              <div className="ascii-footer-copy-block">
+                <p className="ascii-footer-meta">Applied AI / agent systems / product engineering</p>
+                <p className="ascii-footer-copy">
+                  A small studio surface for turning blank requirements into working systems.
+                  I build with agents, RAG, evaluation, and full-stack product loops, then keep
+                  the proof close enough for people to inspect.
+                </p>
+              </div>
+
+              <div className="ascii-footer-stats" aria-label="Site metrics">
+                {stats.map((stat) => (
+                  <div key={stat.label} className="ascii-footer-stat">
+                    <span>{stat.value}</span>
+                    <small>{stat.label}</small>
                   </div>
-                  <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.24em] text-zinc-500">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="space-y-3 border-y border-white/[0.08] py-5 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">
-              <div className="flex items-center justify-between gap-4">
-                <span>focus</span>
-                <span className="text-zinc-200">applied AI / agents / evaluation</span>
-              </div>
-              <div className="flex items-center justify-between gap-4">
-                <span>direction</span>
-                <span className="text-zinc-200">overseas graduate study in AI / computing</span>
-              </div>
-              <div className="flex items-center justify-between gap-4">
-                <span>mode</span>
-                <span className="text-emerald-300">build, verify, iterate</span>
+                ))}
               </div>
             </div>
 
-            <div className="mt-5 grid gap-3 sm:grid-cols-3">
-              <a
-                href={githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="finale-action border border-emerald-300/35 bg-emerald-300/[0.08] px-4 py-3 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-emerald-200 transition-colors hover:border-emerald-200/70"
-              >
-                github
-              </a>
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="finale-action border border-white/[0.09] bg-white/[0.025] px-4 py-3 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-200 transition-colors hover:border-white/30"
-              >
-                email
-              </a>
+            <div className="ascii-footer-title-wrap">
+              <h2 className="ascii-footer-title">
+                Blank <span>/</span> Canvas
+              </h2>
+            </div>
+
+            <div className="ascii-footer-bottom">
+              <p className="ascii-footer-credit">Bring a real problem. Leave with a system boundary.</p>
               <button
                 type="button"
+                className="ascii-footer-credit ascii-footer-restart"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="finale-action border border-white/[0.09] bg-white/[0.025] px-4 py-3 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-400 transition-colors hover:border-white/30 hover:text-white"
               >
-                restart
+                Restart
               </button>
-            </div>
-
-            <div className="finale-credit mt-5 font-mono text-[9px] uppercase tracking-[0.28em] text-zinc-700">
-              [ panzhichao.com / digital_lab / 2026 ]
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </footer>
   );
 }
