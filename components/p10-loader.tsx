@@ -6,7 +6,7 @@ import gsap from 'gsap';
 const SESSION_KEY = 'panzhichao-p10-loader-seen';
 
 export function P10Loader() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const loaderRef = useRef<HTMLDivElement>(null);
   const counterRef = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLSpanElement>(null);
@@ -17,11 +17,13 @@ export function P10Loader() {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const alreadySeen = window.sessionStorage.getItem(SESSION_KEY) === '1';
 
-    if ((alreadySeen || reducedMotion) && !forceIntro) return;
+    if ((alreadySeen || reducedMotion) && !forceIntro) {
+      shouldAnimateRef.current = false;
+      setIsVisible(false);
+      return;
+    }
 
     shouldAnimateRef.current = true;
-    const frame = window.requestAnimationFrame(() => setIsVisible(true));
-    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {

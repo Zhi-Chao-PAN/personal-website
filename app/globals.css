@@ -410,6 +410,8 @@ html.lenis, html.lenis body {
 
 .p10-loader__meta span {
   min-width: 0;
+  opacity: 0;
+  transform: translateY(18px);
 }
 
 .p10-loader__meta span:last-child {
@@ -458,6 +460,7 @@ html.lenis, html.lenis body {
   letter-spacing: 0;
   text-transform: uppercase;
   color: transparent;
+  transform: translateY(112%);
   -webkit-text-stroke: 2px var(--p10-fg);
 }
 
@@ -482,6 +485,8 @@ html.lenis, html.lenis body {
   letter-spacing: 0.18em;
   line-height: 1.2;
   text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(18px);
 }
 
 .p10-loader__bar {
@@ -514,6 +519,7 @@ html.lenis, html.lenis body {
   display: block;
   background: var(--p10-fg);
   box-shadow: 0 0 0 1px var(--p10-fg);
+  transform: scaleX(0);
   transform-origin: left center;
   will-change: transform;
 }
