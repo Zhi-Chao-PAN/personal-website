@@ -16,33 +16,66 @@ interface OutroSectionProps {
   totalSizeMb: number;
 }
 
-interface AsciiHandCanvasProps {
+interface AsciiVeilCanvasProps {
   side: 'left' | 'right';
 }
 
 const ASCII_CHARS = ' .,:;irsXA253hMHGS#@';
 
-function createHandSvg(side: 'left' | 'right') {
-  const flip = side === 'right' ? 'transform="translate(520 0) scale(-1 1)"' : '';
-
-  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(`
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 760">
-      <rect width="520" height="760" fill="none"/>
-      <g ${flip} fill="#fff">
-        <rect x="-58" y="548" width="282" height="128" rx="62"/>
-        <ellipse cx="210" cy="462" rx="126" ry="154"/>
-        <rect x="134" y="118" width="58" height="310" rx="29" transform="rotate(-13 163 274)"/>
-        <rect x="204" y="74" width="60" height="352" rx="30" transform="rotate(-4 234 250)"/>
-        <rect x="276" y="104" width="57" height="322" rx="28.5" transform="rotate(7 305 260)"/>
-        <rect x="342" y="165" width="52" height="264" rx="26" transform="rotate(16 368 296)"/>
-        <path d="M96 434C48 404 31 357 47 322C65 282 121 319 157 382C176 416 155 463 96 434Z"/>
-        <path d="M115 610C147 669 206 700 292 692C225 738 104 720 30 666Z"/>
-      </g>
-    </svg>
-  `)}`;
+function clamp01(value: number) {
+  return Math.min(1, Math.max(0, value));
 }
 
-function AsciiHandCanvas({ side }: AsciiHandCanvasProps) {
+function smoothstep(edge0: number, edge1: number, value: number) {
+  const x = clamp01((value - edge0) / (edge1 - edge0));
+  return x * x * (3 - 2 * x);
+}
+
+function gaussian(value: number, center: number, width: number) {
+  return Math.exp(-((value - center) ** 2) / width);
+}
+
+function createVeilDensity(side: 'left' | 'right', x: number, y: number) {
+  const sx = side === 'left' ? x : 1 - x;
+  const verticalFade = smoothstep(0.02, 0.14, y) * (1 - smoothstep(0.88, 1, y));
+  const sideFade = 1 - smoothstep(0.58, 0.95, sx);
+  const aperture =
+    0.46 +
+    Math.sin(y * 6.4 + (side === 'left' ? 0.8 : 2.1)) * 0.08 +
+    Math.sin(y * 17.5 + (side === 'left' ? 1.4 : 0.2)) * 0.035;
+  const edgeGlow =
+    gaussian(sx, aperture, 0.0046) * 0.58 +
+    gaussian(sx, aperture + 0.08, 0.018) * 0.2;
+
+  let strands = 0;
+  for (let i = 0; i < 7; i += 1) {
+    const offset = 0.06 + i * 0.066;
+    const phase = i * 1.37 + (side === 'left' ? 0 : 0.82);
+    const curve =
+      offset +
+      Math.sin(y * (5.2 + i * 0.43) + phase) * (0.026 + i * 0.002) +
+      Math.sin(y * (13.5 - i * 0.5) + phase * 1.7) * 0.011;
+    strands += gaussian(sx, curve, 0.00062 + i * 0.00016) * (0.72 - i * 0.045);
+  }
+
+  const chamber =
+    gaussian(sx, 0.24 + Math.sin(y * 8.8) * 0.025, 0.009) * 0.24 +
+    gaussian(sx, 0.38 + Math.sin(y * 4.1 + 1.4) * 0.05, 0.018) * 0.18;
+  const etchedNoise =
+    Math.sin((x * 71.3 + y * 117.9) * Math.PI) *
+    Math.sin((x * 29.7 - y * 83.1) * Math.PI) *
+    0.08;
+  const lowerWeight = 0.78 + smoothstep(0.44, 0.86, y) * 0.32;
+
+  return clamp01(
+    verticalFade *
+      sideFade *
+      lowerWeight *
+      (edgeGlow + strands * 0.88 + chamber + Math.max(0, etchedNoise)),
+  );
+}
+
+function AsciiVeilCanvas({ side }: AsciiVeilCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -51,14 +84,6 @@ function AsciiHandCanvas({ side }: AsciiHandCanvasProps) {
 
     const context = canvas.getContext('2d');
     if (!context) return;
-
-    const image = new Image();
-    image.decoding = 'async';
-    image.src = createHandSvg(side);
-
-    const sampleCanvas = document.createElement('canvas');
-    const sampleContext = sampleCanvas.getContext('2d', { willReadFrequently: true });
-    if (!sampleContext) return;
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const pointer = {
@@ -75,22 +100,25 @@ function AsciiHandCanvas({ side }: AsciiHandCanvasProps) {
     let cellSize = 12;
     let columns = 0;
     let rows = 0;
-    let sampleData: Uint8ClampedArray | null = null;
-    let imageReady = false;
+    let densityData: Float32Array | null = null;
     let isVisible = false;
     let animationFrame = 0;
     let lastDraw = 0;
 
     const rebuildSamples = () => {
-      if (!imageReady || width <= 0 || height <= 0) return;
+      if (width <= 0 || height <= 0) return;
 
       columns = Math.min(92, Math.max(18, Math.floor(width / cellSize)));
       rows = Math.min(118, Math.max(20, Math.floor(height / cellSize)));
-      sampleCanvas.width = columns;
-      sampleCanvas.height = rows;
-      sampleContext.clearRect(0, 0, columns, rows);
-      sampleContext.drawImage(image, 0, 0, columns, rows);
-      sampleData = sampleContext.getImageData(0, 0, columns, rows).data;
+      densityData = new Float32Array(columns * rows);
+
+      for (let row = 0; row < rows; row += 1) {
+        for (let column = 0; column < columns; column += 1) {
+          const x = columns <= 1 ? 0 : column / (columns - 1);
+          const y = rows <= 1 ? 0 : row / (rows - 1);
+          densityData[row * columns + column] = createVeilDensity(side, x, y);
+        }
+      }
     };
 
     const resize = () => {
@@ -135,7 +163,7 @@ function AsciiHandCanvas({ side }: AsciiHandCanvasProps) {
 
     const draw = (time = performance.now()) => {
       animationFrame = 0;
-      if (!sampleData) return;
+      if (!densityData) return;
 
       if (time - lastDraw < 30 && !reducedMotion) {
         schedule();
@@ -157,11 +185,11 @@ function AsciiHandCanvas({ side }: AsciiHandCanvasProps) {
 
       for (let row = 0; row < rows; row += 1) {
         for (let column = 0; column < columns; column += 1) {
-          const index = (row * columns + column) * 4;
-          const alpha = sampleData[index + 3] / 255;
+          const alpha = densityData[row * columns + column];
           if (alpha < 0.08) continue;
 
-          const x = column * cellSize + cellSize * 0.5 + parallaxX;
+          const wave = Math.sin(time / 1150 + row * 0.23 + column * 0.07) * 1.5;
+          const x = column * cellSize + cellSize * 0.5 + parallaxX + wave;
           const y = row * cellSize + cellSize * 0.5 + parallaxY;
           const dx = pointer.x - x;
           const dy = pointer.y - y;
@@ -175,7 +203,7 @@ function AsciiHandCanvas({ side }: AsciiHandCanvasProps) {
               0.34 - heat * 0.68;
           const charIndex = Math.min(
             ASCII_CHARS.length - 1,
-            Math.floor(alpha * (ASCII_CHARS.length - 1)),
+            Math.floor((alpha ** 0.74) * (ASCII_CHARS.length - 1)),
           );
 
           context.fillStyle = cluster
@@ -224,12 +252,6 @@ function AsciiHandCanvas({ side }: AsciiHandCanvasProps) {
       else if (isVisible) schedule();
     };
 
-    image.onload = () => {
-      imageReady = true;
-      resize();
-      draw();
-    };
-
     resize();
     window.addEventListener('pointermove', handlePointerMove, { passive: true });
     window.addEventListener('pointerleave', handlePointerLeave);
@@ -268,7 +290,7 @@ function AsciiHandCanvas({ side }: AsciiHandCanvasProps) {
     };
   }, [side]);
 
-  return <canvas ref={canvasRef} aria-hidden className="ascii-hand__canvas" />;
+  return <canvas ref={canvasRef} aria-hidden className="ascii-veil__canvas" />;
 }
 
 export function OutroSection({
@@ -310,7 +332,7 @@ export function OutroSection({
       const copyLines = copySplit.lines ?? [];
 
       if (reducedMotion) {
-        gsap.set('.ascii-footer-stage, .ascii-hand, .ascii-footer-nav a, .ascii-footer-kicker, .ascii-footer-copy, .ascii-footer-meta, .ascii-footer-stat, .ascii-footer-credit', {
+        gsap.set('.ascii-footer-stage, .ascii-veil, .ascii-footer-nav a, .ascii-footer-kicker, .ascii-footer-copy, .ascii-footer-meta, .ascii-footer-stat, .ascii-footer-credit', {
           opacity: 1,
           clearProps: 'transform,clipPath',
         });
@@ -324,8 +346,8 @@ export function OutroSection({
         clipPath: isCompact ? 'inset(0% 0% 0% 0%)' : 'inset(18% 8% 18% 8%)',
         scale: isCompact ? 1 : 0.965,
       });
-      gsap.set('.ascii-hand--left', { xPercent: -32, yPercent: 8, rotate: -4, opacity: 0 });
-      gsap.set('.ascii-hand--right', { xPercent: 32, yPercent: 8, rotate: 4, opacity: 0 });
+      gsap.set('.ascii-veil--left', { xPercent: -30, yPercent: 5, rotate: -2.5, opacity: 0 });
+      gsap.set('.ascii-veil--right', { xPercent: 30, yPercent: 5, rotate: 2.5, opacity: 0 });
       gsap.set(titleChars, { yPercent: 112, opacity: 0 });
       gsap.set(copyLines, { y: 36, opacity: 0 });
       gsap.set(
@@ -358,13 +380,13 @@ export function OutroSection({
         ease: 'expo.inOut',
       })
         .to(
-          '.ascii-hand--left',
-          { xPercent: 0, yPercent: 0, rotate: 0, opacity: 0.92, duration: 0.34 },
+          '.ascii-veil--left',
+          { xPercent: 0, yPercent: 0, rotate: 0, opacity: 0.9, duration: 0.34 },
           0.04,
         )
         .to(
-          '.ascii-hand--right',
-          { xPercent: 0, yPercent: 0, rotate: 0, opacity: 0.92, duration: 0.34 },
+          '.ascii-veil--right',
+          { xPercent: 0, yPercent: 0, rotate: 0, opacity: 0.9, duration: 0.34 },
           0.06,
         )
         .to('.ascii-footer-rule', { scaleX: 1, duration: 0.22, ease: 'expo.inOut' }, 0.15)
@@ -409,12 +431,12 @@ export function OutroSection({
       <div ref={pinRef} className="ascii-footer-pin relative overflow-hidden">
         <div className="ascii-footer-stage">
           <div className="ascii-footer-grain" aria-hidden />
-          <div className="ascii-footer-hands" aria-hidden>
-            <div className="ascii-hand ascii-hand--left">
-              <AsciiHandCanvas side="left" />
+          <div className="ascii-footer-veils" aria-hidden>
+            <div className="ascii-veil ascii-veil--left">
+              <AsciiVeilCanvas side="left" />
             </div>
-            <div className="ascii-hand ascii-hand--right">
-              <AsciiHandCanvas side="right" />
+            <div className="ascii-veil ascii-veil--right">
+              <AsciiVeilCanvas side="right" />
             </div>
           </div>
 

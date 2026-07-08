@@ -1991,36 +1991,38 @@ html.lenis, html.lenis body {
   mix-blend-mode: screen;
 }
 
-.ascii-footer-hands {
+.ascii-footer-veils {
   pointer-events: none;
   position: absolute;
   inset: 0;
   z-index: 1;
 }
 
-.ascii-hand {
+.ascii-veil {
   pointer-events: auto;
   position: absolute;
-  top: 14svh;
-  width: clamp(18rem, 35vw, 42rem);
-  height: clamp(28rem, 74svh, 50rem);
+  top: 8svh;
+  width: clamp(22rem, 36vw, 46rem);
+  height: clamp(34rem, 86svh, 56rem);
   opacity: 0;
   mix-blend-mode: screen;
   filter:
     drop-shadow(0 0 20px rgba(255, 255, 255, 0.06))
     drop-shadow(0 0 50px rgba(255, 129, 71, 0.08));
+  mask-image: linear-gradient(180deg, transparent, black 14%, black 82%, transparent);
+  -webkit-mask-image: linear-gradient(180deg, transparent, black 14%, black 82%, transparent);
   will-change: transform, opacity;
 }
 
-.ascii-hand--left {
-  left: -8vw;
+.ascii-veil--left {
+  left: -7vw;
 }
 
-.ascii-hand--right {
-  right: -8vw;
+.ascii-veil--right {
+  right: -7vw;
 }
 
-.ascii-hand__canvas {
+.ascii-veil__canvas {
   display: block;
   width: 100%;
   height: 100%;
@@ -2731,18 +2733,18 @@ html.lenis, html.lenis body {
     padding-inline: 0.08em;
   }
 
-  .ascii-hand {
-    top: 18svh;
-    width: 62vw;
-    height: 58svh;
+  .ascii-veil {
+    top: 19svh;
+    width: 58vw;
+    height: 66svh;
     opacity: 0.54;
   }
 
-  .ascii-hand--left {
+  .ascii-veil--left {
     left: -34vw;
   }
 
-  .ascii-hand--right {
+  .ascii-veil--right {
     right: -34vw;
   }
 }
