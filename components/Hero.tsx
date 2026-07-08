@@ -38,15 +38,32 @@ export default function Hero() {
 
     // Initial hardware-accelerated states
     gsap.set('.clip-panel', { clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)' });
+    gsap.set('.hero-liquid-blob', { scale: 0.86, opacity: 0, filter: 'blur(58px)' });
+    gsap.set('.hero-intro-note, .hero-bottom-rail', { opacity: 0, y: 18 });
     gsap.set(titleSplit.chars, { yPercent: 100 });
     gsap.set(subtitleSplit.words, { yPercent: 100, opacity: 0 });
 
     // 3. The Execution Sequence
-    tl.to('.clip-panel', {
+    tl.to('.hero-liquid-blob', {
+      scale: 1,
+      opacity: 1,
+      filter: 'blur(34px)',
+      duration: 1.4,
+      stagger: 0.08,
+      ease: 'expo.out'
+    })
+    .to('.clip-panel', {
       clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
       duration: 1.6,
       ease: 'expo.inOut'
-    })
+    }, '-=1.05')
+    .to('.hero-intro-note, .hero-bottom-rail', {
+      opacity: 1,
+      y: 0,
+      duration: 0.72,
+      stagger: 0.08,
+      ease: 'power3.out'
+    }, '-=1.2')
     .to(titleSplit.chars, {
       yPercent: 0,
       duration: 1.2,
@@ -72,7 +89,7 @@ export default function Hero() {
     <div
       ref={container}
       data-active="true"
-      className="reactbits-hero-shell relative w-full h-screen flex flex-col items-center justify-center bg-[#030303] overflow-hidden"
+      className="reactbits-hero-shell relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden bg-[#030303]"
     >
       {/* Background Math Grid effect */}
       <div 
@@ -83,6 +100,11 @@ export default function Hero() {
           backgroundPosition: 'center center'
         }} 
       />
+      <div aria-hidden className="hero-liquid-stage">
+        <span className="hero-liquid-blob hero-liquid-blob--one" />
+        <span className="hero-liquid-blob hero-liquid-blob--two" />
+        <span className="hero-liquid-blob hero-liquid-blob--three" />
+      </div>
       <div aria-hidden className="reactbits-hero-aurora" />
       <div aria-hidden className="reactbits-hero-scan" />
       <ParticleField className="reactbits-hero-particles" />
@@ -91,16 +113,28 @@ export default function Hero() {
         <span />
         <span />
       </div>
+      <div className="hero-intro-note absolute left-6 top-8 z-20 max-w-xs text-sm font-semibold leading-relaxed text-zinc-200 md:left-12 md:top-12 md:max-w-sm">
+        Applied AI systems with product taste, evidence, and shipping discipline.
+      </div>
 
       {/* Main Reveal Clip-path Panel */}
-      <div className="clip-panel relative z-10 flex flex-col items-center text-center px-4 md:px-0">
-        <h1 className="hero-title text-5xl md:text-7xl lg:text-[7rem] font-black text-white uppercase tracking-tighter leading-[0.9] mb-8">
-          ZhiChao Pan&apos;s<br />
-          <span className="reactbits-title-glow block mt-2">Digital Lab</span>
+      <div className="clip-panel relative z-10 flex flex-col items-center px-4 text-center md:px-0">
+        <h1 className="hero-title hero-display-title mb-8 text-white">
+          <span className="hero-title-line hero-title-line--sans">ZhiChao</span>
+          <span className="hero-title-line hero-title-line--serif reactbits-title-glow">Pan</span>
         </h1>
-        <p className="hero-subtitle max-w-2xl text-sm md:text-xl text-zinc-400 font-mono tracking-widest uppercase">
+        <p className="hero-subtitle max-w-2xl text-sm md:text-xl text-zinc-300 font-mono tracking-widest uppercase">
           [ Applied AI · Multi-Agent Systems · Product Engineering ]
         </p>
+      </div>
+
+      <div className="hero-bottom-rail absolute inset-x-6 bottom-6 z-20 border-t border-white/25 pt-4 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-300 md:inset-x-12 md:bottom-8 md:text-xs">
+        <span>v3.2</span>
+        <nav aria-label="Primary sections" className="hero-bottom-links">
+          <a href="#signature-projects">work</a>
+          <a href="#projects">index</a>
+          <a href="#outro">contact</a>
+        </nav>
       </div>
     </div>
   );

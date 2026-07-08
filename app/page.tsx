@@ -9,6 +9,7 @@ import {
   WorkingNotesSection,
 } from '@/components/profile-upgrade-sections';
 import { SignatureProjectsStage } from '@/components/signature-projects-stage';
+import { FloatingProjectGallery } from '@/components/floating-project-gallery';
 import { ProjectsSection } from '@/components/projects-section';
 import { OutroSection } from '@/components/outro-section';
 import { MomentumRibbon } from '@/components/momentum-ribbon';
@@ -26,6 +27,7 @@ export default function Home() {
       <MomentumRibbon />
       <AboutSection />
       <FocusSection />
+      <FloatingProjectGallery projects={projects} stats={stats} />
       <SignatureProjectsStage cases={getFeaturedCaseStudies()} />
       <BilingualBriefSection />
       <ApplicationKitSection />
