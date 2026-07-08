@@ -48,6 +48,7 @@ export function P10Loader() {
       gsap.set('.p10-loader__meta span, .p10-loader__bottom', { opacity: 0, y: 18 });
       gsap.set('.p10-loader__cut', { scaleX: 0 });
       gsap.set(loader, {
+        backgroundColor: '#030303',
         clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
       });
 
@@ -101,11 +102,26 @@ export function P10Loader() {
           },
           '-=0.28',
         )
-        .to(loader, {
-          clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
-          duration: 0.78,
+        .set(
+          '.p10-loader__meta, .p10-loader__stage, .p10-loader__bottom, .p10-loader__grain, .p10-loader__rail',
+          { opacity: 0 },
+        )
+        .set(loader, { backgroundColor: 'transparent' })
+        .to('.p10-loader__cut', {
+          scaleX: 0,
+          duration: 0.86,
+          stagger: { each: 0.055, from: 'center' },
           ease: 'expo.inOut',
-        });
+        })
+        .to(
+          loader,
+          {
+            opacity: 0,
+            duration: 0.18,
+            ease: 'power1.out',
+          },
+          '-=0.1',
+        );
     }, loader);
 
     updateProgress();
@@ -154,7 +170,7 @@ export function P10Loader() {
       </div>
 
       <div className="p10-loader__cuts" aria-hidden>
-        {Array.from({ length: 8 }).map((_, index) => (
+        {Array.from({ length: 12 }).map((_, index) => (
           <span key={index} className="p10-loader__cut" />
         ))}
       </div>

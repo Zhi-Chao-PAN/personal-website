@@ -351,6 +351,7 @@ html.lenis, html.lenis body {
   background: var(--p10-bg);
   color: var(--p10-fg);
   isolation: isolate;
+  will-change: opacity, background-color;
 }
 
 .p10-loader__grain {
@@ -505,13 +506,16 @@ html.lenis, html.lenis body {
   inset: 0;
   z-index: 6;
   display: grid;
-  grid-template-rows: repeat(8, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  will-change: transform;
 }
 
 .p10-loader__cut {
   display: block;
   background: var(--p10-fg);
+  box-shadow: 0 0 0 1px var(--p10-fg);
   transform-origin: left center;
+  will-change: transform;
 }
 
 .p10-loader__cut:nth-child(even) {
