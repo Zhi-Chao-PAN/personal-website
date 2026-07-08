@@ -22,6 +22,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 html.p10-loader-active,
 html.p10-loader-active body {
   overflow: hidden;
@@ -835,19 +845,19 @@ html.lenis, html.lenis body {
 
 @media (min-width: 768px) {
   .floating-gallery-title-text {
-    font-size: 5.2rem;
+    font-size: 4.15rem;
   }
 }
 
 @media (min-width: 1280px) {
   .floating-gallery-title-text {
-    font-size: 6.95rem;
+    font-size: 4.7rem;
   }
 }
 
 @media (min-width: 1600px) {
   .floating-gallery-title-text {
-    font-size: 7.55rem;
+    font-size: 5.35rem;
   }
 }
 
@@ -1363,16 +1373,16 @@ html.lenis, html.lenis body {
 
 .floating-gallery-section {
   --floating-progress: 0;
-  height: 360vh;
-  min-height: 2600px;
+  height: 430vh;
+  min-height: 3400px;
   isolation: isolate;
 }
 
 .floating-gallery-pin {
   isolation: isolate;
   background:
-    radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.035), transparent 28%),
-    radial-gradient(circle at 18% 68%, rgba(56, 189, 248, 0.06), transparent 22%),
+    radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.025), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.015), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.018)),
     #030303;
 }
 
@@ -1381,7 +1391,7 @@ html.lenis, html.lenis body {
   position: absolute;
   inset: -8%;
   z-index: 1;
-  opacity: 0.34;
+  opacity: 0.18;
   background:
     radial-gradient(circle at 18% 28%, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 4px),
     radial-gradient(circle at 70% 62%, rgba(255, 255, 255, 0.055) 0 1px, transparent 1px 5px);
@@ -1395,16 +1405,43 @@ html.lenis, html.lenis body {
   pointer-events: none;
   position: absolute;
   inset: 0;
-  z-index: 30;
+  z-index: 6;
   background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.58), transparent 17%, transparent 82%, rgba(0, 0, 0, 0.64)),
-    radial-gradient(ellipse at center, transparent 0%, transparent 56%, rgba(0, 0, 0, 0.7) 100%);
+    linear-gradient(90deg, rgba(0, 0, 0, 0.82), transparent 16%, transparent 84%, rgba(0, 0, 0, 0.86)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.82), transparent 20%, transparent 80%, rgba(0, 0, 0, 0.86)),
+    radial-gradient(ellipse at center, transparent 0%, transparent 64%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+.floating-gallery-ribbon {
+  pointer-events: none;
+  position: absolute;
+  inset: -8vh -10vw auto -10vw;
+  z-index: 8;
+  height: 74vh;
+  opacity: 0;
+  transform-origin: 44% 38%;
+  will-change: transform, opacity;
+}
+
+.floating-gallery-ribbon svg {
+  display: block;
+  width: 120vw;
+  height: 100%;
+  overflow: visible;
+}
+
+.floating-gallery-ribbon path {
+  fill: none;
+  stroke: #ff1c0a;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 118;
 }
 
 .floating-gallery-kicker {
   position: absolute;
-  left: 2.6rem;
-  top: 55%;
+  left: 2.3rem;
+  top: 52%;
   z-index: 34;
   font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 1rem;
@@ -1415,13 +1452,19 @@ html.lenis, html.lenis body {
 }
 
 .floating-gallery-title {
+  --floating-title-y: 0px;
+  --floating-title-scale: 1;
+  transform: translate3d(0, calc(-50% + var(--floating-title-y)), 0) scale(var(--floating-title-scale));
+  transform-origin: center center;
   text-shadow:
     0 2px 30px rgba(0, 0, 0, 0.82),
-    0 0 74px rgba(0, 0, 0, 0.66);
+    0 0 72px rgba(0, 0, 0, 0.74);
+  will-change: transform, opacity;
 }
 
 .floating-gallery-title-text {
-  font-size: 3.25rem;
+  max-width: 48rem;
+  font-size: 3rem;
 }
 
 .floating-gallery-title em {
@@ -1433,15 +1476,14 @@ html.lenis, html.lenis body {
 
 .floating-gallery-side {
   position: absolute;
-  right: 2.4rem;
-  top: 18%;
-  bottom: 14%;
+  right: 2.05rem;
+  top: 10%;
+  bottom: 9%;
   z-index: 34;
-  display: grid;
-  grid-template-rows: 1fr auto auto;
-  align-items: center;
+  display: flex;
+  align-items: stretch;
   justify-items: end;
-  gap: 1.3rem;
+  gap: 1rem;
   color: white;
 }
 
@@ -1449,7 +1491,7 @@ html.lenis, html.lenis body {
   position: relative;
   width: 2px;
   height: 100%;
-  min-height: 18rem;
+  min-height: 30rem;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.13);
 }
@@ -1475,6 +1517,7 @@ html.lenis, html.lenis body {
 }
 
 .floating-gallery-side__label {
+  align-self: center;
   font-size: 1.08rem;
   font-weight: 700;
   letter-spacing: 0;
@@ -1482,6 +1525,7 @@ html.lenis, html.lenis body {
 }
 
 .floating-gallery-side__count {
+  display: none;
   font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.76rem;
   color: rgba(255, 255, 255, 0.52);
@@ -1491,7 +1535,8 @@ html.lenis, html.lenis body {
   position: absolute;
   inset: 0;
   z-index: 12;
-  perspective: 1300px;
+  perspective: 1120px;
+  perspective-origin: 50% 54%;
   transform-style: preserve-3d;
 }
 
@@ -1499,7 +1544,7 @@ html.lenis, html.lenis body {
   position: absolute;
   left: var(--fg-left);
   top: var(--fg-top);
-  z-index: 12;
+  z-index: var(--fg-z);
   width: min(var(--fg-width), 24vw);
   min-width: 9rem;
   border: 0;
@@ -1518,12 +1563,13 @@ html.lenis, html.lenis body {
 .floating-gallery-card__media {
   position: relative;
   display: block;
-  aspect-ratio: 1.45 / 1;
+  aspect-ratio: var(--fg-aspect, 1.45 / 1);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 2px;
   background: #050505;
-  transform: perspective(960px) rotateX(4deg) rotateY(-8deg);
+  filter: brightness(1.08) contrast(1.08) saturate(1.14);
+  transform: perspective(960px) rotateX(5deg) rotateY(-10deg);
   transform-style: preserve-3d;
   transition:
     border-color 0.24s ease,
@@ -1532,15 +1578,7 @@ html.lenis, html.lenis body {
 }
 
 .floating-gallery-card:nth-child(even) .floating-gallery-card__media {
-  transform: perspective(960px) rotateX(-3deg) rotateY(9deg);
-}
-
-.floating-gallery-card:nth-child(3n) .floating-gallery-card__media {
-  aspect-ratio: 0.82 / 1;
-}
-
-.floating-gallery-card:nth-child(4n) .floating-gallery-card__media {
-  aspect-ratio: 1.78 / 1;
+  transform: perspective(960px) rotateX(-4deg) rotateY(10deg);
 }
 
 .floating-gallery-card__media::after {
@@ -1564,7 +1602,7 @@ html.lenis, html.lenis body {
 .floating-gallery-card:hover .floating-gallery-card__media,
 .floating-gallery-card:focus-visible .floating-gallery-card__media {
   border-color: rgba(255, 255, 255, 0.38);
-  filter: saturate(1.12) contrast(1.05);
+  filter: brightness(1.14) saturate(1.18) contrast(1.1);
   transform: perspective(960px) rotateX(0deg) rotateY(0deg) scale(1.04);
 }
 
@@ -1590,24 +1628,6 @@ html.lenis, html.lenis body {
 .floating-gallery-card:hover .floating-gallery-card__caption,
 .floating-gallery-card:focus-visible .floating-gallery-card__caption {
   opacity: 1;
-}
-
-.floating-gallery-footer {
-  position: absolute;
-  left: 2.6rem;
-  right: 2.6rem;
-  bottom: 2rem;
-  z-index: 34;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid rgba(255, 255, 255, 0.13);
-  padding-top: 1rem;
-  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
 }
 
 .reactbits-gallery-stage {
@@ -2265,9 +2285,9 @@ html.lenis, html.lenis body {
   }
 
   .floating-gallery-title-text {
-    max-width: 21rem;
-    font-size: 2.02rem;
-    line-height: 1.14;
+    max-width: 22rem;
+    font-size: 1.78rem;
+    line-height: 1.12;
   }
 
   .floating-gallery-kicker {
@@ -2275,6 +2295,10 @@ html.lenis, html.lenis body {
   }
 
   .floating-gallery-side {
+    display: none;
+  }
+
+  .floating-gallery-ribbon {
     display: none;
   }
 

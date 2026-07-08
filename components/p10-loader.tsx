@@ -19,8 +19,8 @@ export function P10Loader() {
 
     if ((alreadySeen || reducedMotion) && !forceIntro) {
       shouldAnimateRef.current = false;
-      setIsVisible(false);
-      return;
+      const hideFrame = window.requestAnimationFrame(() => setIsVisible(false));
+      return () => window.cancelAnimationFrame(hideFrame);
     }
 
     shouldAnimateRef.current = true;
