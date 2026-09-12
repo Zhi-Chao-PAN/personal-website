@@ -44,3 +44,6 @@ next-env.d.ts
 /playwright-report/
 /test-results/
 /data/*.tmp
+
+# Misinterpreted Windows paths from WSL browser tools
+/[A-Za-z]:*/

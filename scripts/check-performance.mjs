@@ -145,7 +145,9 @@ async function main() {
         console.log(`[${page.name}] run ${run}/${runsPerPage} · ${url}`);
         try {
           closingChrome = undefined;
-          activeChrome = await chromeLauncher.launch({ chromePath, userDataDir, chromeFlags: ['--headless', '--no-sandbox', '--disable-dev-shm-usage'], handleSIGINT: false, logLevel: 'error', connectionPollInterval: 250, maxConnectionRetries: 80 });
+          // chrome-launcher translates paths to Windows syntax under WSL. The
+          // explicitly selected browser is Linux, so its final flag keeps the POSIX path.
+          activeChrome = await chromeLauncher.launch({ chromePath, userDataDir, chromeFlags: ['--headless', '--no-sandbox', '--disable-dev-shm-usage', `--user-data-dir=${userDataDir}`], handleSIGINT: false, logLevel: 'error', connectionPollInterval: 250, maxConnectionRetries: 80 });
           if (interrupted) throw new Error('Interrupted before the audit started.');
           const result = await withDeadline(lighthouse(url, { port: activeChrome.port, logLevel: 'error', output: ['json', 'html'], onlyCategories: categories, formFactor: 'mobile', throttlingMethod: 'simulate', disableStorageReset: false, locale: 'en-US' }));
           if (!result?.lhr || !Array.isArray(result.report) || result.report.length !== 2) throw new Error('Lighthouse did not return both JSON and HTML reports.');
