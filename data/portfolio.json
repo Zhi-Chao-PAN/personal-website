@@ -1,0 +1,1123 @@
+{
+  "updatedAt": "2026-09-12",
+  "projects": [
+    {
+      "slug": "launchlens-ai",
+      "name": "LaunchLens AI",
+      "tier": "flagship",
+      "kind": "product",
+      "repoUrl": "https://github.com/Zhi-Chao-PAN/launchlens-ai",
+      "demoUrl": "https://launchlens-ai-two.vercel.app",
+      "verifiedAt": "2026-09-12",
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "Product workflows",
+        "Evidence-grounded AI"
+      ],
+      "related": ["launchlens-research-studio", "model-eval-studio"],
+      "content": {
+        "en": {
+          "eyebrow": "AI product · from idea to action",
+          "summary": "An editable go-to-market workspace that connects a founder’s assumptions, recorded evidence, decisions, and next actions.",
+          "problem": "An AI-generated launch plan is easy to produce and hard to act on. Founders need to see which assumptions have support, what remains uncertain, and what to do next.",
+          "role": [
+            "Led the product requirements and choices around the idea-to-validation workflow.",
+            "Used AI-assisted implementation, then reviewed the interface, evidence boundaries, and release checks."
+          ],
+          "decisions": [
+            {
+              "title": "Make the demo useful without a model account",
+              "choice": "Ship stable example workspaces and a deterministic provider; enable live generation separately.",
+              "tradeoff": "The default example demonstrates the workflow, not fresh market research.",
+              "verification": "Public fixtures and the demo script provide a repeatable path through the product."
+            },
+            {
+              "title": "Keep decisions tied to recorded evidence",
+              "choice": "Require decision claims to cite evidence IDs and invalidate a brief when its source evidence changes.",
+              "tradeoff": "Users must record useful evidence; fluent generated prose cannot replace that work.",
+              "verification": "Decision evaluation checks citations, source fingerprints, and response structure."
+            },
+            {
+              "title": "Make storage an optional step",
+              "choice": "Keep editing and private exports available locally; add cloud history and public sharing behind explicit actions.",
+              "tradeoff": "Browser-only data needs an export or recovery path, and shared views must expose less than private workspaces.",
+              "verification": "The documented cloud checks cover recovery, ownership, and public-share field boundaries."
+            }
+          ],
+          "outcome": "The public project includes a working interface, stable sample scenarios, export formats, and an engineering case study. A reviewer can follow a decision from its supporting evidence to an execution task.",
+          "limits": [
+            "Demo mode and live model generation are separate; a sample output is not evidence of a live model call.",
+            "Cloud, team, and billing capabilities depend on deployment configuration. No customer adoption or revenue claim is made."
+          ]
+        },
+        "zh": {
+          "eyebrow": "AI 产品 · 从想法到行动",
+          "summary": "把创业想法整理为可编辑的市场进入工作区，将假设、已记录的证据、决策和下一步任务连接起来。",
+          "problem": "生成一份市场进入计划并不难，难的是把它用起来。创业者需要知道哪些假设有依据、哪些仍不确定，以及接下来应该验证什么。",
+          "role": [
+            "主导从想法到验证的产品需求与关键取舍。",
+            "借助 AI 完成实现，随后检查界面、证据边界与发布验证，并持续迭代。"
+          ],
+          "decisions": [
+            {
+              "title": "没有模型账号也能理解产品",
+              "choice": "提供稳定的示例工作区与确定性演示模式，真实模型生成单独启用。",
+              "tradeoff": "默认样例展示产品流程，不代表刚刚完成了市场调研。",
+              "verification": "公开样例和演示脚本提供可以重复走通的产品路径。"
+            },
+            {
+              "title": "让决策指向已记录的证据",
+              "choice": "决策中的主张需要引用证据编号；来源证据发生变化后，旧简报失效。",
+              "tradeoff": "用户需要先记录有用的证据，流畅的生成文字无法替代这一步。",
+              "verification": "决策评测检查引用、来源指纹与返回结构。"
+            },
+            {
+              "title": "让存储成为可选的一步",
+              "choice": "本地保留编辑与私密导出能力，云端历史和公开分享通过明确操作启用。",
+              "tradeoff": "仅保存在浏览器中的资料需要导出或恢复路径；公开页面必须比私密工作区展示更少内容。",
+              "verification": "云端验证流程覆盖恢复、归属检查与公开分享的字段边界。"
+            }
+          ],
+          "outcome": "公开项目包含可操作界面、稳定样例、导出格式和工程案例。读者可以沿着一条决策，追溯其依据并看到对应的执行任务。",
+          "limits": [
+            "演示模式与真实模型生成分开；样例结果不证明发生过实时模型调用。",
+            "云端、团队和计费功能取决于部署配置，不宣称已有客户规模或营收。"
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "label": {
+            "en": "Product source",
+            "zh": "产品源码"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/launchlens-ai",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "Engineering case study",
+            "zh": "工程案例"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/launchlens-ai/blob/main/docs/PORTFOLIO_CASE_STUDY.md",
+          "type": "report"
+        },
+        {
+          "label": {
+            "en": "Decision evaluation",
+            "zh": "决策评测实现"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/launchlens-ai/blob/main/src/lib/launchlens/decision-eval.ts",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "Public demo",
+            "zh": "公开演示"
+          },
+          "url": "https://launchlens-ai-two.vercel.app",
+          "type": "demo"
+        }
+      ]
+    },
+    {
+      "slug": "llm-evaluation-playbook",
+      "name": "LLM Evaluation Playbook",
+      "tier": "flagship",
+      "kind": "tool",
+      "repoUrl": "https://github.com/Zhi-Chao-PAN/llm-evaluation-playbook",
+      "demoUrl": null,
+      "verifiedAt": "2026-09-12",
+      "tags": [
+        "Python",
+        "Evaluation design",
+        "Numeric tolerances",
+        "Task validation"
+      ],
+      "related": ["model-eval-studio", "structure-aware-rag-empirical"],
+      "content": {
+        "en": {
+          "eyebrow": "Evaluation methods · criteria you can check",
+          "summary": "A practical guide and small Python toolkit for turning evaluation requirements into explicit criteria, tolerance checks, and reviewable task packages.",
+          "problem": "Evaluation becomes unreliable when reviewers interpret a criterion differently, rounding changes a verdict, or reference answers reach the model being evaluated.",
+          "role": [
+            "Led the task-design requirements and selected the checks worth making explicit.",
+            "Used AI-assisted drafting and implementation, then reviewed synthetic examples, scoring boundaries, and validation results."
+          ],
+          "decisions": [
+            {
+              "title": "Write observable criteria before grading",
+              "choice": "Separate hard requirements from graded quality dimensions and define concrete scoring anchors.",
+              "tradeoff": "The template is one scoring design; a benchmark’s own rules still determine the rubric.",
+              "verification": "The rubric linter flags vague wording, and the synthetic task shows criteria beside an answer."
+            },
+            {
+              "title": "Represent tolerances as data",
+              "choice": "Use explicit absolute, relative, percentage-point, interval, or set specifications.",
+              "tradeoff": "A validator can enforce the stated band but cannot decide whether that band is appropriate for the task.",
+              "verification": "Passing, failing, and boundary cases exercise the tolerance checker."
+            },
+            {
+              "title": "Check the package as well as the answer",
+              "choice": "Declare agent and judge assets separately, then check required files and references together.",
+              "tradeoff": "Filename and table checks catch known packaging mistakes; they do not detect every semantic leak.",
+              "verification": "The package checker and synthetic example run in CI alongside the automated tests."
+            }
+          ],
+          "outcome": "The v0.2.0 release contains methodology chapters, reusable templates, three command-line checks, and a complete synthetic SaaS task. Its 17 automated tests run in CI on Python 3.9, 3.11, and 3.12.",
+          "limits": [
+            "All public examples are synthetic; client tasks, rubrics, and private feedback records are excluded.",
+            "Passing local checks does not establish benchmark quality, judge calibration, or model capability."
+          ]
+        },
+        "zh": {
+          "eyebrow": "评测方法 · 可以核验的标准",
+          "summary": "一套实践指南和 Python 小工具，把评测要求落实为明确考点、容差检查与可审阅的题包。",
+          "problem": "同一考点被不同人理解成不同含义、舍入差异改变判分、参考答案混入模型输入，都会让评测结果失去可靠依据。",
+          "role": [
+            "主导任务设计要求，选择需要明确表达和自动检查的规则。",
+            "借助 AI 起草文档与实现工具，再检查合成样例、判分边界和验证结果。"
+          ],
+          "decisions": [
+            {
+              "title": "先写可观察的标准，再讨论分数",
+              "choice": "区分硬性要求与分级质量维度，为判分写出具体锚点。",
+              "tradeoff": "模板只提供一种评分设计，实际题目仍应遵守所属评测的规则。",
+              "verification": "评分规则检查器定位模糊表述，合成题目把考点与答案放在一起供人核对。"
+            },
+            {
+              "title": "把容差写成数据",
+              "choice": "明确使用绝对值、相对值、百分点、区间或集合规格。",
+              "tradeoff": "工具能执行已写明的范围，但无法替设计者判断范围是否合理。",
+              "verification": "通过、失败和边界样例共同验证容差检查器。"
+            },
+            {
+              "title": "同时检查答案与题包",
+              "choice": "分别声明模型输入与评审资料，并一起检查必要文件及引用关系。",
+              "tradeoff": "文件名和表格规则能发现已知打包错误，不能识别所有语义层面的泄漏。",
+              "verification": "题包检查器与合成样例和自动测试一起在 CI 中运行。"
+            }
+          ],
+          "outcome": "v0.2.0 公开了方法文档、可复用模板、三个命令行检查工具及一套完整的合成 SaaS 题目。17 项自动测试在 Python 3.9、3.11 和 3.12 的 CI 环境中运行。",
+          "limits": [
+            "公开样例均为合成内容，不包含客户题目、评分细则或私密反馈记录。",
+            "本地检查通过不等于题目质量、评审校准或模型能力已经获得验证。"
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "label": {
+            "en": "Methodology and tools",
+            "zh": "方法与工具"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/llm-evaluation-playbook",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "Rubric design",
+            "zh": "评分规则设计"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/llm-evaluation-playbook/blob/main/docs/01-rubric-design.md",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "Numeric tolerances",
+            "zh": "数值容差"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/llm-evaluation-playbook/blob/main/docs/02-numeric-tolerances.md",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "Synthetic task package",
+            "zh": "合成题包"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/llm-evaluation-playbook/tree/main/examples/synthetic-saas-analysis",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "v0.2.0 release",
+            "zh": "v0.2.0 发布"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/llm-evaluation-playbook/releases/tag/v0.2.0",
+          "type": "release"
+        },
+        {
+          "label": {
+            "en": "Verified CI run",
+            "zh": "已核实的 CI 运行"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/llm-evaluation-playbook/actions/runs/34610778412",
+          "type": "report"
+        }
+      ]
+    },
+    {
+      "slug": "ai-cli-orchestrator",
+      "name": "AI CLI Orchestrator",
+      "tier": "flagship",
+      "kind": "tool",
+      "repoUrl": "https://github.com/Zhi-Chao-PAN/ai-cli-orchestrator",
+      "demoUrl": null,
+      "verifiedAt": "2026-09-12",
+      "tags": [
+        "PowerShell",
+        "CLI orchestration",
+        "Explicit routing",
+        "Process lifecycle"
+      ],
+      "related": ["codex-zcode-remote-relay", "LangGraph-Financial-Swarm"],
+      "content": {
+        "en": {
+          "eyebrow": "Agent tooling · bounded local execution",
+          "summary": "A Windows dispatcher that turns installed AI CLIs into named workers with explicit routing, capability checks, and structured execution results.",
+          "problem": "Using several AI CLIs creates operational questions beyond choosing a model: which worker may read a repository, what happens after a timeout, and who accepts the result?",
+          "role": [
+            "Led the orchestration requirements and choices around routing, permissions, and acceptance.",
+            "Used AI-assisted implementation and reviewed failure paths, regression evidence, and installation behavior."
+          ],
+          "decisions": [
+            {
+              "title": "Declare routes rather than guess intent",
+              "choice": "Select a worker, ordered profile, or route explicitly and filter candidates by required capabilities.",
+              "tradeoff": "Setup takes more thought than automatic selection, but the reason for choosing a worker remains inspectable.",
+              "verification": "Schema validation and deterministic routing tests check selection and rejection paths."
+            },
+            {
+              "title": "Leave authentication with each CLI",
+              "choice": "Use reviewed adapters and provider-native login instead of storing credentials or executable commands in policy files.",
+              "tradeoff": "Adding a provider requires an adapter change and review; arbitrary commands are intentionally outside the configuration model.",
+              "verification": "The security contract and schema checks define the admitted configuration surface."
+            },
+            {
+              "title": "Treat completion as evidence to review",
+              "choice": "Bound execution time and output, record cleanup, and stop automatic cross-worker retries once a writer starts.",
+              "tradeoff": "A partial write needs inspection before another worker can continue; process success does not accept the work.",
+              "verification": "Windows regression and installer lifecycle suites exercise process handling in PowerShell 5.1 and 7."
+            }
+          ],
+          "outcome": "The v0.3.0 release provides documented adapters, configuration examples, installation and removal paths, and a structured result contract. Public CI records show the Windows PowerShell 5.1 and PowerShell 7 test jobs completing successfully.",
+          "limits": [
+            "The supported execution environment is Windows; this is not a cross-platform service or a sandbox for malicious local programs.",
+            "Provider binaries and native profiles remain trusted dependencies. MiniMax has no reviewed workspace read/write capability in v0.3."
+          ]
+        },
+        "zh": {
+          "eyebrow": "智能体工具 · 有边界的本地执行",
+          "summary": "一个 Windows 调度器，把已安装的 AI CLI 组织为具名工作单元，提供显式路由、能力检查与结构化执行结果。",
+          "problem": "同时使用多个 AI CLI，需要解决的不只是选哪个模型，还包括谁能读取仓库、超时后怎样收尾，以及谁来验收结果。",
+          "role": [
+            "主导路由、权限和验收边界相关的编排需求与取舍。",
+            "借助 AI 完成实现，再审查失败路径、回归证据与安装行为。"
+          ],
+          "decisions": [
+            {
+              "title": "明确声明路由，不猜测任务意图",
+              "choice": "显式选择 worker、有序 profile 或 route，并按所需能力筛选候选者。",
+              "tradeoff": "配置需要多做一些判断，但选择某个 worker 的原因可以被检查。",
+              "verification": "配置校验与确定性路由测试覆盖选择和拒绝路径。"
+            },
+            {
+              "title": "登录继续由各 CLI 管理",
+              "choice": "使用经过审查的适配器与原生登录，不在策略文件中保存凭据或可执行命令。",
+              "tradeoff": "接入新服务需要修改并审查适配器；配置本身不承担任意命令执行。",
+              "verification": "安全契约与配置检查明确允许的配置范围。"
+            },
+            {
+              "title": "把执行完成当作待审查的证据",
+              "choice": "限制执行时长与输出，记录清理结果，并在写入 worker 启动后停止自动跨 worker 重试。",
+              "tradeoff": "发生部分写入时，需要先检查再交给下一位 worker；进程成功不代表工作已验收。",
+              "verification": "Windows 回归与安装生命周期测试在 PowerShell 5.1 和 7 中检查进程处理行为。"
+            }
+          ],
+          "outcome": "v0.3.0 提供适配器文档、配置示例、安装与卸载路径，以及结构化结果契约。公开 CI 记录显示Windows PowerShell 5.1 与 PowerShell 7 测试任务均成功完成。",
+          "limits": [
+            "支持的执行环境是 Windows；它不是跨平台服务，也不是恶意本地程序的沙箱。",
+            "服务商二进制和原生配置仍属于可信依赖。v0.3 的 MiniMax 适配器没有经过审查的仓库读写能力。"
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "label": {
+            "en": "Source and setup",
+            "zh": "源码与配置"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/ai-cli-orchestrator",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "Security and trust boundaries",
+            "zh": "安全与信任边界"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/ai-cli-orchestrator/blob/main/SECURITY.md",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "v0.3 contract",
+            "zh": "v0.3 执行契约"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/ai-cli-orchestrator/blob/main/docs/specs/v0.3-generic-orchestration.md",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "v0.3.0 release",
+            "zh": "v0.3.0 发布"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/ai-cli-orchestrator/releases/tag/v0.3.0",
+          "type": "release"
+        },
+        {
+          "label": {
+            "en": "Verified Windows CI",
+            "zh": "已核实的 Windows CI"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/ai-cli-orchestrator/actions/runs/30649046691",
+          "type": "report"
+        }
+      ]
+    },
+    {
+      "slug": "model-eval-studio",
+      "name": "Model Eval Studio",
+      "tier": "selected",
+      "kind": "product",
+      "repoUrl": "https://github.com/Zhi-Chao-PAN/model-eval-studio",
+      "demoUrl": "https://model-test-assistant.vercel.app",
+      "verifiedAt": "2026-09-12",
+      "tags": ["Next.js", "TypeScript", "Artifact review", "Versioned reports"],
+      "related": ["llm-evaluation-playbook", "launchlens-ai"],
+      "content": {
+        "en": {
+          "eyebrow": "Evaluation product · inspect the evidence",
+          "summary": "A guided workspace for comparing model screenshots and deliverables, then revising and sharing a structured evaluation report.",
+          "problem": "Screenshots, files, scoring rules, and feedback often live in separate places, making it difficult to revisit why a model received a particular assessment.",
+          "role": [
+            "Led workflow and report requirements; used AI-assisted implementation.",
+            "Reviewed how evidence, human revisions, and access rules fit together."
+          ],
+          "decisions": [
+            {
+              "title": "Keep a revision trail",
+              "choice": "Create report versions and preserve their relationship to the inputs and previous revision.",
+              "tradeoff": "A generated assessment remains a draft that needs human review.",
+              "verification": "The repository documents version snapshots and includes tests for core report and permission logic."
+            },
+            {
+              "title": "Share a limited view",
+              "choice": "Offer explicit read-only sharing while keeping internal report metadata out of the public projection.",
+              "tradeoff": "The full workspace requires invited access and a configured model provider.",
+              "verification": "A shared access layer and field allowlist define the public view."
+            }
+          ],
+          "outcome": "The public code connects task setup, screenshot and artifact review, versioned reports, and export in one application.",
+          "limits": [
+            "The hosted workspace uses invited access; its link is not an anonymous full-feature demo.",
+            "AI-written comparisons do not constitute independent benchmark certification."
+          ]
+        },
+        "zh": {
+          "eyebrow": "评测产品 · 沿着证据审阅",
+          "summary": "通过向导整理模型截图与交付物，再修订、分享结构化评估报告的工作区。",
+          "problem": "截图、文件、评分规则和反馈分散保存时，很难回过头解释一个模型为什么得到某项评价。",
+          "role": [
+            "主导流程与报告需求，借助 AI 完成实现。",
+            "检查证据、人工修订和访问规则之间的关系。"
+          ],
+          "decisions": [
+            {
+              "title": "保留修订过程",
+              "choice": "为报告建立版本，并记录它与输入材料及前一版本的关系。",
+              "tradeoff": "生成的评价仍是一份需要人工检查的草稿。",
+              "verification": "仓库记录了版本快照设计，并提供报告与权限核心逻辑的测试。"
+            },
+            {
+              "title": "只分享经过裁剪的视图",
+              "choice": "显式开启只读分享，公开页面不返回内部报告元信息。",
+              "tradeoff": "完整工作区需要受邀访问，并配置模型服务。",
+              "verification": "统一访问层和字段白名单限定公开页面的内容。"
+            }
+          ],
+          "outcome": "公开源码把任务设置、截图与产物审阅、报告版本和导出连接成一套应用流程。",
+          "limits": [
+            "线上工作区采用受邀访问，链接不代表可匿名使用全部功能。",
+            "AI 生成的对比结论不构成独立基准认证。"
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "label": {
+            "en": "Workflow and report design",
+            "zh": "工作流与报告设计"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/model-eval-studio",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "Access implementation",
+            "zh": "访问控制实现"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/model-eval-studio/blob/main/src/lib/task-access.ts",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "Hosted workspace · invited access",
+            "zh": "线上工作区 · 受邀访问"
+          },
+          "url": "https://model-test-assistant.vercel.app",
+          "type": "demo"
+        }
+      ]
+    },
+    {
+      "slug": "structure-aware-rag-empirical",
+      "name": "Structure-Aware RAG (Empirical)",
+      "tier": "selected",
+      "kind": "study",
+      "repoUrl": "https://github.com/Zhi-Chao-PAN/structure-aware-rag-empirical",
+      "demoUrl": null,
+      "verifiedAt": "2026-09-12",
+      "tags": ["Python", "RAG", "Document parsing", "Error analysis"],
+      "related": [
+        "llm-evaluation-playbook",
+        "LangGraph-Financial-Swarm",
+        "vision-centric-financial-swarm"
+      ],
+      "content": {
+        "en": {
+          "eyebrow": "Research study · structure before retrieval",
+          "summary": "An exploratory comparison of plain-text and layout-aware parsing for questions over financial tables.",
+          "problem": "Flattening a PDF table can separate a number from its row label or year. Retrieval may then return text that looks relevant but cannot support the answer.",
+          "role": [
+            "Led the comparison questions and interpretation of the results.",
+            "Used AI-assisted experiments and reviewed the parsing examples and failure analysis."
+          ],
+          "decisions": [
+            {
+              "title": "Compare document representations",
+              "choice": "Contrast plain-text extraction with Markdown-based table representation while documenting the downstream setup.",
+              "tradeoff": "The published evidence is preliminary and confined to one source document.",
+              "verification": "The technical report includes parsing examples, a result table, and question-level failure categories."
+            }
+          ],
+          "outcome": "The useful result is a concrete account of how layout loss, retrieval misses, arithmetic errors, and semantic ambiguity lead to different failure modes.",
+          "limits": [
+            "The public question bank contains 30 questions; the historical summary reports 8 scored items with partial credit. The original per-question CSV is not published, and the automated scorer does not implement the report’s manual ±1% rule. No overall accuracy improvement is claimed here.",
+            "The study uses a commercial parser and local generation. It does not establish that all processing stays local or that the work has been peer reviewed."
+          ]
+        },
+        "zh": {
+          "eyebrow": "研究案例 · 先看文档结构",
+          "summary": "探索纯文本解析与保留版式的解析方式，如何影响金融表格问答。",
+          "problem": "PDF 表格被摊平成文字后，数字可能与行标签或年份脱离。检索得到的段落看起来相关，却无法支持正确答案。",
+          "role": [
+            "主导比较问题的设定与结果解释。",
+            "借助 AI 开展实验，检查解析样例和错误分析。"
+          ],
+          "decisions": [
+            {
+              "title": "比较文档的两种表达方式",
+              "choice": "对照纯文本提取与 Markdown 表格表达，并记录后续检索和生成设置。",
+              "tradeoff": "公开证据属于初步结果，范围限定在一份来源文档。",
+              "verification": "技术报告提供了解析样例、结果表和逐题错误类别。"
+            }
+          ],
+          "outcome": "案例的价值在于解释版式丢失、检索遗漏、算术错误和语义歧义怎样分别导致回答失败。",
+          "limits": [
+            "公开题库有 30 题；历史汇总为 8 项含部分分的计分。原始逐题 CSV 未公开，自动评分器也未实现报告所述的 ±1% 人工评分口径。本页不宣称整体准确率提升。",
+            "实验使用商业解析服务和本地生成，不代表所有处理都留在本地，也不代表已经同行评审。"
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "label": {
+            "en": "Experiment source",
+            "zh": "实验源码"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/structure-aware-rag-empirical",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "Preliminary technical report",
+            "zh": "初步技术报告"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/structure-aware-rag-empirical/blob/main/report/README.md",
+          "type": "report"
+        }
+      ]
+    },
+    {
+      "slug": "safety-critical-battery-prognostics",
+      "name": "Safety-Critical Battery Prognostics",
+      "tier": "selected",
+      "kind": "study",
+      "repoUrl": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics",
+      "demoUrl": null,
+      "verifiedAt": "2026-09-12",
+      "tags": ["Python", "PyTorch", "Physics constraints", "Fair comparisons"],
+      "related": ["structure-aware-rag-empirical", "deepnerve-3d"],
+      "content": {
+        "en": {
+          "eyebrow": "Research study · report the limits",
+          "summary": "A battery prognostics study that examines physics constraints, post-processing, and uncertainty while keeping synthetic and real-data evidence separate.",
+          "problem": "A physically plausible prediction is not automatically an accurate one. A fair comparison must distinguish model behavior from the effect of shared post-processing.",
+          "role": [
+            "Led the evaluation questions and choices about claim boundaries.",
+            "Used AI-assisted implementation and reviewed protocol-specific reports and comparisons."
+          ],
+          "decisions": [
+            {
+              "title": "Give baselines the same post-processing",
+              "choice": "Compare PINN and LSTM under matched smoothing and monotonic projection.",
+              "tradeoff": "The matched real-data results do not show a PINN-specific monotonicity advantage, and PINN has worse RMSE.",
+              "verification": "The claim-evidence matrix links same-cell, held-out-cell, and corruption reports separately."
+            }
+          ],
+          "outcome": "The repository preserves a useful negative result: monotone predictions can come from the common post-processing step, while prediction error still differs between models.",
+          "limits": [
+            "Synthetic robustness results must not be presented as a real-world safety guarantee.",
+            "The published corruption sweep does not establish stability across training seeds or functional-safety certification."
+          ]
+        },
+        "zh": {
+          "eyebrow": "研究案例 · 把结论边界写清楚",
+          "summary": "研究物理约束、后处理和不确定性的电池预测项目，分别报告合成数据与真实数据证据。",
+          "problem": "符合物理直觉的预测未必更准确。公平比较需要分清模型本身的表现，以及共用后处理带来的效果。",
+          "role": [
+            "主导评测问题和结论范围的取舍。",
+            "借助 AI 完成实现，检查各协议下的报告与比较结果。"
+          ],
+          "decisions": [
+            {
+              "title": "给基线相同的后处理",
+              "choice": "在相同平滑和单调投影条件下比较 PINN 与 LSTM。",
+              "tradeoff": "匹配后的真实数据结果没有体现 PINN 独有的单调性优势，且 PINN 的 RMSE 更差。",
+              "verification": "主张与证据对照表分别链接同电芯、留出电芯和扰动实验报告。"
+            }
+          ],
+          "outcome": "仓库保留了一项有价值的负结果：预测的单调性可以来自共用后处理，而模型之间的预测误差仍有差异。",
+          "limits": [
+            "合成数据上的稳健性结果不能宣传为真实世界的安全保证。",
+            "公开扰动实验不证明结果对不同训练种子稳定，也不构成功能安全认证。"
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "label": {
+            "en": "Current study and boundaries",
+            "zh": "当前研究与边界"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "Claim-evidence matrix",
+            "zh": "主张与证据对照表"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics/blob/main/docs/claim_evidence_matrix.md",
+          "type": "report"
+        },
+        {
+          "label": {
+            "en": "Real-data stress report",
+            "zh": "真实数据扰动报告"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics/blob/main/robustness_results/real_data_stress_suite_report.md",
+          "type": "report"
+        }
+      ]
+    },
+    {
+      "slug": "launchlens-research-studio",
+      "name": "LaunchLens Research Studio",
+      "tier": "archive",
+      "kind": "product",
+      "repoUrl": "https://github.com/Zhi-Chao-PAN/launchlens-research-studio",
+      "demoUrl": "https://launchlens-research-studio.vercel.app",
+      "verifiedAt": "2026-09-12",
+      "tags": ["TypeScript", "Agent workflows", "SSE", "Structured exports"],
+      "related": ["launchlens-ai", "ai-cli-orchestrator"],
+      "content": {
+        "en": {
+          "eyebrow": "Companion product · research to brief",
+          "summary": "A market-research workspace with specialist analysis, visible progress, structured reports, and a handoff into LaunchLens AI.",
+          "problem": "Market size, competitors, customer pain, pricing, and channels need different questions but must eventually inform one coherent brief.",
+          "role": [
+            "Led the research workflow and product handoff requirements.",
+            "Used AI-assisted implementation and reviewed progress, partial results, and export behavior."
+          ],
+          "decisions": [
+            {
+              "title": "Separate research from synthesis",
+              "choice": "Run specialist research in parallel and synthesize the resulting findings afterward.",
+              "tradeoff": "Specialist outputs can disagree or fail; synthesis must preserve uncertainty instead of hiding it.",
+              "verification": "The repository documents the agent roles, progress events, exports, and partial-failure behavior."
+            }
+          ],
+          "outcome": "The public project demonstrates specialist report sections and a structured LaunchLens brief export, with source and confidence fields visible to the reader.",
+          "limits": [
+            "Fixed demo outputs, provider-backed research, and durable Deep execution have different operating requirements.",
+            "An online page or a completed stream alone does not verify research accuracy or current Deep recovery readiness."
+          ]
+        },
+        "zh": {
+          "eyebrow": "配套产品 · 从研究到简报",
+          "summary": "包含专业分工、可见进度和结构化报告的市场研究工作区，可将结果交接给 LaunchLens AI。",
+          "problem": "市场规模、竞品、用户痛点、定价和渠道需要不同的问题，最终却要共同支持一份连贯的产品简报。",
+          "role": [
+            "主导研究流程与产品交接需求。",
+            "借助 AI 完成实现，检查进度、部分结果和导出行为。"
+          ],
+          "decisions": [
+            {
+              "title": "把研究与综合判断分开",
+              "choice": "并行开展各专业方向的研究，再综合已有发现。",
+              "tradeoff": "不同结果可能冲突或失败，综合判断应保留不确定性。",
+              "verification": "仓库记录了智能体分工、进度事件、导出格式及部分失败的处理。"
+            }
+          ],
+          "outcome": "公开项目展示了分专业报告和结构化 LaunchLens 简报导出，读者可以看到来源与置信度字段。",
+          "limits": [
+            "固定演示输出、真实模型研究和持久化 Deep 执行有不同运行条件。",
+            "页面可访问或数据流完成，不能单独证明研究准确性或当前 Deep 恢复机制已就绪。"
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "label": {
+            "en": "Research workflow source",
+            "zh": "研究流程源码"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/launchlens-research-studio",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "Architecture",
+            "zh": "架构说明"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/launchlens-research-studio/blob/master/docs/ARCHITECTURE.md",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "Hosted studio",
+            "zh": "线上工作区"
+          },
+          "url": "https://launchlens-research-studio.vercel.app",
+          "type": "demo"
+        }
+      ]
+    },
+    {
+      "slug": "codex-zcode-remote-relay",
+      "name": "Codex ↔ ZCode Remote Relay",
+      "tier": "archive",
+      "kind": "tool",
+      "repoUrl": "https://github.com/Zhi-Chao-PAN/codex-zcode-remote-relay",
+      "demoUrl": null,
+      "verifiedAt": "2026-09-12",
+      "tags": ["Node.js", "Local relay", "Worker handoff", "Result review"],
+      "related": ["ai-cli-orchestrator"],
+      "content": {
+        "en": {
+          "eyebrow": "Earlier tooling · explicit handoffs",
+          "summary": "A local Codex-to-ZCode relay experiment for bounded worker tasks, status collection, and review before integration.",
+          "problem": "Delegating to another desktop agent requires a clear work order, ownership boundaries, and a way to collect and assess the result.",
+          "role": [
+            "Led the delegation requirements and review boundaries.",
+            "Used AI-assisted relay implementation and checked the handoff and collection behavior."
+          ],
+          "decisions": [
+            {
+              "title": "Separate worker completion from acceptance",
+              "choice": "Collect the worker’s result and keep final review with the coordinating agent.",
+              "tradeoff": "The local bridge adds operational steps and depends on ZCode’s remote-control behavior.",
+              "verification": "The repository documents task ledgers, result states, and adapter tests."
+            }
+          ],
+          "outcome": "The project records an explicit delegation workflow and provides a focused comparison with the later, more general CLI dispatcher.",
+          "limits": [
+            "The adapter uses an undocumented local remote-control channel and may break with desktop changes.",
+            "This is a local experiment, not an official ZCode integration or a production service with measured cost savings."
+          ]
+        },
+        "zh": {
+          "eyebrow": "早期工具 · 明确交接",
+          "summary": "一个本地 Codex 到 ZCode 的中继实验，用于限定 worker 任务、收集状态，并在集成前审阅结果。",
+          "problem": "把任务交给另一个桌面智能体，需要清楚的工作单、文件归属边界，以及收集和判断结果的方法。",
+          "role": [
+            "主导委派需求与审阅边界。",
+            "借助 AI 实现中继，检查交接与结果收集行为。"
+          ],
+          "decisions": [
+            {
+              "title": "区分 worker 完成与最终验收",
+              "choice": "收集 worker 结果后，由协调者保留最终审阅责任。",
+              "tradeoff": "本地桥接增加了操作步骤，并依赖 ZCode 的远程控制行为。",
+              "verification": "仓库记录任务台账、结果状态与适配器测试。"
+            }
+          ],
+          "outcome": "项目保留了一套明确的委派流程，可与后来更通用的 CLI 调度器对照阅读。",
+          "limits": [
+            "适配器依赖未公开的本地远程控制通道，可能随桌面端变化而失效。",
+            "这是本地实验，不是官方 ZCode 集成，也不宣称已有生产服务或经过测量的成本节省。"
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "label": {
+            "en": "Relay implementation and limits",
+            "zh": "中继实现与限制"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/codex-zcode-remote-relay",
+          "type": "source"
+        }
+      ]
+    },
+    {
+      "slug": "LangGraph-Financial-Swarm",
+      "name": "LangGraph Financial Swarm",
+      "tier": "archive",
+      "kind": "study",
+      "repoUrl": "https://github.com/Zhi-Chao-PAN/LangGraph-Financial-Swarm",
+      "demoUrl": null,
+      "verifiedAt": "2026-09-12",
+      "tags": ["Python", "LangGraph", "Local inference", "Tool orchestration"],
+      "related": ["structure-aware-rag-empirical", "ai-cli-orchestrator"],
+      "content": {
+        "en": {
+          "eyebrow": "Agent study · explicit responsibilities",
+          "summary": "A financial-analysis prototype that separates supervision, document research, and computation in a graph-based workflow.",
+          "problem": "Document retrieval and numerical analysis need different tools, but their results must return to the same user question.",
+          "role": [
+            "Led the workflow framing and agent-role choices.",
+            "Used AI-assisted implementation and reviewed the graph and tool boundaries."
+          ],
+          "decisions": [
+            {
+              "title": "Give tools distinct roles",
+              "choice": "Use a supervisor to coordinate research and chart-generation components.",
+              "tradeoff": "More steps add latency and do not by themselves make the final reasoning correct.",
+              "verification": "Public source separates supervisor, researcher, and chart-generation modules."
+            }
+          ],
+          "outcome": "The repository offers a concrete graph-and-tools implementation for studying task routing and financial document analysis.",
+          "limits": [
+            "The preliminary performance headline is not used here as an independently validated benchmark.",
+            "Local inference does not imply regulatory compliance or that every document-processing dependency is local."
+          ]
+        },
+        "zh": {
+          "eyebrow": "智能体研究 · 明确各自职责",
+          "summary": "通过图工作流区分监督、文档研究与计算职责的金融分析原型。",
+          "problem": "文档检索和数值分析需要不同工具，但它们的结果最终都要回应同一个用户问题。",
+          "role": [
+            "主导工作流问题定义和智能体职责取舍。",
+            "借助 AI 完成实现，检查图流程与工具边界。"
+          ],
+          "decisions": [
+            {
+              "title": "为工具划分不同职责",
+              "choice": "由监督组件协调研究与图表生成组件。",
+              "tradeoff": "增加步骤会增加等待，也不会自动保证最终推理正确。",
+              "verification": "公开源码分别提供监督、研究和图表生成模块。"
+            }
+          ],
+          "outcome": "仓库提供具体的图与工具实现，可用于研究任务路由和金融文档分析。",
+          "limits": [
+            "本网站不把仓库的初步性能标题视为独立验证过的基准结果。",
+            "本地推理不代表符合法规，也不代表每个文档处理依赖都在本地运行。"
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "label": {
+            "en": "Agent source",
+            "zh": "智能体源码"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/LangGraph-Financial-Swarm",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "Agent modules",
+            "zh": "智能体模块"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/LangGraph-Financial-Swarm/tree/main/src/agents",
+          "type": "source"
+        }
+      ]
+    },
+    {
+      "slug": "ai-life-progress-coach",
+      "name": "AI Life Progress Coach",
+      "tier": "archive",
+      "kind": "private",
+      "repoUrl": null,
+      "demoUrl": null,
+      "verifiedAt": "2026-09-12",
+      "tags": ["Personal workflows", "Private project"],
+      "related": ["CampusTradeAI"],
+      "content": {
+        "en": {
+          "eyebrow": "Private project · public overview",
+          "summary": "A private prototype exploring AI support for long-term personal progress.",
+          "problem": "How can a personal tool connect long-term intentions with regular reflection?",
+          "role": [
+            "Led the project requirements and choices, with AI-assisted implementation and review."
+          ],
+          "decisions": [
+            {
+              "title": "Keep the public scope narrow",
+              "choice": "Describe only the concept already published on the portfolio.",
+              "tradeoff": "The implementation cannot be assessed from this page alone.",
+              "verification": "The linked earlier portfolio snapshot records the public description."
+            }
+          ],
+          "outcome": "This public overview records the project direction; source code and private personal records are not published.",
+          "limits": [
+            "Source code is not public. Only the existing public description is used.",
+            "No private data, unpublished results, or independently verified deployment claim is included."
+          ]
+        },
+        "zh": {
+          "eyebrow": "私有项目 · 公开概述",
+          "summary": "一个探索 AI 如何支持长期个人进展的私有原型。",
+          "problem": "个人工具怎样把长期意图与定期回顾连接起来？",
+          "role": ["主导项目需求与取舍，借助 AI 完成实现，并进行检查与迭代。"],
+          "decisions": [
+            {
+              "title": "限定公开展示的范围",
+              "choice": "只描述作品集中此前已公开的项目概念。",
+              "tradeoff": "仅凭本页面无法评估实际实现。",
+              "verification": "所链接的旧版作品集快照记录了原有公开简介。"
+            }
+          ],
+          "outcome": "公开介绍仅记录项目方向，不发布源码或私密个人记录。",
+          "limits": [
+            "源码未公开，仅使用既有公开介绍。",
+            "不包含私密数据、未公开结果或经过独立核验的部署主张。"
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "label": {
+            "en": "Previously published overview",
+            "zh": "此前公开的概述"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/personal-website/blob/3798eda9dd8de804c8b3d8765c3662bb5a59c826/data/projects.generated.json",
+          "type": "source"
+        }
+      ]
+    },
+    {
+      "slug": "vision-centric-financial-swarm",
+      "name": "Vision-Centric Financial Swarm",
+      "tier": "archive",
+      "kind": "private",
+      "repoUrl": null,
+      "demoUrl": null,
+      "verifiedAt": "2026-09-12",
+      "tags": ["Multimodal RAG", "Private project"],
+      "related": ["structure-aware-rag-empirical"],
+      "content": {
+        "en": {
+          "eyebrow": "Private project · public overview",
+          "summary": "A private financial-document prototype exploring visual retrieval, region cropping, and agent-assisted verification.",
+          "problem": "Financial pages carry information in charts, tables, and layout as well as text.",
+          "role": [
+            "Led the project requirements and choices, with AI-assisted implementation and review."
+          ],
+          "decisions": [
+            {
+              "title": "Keep the public scope narrow",
+              "choice": "Describe only the concept already published on the portfolio.",
+              "tradeoff": "The implementation cannot be assessed from this page alone.",
+              "verification": "The linked earlier portfolio snapshot records the public description."
+            }
+          ],
+          "outcome": "The project is represented by its previously published concept only; no public result or performance claim is added.",
+          "limits": [
+            "Source code is not public. Only the existing public description is used.",
+            "No private data, unpublished results, or independently verified deployment claim is included."
+          ]
+        },
+        "zh": {
+          "eyebrow": "私有项目 · 公开概述",
+          "summary": "一个探索视觉检索、区域裁剪与智能体辅助核验的私有金融文档原型。",
+          "problem": "财务页面的信息既存在于文字中，也存在于图表、表格和版式里。",
+          "role": ["主导项目需求与取舍，借助 AI 完成实现，并进行检查与迭代。"],
+          "decisions": [
+            {
+              "title": "限定公开展示的范围",
+              "choice": "只描述作品集中此前已公开的项目概念。",
+              "tradeoff": "仅凭本页面无法评估实际实现。",
+              "verification": "所链接的旧版作品集快照记录了原有公开简介。"
+            }
+          ],
+          "outcome": "此处只展示此前已经公开的项目概念，不新增结果或性能主张。",
+          "limits": [
+            "源码未公开，仅使用既有公开介绍。",
+            "不包含私密数据、未公开结果或经过独立核验的部署主张。"
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "label": {
+            "en": "Previously published overview",
+            "zh": "此前公开的概述"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/personal-website/blob/3798eda9dd8de804c8b3d8765c3662bb5a59c826/data/projects.generated.json",
+          "type": "source"
+        }
+      ]
+    },
+    {
+      "slug": "deepnerve-3d",
+      "name": "DeepNerve-3D",
+      "tier": "archive",
+      "kind": "private",
+      "repoUrl": null,
+      "demoUrl": null,
+      "verifiedAt": "2026-09-12",
+      "tags": ["3D imaging", "Private project"],
+      "related": ["safety-critical-battery-prognostics"],
+      "content": {
+        "en": {
+          "eyebrow": "Private project · public overview",
+          "summary": "A private research prototype for mandibular nerve segmentation in 3D CBCT images.",
+          "problem": "Tracing a thin anatomical structure in a 3D scan requires attention to continuity as well as local appearance.",
+          "role": [
+            "Led the project requirements and choices, with AI-assisted implementation and review."
+          ],
+          "decisions": [
+            {
+              "title": "Keep the public scope narrow",
+              "choice": "Describe only the concept already published on the portfolio.",
+              "tradeoff": "The implementation cannot be assessed from this page alone.",
+              "verification": "The linked earlier portfolio snapshot records the public description."
+            }
+          ],
+          "outcome": "The public overview names SwinUNETR and topology-aware post-processing as the project direction; model results are not published here.",
+          "limits": [
+            "Source code is not public. Only the existing public description is used.",
+            "No private data, unpublished results, or independently verified deployment claim is included."
+          ]
+        },
+        "zh": {
+          "eyebrow": "私有项目 · 公开概述",
+          "summary": "一个面向三维 CBCT 下牙槽神经分割的私有研究原型。",
+          "problem": "在三维扫描中追踪细小解剖结构，需要同时关注局部外观与连续性。",
+          "role": ["主导项目需求与取舍，借助 AI 完成实现，并进行检查与迭代。"],
+          "decisions": [
+            {
+              "title": "限定公开展示的范围",
+              "choice": "只描述作品集中此前已公开的项目概念。",
+              "tradeoff": "仅凭本页面无法评估实际实现。",
+              "verification": "所链接的旧版作品集快照记录了原有公开简介。"
+            }
+          ],
+          "outcome": "公开介绍仅保留 SwinUNETR 与拓扑后处理的项目方向，此处不发布模型结果。",
+          "limits": [
+            "源码未公开，仅使用既有公开介绍。",
+            "不包含私密数据、未公开结果或经过独立核验的部署主张。"
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "label": {
+            "en": "Previously published overview",
+            "zh": "此前公开的概述"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/personal-website/blob/3798eda9dd8de804c8b3d8765c3662bb5a59c826/data/projects.generated.json",
+          "type": "source"
+        }
+      ]
+    },
+    {
+      "slug": "CampusTradeAI",
+      "name": "CampusTradeAI",
+      "tier": "archive",
+      "kind": "private",
+      "repoUrl": null,
+      "demoUrl": null,
+      "verifiedAt": "2026-09-12",
+      "tags": ["Campus services", "Private project"],
+      "related": ["ai-life-progress-coach"],
+      "content": {
+        "en": {
+          "eyebrow": "Private project · public overview",
+          "summary": "A private campus marketplace and services prototype for student workflows.",
+          "problem": "Campus transactions involve service and coordination needs beyond publishing an item.",
+          "role": [
+            "Led the project requirements and choices, with AI-assisted implementation and review."
+          ],
+          "decisions": [
+            {
+              "title": "Keep the public scope narrow",
+              "choice": "Describe only the concept already published on the portfolio.",
+              "tradeoff": "The implementation cannot be assessed from this page alone.",
+              "verification": "The linked earlier portfolio snapshot records the public description."
+            }
+          ],
+          "outcome": "The project remains a public overview of a private build. No transaction volume, payment readiness, or operating result is asserted.",
+          "limits": [
+            "Source code is not public. Only the existing public description is used.",
+            "No private data, unpublished results, or independently verified deployment claim is included."
+          ]
+        },
+        "zh": {
+          "eyebrow": "私有项目 · 公开概述",
+          "summary": "一个面向学生流程的私有校园交易与服务原型。",
+          "problem": "校园交易除了发布物品，还涉及服务与协作需求。",
+          "role": ["主导项目需求与取舍，借助 AI 完成实现，并进行检查与迭代。"],
+          "decisions": [
+            {
+              "title": "限定公开展示的范围",
+              "choice": "只描述作品集中此前已公开的项目概念。",
+              "tradeoff": "仅凭本页面无法评估实际实现。",
+              "verification": "所链接的旧版作品集快照记录了原有公开简介。"
+            }
+          ],
+          "outcome": "此处是私有项目的公开概述，不宣称交易规模、支付就绪状态或运营成效。",
+          "limits": [
+            "源码未公开，仅使用既有公开介绍。",
+            "不包含私密数据、未公开结果或经过独立核验的部署主张。"
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "label": {
+            "en": "Previously published overview",
+            "zh": "此前公开的概述"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/personal-website/blob/3798eda9dd8de804c8b3d8765c3662bb5a59c826/data/projects.generated.json",
+          "type": "source"
+        }
+      ]
+    }
+  ]
+}

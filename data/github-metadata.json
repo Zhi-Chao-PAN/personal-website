@@ -1,0 +1,68 @@
+{
+  "fetchedAt": "2026-09-12T07:19:19.169Z",
+  "repositories": [
+    {
+      "slug": "launchlens-ai",
+      "stars": 1,
+      "pushedAt": "2026-06-30T15:23:48Z",
+      "archived": false,
+      "defaultBranch": "main"
+    },
+    {
+      "slug": "llm-evaluation-playbook",
+      "stars": 0,
+      "pushedAt": "2026-09-11T14:34:36Z",
+      "archived": false,
+      "defaultBranch": "main"
+    },
+    {
+      "slug": "ai-cli-orchestrator",
+      "stars": 0,
+      "pushedAt": "2026-07-31T16:54:35Z",
+      "archived": false,
+      "defaultBranch": "main"
+    },
+    {
+      "slug": "model-eval-studio",
+      "stars": 0,
+      "pushedAt": "2026-06-24T13:05:33Z",
+      "archived": false,
+      "defaultBranch": "main"
+    },
+    {
+      "slug": "structure-aware-rag-empirical",
+      "stars": 0,
+      "pushedAt": "2026-03-17T07:13:38Z",
+      "archived": false,
+      "defaultBranch": "main"
+    },
+    {
+      "slug": "safety-critical-battery-prognostics",
+      "stars": 5,
+      "pushedAt": "2026-04-08T03:48:17Z",
+      "archived": false,
+      "defaultBranch": "main"
+    },
+    {
+      "slug": "launchlens-research-studio",
+      "stars": 0,
+      "pushedAt": "2026-07-17T12:47:58Z",
+      "archived": false,
+      "defaultBranch": "master"
+    },
+    {
+      "slug": "codex-zcode-remote-relay",
+      "stars": 1,
+      "pushedAt": "2026-06-25T15:17:54Z",
+      "archived": false,
+      "defaultBranch": "main"
+    },
+    {
+      "slug": "LangGraph-Financial-Swarm",
+      "stars": 0,
+      "pushedAt": "2026-03-17T07:18:52Z",
+      "archived": false,
+      "defaultBranch": "main"
+    }
+  ]
+}

@@ -1,26 +1,36 @@
-# ZhiChao Pan's Digital Lab
+# ZhiChao Pan — Personal Lab
 
-Personal portfolio and digital garden for applied AI projects, engineering notes, and AI-integrated workflows.
+A bilingual portfolio about product-led, AI-assisted engineering: building useful products, defining evaluation criteria, and giving agent tools deliberate execution boundaries.
 
-- Production: https://www.panzhichao.com
-- Repository: https://github.com/Zhi-Chao-PAN/personal-website
-- Framework: Next.js 16, React 19, TypeScript, Tailwind CSS
-- Deployment: Vercel
+[English website](https://www.panzhichao.com) · [中文网站](https://www.panzhichao.com/zh) · [GitHub profile](https://github.com/Zhi-Chao-PAN)
 
-## Local Development
+## Explore
 
-```bash
+- **LaunchLens AI:** product decisions, recorded evidence and an editable workflow.
+- **LLM Evaluation Playbook:** task specifications, rubric methods and numerical checks.
+- **AI CLI Orchestrator:** explicit routing, bounded execution and reviewable outcomes.
+
+The site includes 13 cases, including public overviews of four private projects. The three flagship walkthroughs use public examples and fixed data; viewing them requires no account or paid model call.
+
+## Development
+
+```sh
 npm ci
 npm run dev
 ```
 
-Open http://localhost:3000 to view the site locally.
+Next.js 16, React 19, TypeScript and CSS. Production remains on the existing Vercel project. English and Chinese pages are statically generated; the legacy sharing-image endpoint redirects to a local image.
 
-## Production Check
+## Checks
 
-```bash
+```sh
 npm run lint
+npm run test:content
 npm run build
+npx playwright install --with-deps chromium
+npm run test:e2e
 ```
 
-The build refreshes generated project and stack data before compiling Next.js.
+Builds use reviewed, checked-in content. Metadata refresh and sharing-image generation are explicit commands, never automatic prebuild mutations.
+
+See [content evidence](docs/content-evidence.md) for sources and their limits, and [maintenance instructions](docs/maintaining-the-portfolio.md) for adding projects, regenerating sharing images and publishing changes.

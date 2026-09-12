@@ -1,0 +1,160 @@
+{
+  "launchlens": {
+    "source": "https://github.com/Zhi-Chao-PAN/launchlens-ai/blob/98a0b4486f676a8e90ff60f7a0fc13c0c84f052f/src/lib/launchlens/example-workspaces.ts",
+    "briefSource": "https://github.com/Zhi-Chao-PAN/launchlens-ai/blob/98a0b4486f676a8e90ff60f7a0fc13c0c84f052f/src/lib/launchlens/sample-briefs.ts",
+    "screenshot": "https://raw.githubusercontent.com/Zhi-Chao-PAN/launchlens-ai/98a0b4486f676a8e90ff60f7a0fc13c0c84f052f/public/screenshots/launchlens-desktop.png",
+    "steps": [
+      {
+        "id": "brief",
+        "label": { "en": "The brief", "zh": "产品设想" },
+        "title": {
+          "en": "A weekly fix list for a small SaaS team",
+          "zh": "为小型 SaaS 团队整理每周产品改进"
+        },
+        "body": {
+          "en": "The public B2B SaaS activation sample turns support tickets, session notes, and churn reasons into weekly product fixes. Its audience is seed-stage founders, product managers, and customer success leads without a growth analyst.",
+          "zh": "公开的 B2B SaaS 激活样例，把支持工单、使用记录与流失原因整理为每周产品改进。对象是没有专职增长分析师的种子期创始人、产品经理与客户成功负责人。"
+        },
+        "detail": {
+          "en": "Constraint: two people, no data warehouse; the first demo must work with uploaded CSVs and copied support notes.",
+          "zh": "约束：两人团队、没有数据仓库；首次演示需要能使用上传的 CSV 与复制的支持记录。"
+        }
+      },
+      {
+        "id": "evidence",
+        "label": { "en": "Recorded evidence", "zh": "记录证据" },
+        "title": {
+          "en": "An assumption with two traceable records",
+          "zh": "给假设附上两条可追溯记录"
+        },
+        "body": {
+          "en": "The seeded example marks the first experiment as supported with high confidence. Its two evidence records keep stable IDs, so a decision can point back to the exact observation.",
+          "zh": "预置样例将第一个实验标为「得到支持」，置信度为高。两条证据保留稳定 ID，便于决策回到具体观察。"
+        },
+        "detail": {
+          "en": "These are fictional records seeded in the public demo, not findings from a real customer study.",
+          "zh": "这些是公开产品演示中的预置虚构记录，不是真实客户研究结果。"
+        }
+      },
+      {
+        "id": "decision",
+        "label": { "en": "A bounded decision", "zh": "形成决策" },
+        "title": {
+          "en": "Keep the useful workflow; defer the prediction",
+          "zh": "保留改进建议，暂缓预测功能"
+        },
+        "body": {
+          "en": "The example's recorded decision keeps weekly activation-fix recommendations in the MVP and defers predictive churn scoring. It narrows the product scope to what the seeded observations support.",
+          "zh": "样例记录的决策是：在 MVP 中保留每周激活改进建议，暂缓预测性流失评分。产品范围落在预置观察能够支持的部分。"
+        },
+        "detail": {
+          "en": "In the product, decision claims cite recorded evidence IDs. Changing the evidence makes an old decision brief stale and requires review.",
+          "zh": "真实产品中的决策主张需要引用已记录的证据 ID。证据变化后，旧决策摘要会失效，需要重新审阅。"
+        }
+      },
+      {
+        "id": "next",
+        "label": { "en": "Next experiment", "zh": "下一步实验" },
+        "title": {
+          "en": "Test the smallest unresolved assumption",
+          "zh": "验证最小的未决假设"
+        },
+        "body": {
+          "en": "The sample's next action is to test whether founders will upload support notes before connecting a help-desk integration. The decision becomes a follow-up experiment instead of the end of a chat.",
+          "zh": "样例的下一步是：在连接帮助台集成之前，测试创始人是否愿意上传支持记录。决策继续转化为实验，而不是停在一段回答。"
+        },
+        "detail": {
+          "en": "You can inspect the seeded data or open the public product to explore the full workflow.",
+          "zh": "可以查看预置数据的源码，或打开公开产品体验完整流程。"
+        }
+      }
+    ],
+    "evidence": [
+      {
+        "id": "activation-interviews",
+        "label": { "en": "Seeded founder interviews", "zh": "预置创始人访谈" },
+        "text": {
+          "en": "4 of 5 founders preferred a weekly prioritized fix list over another analytics dashboard.",
+          "zh": "5 位创始人中的 4 位更倾向每周优先改进清单，而非另一个分析看板。"
+        }
+      },
+      {
+        "id": "activation-prototype",
+        "label": { "en": "Seeded prototype walkthrough", "zh": "预置原型走查" },
+        "text": {
+          "en": "3 founders identified an onboarding change within ten minutes.",
+          "zh": "3 位创始人在十分钟内找到了一个入门流程改进点。"
+        }
+      }
+    ]
+  },
+  "playbook": {
+    "source": "https://github.com/Zhi-Chao-PAN/llm-evaluation-playbook/tree/e0cfc3e3f301602765e516fafa829780dd67b49b/examples/synthetic-saas-analysis",
+    "relativeTolerance": 0.02,
+    "pointsTolerance": 0.5,
+    "demoAnswers": [4830000, 5100000],
+    "churnDemoAnswer": 5.8,
+    "cohorts": [
+      {
+        "id": "C1",
+        "name": "Enterprise",
+        "mrr": 1800000,
+        "churn": 0.03,
+        "expansion": 0.02
+      },
+      {
+        "id": "C2",
+        "name": "Growth",
+        "mrr": 1200000,
+        "churn": 0.04,
+        "expansion": 0.025
+      },
+      {
+        "id": "C3",
+        "name": "MidMarket",
+        "mrr": 900000,
+        "churn": 0.08,
+        "expansion": 0.03
+      },
+      {
+        "id": "C4",
+        "name": "SMB Legacy",
+        "mrr": 700000,
+        "churn": 0.14,
+        "expansion": 0.01
+      },
+      {
+        "id": "C5",
+        "name": "SMB New",
+        "mrr": 250000,
+        "churn": 0.06,
+        "expansion": 0.04
+      },
+      {
+        "id": "C6",
+        "name": "Startup",
+        "mrr": 100000,
+        "churn": 0.09,
+        "expansion": 0.05
+      },
+      {
+        "id": "C7",
+        "name": "Edu",
+        "mrr": 30000,
+        "churn": 0.05,
+        "expansion": 0.02
+      },
+      {
+        "id": "C8",
+        "name": "Nonprofit",
+        "mrr": 20000,
+        "churn": 0.04,
+        "expansion": 0.01
+      }
+    ]
+  },
+  "aiw": {
+    "source": "https://github.com/Zhi-Chao-PAN/ai-cli-orchestrator/blob/0605305caa3565c229196d6e02d91ef5eeb7532b/docs/specs/v0.3-generic-orchestration.md",
+    "tests": "https://github.com/Zhi-Chao-PAN/ai-cli-orchestrator/blob/0605305caa3565c229196d6e02d91ef5eeb7532b/tests/ai-workers.tests.ps1"
+  }
+}
