@@ -1365,11 +1365,15 @@ svg {
   }
 }
 @media print {
+  :root {
+    --muted: #444;
+  }
   body {
     background: white;
     color: #111;
   }
   .site-header,
+  .skip-link,
   .site-footer,
   .case-nav,
   .case-actions,
@@ -1389,7 +1393,23 @@ svg {
     max-width: none;
   }
   .case-section {
+    break-inside: auto;
+    padding-block: 22px;
+  }
+  .decision,
+  .limits-section,
+  .evidence-list li {
     break-inside: avoid;
+  }
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+  .case-hero {
+    padding-block: 24px;
+  }
+  .decision {
+    padding: 20px;
   }
   .case-hero h1 {
     font-size: 36px;
