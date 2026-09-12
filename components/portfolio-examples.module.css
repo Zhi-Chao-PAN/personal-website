@@ -17,6 +17,19 @@
 .example *::after {
   box-sizing: border-box;
 }
+
+@media print {
+  .example,
+  .example * {
+    color: #111 !important;
+    background: transparent !important;
+    border-color: #aaa !important;
+    box-shadow: none !important;
+  }
+  .example {
+    border-radius: 0;
+  }
+}
 .header {
   padding: clamp(1.2rem, 4vw, 2rem) clamp(1.2rem, 4vw, 2rem) 1rem;
 }

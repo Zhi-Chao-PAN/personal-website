@@ -1402,7 +1402,8 @@ svg {
     break-inside: avoid;
   }
   h2,
-  h3 {
+  h3,
+  .case-section > .eyebrow {
     break-after: avoid;
   }
   .case-hero {
@@ -1429,7 +1430,9 @@ svg {
   .eyebrow,
   dt,
   h2,
-  h3 {
+  h3,
+  .role-note,
+  .tag-list span {
     color: #111 !important;
   }
   a {
