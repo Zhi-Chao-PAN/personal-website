@@ -39,9 +39,9 @@ for (const locale of ["en", "zh"] as const) {
     await expect(page).toHaveURL(/projects\/launchlens-ai$/);
     await page.locator(".language-link").click();
     await expect(page).toHaveURL(
-      locale === "en"
-        ? /\/zh\/projects\/launchlens-ai$/
-        : /3007\/projects\/launchlens-ai$/,
+      (url) => url.pathname === (locale === "en"
+        ? "/zh/projects/launchlens-ai"
+        : "/projects/launchlens-ai"),
     );
     expect(errors).toEqual([]);
   });
