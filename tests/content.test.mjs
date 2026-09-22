@@ -106,6 +106,18 @@ test("AutoResearch public evidence files match the frozen source packages", asyn
       "../public/evidence/autoresearch-v9-noto-sans-sc-ofl.txt",
       "babcfe66c8a098b2fa279bc724a3a342f8124f77ce18941fbcc1bbb39823cded",
     ],
+    [
+      "../public/evidence/autoresearch-v10-project-proof-pan-zhichao.pdf",
+      "fdb8e3c40a9aaed9d9d2eca4889bcc88b1f318be15ae7522444855c9a86d9a3d",
+    ],
+    [
+      "../public/evidence/autoresearch-v10-application-addendum-pan-zhichao.zip",
+      "23eb83af909c5e24a290026951d1393959694aab851afd80eb896c8873487f7c",
+    ],
+    [
+      "../public/evidence/autoresearch-v10-noto-sans-sc-ofl.txt",
+      "babcfe66c8a098b2fa279bc724a3a342f8124f77ce18941fbcc1bbb39823cded",
+    ],
   ]) {
     const bytes = await readFile(new URL(file, import.meta.url));
     assert.equal(createHash("sha256").update(bytes).digest("hex"), expected);

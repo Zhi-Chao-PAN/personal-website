@@ -431,7 +431,7 @@
           "outcome": "The package records a corrected 20-run LoRA matrix plus one repeat, a near-chance PAWS stress result, and three fresh six-call agent trajectories that did not beat the preset search. Its strongest signal is the preserved correction and negative evidence, not a claim that either method won.",
           "limits": [
             "AI-assisted execution and documentation do not establish the applicant's independent research or coding ability; that still requires personal reruns, explanation, and live trial work.",
-            "The post-release replay is one AI-agent-run, same-machine repeat of one frozen configuration using retained assets. It is not a fresh asset download, a cross-machine test, a full 21-run reproduction, or proof that the applicant personally trained or debugged the model.",
+            "Two post-release AI-agent runs repeat one frozen configuration on the same machine: first with retained assets, then with a locally logged execution of the pinned fetch script in a new asset directory. Seven resulting files matched fixed hashes, but the log is not independent network attestation. Neither run proves cross-machine or full 21-run reproducibility or the applicant’s unaided training ability.",
             "MRPC validation, PAWS labeled test, and the NFCorpus public test were used in an exploratory setting. The results are not a blind benchmark, a general LoRA verdict, or evidence that research agents outperform search.",
             "The one-page PDF and application addendum alone omit complete raw predictions, model weights and rank caches. The linked repositories expose source, logs and aggregate results; third-party data and weights require separate upstream access. Personal reruns remain pending.",
             "The experiments cover one language-model backbone, two sentence-pair datasets, one retrieval task, and small numbers of training seeds and agent trajectories."
@@ -468,7 +468,7 @@
           "outcome": "证据包记录了纠正后的 20 次 LoRA 正式训练与 1 次重复、接近随机水平的 PAWS 压力结果，以及三条未胜过预设搜索的新增六次调用代理轨迹。它最有价值的信号是保留了纠错和负结果，而不是宣称某个方法获胜。",
           "limits": [
             "AI 辅助执行和整理不构成申请人独立研究或编程能力的证明；仍需本人复跑、解释和现场试做。",
-            "发布后的复跑是 AI 代理在同一机器上、使用留存资产对一个固定配置完成的一次重复；它不是重新下载资产、跨机器测试、完整 21 次运行复现，也不能证明申请人本人训练或调试过模型。",
+            "发布后两次复跑均由 AI 代理在同一机器上完成同一固定配置：首次用留存资产，第二次在新资产目录执行固定下载脚本，七个文件哈希与清单一致；本地下载日志不是独立网络来源证明。它们不是跨机器或完整 21 次复现，也不能证明申请人本人训练或调试过模型。",
             "MRPC validation、PAWS labeled test 与 NFCorpus public test 都用于探索性研究；这些结果不是盲测基准，也不能推出 LoRA 的一般结论或代理优于搜索。",
             "一页 PDF 与报名增量包本身不含完整原始预测、模型权重及排名缓存。关联仓库公开源码、日志和汇总结果，第三方数据及权重需按上游规则另行获取；本人独立复跑仍待完成。",
             "实验只覆盖一个语言模型骨干、两个句对数据集、一项检索任务，以及少量训练种子和代理轨迹。"
@@ -478,18 +478,42 @@
       "evidence": [
         {
           "label": {
-            "en": "Reviewer-first one-page project proof (searchable PDF)",
-            "zh": "评审优先的一页项目证明（可检索 PDF）"
+            "en": "Current v10 one-page project proof (searchable PDF)",
+            "zh": "当前 v10 一页项目证明（可检索 PDF）"
+          },
+          "url": "https://www.panzhichao.com/evidence/autoresearch-v10-project-proof-pan-zhichao.pdf",
+          "type": "report"
+        },
+        {
+          "label": {
+            "en": "Current v10 application addendum (ZIP, not a reproduction bundle)",
+            "zh": "当前 v10 报名补充包（ZIP，不能单独复现实验）"
+          },
+          "url": "https://www.panzhichao.com/evidence/autoresearch-v10-application-addendum-pan-zhichao.zip",
+          "type": "report"
+        },
+        {
+          "label": {
+            "en": "Historical v9 one-page project proof (searchable PDF)",
+            "zh": "历史 v9 一页项目证明（可检索 PDF）"
           },
           "url": "https://www.panzhichao.com/evidence/autoresearch-v9-project-proof-pan-zhichao.pdf",
           "type": "report"
         },
         {
           "label": {
-            "en": "Reviewer-first v9 application addendum (ZIP, not a reproduction bundle)",
-            "zh": "评审优先 v9 报名补充包（ZIP，不能单独复现实验）"
+            "en": "Historical v9 application addendum (ZIP, not a reproduction bundle)",
+            "zh": "历史 v9 报名补充包（ZIP，不能单独复现实验）"
           },
           "url": "https://www.panzhichao.com/evidence/autoresearch-v9-application-addendum-pan-zhichao.zip",
+          "type": "report"
+        },
+        {
+          "label": {
+            "en": "Post-release upstream-fetch replay (same machine; local download log, no independent network attestation)",
+            "zh": "发布后固定上游获取脚本复跑（同机；本地下载日志非独立来源证明）"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/lora-robustness-reproduction/blob/50a19bbb438ed42a700e91296c751a132621a27a/PUBLIC_UPSTREAM_REPLAY_2026-09-23.md",
           "type": "report"
         },
         {
