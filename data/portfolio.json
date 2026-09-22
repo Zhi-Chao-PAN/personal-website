@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-12",
+  "updatedAt": "2026-09-23",
   "projects": [
     {
       "slug": "launchlens-ai",
@@ -566,79 +566,81 @@
       "kind": "study",
       "repoUrl": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics",
       "demoUrl": null,
-      "verifiedAt": "2026-09-12",
-      "tags": ["Python", "PyTorch", "Physics constraints", "Fair comparisons"],
+      "verifiedAt": "2026-09-23",
+      "tags": ["Python", "PyTorch", "Mechanism audit", "Held-out cells"],
       "related": ["structure-aware-rag-empirical", "deepnerve-3d"],
       "content": {
         "en": {
-          "eyebrow": "Research study · report the limits",
-          "summary": "A battery prognostics study that examines physics constraints, post-processing, and uncertainty while keeping synthetic and real-data evidence separate.",
-          "problem": "A physically plausible prediction is not automatically an accurate one. A fair comparison must distinguish model behavior from the effect of shared post-processing.",
+          "eyebrow": "Mechanism audit · capacity reconstruction",
+          "summary": "A bounded audit of battery-capacity reconstruction that separates learned constraints from EMA and running-min post-processing in held-out-cell tests.",
+          "problem": "A zero upward-step violation rate can be produced by deterministic projection even when the underlying reconstruction is inaccurate. The evaluation must trace that result to its mechanism and compare against simple baselines.",
           "role": [
-            "Led the evaluation questions and choices about claim boundaries.",
-            "Used AI-assisted implementation and reviewed protocol-specific reports and comparisons."
+            "Authorized an AI-assisted audit covering constraint on versus off, matched initialization, held-out cells, and raw versus post-processed outputs.",
+            "Kept the protocol, point predictions, verifier outputs, and claim boundaries reviewable; a personal independent rerun and oral explanation are still pending."
           ],
           "decisions": [
             {
-              "title": "Give baselines the same post-processing",
-              "choice": "Compare PINN and LSTM under matched smoothing and monotonic projection.",
-              "tradeoff": "The matched real-data results do not show a PINN-specific monotonicity advantage, and PINN has worse RMSE.",
-              "verification": "The claim-evidence matrix links same-cell, held-out-cell, and corruption reports separately."
+              "title": "Trace zero violations to their source",
+              "choice": "Compare raw, EMA, and EMA-plus-running-min outputs for matched PINN constraint-on/off runs, LSTM, and a no-training noisy-input baseline.",
+              "tradeoff": "Running-min guarantees no upward steps, but it can preserve an early low value and increase reconstruction error.",
+              "verification": "A separate verifier recomputed RMSE and upward-step violations from saved point predictions; the public links pin the implementation and six CSV snapshots that were audited."
             }
           ],
-          "outcome": "The repository preserves a useful negative result: monotone predictions can come from the common post-processing step, while prediction error still differs between models.",
+          "outcome": "The audit found that every evaluated method reached zero upward-step violations only after the shared running-min step. Raw outputs still had frequent upward steps, the constraint-on comparison showed no stable gain, and the noisy-input-plus-EMA baseline had the lowest mean reconstruction error.",
           "limits": [
-            "Synthetic robustness results must not be presented as a real-world safety guarantee.",
-            "The published corruption sweep does not establish stability across training seeds or functional-safety certification."
+            "This protocol reconstructs or denoises observed capacity; it does not forecast future capacity or validate remaining useful life.",
+            "The audit covers six public CSV snapshots, one fixed Gaussian-noise setup, and the inherited implementation. It is not functional-safety certification or deployment evidence.",
+            "The snapshots contain large capacity increases that conflict with a global monotonic assumption; this audit does not establish whether they reflect recovery, test conditions, or extraction error."
           ]
         },
         "zh": {
-          "eyebrow": "研究案例 · 把结论边界写清楚",
-          "summary": "研究物理约束、后处理和不确定性的电池预测项目，分别报告合成数据与真实数据证据。",
-          "problem": "符合物理直觉的预测未必更准确。公平比较需要分清模型本身的表现，以及共用后处理带来的效果。",
+          "eyebrow": "机制审查 · 容量重建",
+          "summary": "对电池容量重建进行有边界的机制审查，在留一电芯测试中区分学习到的约束与 EMA、running-min 后处理的效果。",
+          "problem": "即使底层重建不准，确定性投影也能制造“零上升违例”。评测必须追溯这个结果的真正来源，并与简单基线对照。",
           "role": [
-            "主导评测问题和结论范围的取舍。",
-            "借助 AI 完成实现，检查各协议下的报告与比较结果。"
+            "授权 AI 辅助审查约束开/关、相同初始化、留一电芯，以及原始与后处理输出的对照。",
+            "保留可复核的协议、逐点预测、复核输出与结论边界；本人独立复跑与口头讲解尚待完成。"
           ],
           "decisions": [
             {
-              "title": "给基线相同的后处理",
-              "choice": "在相同平滑和单调投影条件下比较 PINN 与 LSTM。",
-              "tradeoff": "匹配后的真实数据结果没有体现 PINN 独有的单调性优势，且 PINN 的 RMSE 更差。",
-              "verification": "主张与证据对照表分别链接同电芯、留出电芯和扰动实验报告。"
+              "title": "追溯零违例的来源",
+              "choice": "对照 PINN 约束开/关、LSTM 和不训练的带噪输入基线，分别评价 raw、EMA 与 EMA+running-min 输出。",
+              "tradeoff": "running-min 必然消除上升步，但可能长期保留过早的低值，并增大重建误差。",
+              "verification": "独立复核脚本根据保存的逐点预测重算 RMSE 和上升违例；公开链接固定了被审查的实现与六条 CSV 快照。"
             }
           ],
-          "outcome": "仓库保留了一项有价值的负结果：预测的单调性可以来自共用后处理，而模型之间的预测误差仍有差异。",
+          "outcome": "审查发现，所有受评方法都是在共用 running-min 之后才达到零上升违例；原始输出仍频繁回升。约束开相对关未显示稳定收益，而带噪输入+EMA 基线取得最低的平均重建误差。",
           "limits": [
-            "合成数据上的稳健性结果不能宣传为真实世界的安全保证。",
-            "公开扰动实验不证明结果对不同训练种子稳定，也不构成功能安全认证。"
+            "该协议重建或去噪已观测容量，不预测未来容量，也没有验证剩余使用寿命（RUL）。",
+            "审查只覆盖六条公开 CSV 快照、一组固定高斯噪声设定与继承实现，不构成功能安全认证或实际部署证据。",
+            "快照中存在与全局单调假设冲突的容量大幅回升；本次审查不能判定其来自恢复效应、测试工况还是数据提取问题。"
           ]
         }
       },
       "evidence": [
         {
           "label": {
-            "en": "Current study and boundaries",
-            "zh": "当前研究与边界"
+            "en": "Audited source snapshot",
+            "zh": "被审查的源码快照"
           },
-          "url": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics",
+          "url": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics/tree/bf53f86805ed1637b5ad1dc3d014976be71415b8",
           "type": "source"
         },
         {
           "label": {
-            "en": "Claim-evidence matrix",
-            "zh": "主张与证据对照表"
+            "en": "EMA and running-min implementation",
+            "zh": "EMA 与 running-min 实现"
           },
-          "url": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics/blob/main/docs/claim_evidence_matrix.md",
-          "type": "report"
+          "url": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics/blob/bf53f86805ed1637b5ad1dc3d014976be71415b8/src/evaluation/real_data_validation.py#L184-L207",
+          "type": "source"
         },
         {
           "label": {
-            "en": "Real-data stress report",
-            "zh": "真实数据扰动报告"
+            "en": "Six audited CSV snapshots",
+            "zh": "六条被审查的 CSV 快照"
           },
-          "url": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics/blob/main/robustness_results/real_data_stress_suite_report.md",
-          "type": "report"
+          "url": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics/tree/bf53f86805ed1637b5ad1dc3d014976be71415b8/data/calce",
+          "type": "source"
         }
       ]
     },
