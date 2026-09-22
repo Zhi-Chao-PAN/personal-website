@@ -698,8 +698,8 @@ function AutoResearchTraceExample({ locale }: { locale: Locale }) {
         <p className={styles.callout}>
           {words(
             locale,
-            `Recorded status: ${step.status}; exit code ${step.exit_code}; wall time ${step.wall_seconds.toFixed(3)}s (rounded for display). The candidate and metric above are also rounded display values; raw values remain in the pinned JSON.`,
-            `记录状态：${step.status}；退出码 ${step.exit_code}；耗时 ${step.wall_seconds.toFixed(3)} 秒（显示值已四舍五入）。上方候选参数和指标均为显示用的四舍五入值；原始值保留在固定 JSON 中。`,
+            `Recorded status: ${step.status}; exit code ${step.exit_code}; wall time ${step.wall_seconds.toFixed(3)}s. Wall time and nDCG are rounded for display; the exact archived values are in the pinned JSON.`,
+            `记录状态：${step.status}；退出码 ${step.exit_code}；耗时 ${step.wall_seconds.toFixed(3)} 秒。耗时和 nDCG 为四舍五入的显示值，精确归档值见固定 JSON。`,
           )}
         </p>
       </div>
