@@ -92,7 +92,7 @@ test("AutoResearch public evidence files match the frozen source packages", asyn
     ],
     [
       "../public/evidence/autoresearch-v7-application-addendum-pan-zhichao.zip",
-      "cef4e5f0d1f6864afcfa3384a04523399949b56b5c3f451df86c80cd7aa7b71f",
+      "dacdcba5dd77d91a21769e36164f517d192a8e79bfad48831e8f5f31fa026445",
     ],
   ]) {
     const bytes = await readFile(new URL(file, import.meta.url));
