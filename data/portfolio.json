@@ -478,6 +478,22 @@
       "evidence": [
         {
           "label": {
+            "en": "Reviewer-first one-page project proof (searchable PDF)",
+            "zh": "评审优先的一页项目证明（可检索 PDF）"
+          },
+          "url": "https://www.panzhichao.com/evidence/autoresearch-v9-project-proof-pan-zhichao.pdf",
+          "type": "report"
+        },
+        {
+          "label": {
+            "en": "Reviewer-first v9 application addendum (ZIP, not a reproduction bundle)",
+            "zh": "评审优先 v9 报名补充包（ZIP，不能单独复现实验）"
+          },
+          "url": "https://www.panzhichao.com/evidence/autoresearch-v9-application-addendum-pan-zhichao.zip",
+          "type": "report"
+        },
+        {
+          "label": {
             "en": "Post-release single-configuration source replay (same machine, retained assets; AI-agent run)",
             "zh": "发布后单配置源码复跑（同机、留存资产、AI 代理执行）"
           },
@@ -502,16 +518,16 @@
         },
         {
           "label": {
-            "en": "One-page project proof (PDF)",
-            "zh": "一页项目证明（PDF）"
+            "en": "Historical v5 project proof (PDF)",
+            "zh": "历史版本 v5 项目证明（PDF）"
           },
           "url": "https://www.panzhichao.com/evidence/autoresearch-v5-project-proof-pan-zhichao.pdf",
           "type": "report"
         },
         {
           "label": {
-            "en": "Latest application addendum (ZIP, not a reproduction bundle)",
-            "zh": "最新版报名增量包（ZIP，不能单独复现实验）"
+            "en": "Historical v8 application addendum (ZIP)",
+            "zh": "历史版本 v8 报名补充包（ZIP）"
           },
           "url": "https://www.panzhichao.com/evidence/autoresearch-v8-application-addendum-pan-zhichao.zip",
           "type": "report"

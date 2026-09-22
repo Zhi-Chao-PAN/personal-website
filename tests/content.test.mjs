@@ -95,8 +95,16 @@ test("AutoResearch public evidence files match the frozen source packages", asyn
       "dacdcba5dd77d91a21769e36164f517d192a8e79bfad48831e8f5f31fa026445",
     ],
     [
-      "../public/evidence/autoresearch-v8-application-addendum-pan-zhichao.zip",
-      "db4b8e8a39a9b23f7e562381225d900a5317e31598ea6a8dea3cd47e03c2e607",
+      "../public/evidence/autoresearch-v9-project-proof-pan-zhichao.pdf",
+      "fa23a097271890ecc022f0dedc1e8f43ece8650fabb7937efa9c684ef96ba3e8",
+    ],
+    [
+      "../public/evidence/autoresearch-v9-application-addendum-pan-zhichao.zip",
+      "98051c0bec295b8be6e66513ddf6c8a5c13fed5040d9120821a97731149ea91a",
+    ],
+    [
+      "../public/evidence/autoresearch-v9-noto-sans-sc-ofl.txt",
+      "babcfe66c8a098b2fa279bc724a3a342f8124f77ce18941fbcc1bbb39823cded",
     ],
   ]) {
     const bytes = await readFile(new URL(file, import.meta.url));
