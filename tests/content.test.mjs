@@ -36,7 +36,7 @@ test("curated catalog preserves legacy URLs, public visibility and flagship orde
     ],
   );
   assert.equal(projects.filter((p) => p.tier === "archive").length, 7);
-  assert.equal(projects.filter((p) => p.repoUrl).length, 9);
+  assert.equal(projects.filter((p) => p.repoUrl).length, 10);
   assert.equal(projects.filter((p) => p.demoUrl).length, 3);
   for (const p of projects) {
     assert.ok(
