@@ -431,6 +431,7 @@
           "outcome": "The package records a corrected 20-run LoRA matrix plus one repeat, a near-chance PAWS stress result, and three fresh six-call agent trajectories that did not beat the preset search. Its strongest signal is the preserved correction and negative evidence, not a claim that either method won.",
           "limits": [
             "AI-assisted execution and documentation do not establish the applicant's independent research or coding ability; that still requires personal reruns, explanation, and live trial work.",
+            "The post-release replay is one AI-agent-run, same-machine repeat of one frozen configuration using retained assets. It is not a fresh asset download, a cross-machine test, a full 21-run reproduction, or proof that the applicant personally trained or debugged the model.",
             "MRPC validation, PAWS labeled test, and the NFCorpus public test were used in an exploratory setting. The results are not a blind benchmark, a general LoRA verdict, or evidence that research agents outperform search.",
             "The one-page PDF and application addendum alone omit complete raw predictions, model weights and rank caches. The linked repositories expose source, logs and aggregate results; third-party data and weights require separate upstream access. Personal reruns remain pending.",
             "The experiments cover one language-model backbone, two sentence-pair datasets, one retrieval task, and small numbers of training seeds and agent trajectories."
@@ -467,6 +468,7 @@
           "outcome": "证据包记录了纠正后的 20 次 LoRA 正式训练与 1 次重复、接近随机水平的 PAWS 压力结果，以及三条未胜过预设搜索的新增六次调用代理轨迹。它最有价值的信号是保留了纠错和负结果，而不是宣称某个方法获胜。",
           "limits": [
             "AI 辅助执行和整理不构成申请人独立研究或编程能力的证明；仍需本人复跑、解释和现场试做。",
+            "发布后的复跑是 AI 代理在同一机器上、使用留存资产对一个固定配置完成的一次重复；它不是重新下载资产、跨机器测试、完整 21 次运行复现，也不能证明申请人本人训练或调试过模型。",
             "MRPC validation、PAWS labeled test 与 NFCorpus public test 都用于探索性研究；这些结果不是盲测基准，也不能推出 LoRA 的一般结论或代理优于搜索。",
             "一页 PDF 与报名增量包本身不含完整原始预测、模型权重及排名缓存。关联仓库公开源码、日志和汇总结果，第三方数据及权重需按上游规则另行获取；本人独立复跑仍待完成。",
             "实验只覆盖一个语言模型骨干、两个句对数据集、一项检索任务，以及少量训练种子和代理轨迹。"
@@ -474,6 +476,14 @@
         }
       },
       "evidence": [
+        {
+          "label": {
+            "en": "Post-release single-configuration source replay (same machine, retained assets; AI-agent run)",
+            "zh": "发布后单配置源码复跑（同机、留存资产、AI 代理执行）"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/lora-robustness-reproduction/blob/38d40cc245d083be94d54771baeed21d5b8e00a7/PUBLIC_SOURCE_REPLAY_2026-09-23.md",
+          "type": "report"
+        },
         {
           "label": {
             "en": "LoRA fixed reviewer snapshot, aggregate results and correction record",
