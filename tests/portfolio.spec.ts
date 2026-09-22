@@ -29,7 +29,7 @@ for (const locale of ["en", "zh"] as const) {
     await page.goto(home);
     await expect(page.locator("h1")).toContainText("ZhiChao");
     await expect(page.locator("#work")).toBeVisible();
-    await expect(page.locator(".index-row")).toHaveCount(10);
+    await expect(page.locator(".index-row")).toHaveCount(11);
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -135,7 +135,7 @@ test("not found, sitemap and sharing images work", async ({ request }) => {
   expect((await request.get("/projects/not-a-project")).status()).toBe(404);
   expect((await request.get("/zh/projects/not-a-project")).status()).toBe(404);
   const map = await (await request.get("/sitemap.xml")).text();
-  expect((map.match(/<loc>/g) || []).length).toBe(28);
+  expect((map.match(/<loc>/g) || []).length).toBe(30);
   for (const slug of [
     "home",
     "launchlens-ai",

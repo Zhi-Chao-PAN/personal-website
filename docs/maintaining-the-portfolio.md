@@ -4,7 +4,7 @@ The website uses Next.js 16 and the existing Vercel project. English URLs remain
 
 ## Content
 
-Edit `data/portfolio.json`. This is the only project catalog: identity, order, public links, tiers, translated case text, relationships and reviewed evidence live together. There are three flagship projects, three selected projects and seven archive projects. The catalog drives the homepage, case routes, counts, metadata and sitemap.
+Edit `data/portfolio.json`. This is the only project catalog: identity, order, public links, tiers, translated case text, relationships and reviewed evidence live together. There are three flagship projects, four selected projects and seven archive projects. The catalog drives the homepage, case routes, counts, metadata and sitemap.
 
 Write both languages together. Describe actual ownership, tradeoffs and verification scope. A successful CI run establishes the behavior covered by that run, not product adoption, live provider compatibility or a general benchmark improvement. A public overview of private work must not gain a source link without a separate publication decision.
 

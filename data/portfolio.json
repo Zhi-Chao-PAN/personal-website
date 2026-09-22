@@ -386,6 +386,113 @@
       ]
     },
     {
+      "slug": "autoresearch-evidence-pack",
+      "name": "AutoResearch Evidence Pack",
+      "tier": "selected",
+      "kind": "study",
+      "repoUrl": null,
+      "demoUrl": null,
+      "verifiedAt": "2026-09-23",
+      "tags": ["LoRA", "Research agents", "Negative results", "Evidence audit"],
+      "related": [
+        "llm-evaluation-playbook",
+        "ai-cli-orchestrator",
+        "safety-critical-battery-prognostics"
+      ],
+      "content": {
+        "en": {
+          "eyebrow": "Application evidence · results with boundaries",
+          "summary": "An AI-assisted research evidence package that tests LoRA robustness and six-call agent selection, retaining corrections and negative results instead of promoting headline wins.",
+          "problem": "A polished score can hide a broken input path, a distribution shift, repeated access to a public test set, or a competitive search baseline. Credible application evidence must expose those failure modes and its authorship limits.",
+          "role": [
+            "Requested an AI-assisted effort to strengthen the application evidence and preserve the protocols, artifacts, corrections, and negative results for review.",
+            "The experiments, analysis, and copy were produced with AI assistance; personal understanding, independent reruns, code explanation, and timed trial work remain to be demonstrated."
+          ],
+          "decisions": [
+            {
+              "title": "Withdraw results built on a broken tokenizer path",
+              "choice": "After an audit found a zero-merge tokenizer backend and mismatched encodings, withdraw the earlier scores, switch to a verified tokenizer path, and retrain from scratch.",
+              "tradeoff": "Correcting the input invalidated a more convenient earlier result, but preserved the integrity of every later comparison.",
+              "verification": "The corrected matrix contains 20 formal training runs plus one from-scratch repeat, with tokenization, predictions, checkpoints, and selection records checked in the full evidence package."
+            },
+            {
+              "title": "Test in-domain success against a word-order stress set",
+              "choice": "Evaluate the six fixed 12-epoch full/LoRA checkpoints on PAWS only after MRPC model selection, and report balanced accuracy and negative-class recall alongside F1.",
+              "tradeoff": "Twelve-epoch LoRA averaged 0.9074 F1 on MRPC, but 0.5009 balanced accuracy on PAWS was near the constant-classifier baseline; the public stress test is exploratory, not a blind confirmation.",
+              "verification": "The proof PDF and light review package contain the result tables, tokenizer correction, error analysis, and verification summaries."
+            },
+            {
+              "title": "Keep the agent result even when preset search wins",
+              "choice": "Run three fresh-context agent trajectories with six development calls each, freeze their selections, then compare them with the preset six-point search on the public NFCorpus test split.",
+              "tradeoff": "All three trajectories chose the same configuration and scored 0.307044, below the preset search at 0.307294. They produce one unique test ranking, not three independent generalization results.",
+              "verification": "The light package includes the report, selection lock, comparison, and verification summaries; full raw logs remain in the separate non-public full package. Earlier access to the public test makes this an exploratory extension."
+            }
+          ],
+          "outcome": "The package records a corrected 20-run LoRA matrix plus one repeat, a near-chance PAWS stress result, and three fresh six-call agent trajectories that did not beat the preset search. Its strongest signal is the preserved correction and negative evidence, not a claim that either method won.",
+          "limits": [
+            "AI-assisted execution and documentation do not establish the applicant's independent research or coding ability; that still requires personal reruns, explanation, and live trial work.",
+            "MRPC validation, PAWS labeled test, and the NFCorpus public test were used in an exploratory setting. The results are not a blind benchmark, a general LoRA verdict, or evidence that research agents outperform search.",
+            "The downloadable light package omits complete raw predictions, model weights, frozen source files, caches, and runnable dependencies. It supports review but cannot reproduce the scientific results by itself.",
+            "The experiments cover one language-model backbone, two sentence-pair datasets, one retrieval task, and small numbers of training seeds and agent trajectories."
+          ]
+        },
+        "zh": {
+          "eyebrow": "申请证据 · 把结果边界写清楚",
+          "summary": "一份由 AI 辅助完成的研究证据包，检验 LoRA 稳健性与六次调用预算下的代理选参，并保留纠错和负结果，而不是只突出好看的分数。",
+          "problem": "一个漂亮分数可能掩盖错误输入、分布迁移、反复查看公开测试集或有竞争力的搜索基线。可信的申请证据必须暴露这些失败模式，也要说明成果归属的边界。",
+          "role": [
+            "提出用 AI 辅助尽可能增强申请证据，并保留可供审阅的协议、产物、纠错记录和负结果。",
+            "本轮实验、分析与文案由 AI 辅助完成；个人理解、独立复跑、代码讲解和限时试做能力仍待证明。"
+          ],
+          "decisions": [
+            {
+              "title": "撤回建立在错误 tokenizer 入口上的成绩",
+              "choice": "审计发现 tokenizer 后端缺少 merges 且编码不一致后，撤回旧成绩，切换到经过逐条核对的输入入口，并从头训练。",
+              "tradeoff": "纠正输入使更方便的旧结果失效，却保证后续比较建立在正确输入上。",
+              "verification": "纠正后的矩阵包含 20 次正式训练和 1 次从头重复；全量证据包核对 tokenizer、逐条预测、checkpoint 与选优记录。"
+            },
+            {
+              "title": "用词序压力集检查常规得分",
+              "choice": "先在 MRPC 完成模型选择，再将六个固定的 12 轮 full/LoRA checkpoint 用于 PAWS，并同时报告 balanced accuracy、负类召回与 F1。",
+              "tradeoff": "12 轮 LoRA 的 MRPC 平均 F1 为 0.9074，但 PAWS balanced accuracy 只有 0.5009，接近常量分类基线；公开压力测试属于探索性分析，不是盲测确认。",
+              "verification": "证明 PDF 与轻量审阅包包含结果表、tokenizer 纠错、错误分析和核验摘要。"
+            },
+            {
+              "title": "预设搜索胜出时仍保留代理结果",
+              "choice": "让三条空白上下文代理轨迹各使用六次开发调用，冻结选择后，再与预设六点搜索比较 NFCorpus 公开测试结果。",
+              "tradeoff": "三条轨迹都选择同一配置并得到 0.307044，低于预设搜索的 0.307294；它们只形成一组唯一测试排序，不是三份独立泛化证据。",
+              "verification": "轻量包保留报告、选择锁、对照与核验摘要；完整原始日志只在另行保存、未公开的全量包中。此前已查看公开测试，因此这只是探索性扩展。"
+            }
+          ],
+          "outcome": "证据包记录了纠正后的 20 次 LoRA 正式训练与 1 次重复、接近随机水平的 PAWS 压力结果，以及三条未胜过预设搜索的新增六次调用代理轨迹。它最有价值的信号是保留了纠错和负结果，而不是宣称某个方法获胜。",
+          "limits": [
+            "AI 辅助执行和整理不构成申请人独立研究或编程能力的证明；仍需本人复跑、解释和现场试做。",
+            "MRPC validation、PAWS labeled test 与 NFCorpus public test 都用于探索性研究；这些结果不是盲测基准，也不能推出 LoRA 的一般结论或代理优于搜索。",
+            "可下载的轻量包缺少全部原始预测、模型权重、冻结源码、缓存与可运行依赖，只能辅助审阅，不能单独复现科学结果。",
+            "实验只覆盖一个语言模型骨干、两个句对数据集、一项检索任务，以及少量训练种子和代理轨迹。"
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "label": {
+            "en": "One-page project proof (PDF)",
+            "zh": "一页项目证明（PDF）"
+          },
+          "url": "https://www.panzhichao.com/evidence/autoresearch-v5-project-proof-pan-zhichao.pdf",
+          "type": "report"
+        },
+        {
+          "label": {
+            "en": "Light review package (ZIP, not a standalone reproduction bundle)",
+            "zh": "轻量审阅包（ZIP，不能单独复现实验）"
+          },
+          "url": "https://www.panzhichao.com/evidence/autoresearch-v5-light-review-package-pan-zhichao.zip",
+          "type": "report"
+        }
+      ]
+    },
+    {
       "slug": "model-eval-studio",
       "name": "Model Eval Studio",
       "tier": "selected",

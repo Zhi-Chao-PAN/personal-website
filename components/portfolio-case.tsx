@@ -42,7 +42,11 @@ export function PortfolioCase({
                 ? zh
                   ? "公开项目案例"
                   : "PUBLIC PROJECT CASE"
-                : t.private}
+                : project.kind === "private"
+                  ? t.private
+                  : zh
+                    ? "公开研究证据"
+                    : "PUBLIC RESEARCH EVIDENCE"}
             </span>
           </div>
           <h1>{project.name}</h1>
@@ -113,9 +117,13 @@ export function PortfolioCase({
                 ))}
               </ul>
               <div className="role-note">
-                {zh
-                  ? "工作方式：产品主导，AI 辅助实现，逐步检查与迭代。"
-                  : "Working approach: product-led, AI-assisted implementation, followed by review and iteration."}
+                {project.slug === "autoresearch-evidence-pack"
+                  ? zh
+                    ? "证据状态：AI 辅助执行；本人独立复跑与讲解待完成。"
+                    : "Evidence status: AI-assisted execution; personal independent rerun and explanation remain pending."
+                  : zh
+                    ? "工作方式：产品主导，AI 辅助实现，逐步检查与迭代。"
+                    : "Working approach: product-led, AI-assisted implementation, followed by review and iteration."}
               </div>
             </section>
             <section id="decisions" className="case-section">

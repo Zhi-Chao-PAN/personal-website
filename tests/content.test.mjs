@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 const { projects } = JSON.parse(
   await readFile(new URL("../data/portfolio.json", import.meta.url), "utf8"),
 );
@@ -12,7 +13,7 @@ const examples = JSON.parse(
 );
 test("curated catalog preserves legacy URLs, public visibility and flagship order", () => {
   const slugs = projects.map((p) => p.slug);
-  assert.equal(new Set(slugs).size, 13);
+  assert.equal(new Set(slugs).size, 14);
   for (const slug of [
     "CampusTradeAI",
     "LangGraph-Financial-Swarm",
@@ -25,6 +26,16 @@ test("curated catalog preserves legacy URLs, public visibility and flagship orde
     projects.filter((p) => p.tier === "flagship").map((p) => p.slug),
     ["launchlens-ai", "llm-evaluation-playbook", "ai-cli-orchestrator"],
   );
+  assert.deepEqual(
+    projects.filter((p) => p.tier === "selected").map((p) => p.slug),
+    [
+      "autoresearch-evidence-pack",
+      "model-eval-studio",
+      "structure-aware-rag-empirical",
+      "safety-critical-battery-prognostics",
+    ],
+  );
+  assert.equal(projects.filter((p) => p.tier === "archive").length, 7);
   assert.equal(projects.filter((p) => p.repoUrl).length, 9);
   assert.equal(projects.filter((p) => p.demoUrl).length, 3);
   for (const p of projects) {
@@ -72,4 +83,19 @@ test("published synthetic MRR example reproduces the source reference", () => {
   assert.equal(expansion, 115800);
   assert.equal(base - churn + expansion, 4817500);
   assert.equal(examples.playbook.relativeTolerance, 0.02);
+});
+test("AutoResearch public evidence files match the frozen V5 outputs", async () => {
+  for (const [file, expected] of [
+    [
+      "../public/evidence/autoresearch-v5-project-proof-pan-zhichao.pdf",
+      "ed18147cd02e676a5c43ff7a6db3949eea2f909cc2bf61d129847f9c5cdd78cc",
+    ],
+    [
+      "../public/evidence/autoresearch-v5-light-review-package-pan-zhichao.zip",
+      "3a02bd0e2999945d4a7d9e8ed9481b5487fe95505b7fc185caa1a55cf43c1f39",
+    ],
+  ]) {
+    const bytes = await readFile(new URL(file, import.meta.url));
+    assert.equal(createHash("sha256").update(bytes).digest("hex"), expected);
+  }
 });
