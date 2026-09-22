@@ -8,7 +8,7 @@ Edit `data/portfolio.json`. This is the only project catalog: identity, order, p
 
 Write both languages together. Describe actual ownership, tradeoffs and verification scope. A successful CI run establishes the behavior covered by that run, not product adoption, live provider compatibility or a general benchmark improvement. A public overview of private work must not gain a source link without a separate publication decision.
 
-Use `data/public-examples.json` for the three local examples. Keep its published-source references, synthetic-data labels and bounded scoring explanation. The examples do not call a model service.
+Use `data/public-examples.json` for local-example source references, labels and bounded scoring explanations. The examples do not call a model service. The AutoResearch walkthrough additionally reads `data/autoresearch-fresh-dev-agent-01-state.json`, an exact archived r2 fixture; keep its bytes pinned by SHA-256 and label English hypothesis text as a translation.
 
 ## Refresh and validate
 

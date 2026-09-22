@@ -370,6 +370,28 @@
   color: #9daf9f;
   font-size: 0.79rem;
 }
+.traceSummary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 0 clamp(1.2rem, 4vw, 2rem) 1.5rem;
+}
+.traceSummary > div {
+  border: 1px solid #2c4032;
+  border-radius: 0.7rem;
+  padding: 1rem;
+  background: #101912;
+}
+.traceSummary strong {
+  display: block;
+  color: #d6f3d8;
+  font: 500 0.95rem/1.5 var(--font-mono, monospace);
+}
+.traceSummary p:last-child {
+  margin: 0.55rem 0 0;
+  color: #b2c3b7;
+  font-size: 0.82rem;
+}
 .footer {
   display: flex;
   flex-wrap: wrap;
@@ -393,6 +415,9 @@
   .ruleGrid,
   .checkLayout,
   .flow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .traceSummary {
     grid-template-columns: minmax(0, 1fr);
   }
   .figure {

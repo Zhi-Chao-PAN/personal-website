@@ -21,6 +21,13 @@ export function PortfolioCase({
     t = ui[locale],
     zh = locale === "zh";
   const flagship = project.tier === "flagship";
+  const hasExample = flagship || project.slug === "autoresearch-evidence-pack";
+  const exampleLabel =
+    project.slug === "autoresearch-evidence-pack"
+      ? zh
+        ? "归档轨迹回放"
+        : "Archived trace walkthrough"
+      : t.sample;
   const related = project.related
     .map(projectBySlug)
     .filter((p): p is PortfolioProject => Boolean(p));
@@ -52,9 +59,9 @@ export function PortfolioCase({
           <h1>{project.name}</h1>
           <p className="case-summary">{copy.summary}</p>
           <div className="case-actions">
-            {flagship && (
+            {hasExample && (
               <a className="button button-primary" href="#example">
-                {t.sample} ↓
+                {exampleLabel} ↓
               </a>
             )}
             {project.repoUrl && (
@@ -84,7 +91,7 @@ export function PortfolioCase({
               ["problem", t.problem],
               ["role", t.role],
               ["decisions", t.decisions],
-              ...(flagship ? [["example", t.sample]] : []),
+              ...(hasExample ? [["example", exampleLabel]] : []),
               ["evidence", t.evidence],
               ["limits", t.limits],
             ].map(([id, label]) => (
@@ -148,12 +155,12 @@ export function PortfolioCase({
                 ))}
               </div>
             </section>
-            {flagship && (
+            {hasExample && (
               <section id="example" className="case-section sample-section">
                 <span className="eyebrow">
                   04 / {zh ? "深入了解" : "A CLOSER LOOK"}
                 </span>
-                <h2>{t.sample}</h2>
+                <h2>{exampleLabel}</h2>
                 <PortfolioExample slug={project.slug} locale={locale} />
               </section>
             )}

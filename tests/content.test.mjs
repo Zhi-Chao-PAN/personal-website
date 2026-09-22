@@ -11,6 +11,12 @@ const examples = JSON.parse(
     "utf8",
   ),
 );
+const archivedTrace = JSON.parse(
+  await readFile(
+    new URL("../data/autoresearch-fresh-dev-agent-01-state.json", import.meta.url),
+    "utf8",
+  ),
+);
 test("curated catalog preserves legacy URLs, public visibility and flagship order", () => {
   const slugs = projects.map((p) => p.slug);
   assert.equal(new Set(slugs).size, 14);
@@ -122,4 +128,41 @@ test("AutoResearch public evidence files match the frozen source packages", asyn
     const bytes = await readFile(new URL(file, import.meta.url));
     assert.equal(createHash("sha256").update(bytes).digest("hex"), expected);
   }
+});
+test("AutoResearch reviewer trace demo pins the archived r2 sources and negative comparison", async () => {
+  const trace = examples.autoresearch;
+  assert.match(trace.stateSource, /e23760f64c772cf7225280a991fd102740c78def/);
+  assert.match(trace.lockSource, /selection_lock\.json$/);
+  assert.equal(trace.bundleSha256, "5298f2733475e59e83f47efc46ade3d9eb03b314849d7e1079ed52baeb67004a");
+  assert.equal(trace.stateSha256, "66db1a0a2b58af5cc4ae79caefe5974a2353f202f912b8a85a9fa8746a656348");
+  assert.equal(trace.selectionLockSha256, "22f47a9ec443256ef4318c4986ce4a0593d5327e95e5df03fbf82a85e2b1101c");
+  assert.equal(trace.publicTestNdcg, "0.3070440739845281");
+  assert.equal(trace.presetSearchNdcg, "0.307294");
+  const bytes = await readFile(
+    new URL("../data/autoresearch-fresh-dev-agent-01-state.json", import.meta.url),
+  );
+  assert.equal(
+    createHash("sha256").update(bytes).digest("hex"),
+    trace.stateSha256,
+  );
+  assert.equal(archivedTrace.trials.length, 6);
+  assert.equal(trace.englishHypothesisTranslations.length, archivedTrace.trials.length);
+  assert.deepEqual(
+    archivedTrace.trials.map((trial) => ({
+      trial: trial.trial,
+      k: trial.candidate.k,
+      bm25Weight: trial.candidate.bm25_weight,
+      hypothesis: trial.hypothesis,
+      ndcg: trial.metrics["ndcg@10"].toFixed(6),
+      wallSeconds: trial.wall_seconds.toFixed(3),
+    })),
+    [
+      { trial: 1, k: 60, bm25Weight: 0.5, hypothesis: "以中等融合深度与均衡权重建立首个开发集参考点。", ndcg: "0.265104", wallSeconds: "0.208" },
+      { trial: 2, k: 60, bm25Weight: 0.7, hypothesis: "在相同融合深度下提高BM25占比，检验词项匹配信号是否更强。", ndcg: "0.264644", wallSeconds: "0.206" },
+      { trial: 3, k: 60, bm25Weight: 0.3, hypothesis: "第二次提高BM25未改善nDCG，因此对称降低BM25占比检验TF-IDF侧。", ndcg: "0.260736", wallSeconds: "0.206" },
+      { trial: 4, k: 20, bm25Weight: 0.5, hypothesis: "权重偏离均衡均降低nDCG，保持均衡并降低k以强化前排文档影响。", ndcg: "0.264773", wallSeconds: "0.236" },
+      { trial: 5, k: 100, bm25Weight: 0.5, hypothesis: "较小k略差于首点，改用更大k平滑名次差异并保持均衡权重。", ndcg: "0.265183", wallSeconds: "0.203" },
+      { trial: 6, k: 150, bm25Weight: 0.5, hypothesis: "增大到100获得当前最佳nDCG，继续提高k检验平滑效应是否仍有收益。", ndcg: "0.264955", wallSeconds: "0.182" },
+    ],
+  );
 });

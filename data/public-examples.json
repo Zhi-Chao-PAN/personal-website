@@ -156,5 +156,24 @@
   "aiw": {
     "source": "https://github.com/Zhi-Chao-PAN/ai-cli-orchestrator/blob/0605305caa3565c229196d6e02d91ef5eeb7532b/docs/specs/v0.3-generic-orchestration.md",
     "tests": "https://github.com/Zhi-Chao-PAN/ai-cli-orchestrator/blob/0605305caa3565c229196d6e02d91ef5eeb7532b/tests/ai-workers.tests.ps1"
+  },
+  "autoresearch": {
+    "stateSource": "https://github.com/Zhi-Chao-PAN/research-agent-bench/blob/e23760f64c772cf7225280a991fd102740c78def/fresh-repeat-v5/fresh-dev-agent-01/state.json",
+    "lockSource": "https://github.com/Zhi-Chao-PAN/research-agent-bench/blob/e23760f64c772cf7225280a991fd102740c78def/fresh-repeat-v5/selection_lock.json",
+    "reportSource": "https://github.com/Zhi-Chao-PAN/research-agent-bench/blob/e23760f64c772cf7225280a991fd102740c78def/fresh-repeat-v5/%E7%A0%94%E7%A9%B6%E8%A1%A5%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.md",
+    "bundleSource": "https://github.com/Zhi-Chao-PAN/research-agent-bench/releases/download/reviewer-snapshot-2026-09-23-r2/research-agent-bench-reviewer-snapshot-2026-09-23-r2-reviewer-bundle.zip",
+    "bundleSha256": "5298f2733475e59e83f47efc46ade3d9eb03b314849d7e1079ed52baeb67004a",
+    "stateSha256": "66db1a0a2b58af5cc4ae79caefe5974a2353f202f912b8a85a9fa8746a656348",
+    "selectionLockSha256": "22f47a9ec443256ef4318c4986ce4a0593d5327e95e5df03fbf82a85e2b1101c",
+    "publicTestNdcg": "0.3070440739845281",
+    "presetSearchNdcg": "0.307294",
+    "englishHypothesisTranslations": [
+      "Set a first development reference with medium fusion depth and balanced weighting.",
+      "Increase the BM25 share at the same depth to test whether term matching is stronger.",
+      "The raised BM25 weight did not improve nDCG, so symmetrically lower it to test the TF-IDF side.",
+      "Weight shifts both reduced nDCG; keep the balance and lower k to emphasize top-ranked documents.",
+      "The smaller k was slightly worse than the first point, so increase k to smooth rank differences while keeping balanced weights.",
+      "k=100 is the best nDCG so far; increase k again to check whether smoothing still helps."
+    ]
   }
 }

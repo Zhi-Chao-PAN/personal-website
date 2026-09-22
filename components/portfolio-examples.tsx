@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useId, useState, type ReactNode } from "react";
 import examples from "@/data/public-examples.json";
+import archivedAutoResearchState from "@/data/autoresearch-fresh-dev-agent-01-state.json";
 import styles from "./portfolio-examples.module.css";
 
 type Locale = "en" | "zh";
@@ -640,6 +641,102 @@ function AiwExample({ locale }: { locale: Locale }) {
   );
 }
 
+function AutoResearchTraceExample({ locale }: { locale: Locale }) {
+  const [stepId, setStepId] = useState("trial-01");
+  const data = examples.autoresearch;
+  const trials = archivedAutoResearchState.trials;
+  const step =
+    trials.find((item) => `trial-${String(item.trial).padStart(2, "0")}` === stepId) ??
+    trials[0];
+  return (
+    <ExampleFrame
+      slug="autoresearch-evidence-pack"
+      locale={locale}
+      title={words(locale, "One-minute archived trace review", "一分钟审阅：已归档轨迹")}
+      note={words(
+        locale,
+        "Read-only playback of the archived fresh-dev-agent-01 record at Research Agent Bench r2 (e23760f). It makes no LLM call and does not recompute NFCorpus.",
+        "按 Research Agent Bench r2（e23760f）中 fresh-dev-agent-01 的归档记录只读播放；不调用 LLM，也不重算 NFCorpus。",
+      )}
+      source={data.stateSource}
+      sourceLabel={words(locale, "Open archived state.json", "打开归档 state.json")}
+    >
+      <Choices
+        id="autoresearch-trace-step"
+        label={words(locale, "Choose an archived development call", "选择一条归档开发调用")}
+        options={trials.map((trial) => ({
+          id: `trial-${String(trial.trial).padStart(2, "0")}`,
+          label: {
+            en: `${String(trial.trial).padStart(2, "0")} · Archived call`,
+            zh: `${String(trial.trial).padStart(2, "0")} · 归档调用`,
+          },
+        }))}
+        value={stepId}
+        onChange={setStepId}
+        locale={locale}
+      />
+      <div
+        className={styles.panel}
+        data-testid="autoresearch-trace-content"
+        data-step={`trial-${String(step.trial).padStart(2, "0")}`}
+      >
+        <p className={styles.eyebrow}>
+          {words(locale, `Archived call ${step.trial} of 6`, `归档调用 ${step.trial} / 6`)}
+        </p>
+        <h3>
+          k={step.candidate.k} · BM25 weight={step.candidate.bm25_weight} · dev nDCG@10{" "}
+          {step.metrics["ndcg@10"].toFixed(6)}
+        </h3>
+        {locale === "zh" ? (
+          <p>{step.hypothesis}</p>
+        ) : (
+          <p>
+            <strong>English translation (not archived text): </strong>
+            {data.englishHypothesisTranslations[step.trial - 1]}
+          </p>
+        )}
+        <p className={styles.callout}>
+          {words(
+            locale,
+            `Recorded status: ${step.status}; exit code ${step.exit_code}; wall time ${step.wall_seconds.toFixed(3)}s. Wall time and nDCG are rounded for display; the exact archived values are in the pinned JSON.`,
+            `记录状态：${step.status}；退出码 ${step.exit_code}；耗时 ${step.wall_seconds.toFixed(3)} 秒。耗时和 nDCG 为四舍五入的显示值，精确归档值见固定 JSON。`,
+          )}
+        </p>
+      </div>
+      <div className={styles.traceSummary} data-testid="autoresearch-trace-summary">
+        <div>
+          <p className={styles.eyebrow}>{words(locale, "Frozen selection", "冻结选择")}</p>
+          <strong>k=100 · BM25 weight=0.5</strong>
+          <p>{words(locale, "All three fresh trajectories selected this same configuration; it produces one unique ranking.", "三条新增轨迹均选择该配置，只形成一组唯一排名。")}</p>
+        </div>
+        <div>
+          <p className={styles.eyebrow}>{words(locale, "Public test comparison", "公开测试对照")}</p>
+          <strong>
+            {data.publicTestNdcg.slice(0, 8)} &lt; {data.presetSearchNdcg}
+          </strong>
+          <p>{words(locale, "Agent selection is below the pre-specified six-point search.", "代理选择低于预设六点搜索。")}</p>
+        </div>
+      </div>
+      <p className={styles.boundary}>
+        {words(
+          locale,
+          `Selection lock SHA-256: ${data.selectionLockSha256}. Archived state SHA-256: ${data.stateSha256}. The public test is exploratory: there is no independently verifiable model, provider, or session provenance, and AI-assisted execution does not establish the applicant’s own ability.`,
+          `selection_lock SHA-256：${data.selectionLockSha256}。归档 state SHA-256：${data.stateSha256}。公开测试属探索性结果：没有可独立核验的模型、提供商或会话来源凭证，AI 辅助执行也不构成申请人本人能力证明。`,
+        )}{" "}
+        <a href={data.lockSource} target="_blank" rel="noreferrer">
+          {words(locale, "Inspect selection lock", "查看选择锁")} ↗
+        </a>{" · "}
+        <a href={data.reportSource} target="_blank" rel="noreferrer">
+          {words(locale, "Read report", "查看报告")} ↗
+        </a>{" · "}
+        <a href={data.bundleSource} target="_blank" rel="noreferrer">
+          {words(locale, "Download fixed review bundle", "下载固定审阅包")} ↗
+        </a>
+      </p>
+    </ExampleFrame>
+  );
+}
+
 export function PortfolioExample({
   slug,
   locale,
@@ -651,5 +748,7 @@ export function PortfolioExample({
   if (slug === "llm-evaluation-playbook")
     return <PlaybookExample locale={locale} />;
   if (slug === "ai-cli-orchestrator") return <AiwExample locale={locale} />;
+  if (slug === "autoresearch-evidence-pack")
+    return <AutoResearchTraceExample locale={locale} />;
   return null;
 }
