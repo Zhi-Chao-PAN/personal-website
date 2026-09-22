@@ -425,7 +425,7 @@
               "title": "Keep the agent result even when preset search wins",
               "choice": "Run three fresh-context agent trajectories with six development calls each, freeze their selections, then compare them with the preset six-point search on the public NFCorpus test split.",
               "tradeoff": "All three trajectories chose the same configuration and scored 0.307044, below the preset search at 0.307294. They produce one unique test ranking, not three independent generalization results.",
-              "verification": "The public research-agent repository contains the task code, hypotheses, six-call logs, selection lock, reports, and a source-data rebuild route. Earlier access to the public test makes this an exploratory extension."
+              "verification": "The public research-agent repository contains the task code, hypotheses, six-call logs, selection lock, reports, and a source-data rebuild route. Its r2 snapshot adds a paper-to-task index and a CI-tested offline Docker audit of traces and a synthetic demo. The container check does not rerun NFCorpus or demonstrate the applicant's personal Docker skill. Earlier access to the public test makes this an exploratory extension."
             }
           ],
           "outcome": "The package records a corrected 20-run LoRA matrix plus one repeat, a near-chance PAWS stress result, and three fresh six-call agent trajectories that did not beat the preset search. Its strongest signal is the preserved correction and negative evidence, not a claim that either method won.",
@@ -461,7 +461,7 @@
               "title": "预设搜索胜出时仍保留代理结果",
               "choice": "让三条空白上下文代理轨迹各使用六次开发调用，冻结选择后，再与预设六点搜索比较 NFCorpus 公开测试结果。",
               "tradeoff": "三条轨迹都选择同一配置并得到 0.307044，低于预设搜索的 0.307294；它们只形成一组唯一测试排序，不是三份独立泛化证据。",
-              "verification": "公开的研究代理仓库包含任务代码、先行假设、六轮日志、选择锁、报告与原始数据重建路径。此前已查看公开测试，因此这只是探索性扩展。"
+              "verification": "公开的研究代理仓库包含任务代码、先行假设、六轮日志、选择锁、报告与原始数据重建路径。r2 快照新增论文方法到任务设计的对照索引，以及经 CI 实测的 Docker 离线轨迹核验与虚构数据演示；容器检查不复跑 NFCorpus，也不证明申请人本人熟练使用 Docker。此前已查看公开测试，因此这只是探索性扩展。"
             }
           ],
           "outcome": "证据包记录了纠正后的 20 次 LoRA 正式训练与 1 次重复、接近随机水平的 PAWS 压力结果，以及三条未胜过预设搜索的新增六次调用代理轨迹。它最有价值的信号是保留了纠错和负结果，而不是宣称某个方法获胜。",
@@ -484,10 +484,10 @@
         },
         {
           "label": {
-            "en": "Research-agent fixed reviewer snapshot, six-call traces and rerun guide",
-            "zh": "研究代理固定审阅快照、六轮轨迹与复跑说明"
+            "en": "Research-agent r2 snapshot, six-call traces, paper-to-task index and container audit",
+            "zh": "研究代理 r2 快照、六轮轨迹、论文任务对照与容器核验"
           },
-          "url": "https://github.com/Zhi-Chao-PAN/research-agent-bench/releases/tag/reviewer-snapshot-2026-09-23",
+          "url": "https://github.com/Zhi-Chao-PAN/research-agent-bench/releases/tag/reviewer-snapshot-2026-09-23-r2",
           "type": "source"
         },
         {
@@ -503,7 +503,7 @@
             "en": "Latest application addendum (ZIP, not a reproduction bundle)",
             "zh": "最新版报名增量包（ZIP，不能单独复现实验）"
           },
-          "url": "https://www.panzhichao.com/evidence/autoresearch-v7-application-addendum-pan-zhichao.zip",
+          "url": "https://www.panzhichao.com/evidence/autoresearch-v8-application-addendum-pan-zhichao.zip",
           "type": "report"
         }
       ]

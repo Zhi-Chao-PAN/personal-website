@@ -94,6 +94,10 @@ test("AutoResearch public evidence files match the frozen source packages", asyn
       "../public/evidence/autoresearch-v7-application-addendum-pan-zhichao.zip",
       "dacdcba5dd77d91a21769e36164f517d192a8e79bfad48831e8f5f31fa026445",
     ],
+    [
+      "../public/evidence/autoresearch-v8-application-addendum-pan-zhichao.zip",
+      "db4b8e8a39a9b23f7e562381225d900a5317e31598ea6a8dea3cd47e03c2e607",
+    ],
   ]) {
     const bytes = await readFile(new URL(file, import.meta.url));
     assert.equal(createHash("sha256").update(bytes).digest("hex"), expected);
