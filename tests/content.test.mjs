@@ -123,3 +123,18 @@ test("AutoResearch public evidence files match the frozen source packages", asyn
     assert.equal(createHash("sha256").update(bytes).digest("hex"), expected);
   }
 });
+test("AutoResearch reviewer trace demo pins the archived r2 sources and negative comparison", () => {
+  const trace = examples.autoresearch;
+  assert.match(trace.stateSource, /e23760f64c772cf7225280a991fd102740c78def/);
+  assert.match(trace.lockSource, /selection_lock\.json$/);
+  assert.equal(trace.bundleSha256, "5298f2733475e59e83f47efc46ade3d9eb03b314849d7e1079ed52baeb67004a");
+  assert.equal(trace.stateSha256, "66db1a0a2b58af5cc4ae79caefe5974a2353f202f912b8a85a9fa8746a656348");
+  assert.equal(trace.selectionLockSha256, "22f47a9ec443256ef4318c4986ce4a0593d5327e95e5df03fbf82a85e2b1101c");
+  assert.equal(trace.publicTestNdcg, "0.3070440739845281");
+  assert.equal(trace.presetSearchNdcg, "0.307294");
+  assert.equal(trace.trials.length, 6);
+  assert.deepEqual(trace.trials.map((trial) => [trial.k, trial.bm25Weight, trial.ndcg]), [
+    [60, 0.5, "0.265104"], [60, 0.7, "0.264644"], [60, 0.3, "0.260736"],
+    [20, 0.5, "0.264773"], [100, 0.5, "0.265183"], [150, 0.5, "0.264955"],
+  ]);
+});

@@ -94,6 +94,17 @@ for (const locale of ["en", "zh"] as const) {
         scenario,
       );
     }
+    await page.goto(`${prefix}/projects/autoresearch-evidence-pack`);
+    await expect(page.getByTestId("portfolio-example-autoresearch-evidence-pack")).toBeVisible();
+    await expect(page.getByTestId("autoresearch-trace-summary")).toContainText("0.307044");
+    await page.getByTestId("autoresearch-trace-step-trial-02").focus();
+    await page.keyboard.press("Enter");
+    await expect(page.getByTestId("autoresearch-trace-content")).toHaveAttribute("data-step", "trial-02");
+    for (const step of ["trial-01", "trial-02", "trial-03", "trial-04", "trial-05", "trial-06"]) {
+      await page.getByTestId(`autoresearch-trace-step-${step}`).click();
+      await expect(page.getByTestId(`autoresearch-trace-step-${step}`)).toHaveAttribute("aria-pressed", "true");
+      await expect(page.getByTestId("autoresearch-trace-content")).toHaveAttribute("data-step", step);
+    }
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
