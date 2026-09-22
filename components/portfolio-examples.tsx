@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useId, useState, type ReactNode } from "react";
 import examples from "@/data/public-examples.json";
+import archivedAutoResearchState from "@/data/autoresearch-fresh-dev-agent-01-state.json";
 import styles from "./portfolio-examples.module.css";
 
 type Locale = "en" | "zh";
@@ -643,8 +644,10 @@ function AiwExample({ locale }: { locale: Locale }) {
 function AutoResearchTraceExample({ locale }: { locale: Locale }) {
   const [stepId, setStepId] = useState("trial-01");
   const data = examples.autoresearch;
+  const trials = archivedAutoResearchState.trials;
   const step =
-    data.trials.find((item) => item.id === stepId) ?? data.trials[0];
+    trials.find((item) => `trial-${String(item.trial).padStart(2, "0")}` === stepId) ??
+    trials[0];
   return (
     <ExampleFrame
       slug="autoresearch-evidence-pack"
@@ -661,9 +664,12 @@ function AutoResearchTraceExample({ locale }: { locale: Locale }) {
       <Choices
         id="autoresearch-trace-step"
         label={words(locale, "Choose an archived development call", "选择一条归档开发调用")}
-        options={data.trials.map((trial) => ({
-          id: trial.id,
-          label: trial.label,
+        options={trials.map((trial) => ({
+          id: `trial-${String(trial.trial).padStart(2, "0")}`,
+          label: {
+            en: `${String(trial.trial).padStart(2, "0")} · Archived call`,
+            zh: `${String(trial.trial).padStart(2, "0")} · 归档调用`,
+          },
         }))}
         value={stepId}
         onChange={setStepId}
@@ -672,20 +678,28 @@ function AutoResearchTraceExample({ locale }: { locale: Locale }) {
       <div
         className={styles.panel}
         data-testid="autoresearch-trace-content"
-        data-step={step.id}
+        data-step={`trial-${String(step.trial).padStart(2, "0")}`}
       >
         <p className={styles.eyebrow}>
-          {words(locale, `Archived call ${step.number} of 6`, `归档调用 ${step.number} / 6`)}
+          {words(locale, `Archived call ${step.trial} of 6`, `归档调用 ${step.trial} / 6`)}
         </p>
         <h3>
-          k={step.k} · BM25 weight={step.bm25Weight} · dev nDCG@10 {step.ndcg}
+          k={step.candidate.k} · BM25 weight={step.candidate.bm25_weight} · dev nDCG@10{" "}
+          {step.metrics["ndcg@10"].toFixed(6)}
         </h3>
-        <p>{step.hypothesis[locale]}</p>
+        {locale === "zh" ? (
+          <p>{step.hypothesis}</p>
+        ) : (
+          <p>
+            <strong>English translation (not archived text): </strong>
+            {data.englishHypothesisTranslations[step.trial - 1]}
+          </p>
+        )}
         <p className={styles.callout}>
           {words(
             locale,
-            `Recorded status: SUCCESS; exit code 0; wall time ${step.wallSeconds}s. This view is an excerpt from the pinned JSON, not a new evaluation.`,
-            `记录状态：SUCCESS；退出码 0；耗时 ${step.wallSeconds} 秒。此处是固定 JSON 的摘录，不是新的评测。`,
+            `Recorded status: ${step.status}; exit code ${step.exit_code}; wall time ${step.wall_seconds.toFixed(3)}s (rounded for display). The candidate and metric above are also rounded display values; raw values remain in the pinned JSON.`,
+            `记录状态：${step.status}；退出码 ${step.exit_code}；耗时 ${step.wall_seconds.toFixed(3)} 秒（显示值已四舍五入）。上方候选参数和指标均为显示用的四舍五入值；原始值保留在固定 JSON 中。`,
           )}
         </p>
       </div>

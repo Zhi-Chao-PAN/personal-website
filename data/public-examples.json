@@ -167,13 +167,13 @@
     "selectionLockSha256": "22f47a9ec443256ef4318c4986ce4a0593d5327e95e5df03fbf82a85e2b1101c",
     "publicTestNdcg": "0.3070440739845281",
     "presetSearchNdcg": "0.307294",
-    "trials": [
-      { "id": "trial-01", "number": 1, "label": { "en": "01 · First reference", "zh": "01 · 首个参照" }, "k": 60, "bm25Weight": 0.5, "ndcg": "0.265104", "wallSeconds": "0.208", "hypothesis": { "en": "Set a first development reference with medium fusion depth and balanced weighting.", "zh": "以中等融合深度与均衡权重建立首个开发集参考点。" } },
-      { "id": "trial-02", "number": 2, "label": { "en": "02 · Raise BM25", "zh": "02 · 提高 BM25" }, "k": 60, "bm25Weight": 0.7, "ndcg": "0.264644", "wallSeconds": "0.206", "hypothesis": { "en": "Increase the BM25 share at the same depth to test whether term matching is stronger.", "zh": "在相同融合深度下提高 BM25 占比，检验词项匹配信号是否更强。" } },
-      { "id": "trial-03", "number": 3, "label": { "en": "03 · Lower BM25", "zh": "03 · 降低 BM25" }, "k": 60, "bm25Weight": 0.3, "ndcg": "0.260736", "wallSeconds": "0.206", "hypothesis": { "en": "The raised BM25 weight did not improve nDCG, so symmetrically lower it to test the TF-IDF side.", "zh": "第二次提高 BM25 未改善 nDCG，因此对称降低 BM25 占比检验 TF-IDF 侧。" } },
-      { "id": "trial-04", "number": 4, "label": { "en": "04 · Lower k", "zh": "04 · 降低 k" }, "k": 20, "bm25Weight": 0.5, "ndcg": "0.264773", "wallSeconds": "0.236", "hypothesis": { "en": "Weight shifts both reduced nDCG; keep the balance and lower k to emphasize top-ranked documents.", "zh": "权重偏离均衡均降低 nDCG，保持均衡并降低 k 以强化前排文档影响。" } },
-      { "id": "trial-05", "number": 5, "label": { "en": "05 · Selected k=100", "zh": "05 · 选中 k=100" }, "k": 100, "bm25Weight": 0.5, "ndcg": "0.265183", "wallSeconds": "0.203", "hypothesis": { "en": "The smaller k was slightly worse than the first point, so increase k to smooth rank differences while keeping balanced weights.", "zh": "较小 k 略差于首点，改用更大 k 平滑名次差异并保持均衡权重。" } },
-      { "id": "trial-06", "number": 6, "label": { "en": "06 · Check higher k", "zh": "06 · 检查更高 k" }, "k": 150, "bm25Weight": 0.5, "ndcg": "0.264955", "wallSeconds": "0.182", "hypothesis": { "en": "k=100 is the best nDCG so far; increase k again to check whether smoothing still helps.", "zh": "增大到 100 获得当前最佳 nDCG，继续提高 k 检验平滑效应是否仍有收益。" } }
+    "englishHypothesisTranslations": [
+      "Set a first development reference with medium fusion depth and balanced weighting.",
+      "Increase the BM25 share at the same depth to test whether term matching is stronger.",
+      "The raised BM25 weight did not improve nDCG, so symmetrically lower it to test the TF-IDF side.",
+      "Weight shifts both reduced nDCG; keep the balance and lower k to emphasize top-ranked documents.",
+      "The smaller k was slightly worse than the first point, so increase k to smooth rank differences while keeping balanced weights.",
+      "k=100 is the best nDCG so far; increase k again to check whether smoothing still helps."
     ]
   }
 }
