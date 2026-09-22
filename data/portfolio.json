@@ -390,7 +390,7 @@
       "name": "AutoResearch Evidence Pack",
       "tier": "selected",
       "kind": "study",
-      "repoUrl": "https://github.com/Zhi-Chao-PAN/lora-robustness-reproduction",
+      "repoUrl": "https://github.com/Zhi-Chao-PAN/research-agent-bench",
       "demoUrl": null,
       "verifiedAt": "2026-09-23",
       "tags": ["LoRA", "Research agents", "Negative results", "Evidence audit"],
@@ -539,6 +539,14 @@
           },
           "url": "https://github.com/Zhi-Chao-PAN/research-agent-bench/releases/tag/reviewer-snapshot-2026-09-23-r2",
           "type": "source"
+        },
+        {
+          "label": {
+            "en": "Post-release research-agent source replay (same machine, retained archive; AI-agent run)",
+            "zh": "研究代理发布后源码复跑（同机、留存数据归档、AI 代理执行）"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/research-agent-bench/blob/2f60443dc5cd00949d031542f83c2950b956a1e8/POST_RELEASE_R2_SOURCE_REPLAY_2026-09-23.md",
+          "type": "report"
         },
         {
           "label": {

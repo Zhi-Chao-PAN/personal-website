@@ -161,6 +161,7 @@
     "stateSource": "https://github.com/Zhi-Chao-PAN/research-agent-bench/blob/e23760f64c772cf7225280a991fd102740c78def/fresh-repeat-v5/fresh-dev-agent-01/state.json",
     "lockSource": "https://github.com/Zhi-Chao-PAN/research-agent-bench/blob/e23760f64c772cf7225280a991fd102740c78def/fresh-repeat-v5/selection_lock.json",
     "reportSource": "https://github.com/Zhi-Chao-PAN/research-agent-bench/blob/e23760f64c772cf7225280a991fd102740c78def/fresh-repeat-v5/%E7%A0%94%E7%A9%B6%E8%A1%A5%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.md",
+    "replaySource": "https://github.com/Zhi-Chao-PAN/research-agent-bench/blob/2f60443dc5cd00949d031542f83c2950b956a1e8/POST_RELEASE_R2_SOURCE_REPLAY_2026-09-23.md",
     "bundleSource": "https://github.com/Zhi-Chao-PAN/research-agent-bench/releases/download/reviewer-snapshot-2026-09-23-r2/research-agent-bench-reviewer-snapshot-2026-09-23-r2-reviewer-bundle.zip",
     "bundleSha256": "5298f2733475e59e83f47efc46ade3d9eb03b314849d7e1079ed52baeb67004a",
     "stateSha256": "66db1a0a2b58af5cc4ae79caefe5974a2353f202f912b8a85a9fa8746a656348",
