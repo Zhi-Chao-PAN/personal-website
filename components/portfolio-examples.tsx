@@ -729,6 +729,9 @@ function AutoResearchTraceExample({ locale }: { locale: Locale }) {
         <a href={data.reportSource} target="_blank" rel="noreferrer">
           {words(locale, "Read report", "查看报告")} ↗
         </a>{" · "}
+        <a href={data.replaySource} target="_blank" rel="noreferrer">
+          {words(locale, "Inspect source replay", "查看源码复跑")} ↗
+        </a>{" · "}
         <a href={data.bundleSource} target="_blank" rel="noreferrer">
           {words(locale, "Download fixed review bundle", "下载固定审阅包")} ↗
         </a>
