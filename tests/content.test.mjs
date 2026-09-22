@@ -84,15 +84,15 @@ test("published synthetic MRR example reproduces the source reference", () => {
   assert.equal(base - churn + expansion, 4817500);
   assert.equal(examples.playbook.relativeTolerance, 0.02);
 });
-test("AutoResearch public evidence files match the frozen V5 outputs", async () => {
+test("AutoResearch public evidence files match the frozen source packages", async () => {
   for (const [file, expected] of [
     [
       "../public/evidence/autoresearch-v5-project-proof-pan-zhichao.pdf",
       "ed18147cd02e676a5c43ff7a6db3949eea2f909cc2bf61d129847f9c5cdd78cc",
     ],
     [
-      "../public/evidence/autoresearch-v5-light-review-package-pan-zhichao.zip",
-      "3a02bd0e2999945d4a7d9e8ed9481b5487fe95505b7fc185caa1a55cf43c1f39",
+      "../public/evidence/autoresearch-v7-application-addendum-pan-zhichao.zip",
+      "cef4e5f0d1f6864afcfa3384a04523399949b56b5c3f451df86c80cd7aa7b71f",
     ],
   ]) {
     const bytes = await readFile(new URL(file, import.meta.url));

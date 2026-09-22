@@ -419,7 +419,7 @@
               "title": "Test in-domain success against a word-order stress set",
               "choice": "Evaluate the six fixed 12-epoch full/LoRA checkpoints on PAWS only after MRPC model selection, and report balanced accuracy and negative-class recall alongside F1.",
               "tradeoff": "Twelve-epoch LoRA averaged 0.9074 F1 on MRPC, but 0.5009 balanced accuracy on PAWS was near the constant-classifier baseline; the public stress test is exploratory, not a blind confirmation.",
-              "verification": "The proof PDF and light review package contain the result tables, tokenizer correction, error analysis, and verification summaries."
+              "verification": "The proof PDF summarizes the result; the LoRA repository holds the tables, correction, error analysis and audit scope. Its reviewer snapshot has a passing public CI audit."
             },
             {
               "title": "Keep the agent result even when preset search wins",
@@ -432,7 +432,7 @@
           "limits": [
             "AI-assisted execution and documentation do not establish the applicant's independent research or coding ability; that still requires personal reruns, explanation, and live trial work.",
             "MRPC validation, PAWS labeled test, and the NFCorpus public test were used in an exploratory setting. The results are not a blind benchmark, a general LoRA verdict, or evidence that research agents outperform search.",
-            "The downloadable light package alone omits complete raw predictions, model weights, frozen source files, caches, and runnable dependencies. The linked repositories expose code, logs and aggregate results, with third-party data and weights fetched separately; personal reruns remain pending.",
+            "The one-page PDF and application addendum alone omit complete raw predictions, model weights and rank caches. The linked repositories expose source, logs and aggregate results; third-party data and weights require separate upstream access. Personal reruns remain pending.",
             "The experiments cover one language-model backbone, two sentence-pair datasets, one retrieval task, and small numbers of training seeds and agent trajectories."
           ]
         },
@@ -455,7 +455,7 @@
               "title": "用词序压力集检查常规得分",
               "choice": "先在 MRPC 完成模型选择，再将六个固定的 12 轮 full/LoRA checkpoint 用于 PAWS，并同时报告 balanced accuracy、负类召回与 F1。",
               "tradeoff": "12 轮 LoRA 的 MRPC 平均 F1 为 0.9074，但 PAWS balanced accuracy 只有 0.5009，接近常量分类基线；公开压力测试属于探索性分析，不是盲测确认。",
-              "verification": "证明 PDF 与轻量审阅包包含结果表、tokenizer 纠错、错误分析和核验摘要。"
+              "verification": "一页证明 PDF 概述结果；LoRA 公开仓库保留结果表、纠错、错误分析与核验范围，固定审阅快照的公开 CI 已通过。"
             },
             {
               "title": "预设搜索胜出时仍保留代理结果",
@@ -468,7 +468,7 @@
           "limits": [
             "AI 辅助执行和整理不构成申请人独立研究或编程能力的证明；仍需本人复跑、解释和现场试做。",
             "MRPC validation、PAWS labeled test 与 NFCorpus public test 都用于探索性研究；这些结果不是盲测基准，也不能推出 LoRA 的一般结论或代理优于搜索。",
-            "可下载的轻量包单独使用时缺少全部原始预测、模型权重、冻结源码、缓存与可运行依赖。关联仓库公开代码、日志和汇总结果，第三方数据及权重需另行获取；本人独立复跑仍待完成。",
+            "一页 PDF 与报名增量包本身不含完整原始预测、模型权重及排名缓存。关联仓库公开源码、日志和汇总结果，第三方数据及权重需按上游规则另行获取；本人独立复跑仍待完成。",
             "实验只覆盖一个语言模型骨干、两个句对数据集、一项检索任务，以及少量训练种子和代理轨迹。"
           ]
         }
@@ -476,18 +476,18 @@
       "evidence": [
         {
           "label": {
-            "en": "LoRA source, aggregate results and correction record (GitHub)",
-            "zh": "LoRA 源码、汇总结果与纠错记录（GitHub）"
+            "en": "LoRA fixed reviewer snapshot, aggregate results and correction record",
+            "zh": "LoRA 固定审阅快照、汇总结果与纠错记录"
           },
-          "url": "https://github.com/Zhi-Chao-PAN/lora-robustness-reproduction",
+          "url": "https://github.com/Zhi-Chao-PAN/lora-robustness-reproduction/releases/tag/reviewer-snapshot-2026-09-23",
           "type": "source"
         },
         {
           "label": {
-            "en": "Research-agent benchmark, six-call traces and rerun guide (GitHub)",
-            "zh": "研究代理任务、六轮轨迹与复跑说明（GitHub）"
+            "en": "Research-agent fixed reviewer snapshot, six-call traces and rerun guide",
+            "zh": "研究代理固定审阅快照、六轮轨迹与复跑说明"
           },
-          "url": "https://github.com/Zhi-Chao-PAN/research-agent-bench",
+          "url": "https://github.com/Zhi-Chao-PAN/research-agent-bench/releases/tag/reviewer-snapshot-2026-09-23",
           "type": "source"
         },
         {
@@ -500,10 +500,10 @@
         },
         {
           "label": {
-            "en": "Light review package (ZIP, not a standalone reproduction bundle)",
-            "zh": "轻量审阅包（ZIP，不能单独复现实验）"
+            "en": "Latest application addendum (ZIP, not a reproduction bundle)",
+            "zh": "最新版报名增量包（ZIP，不能单独复现实验）"
           },
-          "url": "https://www.panzhichao.com/evidence/autoresearch-v5-light-review-package-pan-zhichao.zip",
+          "url": "https://www.panzhichao.com/evidence/autoresearch-v7-application-addendum-pan-zhichao.zip",
           "type": "report"
         }
       ]
