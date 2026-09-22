@@ -51,4 +51,6 @@ for (const project of [null, ...projects])
           .pathname,
       );
   }
-console.log("Generated 28 local, bilingual sharing images.");
+console.log(
+  `Generated ${(projects.length + 1) * 2} local, bilingual sharing images.`,
+);

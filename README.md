@@ -10,7 +10,7 @@ A bilingual portfolio about product-led, AI-assisted engineering: building usefu
 - **LLM Evaluation Playbook:** task specifications, rubric methods and numerical checks.
 - **AI CLI Orchestrator:** explicit routing, bounded execution and reviewable outcomes.
 
-The site includes 13 cases, including public overviews of four private projects. The three flagship walkthroughs use public examples and fixed data; viewing them requires no account or paid model call.
+The site includes 14 cases, including one public application-evidence case and public overviews of four private projects. The three flagship walkthroughs use public examples and fixed data; viewing them requires no account or paid model call.
 
 ## Development
 

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-12",
+  "updatedAt": "2026-09-23",
   "projects": [
     {
       "slug": "launchlens-ai",
@@ -386,6 +386,129 @@
       ]
     },
     {
+      "slug": "autoresearch-evidence-pack",
+      "name": "AutoResearch Evidence Pack",
+      "tier": "selected",
+      "kind": "study",
+      "repoUrl": "https://github.com/Zhi-Chao-PAN/lora-robustness-reproduction",
+      "demoUrl": null,
+      "verifiedAt": "2026-09-23",
+      "tags": ["LoRA", "Research agents", "Negative results", "Evidence audit"],
+      "related": [
+        "llm-evaluation-playbook",
+        "ai-cli-orchestrator",
+        "safety-critical-battery-prognostics"
+      ],
+      "content": {
+        "en": {
+          "eyebrow": "Application evidence · results with boundaries",
+          "summary": "An AI-assisted research evidence package that tests LoRA robustness and six-call agent selection, retaining corrections and negative results instead of promoting headline wins.",
+          "problem": "A polished score can hide a broken input path, a distribution shift, repeated access to a public test set, or a competitive search baseline. Credible application evidence must expose those failure modes and its authorship limits.",
+          "role": [
+            "Requested an AI-assisted effort to strengthen the application evidence and preserve the protocols, artifacts, corrections, and negative results for review.",
+            "The experiments, analysis, and copy were produced with AI assistance; personal understanding, independent reruns, code explanation, and timed trial work remain to be demonstrated."
+          ],
+          "decisions": [
+            {
+              "title": "Withdraw results built on a broken tokenizer path",
+              "choice": "After an audit found a zero-merge tokenizer backend and mismatched encodings, withdraw the earlier scores, switch to a verified tokenizer path, and retrain from scratch.",
+              "tradeoff": "Correcting the input invalidated a more convenient earlier result, but preserved the integrity of every later comparison.",
+              "verification": "The corrected matrix contains 20 formal training runs plus one from-scratch repeat, with tokenization, predictions, checkpoints, and selection records checked in the full evidence package."
+            },
+            {
+              "title": "Test in-domain success against a word-order stress set",
+              "choice": "Evaluate the six fixed 12-epoch full/LoRA checkpoints on PAWS only after MRPC model selection, and report balanced accuracy and negative-class recall alongside F1.",
+              "tradeoff": "Twelve-epoch LoRA averaged 0.9074 F1 on MRPC, but 0.5009 balanced accuracy on PAWS was near the constant-classifier baseline; the public stress test is exploratory, not a blind confirmation.",
+              "verification": "The proof PDF summarizes the result; the LoRA repository holds the tables, correction, error analysis and audit scope. Its reviewer snapshot has a passing public CI audit."
+            },
+            {
+              "title": "Keep the agent result even when preset search wins",
+              "choice": "Run three fresh-context agent trajectories with six development calls each, freeze their selections, then compare them with the preset six-point search on the public NFCorpus test split.",
+              "tradeoff": "All three trajectories chose the same configuration and scored 0.307044, below the preset search at 0.307294. They produce one unique test ranking, not three independent generalization results.",
+              "verification": "The public research-agent repository contains the task code, hypotheses, six-call logs, selection lock, reports, and a source-data rebuild route. Earlier access to the public test makes this an exploratory extension."
+            }
+          ],
+          "outcome": "The package records a corrected 20-run LoRA matrix plus one repeat, a near-chance PAWS stress result, and three fresh six-call agent trajectories that did not beat the preset search. Its strongest signal is the preserved correction and negative evidence, not a claim that either method won.",
+          "limits": [
+            "AI-assisted execution and documentation do not establish the applicant's independent research or coding ability; that still requires personal reruns, explanation, and live trial work.",
+            "MRPC validation, PAWS labeled test, and the NFCorpus public test were used in an exploratory setting. The results are not a blind benchmark, a general LoRA verdict, or evidence that research agents outperform search.",
+            "The one-page PDF and application addendum alone omit complete raw predictions, model weights and rank caches. The linked repositories expose source, logs and aggregate results; third-party data and weights require separate upstream access. Personal reruns remain pending.",
+            "The experiments cover one language-model backbone, two sentence-pair datasets, one retrieval task, and small numbers of training seeds and agent trajectories."
+          ]
+        },
+        "zh": {
+          "eyebrow": "申请证据 · 把结果边界写清楚",
+          "summary": "一份由 AI 辅助完成的研究证据包，检验 LoRA 稳健性与六次调用预算下的代理选参，并保留纠错和负结果，而不是只突出好看的分数。",
+          "problem": "一个漂亮分数可能掩盖错误输入、分布迁移、反复查看公开测试集或有竞争力的搜索基线。可信的申请证据必须暴露这些失败模式，也要说明成果归属的边界。",
+          "role": [
+            "提出用 AI 辅助尽可能增强申请证据，并保留可供审阅的协议、产物、纠错记录和负结果。",
+            "本轮实验、分析与文案由 AI 辅助完成；个人理解、独立复跑、代码讲解和限时试做能力仍待证明。"
+          ],
+          "decisions": [
+            {
+              "title": "撤回建立在错误 tokenizer 入口上的成绩",
+              "choice": "审计发现 tokenizer 后端缺少 merges 且编码不一致后，撤回旧成绩，切换到经过逐条核对的输入入口，并从头训练。",
+              "tradeoff": "纠正输入使更方便的旧结果失效，却保证后续比较建立在正确输入上。",
+              "verification": "纠正后的矩阵包含 20 次正式训练和 1 次从头重复；全量证据包核对 tokenizer、逐条预测、checkpoint 与选优记录。"
+            },
+            {
+              "title": "用词序压力集检查常规得分",
+              "choice": "先在 MRPC 完成模型选择，再将六个固定的 12 轮 full/LoRA checkpoint 用于 PAWS，并同时报告 balanced accuracy、负类召回与 F1。",
+              "tradeoff": "12 轮 LoRA 的 MRPC 平均 F1 为 0.9074，但 PAWS balanced accuracy 只有 0.5009，接近常量分类基线；公开压力测试属于探索性分析，不是盲测确认。",
+              "verification": "一页证明 PDF 概述结果；LoRA 公开仓库保留结果表、纠错、错误分析与核验范围，固定审阅快照的公开 CI 已通过。"
+            },
+            {
+              "title": "预设搜索胜出时仍保留代理结果",
+              "choice": "让三条空白上下文代理轨迹各使用六次开发调用，冻结选择后，再与预设六点搜索比较 NFCorpus 公开测试结果。",
+              "tradeoff": "三条轨迹都选择同一配置并得到 0.307044，低于预设搜索的 0.307294；它们只形成一组唯一测试排序，不是三份独立泛化证据。",
+              "verification": "公开的研究代理仓库包含任务代码、先行假设、六轮日志、选择锁、报告与原始数据重建路径。此前已查看公开测试，因此这只是探索性扩展。"
+            }
+          ],
+          "outcome": "证据包记录了纠正后的 20 次 LoRA 正式训练与 1 次重复、接近随机水平的 PAWS 压力结果，以及三条未胜过预设搜索的新增六次调用代理轨迹。它最有价值的信号是保留了纠错和负结果，而不是宣称某个方法获胜。",
+          "limits": [
+            "AI 辅助执行和整理不构成申请人独立研究或编程能力的证明；仍需本人复跑、解释和现场试做。",
+            "MRPC validation、PAWS labeled test 与 NFCorpus public test 都用于探索性研究；这些结果不是盲测基准，也不能推出 LoRA 的一般结论或代理优于搜索。",
+            "一页 PDF 与报名增量包本身不含完整原始预测、模型权重及排名缓存。关联仓库公开源码、日志和汇总结果，第三方数据及权重需按上游规则另行获取；本人独立复跑仍待完成。",
+            "实验只覆盖一个语言模型骨干、两个句对数据集、一项检索任务，以及少量训练种子和代理轨迹。"
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "label": {
+            "en": "LoRA fixed reviewer snapshot, aggregate results and correction record",
+            "zh": "LoRA 固定审阅快照、汇总结果与纠错记录"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/lora-robustness-reproduction/releases/tag/reviewer-snapshot-2026-09-23",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "Research-agent fixed reviewer snapshot, six-call traces and rerun guide",
+            "zh": "研究代理固定审阅快照、六轮轨迹与复跑说明"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/research-agent-bench/releases/tag/reviewer-snapshot-2026-09-23",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "One-page project proof (PDF)",
+            "zh": "一页项目证明（PDF）"
+          },
+          "url": "https://www.panzhichao.com/evidence/autoresearch-v5-project-proof-pan-zhichao.pdf",
+          "type": "report"
+        },
+        {
+          "label": {
+            "en": "Latest application addendum (ZIP, not a reproduction bundle)",
+            "zh": "最新版报名增量包（ZIP，不能单独复现实验）"
+          },
+          "url": "https://www.panzhichao.com/evidence/autoresearch-v7-application-addendum-pan-zhichao.zip",
+          "type": "report"
+        }
+      ]
+    },
+    {
       "slug": "model-eval-studio",
       "name": "Model Eval Studio",
       "tier": "selected",
@@ -566,78 +689,88 @@
       "kind": "study",
       "repoUrl": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics",
       "demoUrl": null,
-      "verifiedAt": "2026-09-12",
-      "tags": ["Python", "PyTorch", "Physics constraints", "Fair comparisons"],
+      "verifiedAt": "2026-09-23",
+      "tags": ["Python", "PyTorch", "Mechanism audit", "Held-out cells"],
       "related": ["structure-aware-rag-empirical", "deepnerve-3d"],
       "content": {
         "en": {
-          "eyebrow": "Research study · report the limits",
-          "summary": "A battery prognostics study that examines physics constraints, post-processing, and uncertainty while keeping synthetic and real-data evidence separate.",
-          "problem": "A physically plausible prediction is not automatically an accurate one. A fair comparison must distinguish model behavior from the effect of shared post-processing.",
+          "eyebrow": "Mechanism audit · capacity reconstruction",
+          "summary": "A bounded audit of battery-capacity reconstruction that separates learned constraints from EMA and running-min post-processing in held-out-cell tests.",
+          "problem": "A zero upward-step violation rate can be produced by deterministic projection even when the underlying reconstruction is inaccurate. The evaluation must trace that result to its mechanism and compare against simple baselines.",
           "role": [
-            "Led the evaluation questions and choices about claim boundaries.",
-            "Used AI-assisted implementation and reviewed protocol-specific reports and comparisons."
+            "Authorized an AI-assisted audit covering constraint on versus off, matched initialization, held-out cells, and raw versus post-processed outputs.",
+            "Kept the protocol, point predictions, verifier outputs, and claim boundaries reviewable; a personal independent rerun and oral explanation are still pending."
           ],
           "decisions": [
             {
-              "title": "Give baselines the same post-processing",
-              "choice": "Compare PINN and LSTM under matched smoothing and monotonic projection.",
-              "tradeoff": "The matched real-data results do not show a PINN-specific monotonicity advantage, and PINN has worse RMSE.",
-              "verification": "The claim-evidence matrix links same-cell, held-out-cell, and corruption reports separately."
+              "title": "Trace zero violations to their source",
+              "choice": "Compare raw, EMA, and EMA-plus-running-min outputs for matched PINN constraint-on/off runs, LSTM, and a no-training noisy-input baseline.",
+              "tradeoff": "Running-min guarantees no upward steps, but it can preserve an early low value and increase reconstruction error.",
+              "verification": "A separate verifier recomputed RMSE and upward-step violations from saved point predictions; the public links pin the implementation and six CSV snapshots that were audited."
             }
           ],
-          "outcome": "The repository preserves a useful negative result: monotone predictions can come from the common post-processing step, while prediction error still differs between models.",
+          "outcome": "The mechanism audit found that every evaluated method reached zero upward-step violations only after the shared running-min step. Raw outputs still had frequent upward steps, the constraint-on comparison showed no stable gain, and the noisy-input-plus-EMA baseline had the lowest mean reconstruction error. A separate three-seed, six-cell sweep reported PINN 0.9814 versus LSTM 0.2221 Ah mean RMSE across 18 seed-folds, again without support for PINN superiority.",
           "limits": [
-            "Synthetic robustness results must not be presented as a real-world safety guarantee.",
-            "The published corruption sweep does not establish stability across training seeds or functional-safety certification."
+            "This protocol reconstructs or denoises observed capacity; it does not forecast future capacity or validate remaining useful life.",
+            "The audit covers six public CSV snapshots, one fixed Gaussian-noise setup, and the inherited implementation. It is not functional-safety certification or deployment evidence.",
+            "The snapshots contain large capacity increases that conflict with a global monotonic assumption; this audit does not establish whether they reflect recovery, test conditions, or extraction error."
           ]
         },
         "zh": {
-          "eyebrow": "研究案例 · 把结论边界写清楚",
-          "summary": "研究物理约束、后处理和不确定性的电池预测项目，分别报告合成数据与真实数据证据。",
-          "problem": "符合物理直觉的预测未必更准确。公平比较需要分清模型本身的表现，以及共用后处理带来的效果。",
+          "eyebrow": "机制审查 · 容量重建",
+          "summary": "对电池容量重建进行有边界的机制审查，在留一电芯测试中区分学习到的约束与 EMA、running-min 后处理的效果。",
+          "problem": "即使底层重建不准，确定性投影也能制造“零上升违例”。评测必须追溯这个结果的真正来源，并与简单基线对照。",
           "role": [
-            "主导评测问题和结论范围的取舍。",
-            "借助 AI 完成实现，检查各协议下的报告与比较结果。"
+            "授权 AI 辅助审查约束开/关、相同初始化、留一电芯，以及原始与后处理输出的对照。",
+            "保留可复核的协议、逐点预测、复核输出与结论边界；本人独立复跑与口头讲解尚待完成。"
           ],
           "decisions": [
             {
-              "title": "给基线相同的后处理",
-              "choice": "在相同平滑和单调投影条件下比较 PINN 与 LSTM。",
-              "tradeoff": "匹配后的真实数据结果没有体现 PINN 独有的单调性优势，且 PINN 的 RMSE 更差。",
-              "verification": "主张与证据对照表分别链接同电芯、留出电芯和扰动实验报告。"
+              "title": "追溯零违例的来源",
+              "choice": "对照 PINN 约束开/关、LSTM 和不训练的带噪输入基线，分别评价 raw、EMA 与 EMA+running-min 输出。",
+              "tradeoff": "running-min 必然消除上升步，但可能长期保留过早的低值，并增大重建误差。",
+              "verification": "独立复核脚本根据保存的逐点预测重算 RMSE 和上升违例；公开链接固定了被审查的实现与六条 CSV 快照。"
             }
           ],
-          "outcome": "仓库保留了一项有价值的负结果：预测的单调性可以来自共用后处理，而模型之间的预测误差仍有差异。",
+          "outcome": "机制审查发现，所有受评方法都是在共用 running-min 之后才达到零上升违例；原始输出仍频繁回升。约束开相对关未显示稳定收益，而带噪输入+EMA 基线取得最低的平均重建误差。另一次三训练种子、六电芯审查在 18 个种子与留出电芯组合中，PINN 与 LSTM 的平均 RMSE 分别为 0.9814 与 0.2221 Ah，也未支持 PINN 优势。",
           "limits": [
-            "合成数据上的稳健性结果不能宣传为真实世界的安全保证。",
-            "公开扰动实验不证明结果对不同训练种子稳定，也不构成功能安全认证。"
+            "该协议重建或去噪已观测容量，不预测未来容量，也没有验证剩余使用寿命（RUL）。",
+            "审查只覆盖六条公开 CSV 快照、一组固定高斯噪声设定与继承实现，不构成功能安全认证或实际部署证据。",
+            "快照中存在与全局单调假设冲突的容量大幅回升；本次审查不能判定其来自恢复效应、测试工况还是数据提取问题。"
           ]
         }
       },
       "evidence": [
         {
           "label": {
-            "en": "Current study and boundaries",
-            "zh": "当前研究与边界"
+            "en": "Audited source snapshot",
+            "zh": "被审查的源码快照"
           },
-          "url": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics",
+          "url": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics/tree/bf53f86805ed1637b5ad1dc3d014976be71415b8",
           "type": "source"
         },
         {
           "label": {
-            "en": "Claim-evidence matrix",
-            "zh": "主张与证据对照表"
+            "en": "EMA and running-min implementation",
+            "zh": "EMA 与 running-min 实现"
           },
-          "url": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics/blob/main/docs/claim_evidence_matrix.md",
-          "type": "report"
+          "url": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics/blob/bf53f86805ed1637b5ad1dc3d014976be71415b8/src/evaluation/real_data_validation.py#L184-L207",
+          "type": "source"
         },
         {
           "label": {
-            "en": "Real-data stress report",
-            "zh": "真实数据扰动报告"
+            "en": "Six audited CSV snapshots",
+            "zh": "六条被审查的 CSV 快照"
           },
-          "url": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics/blob/main/robustness_results/real_data_stress_suite_report.md",
+          "url": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics/tree/bf53f86805ed1637b5ad1dc3d014976be71415b8/data/calce",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "Published three-seed held-out-cell audit and verifier",
+            "zh": "已发布的三种子留一电芯审查与复核脚本"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics/tree/74953917964a52798b3c352564aadbcf68f4d912/experiments/logo_capacity_reconstruction",
           "type": "report"
         }
       ]

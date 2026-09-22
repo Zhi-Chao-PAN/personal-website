@@ -178,9 +178,13 @@ export function PortfolioHome({ locale }: { locale: Locale }) {
                       ? zh
                         ? "公开源码"
                         : "Public source"
+                      : p.kind === "private"
+                        ? zh
+                          ? "私有项目简述"
+                          : "Private project overview"
                       : zh
-                        ? "私有项目简述"
-                        : "Private project overview"}
+                        ? "公开证据附件"
+                        : "Public evidence package"}
                   </small>
                 </span>
                 <span className="index-arrow" aria-hidden="true">
