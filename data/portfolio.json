@@ -433,11 +433,11 @@
               "verification": "Pinned source and public CSVs support aggregate checks by seed, model and cell. Observed capacity is an input, so the task is reconstruction/denoising; the original CALCE acquisition chain for the inherited repository snapshots remains incomplete."
             }
           ],
-          "outcome": "A five-page portfolio connects three research questions to protocols, result interpretation and verification entry points. Three LLM Evaluation Playbook tools, 17 tests and multi-version CI add evaluation engineering evidence. The focus is explaining experimental choices and the conclusions the results support.",
+          "outcome": "A four-page portfolio connects three research questions to protocols, result interpretation and verification entry points. Three LLM Evaluation Playbook tools, 17 tests and multi-version CI add evaluation engineering evidence. The focus is explaining experimental choices and the conclusions the results support.",
           "limits": [
             "The projects used AI-assisted collaboration. Public research artifacts and personally completed operations are described separately; the personal six-call exercise used a fabricated 3-query/12-document fixture, and some method drafts were prepared beforehand.",
             "MRPC validation, PAWS labeled test and NFCorpus public test were explored previously. These are not blind results and do not establish agent superiority over search or a general LoRA verdict.",
-            "The later LoRA replay covers one configuration on the same machine. Research-agent logs do not independently establish model-session provenance. Full data, weights and rank caches are not embedded in the five-page PDF; use the linked acquisition and audit instructions.",
+            "The later LoRA replay covers one configuration on the same machine. Research-agent logs do not independently establish model-session provenance. Full data, weights and rank caches are not embedded in the four-page PDF; use the linked acquisition and audit instructions.",
             "Public battery artifacts include aggregate records and a checking script, not pointwise predictions or weights. Capacity reconstruction does not establish future forecasting, remaining-useful-life estimation or system safety."
           ]
         },
@@ -469,11 +469,11 @@
               "verification": "固定源码与公开 CSV 支持按种子、模型和电芯复核汇总。输入包含已观测容量，任务因此限定为重建/去噪；来源于仓库继承快照的原始 CALCE 获取链仍未闭合。"
             }
           ],
-          "outcome": "五页作品集把三个研究问题、实验协议、结果解释和复核入口连成完整案例，并以 LLM Evaluation Playbook 的三个工具、17 项测试和多版本 CI 补充评测工程能力。重点是能解释实验为何这样设计，以及结果支持什么。",
+          "outcome": "四页作品集把三个研究问题、实验协议、结果解释和复核入口连成完整案例，并以 LLM Evaluation Playbook 的三个工具、17 项测试和多版本 CI 补充评测工程能力。重点是能解释实验为何这样设计，以及结果支持什么。",
           "limits": [
             "项目使用 AI 工具协作。公开研究产物与本人已完成的操作分别描述；六轮个人练习使用 3 查询、12 文档合成数据，方法初稿包含预写部分。",
             "MRPC validation、PAWS labeled test 和 NFCorpus public test 已被探索性使用；这些结果不构成盲测，不支持代理优于搜索或 LoRA 的一般性结论。",
-            "LoRA 后续复跑只覆盖同机单配置；研究代理日志未记录可独立核验的模型会话来源。完整数据、权重及排名缓存不包含在五页 PDF 内，应结合仓库的获取和核验步骤阅读。",
+            "LoRA 后续复跑只覆盖同机单配置；研究代理日志未记录可独立核验的模型会话来源。完整数据、权重及排名缓存不包含在四页 PDF 内，应结合仓库的获取和核验步骤阅读。",
             "电池公开材料提供聚合记录与复核脚本，没有发布逐点预测或模型权重；容量重建结果不证明未来预测、剩余寿命估计或实际系统安全。"
           ]
         }
@@ -481,10 +481,10 @@
       "evidence": [
         {
           "label": {
-            "en": "Current three-project portfolio (five-page searchable PDF)",
-            "zh": "当前三项目作品集（五页可检索 PDF）"
+            "en": "Current three-project portfolio (four-page searchable PDF)",
+            "zh": "当前三项目作品集（四页可检索 PDF）"
           },
-          "url": "https://www.panzhichao.com/evidence/autoresearch-v14-project-portfolio-pan-zhichao.pdf",
+          "url": "https://www.panzhichao.com/evidence/autoresearch-v15-project-portfolio-pan-zhichao.pdf",
           "type": "report"
         },
         {
