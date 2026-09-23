@@ -411,7 +411,8 @@
           "problem": "Turning a paper method into a runnable task requires explicit editable variables, input checks, feedback budgets, selection rules and deliverable evidence. Scores also need appropriate baselines, data scope and repeated experiments.",
           "role": [
             "Organized the research evidence and project presentation around the application requirements, retaining protocols, artifacts, input corrections and negative results.",
-            "In a fixed-version WSL workspace, I personally ran six distinct candidates on a synthetic development task, recorded pre-call hypotheses, selected the development result, checked its state and drafted six method answers. This practice is recorded separately from the public research experiments."
+            "In a fixed-version WSL workspace, I personally ran six distinct candidates on a synthetic development task, recorded pre-call hypotheses, selected the development result, checked its state and drafted six method answers; some drafts were prepared beforehand.",
+            "I later completed a personal workflow validation on public NFCorpus: 3,633 documents and 2,590/324/323 train/development/test queries, an invalid-input diagnostic, six successful development trials, and one public-test call after freezing trial 2 at k=60 and weight 0.85. I checked the commands and selection logic and used AI tools to complete the operations and organize the record. The Docker audit also built and ran to PASS_TRACE_ONLY and PASS_SYNTHETIC_DEMO."
           ],
           "decisions": [
             {
@@ -435,9 +436,11 @@
           ],
           "outcome": "A four-page portfolio connects three research questions to protocols, result interpretation and verification entry points. Three LLM Evaluation Playbook tools, 17 tests and multi-version CI add evaluation engineering evidence. The focus is explaining experimental choices and the conclusions the results support.",
           "limits": [
-            "The projects used AI-assisted collaboration. Public research artifacts and personally completed operations are described separately; the personal six-call exercise used a fabricated 3-query/12-document fixture, and some method drafts were prepared beforehand.",
-            "MRPC validation, PAWS labeled test and NFCorpus public test were explored previously. These are not blind results and do not establish agent superiority over search or a general LoRA verdict.",
+            "The projects used AI-assisted collaboration. Public research artifacts and personally completed operations are described separately; the earlier personal six-call exercise used a fabricated 3-query/12-document fixture, and some method drafts were prepared beforehand.",
+            "The personal NFCorpus workflow used previously explored public data. Trial 2 had the best development nDCG@10 among the six evaluated candidates (0.26720574114788875), and its single frozen public-test call scored 0.30812328387418464. This is not a blind result or a global-optimum claim, and it does not replace the archived r2 finding that three trajectories shared one ranking at 0.307044 below preset search at 0.307294.",
+            "MRPC validation and the PAWS labeled test were used exploratorily; the reported results do not establish a general LoRA conclusion.",
             "The later LoRA replay covers one configuration on the same machine. Research-agent logs do not independently establish model-session provenance. Full data, weights and rank caches are not embedded in the four-page PDF; use the linked acquisition and audit instructions.",
+            "The personal Docker run validates the data-free archived-trace check and automatic synthetic fixture demo; it does not rerun NFCorpus inside the container or establish broader deployment experience.",
             "Public battery artifacts include aggregate records and a checking script, not pointwise predictions or weights. Capacity reconstruction does not establish future forecasting, remaining-useful-life estimation or system safety."
           ]
         },
@@ -447,7 +450,8 @@
           "problem": "将论文方法变成可运行任务，需要明确可修改变量、输入检查、反馈预算、选优规则和交付证据；分数还需要与合理基线、数据条件和重复实验一起解释。",
           "role": [
             "围绕申请要求组织研究证据与项目展示，保留协议、产物、输入纠错和负结果。",
-            "本人在固定版本的 WSL 工作区完成六个不同候选的合成开发任务调用、先行假设登记、开发集选优与状态核对，并自行写出六题方法初稿；该练习与公开研究实验分别记录。"
+            "本人在固定版本的 WSL 工作区完成六个不同候选的合成开发任务调用、先行假设登记、开发集选优与状态核对，并自行写出六题方法初稿；部分初稿提前准备。",
+            "随后完成一次公开 NFCorpus 个人流程验证：3,633 篇文档，训练/开发/测试查询数为 2,590/324/323；完成非法输入诊断和六次成功开发调用，按开发指标冻结第 2 轮 k=60、权重 0.85 后只调用一次公开测试。本人核对命令与选参逻辑，结合 AI 工具完成操作与记录整理；Docker 审计也完成构建运行，并得到 PASS_TRACE_ONLY 与 PASS_SYNTHETIC_DEMO。"
           ],
           "decisions": [
             {
@@ -471,9 +475,11 @@
           ],
           "outcome": "四页作品集把三个研究问题、实验协议、结果解释和复核入口连成完整案例，并以 LLM Evaluation Playbook 的三个工具、17 项测试和多版本 CI 补充评测工程能力。重点是能解释实验为何这样设计，以及结果支持什么。",
           "limits": [
-            "项目使用 AI 工具协作。公开研究产物与本人已完成的操作分别描述；六轮个人练习使用 3 查询、12 文档合成数据，方法初稿包含预写部分。",
-            "MRPC validation、PAWS labeled test 和 NFCorpus public test 已被探索性使用；这些结果不构成盲测，不支持代理优于搜索或 LoRA 的一般性结论。",
+            "项目使用 AI 工具协作。公开研究产物与本人已完成的操作分别描述；此前六轮个人练习使用 3 查询、12 文档合成数据，方法初稿包含预写部分。",
+            "个人 NFCorpus 流程使用此前已经探索的公开数据。第 2 轮在本次六个候选中的开发 nDCG@10 最高（0.26720574114788875），冻结后一次公开测试为 0.30812328387418464；这不是新盲测或全局最优证明，也不替代 r2 的负结论：三条轨迹共用一组 0.307044 的排序，低于六点预设搜索 0.307294。",
+            "MRPC validation 与 PAWS labeled test 属于探索性使用；现有结果不支持 LoRA 的一般性结论。",
             "LoRA 后续复跑只覆盖同机单配置；研究代理日志未记录可独立核验的模型会话来源。完整数据、权重及排名缓存不包含在四页 PDF 内，应结合仓库的获取和核验步骤阅读。",
+            "本人 Docker 运行验证的是无数据的归档轨迹检查与自动合成夹具演示；容器内没有重跑 NFCorpus，也不据此扩大为部署经验。",
             "电池公开材料提供聚合记录与复核脚本，没有发布逐点预测或模型权重；容量重建结果不证明未来预测、剩余寿命估计或实际系统安全。"
           ]
         }
@@ -484,7 +490,15 @@
             "en": "Current three-project portfolio (four-page searchable PDF)",
             "zh": "当前三项目作品集（四页可检索 PDF）"
           },
-          "url": "https://www.panzhichao.com/evidence/autoresearch-v15-project-portfolio-pan-zhichao.pdf",
+          "url": "https://www.panzhichao.com/evidence/autoresearch-v16-project-portfolio-pan-zhichao.pdf",
+          "type": "report"
+        },
+        {
+          "label": {
+            "en": "Personal NFCorpus and Docker workflow summary",
+            "zh": "个人 NFCorpus 与 Docker 流程摘要"
+          },
+          "url": "https://www.panzhichao.com/evidence/autoresearch-v16-formal-workflow-summary.json",
           "type": "report"
         },
         {

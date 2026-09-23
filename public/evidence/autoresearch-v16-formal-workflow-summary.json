@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "title": "NFCorpus personal workflow validation",
+  "completed_date": "2026-09-23",
+  "scope": "AI-assisted personal workflow validation on previously explored public data. Separate from the archived r2 agent trajectories; not a new blind benchmark or evidence of agent superiority.",
+  "participation": "The applicant confirmed commands and selection logic; AI assisted command preparation, candidate-file writing and record organization.",
+  "source_revision": "https://github.com/Zhi-Chao-PAN/research-agent-bench/tree/bda86d3f5d48b4b9a7d12ca8913ffdf4c989a238",
+  "input_archive_sha256": "efe5be03f8c5b86a5870102d0599d227c8c6e2484328e68c6522560385671b0b",
+  "counts": {
+    "corpus": 3633,
+    "train": 2590,
+    "dev": 324,
+    "test": 323
+  },
+  "rank_cache_sha256": {
+    "train": "2d357d4c86c78a1560b7b9b4fde0c2b133a3a1b0c80a1ae94632691494e34a55",
+    "dev": "7e8430988983b1c538046b520e90a2f5ade719b691d2e766c3640bcaed7c9b88",
+    "test": "f06d4438dfa2b8912db0afb25e38f32518ae1fc44c25f6cadc1579dc0aefd700"
+  },
+  "trials": [
+    {
+      "trial": 1,
+      "candidate": {
+        "k": 60,
+        "bm25_weight": 0.5
+      },
+      "status": "SUCCESS",
+      "development_ndcg_at_10": 0.2651036767543689
+    },
+    {
+      "trial": 2,
+      "candidate": {
+        "k": 60,
+        "bm25_weight": 0.85
+      },
+      "status": "SUCCESS",
+      "development_ndcg_at_10": 0.26720574114788875
+    },
+    {
+      "trial": 3,
+      "candidate": {
+        "k": 60,
+        "bm25_weight": 0.95
+      },
+      "status": "SUCCESS",
+      "development_ndcg_at_10": 0.26663146344253424
+    },
+    {
+      "trial": 4,
+      "candidate": {
+        "k": 100,
+        "bm25_weight": 0.85
+      },
+      "status": "SUCCESS",
+      "development_ndcg_at_10": 0.26616512393279523
+    },
+    {
+      "trial": 5,
+      "candidate": {
+        "k": 60,
+        "bm25_weight": 0.9
+      },
+      "status": "SUCCESS",
+      "development_ndcg_at_10": 0.26647065531123104
+    },
+    {
+      "trial": 6,
+      "candidate": {
+        "k": 60,
+        "bm25_weight": 0.8
+      },
+      "status": "SUCCESS",
+      "development_ndcg_at_10": 0.2644899283660767
+    }
+  ],
+  "selection_rule": "Highest development nDCG@10; earliest trial on ties.",
+  "selected_trial": 2,
+  "selected_candidate": {
+    "k": 60,
+    "bm25_weight": 0.85
+  },
+  "public_test": {
+    "query_count": 323,
+    "metrics": {
+      "nDCG_exp@10": 0.30812328387418464,
+      "nDCG_linear@10": 0.3073626623113966
+    },
+    "recorded_evaluator_calls": 1
+  },
+  "validation_notes": [
+    "Invalid weight was rejected before state creation or budget use.",
+    "Six distinct successful development trials were recorded before selection.",
+    "Weight 0.85 is best only among these six evaluated candidates; no global-peak claim.",
+    "The shared baseline k=60 and weight=0.5 also appears in the archived agent trajectories.",
+    "Private terminal transcripts and personal notes are not included in this public summary."
+  ],
+  "docker_audit": {
+    "build_and_run_completed": true,
+    "statuses": [
+      "PASS_TRACE_ONLY",
+      "PASS_SYNTHETIC_DEMO"
+    ],
+    "scope": "Archived-trace verification and an automatic synthetic fixture demo, separate from the NFCorpus run."
+  }
+}
