@@ -478,16 +478,32 @@
       "evidence": [
         {
           "label": {
-            "en": "Current v11 one-page project proof (searchable PDF)",
-            "zh": "当前 v11 一页项目证明（可检索 PDF）"
+            "en": "Current v12 one-page project proof (searchable PDF)",
+            "zh": "当前 v12 一页项目证明（可检索 PDF）"
+          },
+          "url": "https://www.panzhichao.com/evidence/autoresearch-v12-project-proof-pan-zhichao.pdf",
+          "type": "report"
+        },
+        {
+          "label": {
+            "en": "Current v12 application addendum (ZIP, not a reproduction bundle)",
+            "zh": "当前 v12 报名补充包（ZIP，不能单独复现实验）"
+          },
+          "url": "https://www.panzhichao.com/evidence/autoresearch-v12-application-addendum-pan-zhichao.zip",
+          "type": "report"
+        },
+        {
+          "label": {
+            "en": "Historical v11 one-page project proof (searchable PDF)",
+            "zh": "历史 v11 一页项目证明（可检索 PDF）"
           },
           "url": "https://www.panzhichao.com/evidence/autoresearch-v11-project-proof-pan-zhichao.pdf",
           "type": "report"
         },
         {
           "label": {
-            "en": "Current v11 application addendum (ZIP, not a reproduction bundle)",
-            "zh": "当前 v11 报名补充包（ZIP，不能单独复现实验）"
+            "en": "Historical v11 application addendum (ZIP)",
+            "zh": "历史 v11 报名补充包（ZIP）"
           },
           "url": "https://www.panzhichao.com/evidence/autoresearch-v11-application-addendum-pan-zhichao.zip",
           "type": "report"
