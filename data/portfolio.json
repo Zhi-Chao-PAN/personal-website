@@ -402,11 +402,11 @@
       "content": {
         "en": {
           "eyebrow": "Application evidence · results with boundaries",
-          "summary": "An AI-assisted research evidence package that tests LoRA robustness and six-call agent selection, retaining corrections and negative results instead of promoting headline wins.",
+          "summary": "A reviewable research package that tests LoRA robustness and six-call agent selection, retaining input corrections and negative results.",
           "problem": "A polished score can hide a broken input path, a distribution shift, repeated access to a public test set, or a competitive search baseline. Credible application evidence must expose those failure modes and its authorship limits.",
           "role": [
-            "Requested an AI-assisted effort to strengthen the application evidence and preserve the protocols, artifacts, corrections, and negative results for review.",
-            "The experiments, analysis, and copy were produced with AI assistance; personal understanding, independent reruns, code explanation, and timed trial work remain to be demonstrated."
+            "Set the application evidence scope and preserved protocols, artifacts, corrections, and negative results for review.",
+            "Separately from the public experiments, I made six calls with distinct candidates on a fabricated 3-query/12-document fixture in WSL, recorded pre-call hypotheses, selected the best development result, and drafted six method answers."
           ],
           "decisions": [
             {
@@ -419,7 +419,7 @@
               "title": "Test in-domain success against a word-order stress set",
               "choice": "Evaluate the six fixed 12-epoch full/LoRA checkpoints on PAWS only after MRPC model selection, and report balanced accuracy and negative-class recall alongside F1.",
               "tradeoff": "Twelve-epoch LoRA averaged 0.9074 F1 on MRPC, but 0.5009 balanced accuracy on PAWS was near the constant-classifier baseline; the public stress test is exploratory, not a blind confirmation.",
-              "verification": "The proof PDF summarizes the result; the LoRA repository holds the tables, correction, error analysis and audit scope. Its reviewer snapshot has a passing public CI audit."
+              "verification": "The project portfolio summarizes the result; the LoRA repository holds the tables, correction, error analysis and audit scope. Its reviewer snapshot has a passing public CI audit."
             },
             {
               "title": "Keep the agent result even when preset search wins",
@@ -430,20 +430,20 @@
           ],
           "outcome": "The package records a corrected 20-run LoRA matrix plus one repeat, a near-chance PAWS stress result, and three fresh six-call agent trajectories that did not beat the preset search. Its strongest signal is the preserved correction and negative evidence, not a claim that either method won.",
           "limits": [
-            "AI-assisted execution and documentation do not establish the applicant's independent research or coding ability; that still requires personal reruns, explanation, and live trial work.",
+            "The public implementation, experiments, and reports used AI-assisted collaboration. The separate personal exercise documents six synthetic development calls and method drafts; it does not establish independent authorship of the public research code or full experiments.",
             "Two post-release AI-agent runs repeat one frozen configuration on the same machine: first with retained assets, then with a locally logged execution of the pinned fetch script in a new asset directory. Seven resulting files matched fixed hashes, but the log is not independent network attestation. Neither run proves cross-machine or full 21-run reproducibility or the applicant’s unaided training ability.",
             "MRPC validation, PAWS labeled test, and the NFCorpus public test were used in an exploratory setting. The results are not a blind benchmark, a general LoRA verdict, or evidence that research agents outperform search.",
-            "The one-page PDF and application addendum alone omit complete raw predictions, model weights and rank caches. The linked repositories expose source, logs and aggregate results; third-party data and weights require separate upstream access. Personal reruns remain pending.",
+            "The four-page portfolio alone omits complete raw predictions, model weights and rank caches. The linked repositories expose source, logs and aggregate results; third-party data and weights require separate upstream access. Personal NFCorpus reconstruction and full LoRA retraining remain pending.",
             "The experiments cover one language-model backbone, two sentence-pair datasets, one retrieval task, and small numbers of training seeds and agent trajectories."
           ]
         },
         "zh": {
           "eyebrow": "申请证据 · 把结果边界写清楚",
-          "summary": "一份由 AI 辅助完成的研究证据包，检验 LoRA 稳健性与六次调用预算下的代理选参，并保留纠错和负结果，而不是只突出好看的分数。",
+          "summary": "一份可核验的研究证据包，检验 LoRA 稳健性与六次调用预算下的代理选参，并保留输入纠错和负结果。",
           "problem": "一个漂亮分数可能掩盖错误输入、分布迁移、反复查看公开测试集或有竞争力的搜索基线。可信的申请证据必须暴露这些失败模式，也要说明成果归属的边界。",
           "role": [
-            "提出用 AI 辅助尽可能增强申请证据，并保留可供审阅的协议、产物、纠错记录和负结果。",
-            "本轮实验、分析与文案由 AI 辅助完成；个人理解、独立复跑、代码讲解和限时试做能力仍待证明。"
+            "围绕申请要求确定证据范围，并保留可供审阅的协议、产物、纠错记录和负结果。",
+            "与公开研究实验分开，我在 WSL 亲自完成 3 查询、12 文档虚构夹具上的六次不同候选调用、事前假设登记与开发集选优，并自行写出六题方法初稿。"
           ],
           "decisions": [
             {
@@ -456,7 +456,7 @@
               "title": "用词序压力集检查常规得分",
               "choice": "先在 MRPC 完成模型选择，再将六个固定的 12 轮 full/LoRA checkpoint 用于 PAWS，并同时报告 balanced accuracy、负类召回与 F1。",
               "tradeoff": "12 轮 LoRA 的 MRPC 平均 F1 为 0.9074，但 PAWS balanced accuracy 只有 0.5009，接近常量分类基线；公开压力测试属于探索性分析，不是盲测确认。",
-              "verification": "一页证明 PDF 概述结果；LoRA 公开仓库保留结果表、纠错、错误分析与核验范围，固定审阅快照的公开 CI 已通过。"
+              "verification": "项目作品集概述结果；LoRA 公开仓库保留结果表、纠错、错误分析与核验范围，固定审阅快照的公开 CI 已通过。"
             },
             {
               "title": "预设搜索胜出时仍保留代理结果",
@@ -467,10 +467,10 @@
           ],
           "outcome": "证据包记录了纠正后的 20 次 LoRA 正式训练与 1 次重复、接近随机水平的 PAWS 压力结果，以及三条未胜过预设搜索的新增六次调用代理轨迹。它最有价值的信号是保留了纠错和负结果，而不是宣称某个方法获胜。",
           "limits": [
-            "AI 辅助执行和整理不构成申请人独立研究或编程能力的证明；仍需本人复跑、解释和现场试做。",
+            "公开实现、实验和报告有 AI 工具协作；另行完成的本人合成练习可核对六轮开发调用和方法初稿，但不能证明独立写出公开研究代码或完成全部实验。",
             "发布后两次复跑均由 AI 代理在同一机器上完成同一固定配置：首次用留存资产，第二次在新资产目录执行固定下载脚本，七个文件哈希与清单一致；本地下载日志不是独立网络来源证明。它们不是跨机器或完整 21 次复现，也不能证明申请人本人训练或调试过模型。",
             "MRPC validation、PAWS labeled test 与 NFCorpus public test 都用于探索性研究；这些结果不是盲测基准，也不能推出 LoRA 的一般结论或代理优于搜索。",
-            "一页 PDF 与报名增量包本身不含完整原始预测、模型权重及排名缓存。关联仓库公开源码、日志和汇总结果，第三方数据及权重需按上游规则另行获取；本人独立复跑仍待完成。",
+            "四页作品集本身不含完整原始预测、模型权重及排名缓存。关联仓库公开源码、日志和汇总结果，第三方数据及权重需按上游规则另行获取；本人重建 NFCorpus 与完整重训 LoRA 仍待完成。",
             "实验只覆盖一个语言模型骨干、两个句对数据集、一项检索任务，以及少量训练种子和代理轨迹。"
           ]
         }
@@ -478,122 +478,50 @@
       "evidence": [
         {
           "label": {
-            "en": "Current v12 one-page project proof (searchable PDF)",
-            "zh": "当前 v12 一页项目证明（可检索 PDF）"
+            "en": "Current project portfolio (four-page searchable PDF)",
+            "zh": "当前研究项目作品集（四页可检索 PDF）"
           },
-          "url": "https://www.panzhichao.com/evidence/autoresearch-v12-project-proof-pan-zhichao.pdf",
+          "url": "https://www.panzhichao.com/evidence/autoresearch-v13-project-portfolio-pan-zhichao.pdf",
           "type": "report"
         },
         {
           "label": {
-            "en": "Current v12 application addendum (ZIP, not a reproduction bundle)",
-            "zh": "当前 v12 报名补充包（ZIP，不能单独复现实验）"
-          },
-          "url": "https://www.panzhichao.com/evidence/autoresearch-v12-application-addendum-pan-zhichao.zip",
-          "type": "report"
-        },
-        {
-          "label": {
-            "en": "Historical v11 one-page project proof (searchable PDF)",
-            "zh": "历史 v11 一页项目证明（可检索 PDF）"
-          },
-          "url": "https://www.panzhichao.com/evidence/autoresearch-v11-project-proof-pan-zhichao.pdf",
-          "type": "report"
-        },
-        {
-          "label": {
-            "en": "Historical v11 application addendum (ZIP)",
-            "zh": "历史 v11 报名补充包（ZIP）"
-          },
-          "url": "https://www.panzhichao.com/evidence/autoresearch-v11-application-addendum-pan-zhichao.zip",
-          "type": "report"
-        },
-        {
-          "label": {
-            "en": "Historical v10 one-page project proof (searchable PDF)",
-            "zh": "历史 v10 一页项目证明（可检索 PDF）"
-          },
-          "url": "https://www.panzhichao.com/evidence/autoresearch-v10-project-proof-pan-zhichao.pdf",
-          "type": "report"
-        },
-        {
-          "label": {
-            "en": "Historical v10 application addendum (ZIP)",
-            "zh": "历史 v10 报名补充包（ZIP）"
-          },
-          "url": "https://www.panzhichao.com/evidence/autoresearch-v10-application-addendum-pan-zhichao.zip",
-          "type": "report"
-        },
-        {
-          "label": {
-            "en": "Historical v9 one-page project proof (searchable PDF)",
-            "zh": "历史 v9 一页项目证明（可检索 PDF）"
-          },
-          "url": "https://www.panzhichao.com/evidence/autoresearch-v9-project-proof-pan-zhichao.pdf",
-          "type": "report"
-        },
-        {
-          "label": {
-            "en": "Historical v9 application addendum (ZIP, not a reproduction bundle)",
-            "zh": "历史 v9 报名补充包（ZIP，不能单独复现实验）"
-          },
-          "url": "https://www.panzhichao.com/evidence/autoresearch-v9-application-addendum-pan-zhichao.zip",
-          "type": "report"
-        },
-        {
-          "label": {
-            "en": "Post-release upstream-fetch replay (same machine; local download log, no independent network attestation)",
-            "zh": "发布后固定上游获取脚本复跑（同机；本地下载日志非独立来源证明）"
-          },
-          "url": "https://github.com/Zhi-Chao-PAN/lora-robustness-reproduction/blob/50a19bbb438ed42a700e91296c751a132621a27a/PUBLIC_UPSTREAM_REPLAY_2026-09-23.md",
-          "type": "report"
-        },
-        {
-          "label": {
-            "en": "Post-release single-configuration source replay (same machine, retained assets; AI-agent run)",
-            "zh": "发布后单配置源码复跑（同机、留存资产、AI 代理执行）"
-          },
-          "url": "https://github.com/Zhi-Chao-PAN/lora-robustness-reproduction/blob/38d40cc245d083be94d54771baeed21d5b8e00a7/PUBLIC_SOURCE_REPLAY_2026-09-23.md",
-          "type": "report"
-        },
-        {
-          "label": {
-            "en": "LoRA fixed reviewer snapshot, aggregate results and correction record",
-            "zh": "LoRA 固定审阅快照、汇总结果与纠错记录"
-          },
-          "url": "https://github.com/Zhi-Chao-PAN/lora-robustness-reproduction/releases/tag/reviewer-snapshot-2026-09-23",
-          "type": "source"
-        },
-        {
-          "label": {
-            "en": "Research-agent r2 snapshot, six-call traces, paper-to-task index and container audit",
-            "zh": "研究代理 r2 快照、六轮轨迹、论文任务对照与容器核验"
+            "en": "Research-agent r2 reviewer snapshot and six-call traces",
+            "zh": "研究代理 r2 固定审阅快照与六轮轨迹"
           },
           "url": "https://github.com/Zhi-Chao-PAN/research-agent-bench/releases/tag/reviewer-snapshot-2026-09-23-r2",
           "type": "source"
         },
         {
           "label": {
-            "en": "Post-release research-agent source replay (same machine, retained archive; AI-agent run)",
-            "zh": "研究代理发布后源码复跑（同机、留存数据归档、AI 代理执行）"
+            "en": "Fresh pinned-BEIR source replay (same machine; local fetch log)",
+            "zh": "固定 BEIR 数据新获取复跑（同机；本地获取日志）"
           },
-          "url": "https://github.com/Zhi-Chao-PAN/research-agent-bench/blob/2f60443dc5cd00949d031542f83c2950b956a1e8/POST_RELEASE_R2_SOURCE_REPLAY_2026-09-23.md",
+          "url": "https://github.com/Zhi-Chao-PAN/research-agent-bench/blob/bda86d3f5d48b4b9a7d12ca8913ffdf4c989a238/PUBLIC_BEIR_UPSTREAM_REPLAY_2026-09-23.md",
           "type": "report"
         },
         {
           "label": {
-            "en": "Historical v5 project proof (PDF)",
-            "zh": "历史版本 v5 项目证明（PDF）"
+            "en": "LoRA fixed reviewer snapshot and input correction",
+            "zh": "LoRA 固定审阅快照与输入纠错"
           },
-          "url": "https://www.panzhichao.com/evidence/autoresearch-v5-project-proof-pan-zhichao.pdf",
+          "url": "https://github.com/Zhi-Chao-PAN/lora-robustness-reproduction/releases/tag/reviewer-snapshot-2026-09-23",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "LoRA one-configuration same-machine replay",
+            "zh": "LoRA 单配置同机复跑"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/lora-robustness-reproduction/blob/50a19bbb438ed42a700e91296c751a132621a27a/PUBLIC_UPSTREAM_REPLAY_2026-09-23.md",
           "type": "report"
         },
         {
           "label": {
-            "en": "Historical v8 application addendum (ZIP)",
-            "zh": "历史版本 v8 报名补充包（ZIP）"
+            "en": "Historical v12 one-page proof",
+            "zh": "历史 v12 一页项目证明"
           },
-          "url": "https://www.panzhichao.com/evidence/autoresearch-v8-application-addendum-pan-zhichao.zip",
+          "url": "https://www.panzhichao.com/evidence/autoresearch-v12-project-proof-pan-zhichao.pdf",
           "type": "report"
         }
       ]

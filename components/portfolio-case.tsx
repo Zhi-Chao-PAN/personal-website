@@ -126,8 +126,8 @@ export function PortfolioCase({
               <div className="role-note">
                 {project.slug === "autoresearch-evidence-pack"
                   ? zh
-                    ? "证据状态：AI 辅助执行；本人独立复跑与讲解待完成。"
-                    : "Evidence status: AI-assisted execution; personal independent rerun and explanation remain pending."
+                    ? "证据状态：本人另完成一次合成六轮操作练习与方法初稿；正式数据重建与重训仍待本人完成。"
+                    : "Evidence status: the applicant completed a separate six-trial synthetic exercise and method drafts; personal full-data reconstruction and retraining remain pending."
                   : zh
                     ? "工作方式：产品主导，AI 辅助实现，逐步检查与迭代。"
                     : "Working approach: product-led, AI-assisted implementation, followed by review and iteration."}
