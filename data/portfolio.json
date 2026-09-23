@@ -393,7 +393,12 @@
       "repoUrl": "https://github.com/Zhi-Chao-PAN/research-agent-bench",
       "demoUrl": null,
       "verifiedAt": "2026-09-23",
-      "tags": ["LoRA", "Research agents", "Negative results", "Evidence audit"],
+      "tags": [
+        "Research agents",
+        "LoRA",
+        "Battery reconstruction",
+        "Reproducible evaluation"
+      ],
       "related": [
         "llm-evaluation-playbook",
         "ai-cli-orchestrator",
@@ -401,87 +406,85 @@
       ],
       "content": {
         "en": {
-          "eyebrow": "Application evidence · results with boundaries",
-          "summary": "A reviewable research package that tests LoRA robustness and six-call agent selection, retaining input corrections and negative results.",
-          "problem": "A polished score can hide a broken input path, a distribution shift, repeated access to a public test set, or a competitive search baseline. Credible application evidence must expose those failure modes and its authorship limits.",
+          "eyebrow": "Research-method reproduction · runnable evaluation tasks",
+          "summary": "Three reviewable research cases: budgeted retrieval selection, LoRA input correction and transfer stress testing, and controlled battery-capacity reconstruction, supported by evaluation tooling and personal practice.",
+          "problem": "Turning a paper method into a runnable task requires explicit editable variables, input checks, feedback budgets, selection rules and deliverable evidence. Scores also need appropriate baselines, data scope and repeated experiments.",
           "role": [
-            "Set the application evidence scope and preserved protocols, artifacts, corrections, and negative results for review.",
-            "Separately from the public experiments, I made six calls with distinct candidates on a fabricated 3-query/12-document fixture in WSL, recorded pre-call hypotheses, selected the best development result, and drafted six method answers."
+            "Organized the research evidence and project presentation around the application requirements, retaining protocols, artifacts, input corrections and negative results.",
+            "In a fixed-version WSL workspace, I personally ran six distinct candidates on a synthetic development task, recorded pre-call hypotheses, selected the development result, checked its state and drafted six method answers. This practice is recorded separately from the public research experiments."
           ],
           "decisions": [
             {
-              "title": "Withdraw results built on a broken tokenizer path",
-              "choice": "After an audit found a zero-merge tokenizer backend and mismatched encodings, withdraw the earlier scores, switch to a verified tokenizer path, and retrain from scratch.",
-              "tradeoff": "Correcting the input invalidated a more convenient earlier result, but preserved the integrity of every later comparison.",
-              "verification": "The corrected matrix contains 20 formal training runs plus one from-scratch repeat, with tokenization, predictions, checkpoints, and selection records checked in the full evidence package."
+              "title": "Turn retrieval fusion into a six-call optimization task",
+              "choice": "Fix NFCorpus BM25/TF-IDF rankings and expose weighted RRF k and fusion weight, with pre-call hypotheses, input validation, development-only selection and an equal-budget preset-search comparison.",
+              "tradeoff": "Three trajectories selected k=100 and weight 0.5, scoring 0.307044 public-test nDCG@10 versus 0.307294 for preset six-point search. The shared configuration produces one unique test ranking.",
+              "verification": "The fixed r2 snapshot supplies task code, six-call traces, a selection lock and an offline Docker audit. A later fixed revision adds a logged BEIR source fetch and rank-cache rebuild; the paper-to-task index identifies method adaptations."
             },
             {
-              "title": "Test in-domain success against a word-order stress set",
-              "choice": "Evaluate the six fixed 12-epoch full/LoRA checkpoints on PAWS only after MRPC model selection, and report balanced accuracy and negative-class recall alongside F1.",
-              "tradeoff": "Twelve-epoch LoRA averaged 0.9074 F1 on MRPC, but 0.5009 balanced accuracy on PAWS was near the constant-classifier baseline; the public stress test is exploratory, not a blind confirmation.",
-              "verification": "The project portfolio summarizes the result; the LoRA repository holds the tables, correction, error analysis and audit scope. Its reviewer snapshot has a passing public CI audit."
+              "title": "Correct the input before judging fine-tuning",
+              "choice": "Withdraw earlier scores after finding missing BPE merges, audit 4,076 MRPC encodings and retrain. Compare head-only, full and LoRA tuning at 4/12 epochs with three seeds.",
+              "tradeoff": "At 12 epochs, LoRA/full tuning averaged 0.9074/0.9081 MRPC F1 but 0.5009/0.5003 PAWS balanced accuracy. In-domain scores did not transfer to robust word-order stress performance.",
+              "verification": "The reviewer snapshot records 18 main runs, two rank diagnostics and one repeat, totaling 21 training records. A later same-machine replay retrains one frozen configuration; public CI performs an offline audit."
             },
             {
-              "title": "Keep the agent result even when preset search wins",
-              "choice": "Run three fresh-context agent trajectories with six development calls each, freeze their selections, then compare them with the preset six-point search on the public NFCorpus test split.",
-              "tradeoff": "All three trajectories chose the same configuration and scored 0.307044, below the preset search at 0.307294. They produce one unique test ranking, not three independent generalization results.",
-              "verification": "The public research-agent repository contains the task code, hypotheses, six-call logs, selection lock, reports, and a source-data rebuild route. The logs do not include independently verifiable model, provider, or session provenance. Its r2 snapshot adds a paper-to-task index and a CI-tested offline Docker audit of traces and a synthetic demo. The container check does not rerun NFCorpus or demonstrate the applicant's personal Docker skill. Earlier access to the public test makes this an exploratory extension."
+              "title": "Compare battery accuracy and initialization sensitivity fairly",
+              "choice": "Use leave-one-cell-out evaluation on six cells with seeds 42/123/456 and identical noise, EMA and running-min processing for PINN and LSTM, producing 36 combined results.",
+              "tradeoff": "Across 18 seed-by-cell combinations, mean RMSE was 0.9814 Ah for PINN and 0.2221 Ah for LSTM, with strong PINN initialization sensitivity. Zero upward jumps follow from shared monotonic postprocessing and are not a PINN-specific advantage.",
+              "verification": "Pinned source and public CSVs support aggregate checks by seed, model and cell. Observed capacity is an input, so the task is reconstruction/denoising; the original CALCE acquisition chain for the inherited repository snapshots remains incomplete."
             }
           ],
-          "outcome": "The package records a corrected 20-run LoRA matrix plus one repeat, a near-chance PAWS stress result, and three fresh six-call agent trajectories that did not beat the preset search. Its strongest signal is the preserved correction and negative evidence, not a claim that either method won.",
+          "outcome": "A five-page portfolio connects three research questions to protocols, result interpretation and verification entry points. Three LLM Evaluation Playbook tools, 17 tests and multi-version CI add evaluation engineering evidence. The focus is explaining experimental choices and the conclusions the results support.",
           "limits": [
-            "The public implementation, experiments, and reports used AI-assisted collaboration. The separate personal exercise documents six synthetic development calls and method drafts; it does not establish independent authorship of the public research code or full experiments.",
-            "Two post-release AI-agent runs repeat one frozen configuration on the same machine: first with retained assets, then with a locally logged execution of the pinned fetch script in a new asset directory. Seven resulting files matched fixed hashes, but the log is not independent network attestation. Neither run proves cross-machine or full 21-run reproducibility or the applicant’s unaided training ability.",
-            "MRPC validation, PAWS labeled test, and the NFCorpus public test were used in an exploratory setting. The results are not a blind benchmark, a general LoRA verdict, or evidence that research agents outperform search.",
-            "The four-page portfolio alone omits complete raw predictions, model weights and rank caches. The linked repositories expose source, logs and aggregate results; third-party data and weights require separate upstream access. Personal NFCorpus reconstruction and full LoRA retraining remain pending.",
-            "The experiments cover one language-model backbone, two sentence-pair datasets, one retrieval task, and small numbers of training seeds and agent trajectories."
+            "The projects used AI-assisted collaboration. Public research artifacts and personally completed operations are described separately; the personal six-call exercise used a fabricated 3-query/12-document fixture, and some method drafts were prepared beforehand.",
+            "MRPC validation, PAWS labeled test and NFCorpus public test were explored previously. These are not blind results and do not establish agent superiority over search or a general LoRA verdict.",
+            "The later LoRA replay covers one configuration on the same machine. Research-agent logs do not independently establish model-session provenance. Full data, weights and rank caches are not embedded in the five-page PDF; use the linked acquisition and audit instructions.",
+            "Public battery artifacts include aggregate records and a checking script, not pointwise predictions or weights. Capacity reconstruction does not establish future forecasting, remaining-useful-life estimation or system safety."
           ]
         },
         "zh": {
-          "eyebrow": "申请证据 · 把结果边界写清楚",
-          "summary": "一份可核验的研究证据包，检验 LoRA 稳健性与六次调用预算下的代理选参，并保留输入纠错和负结果。",
-          "problem": "一个漂亮分数可能掩盖错误输入、分布迁移、反复查看公开测试集或有竞争力的搜索基线。可信的申请证据必须暴露这些失败模式，也要说明成果归属的边界。",
+          "eyebrow": "研究方法复现 · 从问题到可运行任务",
+          "summary": "三个可核验的研究案例：受限预算检索选参、LoRA 输入纠错与迁移压力测试、电池容量重建公平对照；补充评测工程和本人实践。",
+          "problem": "将论文方法变成可运行任务，需要明确可修改变量、输入检查、反馈预算、选优规则和交付证据；分数还需要与合理基线、数据条件和重复实验一起解释。",
           "role": [
-            "围绕申请要求确定证据范围，并保留可供审阅的协议、产物、纠错记录和负结果。",
-            "与公开研究实验分开，我在 WSL 亲自完成 3 查询、12 文档虚构夹具上的六次不同候选调用、事前假设登记与开发集选优，并自行写出六题方法初稿。"
+            "围绕申请要求组织研究证据与项目展示，保留协议、产物、输入纠错和负结果。",
+            "本人在固定版本的 WSL 工作区完成六个不同候选的合成开发任务调用、先行假设登记、开发集选优与状态核对，并自行写出六题方法初稿；该练习与公开研究实验分别记录。"
           ],
           "decisions": [
             {
-              "title": "撤回建立在错误 tokenizer 入口上的成绩",
-              "choice": "审计发现 tokenizer 后端缺少 merges 且编码不一致后，撤回旧成绩，切换到经过逐条核对的输入入口，并从头训练。",
-              "tradeoff": "纠正输入使更方便的旧结果失效，却保证后续比较建立在正确输入上。",
-              "verification": "纠正后的矩阵包含 20 次正式训练和 1 次从头重复；全量证据包核对 tokenizer、逐条预测、checkpoint 与选优记录。"
+              "title": "把检索融合方法转化为六次调用的优化任务",
+              "choice": "固定 NFCorpus 的 BM25/TF-IDF 排名，开放加权 RRF 的 k 和融合权重；要求调用前假设、参数合法性检查和开发集选优，并设置等预算预设搜索对照。",
+              "tradeoff": "三条轨迹都选择 k=100、权重 0.5，公开测试 nDCG@10 为 0.307044，低于预设六点搜索的 0.307294；同一配置只形成一组唯一测试排序。",
+              "verification": "r2 固定快照提供任务代码、六轮轨迹、选择锁和离线 Docker 核验；后续固定版本补充 BEIR 原始数据获取及排名缓存重建记录。方法到任务索引说明论文方法与项目改动。"
             },
             {
-              "title": "用词序压力集检查常规得分",
-              "choice": "先在 MRPC 完成模型选择，再将六个固定的 12 轮 full/LoRA checkpoint 用于 PAWS，并同时报告 balanced accuracy、负类召回与 F1。",
-              "tradeoff": "12 轮 LoRA 的 MRPC 平均 F1 为 0.9074，但 PAWS balanced accuracy 只有 0.5009，接近常量分类基线；公开压力测试属于探索性分析，不是盲测确认。",
-              "verification": "项目作品集概述结果；LoRA 公开仓库保留结果表、纠错、错误分析与核验范围，固定审阅快照的公开 CI 已通过。"
+              "title": "先纠正输入，再判断微调效果",
+              "choice": "发现 tokenizer 缺少 BPE merges 后撤回旧成绩，审计 4,076 条 MRPC 编码并重新训练；比较分类头、全量微调和 LoRA，采用 4/12 轮与三个种子。",
+              "tradeoff": "12 轮 LoRA/全量微调的 MRPC 平均 F1 为 0.9074/0.9081，PAWS 平衡准确率为 0.5009/0.5003；常规成绩未转化为词序压力集上的稳健表现。",
+              "verification": "固定快照记录 18 次主训练、两次 rank 诊断和一次重复，共 21 条训练记录；另有一个固定配置的同机从头复跑。公开 CI 负责离线核验。"
             },
             {
-              "title": "预设搜索胜出时仍保留代理结果",
-              "choice": "让三条空白上下文代理轨迹各使用六次开发调用，冻结选择后，再与预设六点搜索比较 NFCorpus 公开测试结果。",
-              "tradeoff": "三条轨迹都选择同一配置并得到 0.307044，低于预设搜索的 0.307294；它们只形成一组唯一测试排序，不是三份独立泛化证据。",
-              "verification": "公开的研究代理仓库包含任务代码、先行假设、六轮日志、选择锁、报告与原始数据重建路径；日志不含可独立核验的模型、提供商或会话来源凭证。r2 快照新增论文方法到任务设计的对照索引，以及经 CI 实测的 Docker 离线轨迹核验与虚构数据演示；容器检查不复跑 NFCorpus，也不证明申请人本人熟练使用 Docker。此前已查看公开测试，因此这只是探索性扩展。"
+              "title": "用公平对照审查电池模型的准确性与稳定性",
+              "choice": "六个电芯采用留一电芯验证和种子 42/123/456；PINN 与 LSTM 使用相同噪声、EMA 和 running-min 后处理，两模型共 36 条结果。",
+              "tradeoff": "18 个种子×电芯组合的平均 RMSE 为 PINN 0.9814 Ah、LSTM 0.2221 Ah，PINN 对初始化敏感。两者均零向上跳变来自共同的单调后处理，不能归因于 PINN 特有优势。",
+              "verification": "固定源码与公开 CSV 支持按种子、模型和电芯复核汇总。输入包含已观测容量，任务因此限定为重建/去噪；来源于仓库继承快照的原始 CALCE 获取链仍未闭合。"
             }
           ],
-          "outcome": "证据包记录了纠正后的 20 次 LoRA 正式训练与 1 次重复、接近随机水平的 PAWS 压力结果，以及三条未胜过预设搜索的新增六次调用代理轨迹。它最有价值的信号是保留了纠错和负结果，而不是宣称某个方法获胜。",
+          "outcome": "五页作品集把三个研究问题、实验协议、结果解释和复核入口连成完整案例，并以 LLM Evaluation Playbook 的三个工具、17 项测试和多版本 CI 补充评测工程能力。重点是能解释实验为何这样设计，以及结果支持什么。",
           "limits": [
-            "公开实现、实验和报告有 AI 工具协作；另行完成的本人合成练习可核对六轮开发调用和方法初稿，但不能证明独立写出公开研究代码或完成全部实验。",
-            "发布后两次复跑均由 AI 代理在同一机器上完成同一固定配置：首次用留存资产，第二次在新资产目录执行固定下载脚本，七个文件哈希与清单一致；本地下载日志不是独立网络来源证明。它们不是跨机器或完整 21 次复现，也不能证明申请人本人训练或调试过模型。",
-            "MRPC validation、PAWS labeled test 与 NFCorpus public test 都用于探索性研究；这些结果不是盲测基准，也不能推出 LoRA 的一般结论或代理优于搜索。",
-            "四页作品集本身不含完整原始预测、模型权重及排名缓存。关联仓库公开源码、日志和汇总结果，第三方数据及权重需按上游规则另行获取；本人重建 NFCorpus 与完整重训 LoRA 仍待完成。",
-            "实验只覆盖一个语言模型骨干、两个句对数据集、一项检索任务，以及少量训练种子和代理轨迹。"
+            "项目使用 AI 工具协作。公开研究产物与本人已完成的操作分别描述；六轮个人练习使用 3 查询、12 文档合成数据，方法初稿包含预写部分。",
+            "MRPC validation、PAWS labeled test 和 NFCorpus public test 已被探索性使用；这些结果不构成盲测，不支持代理优于搜索或 LoRA 的一般性结论。",
+            "LoRA 后续复跑只覆盖同机单配置；研究代理日志未记录可独立核验的模型会话来源。完整数据、权重及排名缓存不包含在五页 PDF 内，应结合仓库的获取和核验步骤阅读。",
+            "电池公开材料提供聚合记录与复核脚本，没有发布逐点预测或模型权重；容量重建结果不证明未来预测、剩余寿命估计或实际系统安全。"
           ]
         }
       },
       "evidence": [
         {
           "label": {
-            "en": "Current project portfolio (four-page searchable PDF)",
-            "zh": "当前研究项目作品集（四页可检索 PDF）"
+            "en": "Current three-project portfolio (five-page searchable PDF)",
+            "zh": "当前三项目作品集（五页可检索 PDF）"
           },
-          "url": "https://www.panzhichao.com/evidence/autoresearch-v13-project-portfolio-pan-zhichao.pdf",
+          "url": "https://www.panzhichao.com/evidence/autoresearch-v14-project-portfolio-pan-zhichao.pdf",
           "type": "report"
         },
         {
@@ -518,10 +521,18 @@
         },
         {
           "label": {
-            "en": "Historical v12 one-page proof",
-            "zh": "历史 v12 一页项目证明"
+            "en": "Battery reconstruction: fixed protocol, 36 results and aggregate checks",
+            "zh": "电池容量重建：固定协议、36 条结果与汇总复核"
           },
-          "url": "https://www.panzhichao.com/evidence/autoresearch-v12-project-proof-pan-zhichao.pdf",
+          "url": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics/tree/74953917964a52798b3c352564aadbcf68f4d912/experiments/logo_capacity_reconstruction",
+          "type": "report"
+        },
+        {
+          "label": {
+            "en": "Retrieval paper-to-task mapping",
+            "zh": "检索论文方法到任务设计对照"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/research-agent-bench/blob/07b8d60aaccfda145b1632bba8040e1863e768f2/PAPER_TO_TASK.md",
           "type": "report"
         }
       ]
