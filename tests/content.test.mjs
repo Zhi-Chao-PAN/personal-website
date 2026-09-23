@@ -93,6 +93,18 @@ test("published synthetic MRR example reproduces the source reference", () => {
 test("AutoResearch public evidence files match the frozen source packages", async () => {
   for (const [file, expected] of [
     [
+      "../public/evidence/autoresearch-v11-project-proof-pan-zhichao.pdf",
+      "253d5a31dd512f56e72f06a680198b40e9b8b1383adade11aa12ad75c209d520",
+    ],
+    [
+      "../public/evidence/autoresearch-v11-application-addendum-pan-zhichao.zip",
+      "f3c601d90d49974e4fd164591eb9d8401047ea053df0caf958f196a792eaa343",
+    ],
+    [
+      "../public/evidence/autoresearch-v11-noto-sans-sc-ofl.txt",
+      "babcfe66c8a098b2fa279bc724a3a342f8124f77ce18941fbcc1bbb39823cded",
+    ],
+    [
       "../public/evidence/autoresearch-v5-project-proof-pan-zhichao.pdf",
       "ed18147cd02e676a5c43ff7a6db3949eea2f909cc2bf61d129847f9c5cdd78cc",
     ],
