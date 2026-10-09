@@ -1,0 +1,923 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e4]:
+      - heading "ZhiChao Pan's Digital Lab" [level=1] [ref=e5]:
+        - text: ZhiChao Pan's
+        - generic [ref=e6]: Digital Lab
+      - paragraph [ref=e7]: "[ Applied AI · Multi-Agent Systems · Product Engineering ]"
+    - region "Current technical focus" [ref=e8]:
+      - paragraph [ref=e9]: AI Product Engineering, Multi-Agent Orchestration, RAG Evaluation, Reliable ML, Next.js Systems, LangGraph Workflows, Verifiable Results
+      - generic [ref=e11]:
+        - generic [ref=e12]: AI Product Engineering
+        - generic [ref=e13]: Multi-Agent Orchestration
+        - generic [ref=e14]: RAG Evaluation
+        - generic [ref=e15]: Reliable ML
+        - generic [ref=e16]: Next.js Systems
+        - generic [ref=e17]: LangGraph Workflows
+        - generic [ref=e18]: Verifiable Results
+        - generic [ref=e19]: AI Product Engineering
+        - generic [ref=e20]: Multi-Agent Orchestration
+        - generic [ref=e21]: RAG Evaluation
+        - generic [ref=e22]: Reliable ML
+        - generic [ref=e23]: Next.js Systems
+        - generic [ref=e24]: LangGraph Workflows
+        - generic [ref=e25]: Verifiable Results
+      - generic [ref=e27]:
+        - generic [ref=e28]: AI Product Engineering
+        - generic [ref=e29]: Multi-Agent Orchestration
+        - generic [ref=e30]: RAG Evaluation
+        - generic [ref=e31]: Reliable ML
+        - generic [ref=e32]: Next.js Systems
+        - generic [ref=e33]: LangGraph Workflows
+        - generic [ref=e34]: Verifiable Results
+        - generic [ref=e35]: AI Product Engineering
+        - generic [ref=e36]: Multi-Agent Orchestration
+        - generic [ref=e37]: RAG Evaluation
+        - generic [ref=e38]: Reliable ML
+        - generic [ref=e39]: Next.js Systems
+        - generic [ref=e40]: LangGraph Workflows
+        - generic [ref=e41]: Verifiable Results
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - generic [ref=e49]: ~/panzhichao/whoami
+        - generic [ref=e50]: $ whoami
+        - generic [ref=e51]:
+          - generic [ref=e52]:
+            - generic [ref=e53]: ">"
+            - generic [ref=e54]: name
+            - generic [ref=e55]: ":"
+            - generic [ref=e56]: ZhiChao Pan · 潘志超
+          - generic [ref=e57]:
+            - generic [ref=e58]: ">"
+            - generic [ref=e59]: loc
+            - generic [ref=e60]: ":"
+            - generic [ref=e61]: 江苏, 扬州, 中国
+          - generic [ref=e62]:
+            - generic [ref=e63]: ">"
+            - generic [ref=e64]: edu
+            - generic [ref=e65]: ":"
+            - generic [ref=e66]: 扬州大学 · 计算机科学与技术
+          - generic [ref=e67]:
+            - generic [ref=e68]: ">"
+            - generic [ref=e69]: role
+            - generic [ref=e70]: ":"
+            - generic [ref=e71]: aspiring_ai_product_engineer
+          - generic [ref=e72]:
+            - generic [ref=e73]: ">"
+            - generic [ref=e74]: goal
+            - generic [ref=e75]: ":"
+            - generic [ref=e76]: ai_product_engineer | full_stack_agent_architect
+          - generic [ref=e77]:
+            - generic [ref=e78]: ">"
+            - generic [ref=e79]: stack
+            - generic [ref=e80]: ":"
+            - generic [ref=e81]: ts · next · python · langgraph
+          - generic [ref=e82]:
+            - generic [ref=e83]: ">"
+            - generic [ref=e84]: thesis
+            - generic [ref=e85]: ":"
+            - generic [ref=e86]: verifiable · reproducible · useful
+          - generic [ref=e87]:
+            - generic [ref=e88]: ">"
+            - generic [ref=e89]: status
+            - generic [ref=e90]: ":"
+            - generic [ref=e91]: preparing_overseas_grad_study · open_to_collab
+        - generic [ref=e92]: ▋
+      - generic [ref=e93]:
+        - generic [ref=e94]: "[ INDEX_01 — WHO ]"
+        - heading "我把 AI 系统做成可验证、可复现、 能真正用起来的产品。" [level=2] [ref=e95]:
+          - text: 我把 AI 系统做成可验证、可复现、
+          - text: 能真正用起来的产品。
+        - paragraph [ref=e96]: 从研报检索、多智能体协作，到电池寿命预测，我关注的不是把 AI 包装成演示，而是让它有清晰依据、稳定边界和可复现的结果。
+        - generic [ref=e97]:
+          - generic [ref=e98]:
+            - generic [ref=e99]: //
+            - generic [ref=e100]: now
+            - generic [ref=e101]: ":"
+            - generic [ref=e102]: building applied AI products and agent workflows
+          - generic [ref=e103]:
+            - generic [ref=e104]: //
+            - generic [ref=e105]: next
+            - generic [ref=e106]: ":"
+            - generic [ref=e107]: overseas graduate study in AI / computing
+        - generic [ref=e108]:
+          - generic [ref=e109]: ▸ current focus
+          - list [ref=e110]:
+            - listitem [ref=e111]:
+              - generic [ref=e112]: ▸
+              - generic [ref=e113]: 应用型 AI 系统 & AI 产品工程
+            - listitem [ref=e114]:
+              - generic [ref=e115]: ▸
+              - generic [ref=e116]: 多智能体编排 · LangGraph + 工具调用 + 结构化输出
+            - listitem [ref=e117]:
+              - generic [ref=e118]: ▸
+              - generic [ref=e119]: 检索增强生成 / 文档智能 / 评测
+            - listitem [ref=e120]:
+              - generic [ref=e121]: ▸
+              - generic [ref=e122]: 全栈 TypeScript · Next.js · Prisma · Vercel
+            - listitem [ref=e123]:
+              - generic [ref=e124]: ▸
+              - generic [ref=e125]: 可靠机器学习 / 不确定性量化 / 可复现实验
+        - generic [ref=e126]:
+          - link "github" [ref=e127] [cursor=pointer]:
+            - /url: https://github.com/Zhi-Chao-PAN
+            - generic [ref=e128]: github
+            - generic [ref=e129]: ↗
+          - link "18652585856@163.com" [ref=e130] [cursor=pointer]:
+            - /url: mailto:18652585856@163.com
+          - generic [ref=e131]: open to collaboration
+    - generic [ref=e133]:
+      - generic [ref=e134]:
+        - text: "[ now / focus ]"
+        - heading "What I am sharpening now" [level=2] [ref=e135]
+        - paragraph [ref=e136]: 我现在把重心放在应用型 AI 产品、可验证的多智能体工作流、RAG 与评测，以及能真正交付的产品工程。下面这些方向，也是作品区里每个项目共同指向的能力。
+      - generic [ref=e137]:
+        - article [ref=e138]:
+          - generic [ref=e141]: 01 / applied product
+          - generic [ref=e142]:
+            - heading "把 AI 做成可使用的产品" [level=3] [ref=e143]
+            - paragraph [ref=e144]: 我更关心真实流程里的输入、边界、失败恢复和结果复用，而不是一次性演示。好的 AI 产品应该让用户知道它为什么这么做、哪里可信、哪里需要人来判断。
+        - article [ref=e145]:
+          - generic [ref=e148]: 02 / agent workflow
+          - generic [ref=e149]:
+            - heading "把多智能体编排做成可验收的系统" [level=3] [ref=e150]
+            - paragraph [ref=e151]: 多智能体不只是“多个模型一起说话”，而是任务拆解、角色隔离、结构化输出、所有权边界和 review gate。每一步都应该能被追踪、复盘和替换。
+        - article [ref=e152]:
+          - generic [ref=e155]: 03 / rag & evaluation
+          - generic [ref=e156]:
+            - heading "用评测把直觉变成证据" [level=3] [ref=e157]
+            - paragraph [ref=e158]: 从结构化 PDF 解析到模型对比，我在练习把质量问题具体化：固定变量、记录指标、保留失败样本，让改进不只停留在“感觉更好”。
+        - article [ref=e159]:
+          - generic [ref=e162]: 04 / product engineering
+          - generic [ref=e163]:
+            - heading "保持能交付、能维护、能继续迭代" [level=3] [ref=e164]
+            - paragraph [ref=e165]: Next.js、TypeScript、Python、LangGraph 和本地自动化只是工具。真正重要的是把想法落到一个别人能打开、能理解、能继续使用的系统里。
+    - generic [ref=e167]:
+      - generic [ref=e168]:
+        - generic [ref=e169]: "[ index_02 / signature systems ]"
+        - heading "Proof with depth" [level=2] [ref=e170]:
+          - text: Proof
+          - generic [ref=e171]: with depth
+        - paragraph [ref=e172]: 这里集中展示四个最能说明能力边界的项目：从产品工程、视觉文档理解，到医学影像原型和多智能体协作。每个案例都能看到问题、系统做法和可验证结果。
+        - generic [ref=e173]:
+          - button "01 LaunchLens AI AI product engineering open" [pressed] [ref=e174]:
+            - generic [ref=e175]: "01"
+            - generic [ref=e176]:
+              - generic [ref=e177]: LaunchLens AI
+              - generic [ref=e178]: AI product engineering
+            - generic [ref=e179]: open
+          - button "02 Vision-Centric Financial Swarm multimodal financial RAG open" [ref=e180]:
+            - generic [ref=e181]: "02"
+            - generic [ref=e182]:
+              - generic [ref=e183]: Vision-Centric Financial Swarm
+              - generic [ref=e184]: multimodal financial RAG
+            - generic [ref=e185]: open
+          - button "03 DeepNerve-3D medical AI prototype open" [ref=e186]:
+            - generic [ref=e187]: "03"
+            - generic [ref=e188]:
+              - generic [ref=e189]: DeepNerve-3D
+              - generic [ref=e190]: medical AI prototype
+            - generic [ref=e191]: open
+          - button "04 Codex ↔ ZCode Remote Relay agent orchestration open" [ref=e192]:
+            - generic [ref=e193]: "04"
+            - generic [ref=e194]:
+              - generic [ref=e195]: Codex ↔ ZCode Remote Relay
+              - generic [ref=e196]: agent orchestration
+            - generic [ref=e197]: open
+      - generic [ref=e198]:
+        - generic [ref=e199]:
+          - img "LaunchLens AI — desktop dashboard" [ref=e200]
+          - generic [ref=e201]:
+            - generic [ref=e202]: DESKTOP
+            - generic [ref=e203]: structured workflow
+          - generic [ref=e205]:
+            - generic [ref=e206]: from fuzzy idea to GTM brief
+            - heading "LaunchLens AI" [level=3] [ref=e207]
+            - paragraph [ref=e208]: 创业者最贵的成本是「想清楚再动手」——一份 GTM 报告要请咨询公司写 2–3 周、几十万元。LaunchLens 把市场调研、用户画像、竞品拆解、产品定位、首版营销文案一次性跑完，过去 2 周的工作压到一杯咖啡的时间。系统内置 30+ 行业模板和 6 套定位框架，AI 会主动追问并修正假设，最后输出一份能直接拿给投资人或团队开会的 BP 草稿。适合早期创业者、企划负责人、独立咨询顾问，5 分钟跑出过去需要 1 个分析师 1 周的产出。
+        - generic [ref=e209]:
+          - text: headline
+          - strong [ref=e210]: v1.0.0
+          - text: release
+      - complementary [ref=e211]:
+        - generic [ref=e213]: evidence core
+        - generic [ref=e215]:
+          - generic [ref=e216]:
+            - generic [ref=e217]:
+              - generic [ref=e218]: "01"
+              - generic [ref=e219]: problem
+            - paragraph [ref=e220]: Early founders often need a first GTM brief before they can afford a research team, but generic AI drafts miss market structure, positioning, and decision-ready evidence.
+          - generic [ref=e221]:
+            - generic [ref=e222]:
+              - generic [ref=e223]: "02"
+              - generic [ref=e224]: system
+            - paragraph [ref=e225]: "I turned the workflow into a guided product system: capture the business context, run structured agent steps, validate each output, and render the result as a founder-ready workspace."
+          - generic [ref=e226]:
+            - generic [ref=e227]:
+              - generic [ref=e228]: "03"
+              - generic [ref=e229]: proof
+            - paragraph [ref=e230]: The project behaves like a repeatable GTM cockpit instead of a one-off prompt demo, with a public v1.0 release and a live deployment.
+        - generic [ref=e231]:
+          - generic [ref=e232]: why this matters
+          - paragraph [ref=e233]: 把市场调研、用户画像、竞品拆解和定位交付压进一条可复用的产品工作流。
+        - generic [ref=e234]:
+          - generic [ref=e235]:
+            - generic [ref=e236]: commits
+            - generic [ref=e237]: "1"
+          - generic [ref=e238]:
+            - generic [ref=e239]: repo size
+            - generic [ref=e240]: 3.0 MB
+        - generic [ref=e241]:
+          - generic [ref=e242]: next
+          - generic [ref=e243]: react
+          - generic [ref=e244]: react-dom
+          - generic [ref=e245]: "@auth/core"
+        - link "open case file" [ref=e246] [cursor=pointer]:
+          - /url: /projects/launchlens-ai
+          - text: open case file
+          - generic [ref=e247]: "->"
+    - generic [ref=e249]:
+      - generic [ref=e250]:
+        - text: "[ index_03 / bilingual brief ]"
+        - heading "A concise profile in two languages" [level=2] [ref=e251]
+        - generic [ref=e252]:
+          - button "English" [pressed] [ref=e253]
+          - button "中文" [ref=e254]
+      - article [ref=e255]:
+        - paragraph [ref=e256]: I am a Computer Science student at Guangling College, Yangzhou University, preparing for overseas graduate study in AI and computing while building applied AI products.
+        - generic [ref=e257]:
+          - paragraph [ref=e258]:
+            - generic [ref=e259]: "01"
+            - generic [ref=e260]: "This site is organized around evidence: what problem each project tackles, how the system is built, and what outcome it can show."
+          - paragraph [ref=e261]:
+            - generic [ref=e262]: "02"
+            - generic [ref=e263]: The technical focus is multi-agent orchestration, RAG evaluation, and AI workflows where model output can be reviewed, reused, and improved.
+          - paragraph [ref=e264]:
+            - generic [ref=e265]: "03"
+            - generic [ref=e266]: "The long-term direction is applied AI product engineering: connecting product judgment, frontend experience, and agent infrastructure."
+    - generic [ref=e268]:
+      - generic [ref=e269]:
+        - text: "[ index_04 / profile kit ]"
+        - heading "A compact profile, grounded in shipped work" [level=2] [ref=e270]
+        - generic [ref=e271]:
+          - link "resume / cv" [ref=e272] [cursor=pointer]:
+            - /url: mailto:18652585856@163.com?subject=Portfolio%20/%20Resume%20Request
+          - link "github ↗" [ref=e273] [cursor=pointer]:
+            - /url: https://github.com/Zhi-Chao-PAN
+      - generic [ref=e274]:
+        - article [ref=e275]:
+          - generic [ref=e276]: identity
+          - heading "Computer Science student building applied AI products" [level=3] [ref=e277]
+          - paragraph [ref=e278]: 扬州大学广陵学院计算机科学与技术专业学生，正在准备海外高校 AI / 计算机相关硕士方向，并长期走向应用 AI 产品工程。
+        - article [ref=e279]:
+          - generic [ref=e280]: casework
+          - heading "Representative work is organized as case studies" [level=3] [ref=e281]
+          - paragraph [ref=e282]: 每个项目都按 problem / approach / outcome / role 展开，重点呈现真实贡献、技术取舍和可复用价值，而不是只展示技术栈列表。
+        - article [ref=e283]:
+          - generic [ref=e284]: contact
+          - heading "For graduate review, collaboration, and technical conversations" [level=3] [ref=e285]
+          - paragraph [ref=e286]: 如果需要更正式的材料，可以通过邮件索取英文简历、项目摘要或补充说明；这个网站保留公开版本，便于快速了解方向和能力证据。
+    - generic [ref=e288]:
+      - generic [ref=e289]:
+        - text: "[ index_05 / skill matrix ]"
+        - heading "Capabilities shown through projects" [level=2] [ref=e290]
+        - paragraph [ref=e291]: 能力不单独罗列，而是落在可以打开的项目里：产品工作流、多智能体编排、多模态 RAG、医学影像和可靠性实验都有对应案例。
+      - generic [ref=e292]:
+        - article [ref=e293]:
+          - generic [ref=e294]:
+            - generic [ref=e295]:
+              - generic [ref=e298]: product workflow
+              - link "case ↗" [ref=e299] [cursor=pointer]:
+                - /url: /projects/launchlens-ai
+            - heading "AI product engineering" [level=3] [ref=e300]
+            - paragraph [ref=e301]: 把模糊业务问题拆成可执行流程：输入约束、结构化输出、验证步骤、可复用结果。
+            - generic [ref=e302]: "case: LaunchLens AI"
+        - article [ref=e303]:
+          - generic [ref=e304]:
+            - generic [ref=e305]:
+              - generic [ref=e308]: bounded delegation
+              - link "case ↗" [ref=e309] [cursor=pointer]:
+                - /url: /projects/codex-zcode-remote-relay
+            - heading "Multi-agent orchestration" [level=3] [ref=e310]
+            - paragraph [ref=e311]: 关注角色边界、所有权、调度账本、review gate 和失败恢复，而不是把多个模型简单串起来。
+            - generic [ref=e312]: "case: ZCode Relay"
+        - article [ref=e313]:
+          - generic [ref=e314]:
+            - generic [ref=e315]:
+              - generic [ref=e318]: evidence first
+              - link "case ↗" [ref=e319] [cursor=pointer]:
+                - /url: /projects/structure-aware-rag-empirical
+            - heading "RAG & evaluation" [level=3] [ref=e320]
+            - paragraph [ref=e321]: 用固定变量、可复现实验和失败样本解释质量差异，把“感觉更好”变成可以复查的证据。
+            - generic [ref=e322]: "case: Structure-Aware RAG"
+        - article [ref=e323]:
+          - generic [ref=e324]:
+            - generic [ref=e325]:
+              - generic [ref=e328]: vision retrieval
+              - link "case ↗" [ref=e329] [cursor=pointer]:
+                - /url: /projects/vision-centric-financial-swarm
+            - heading "Multimodal document AI" [level=3] [ref=e330]
+            - paragraph [ref=e331]: 把财报、表格和图表当作视觉证据处理，用检索、裁剪和 agent verification 保留页面结构里的关键信息。
+            - generic [ref=e332]: "case: Financial Swarm"
+        - article [ref=e333]:
+          - generic [ref=e334]:
+            - generic [ref=e335]:
+              - generic [ref=e338]: 3d segmentation
+              - link "case ↗" [ref=e339] [cursor=pointer]:
+                - /url: /projects/deepnerve-3d
+            - heading "Medical AI prototyping" [level=3] [ref=e340]
+            - paragraph [ref=e341]: 围绕小目标、低对比度、拓扑连续性和显存限制设计 pipeline，展示研究问题落地成工程原型的能力。
+            - generic [ref=e342]: "case: DeepNerve-3D"
+        - article [ref=e343]:
+          - generic [ref=e344]:
+            - generic [ref=e345]:
+              - generic [ref=e348]: uncertainty aware
+              - link "case ↗" [ref=e349] [cursor=pointer]:
+                - /url: /projects/safety-critical-battery-prognostics
+            - heading "ML reliability" [level=3] [ref=e350]
+            - paragraph [ref=e351]: 把安全边界、不确定性和现实数据限制放进系统设计，而不是只追逐一个漂亮的指标。
+            - generic [ref=e352]: "case: Battery Prognostics"
+    - generic [ref=e355]:
+      - generic [ref=e356]:
+        - text: "[ index_06 / working notes ]"
+        - heading "Working notes behind the projects" [level=2] [ref=e357]
+        - paragraph [ref=e358]: 这些笔记补充项目页面没有展开的部分：问题如何拆解、结果如何验证、哪些边界还值得继续研究。
+      - generic [ref=e359]:
+        - link "drafting Structure-aware parsing is an evaluation lever, not a preprocessing detail 把 PDF 表格、跨行语义和检索错误拆开看，才能解释为什么同一个模型在不同解析器下表现差异明显。" [ref=e360] [cursor=pointer]:
+          - /url: /projects/structure-aware-rag-empirical
+          - generic [ref=e361]: drafting
+          - generic [ref=e362]:
+            - heading "Structure-aware parsing is an evaluation lever, not a preprocessing detail" [level=3] [ref=e363]
+            - paragraph [ref=e364]: 把 PDF 表格、跨行语义和检索错误拆开看，才能解释为什么同一个模型在不同解析器下表现差异明显。
+        - link "field note Bounded delegation makes multi-agent coding usable 多智能体协作真正难的不是“多”，而是任务边界、文件所有权、验收门禁和失败恢复。" [ref=e365] [cursor=pointer]:
+          - /url: /projects/codex-zcode-remote-relay
+          - generic [ref=e366]: field note
+          - generic [ref=e367]:
+            - heading "Bounded delegation makes multi-agent coding usable" [level=3] [ref=e368]
+            - paragraph [ref=e369]: 多智能体协作真正难的不是“多”，而是任务边界、文件所有权、验收门禁和失败恢复。
+        - link "product note AI products need review surfaces, not just prompt surfaces 一个能落地的 AI 工作流，应该让用户看见输入约束、结构化输出、证据、风险和下一步，而不是只给一段回答。" [ref=e370] [cursor=pointer]:
+          - /url: /projects/launchlens-ai
+          - generic [ref=e371]: product note
+          - generic [ref=e372]:
+            - heading "AI products need review surfaces, not just prompt surfaces" [level=3] [ref=e373]
+            - paragraph [ref=e374]: 一个能落地的 AI 工作流，应该让用户看见输入约束、结构化输出、证据、风险和下一步，而不是只给一段回答。
+    - generic [ref=e376]:
+      - generic [ref=e377]:
+        - text: "[ index_07 / next 90 days ]"
+        - heading "What I am building next" [level=2] [ref=e378]
+        - paragraph [ref=e379]: 这个网站会继续更新。接下来三个月，重点是让案例页更完整、实验更可复现、公开技术写作更清晰。
+      - generic [ref=e380]:
+        - article [ref=e381]:
+          - generic [ref=e382]: 0-30 days
+          - generic [ref=e383]:
+            - heading "Make each case page easier to review from the outside" [level=3] [ref=e384]
+            - paragraph [ref=e385]: 补齐更多项目的英文摘要、关键截图和可分享链接，让海外硕士申请、邮件介绍和合作沟通都能直接引用。
+        - article [ref=e386]:
+          - generic [ref=e387]: 31-60 days
+          - generic [ref=e388]:
+            - heading "Build an agent evaluation dashboard" [level=3] [ref=e389]
+            - paragraph [ref=e390]: 围绕多智能体任务拆解、输出质量、成本和失败恢复做一套可复现实验面板。
+        - article [ref=e391]:
+          - generic [ref=e392]: 61-90 days
+          - generic [ref=e393]:
+            - heading "Publish working notes on RAG and agent systems" [level=3] [ref=e394]
+            - paragraph [ref=e395]: 把 Structure-Aware RAG、ZCode Relay 和 LaunchLens 的经验整理成短技术札记，形成公开技术判断。
+    - generic [ref=e396]:
+      - generic [ref=e398]:
+        - generic [ref=e399]:
+          - generic [ref=e400]: "[ INDEX_08 — PROJECTS ]"
+          - heading "What I've Shipped" [level=2] [ref=e401]
+          - paragraph [ref=e402]: "[ 11_PUBLIC_REPOS · 3_LIVE_DEMOS · 5_STARS_TOTAL ]"
+        - generic [ref=e403]:
+          - generic [ref=e404]: "01"
+          - generic [ref=e405]: /
+          - generic [ref=e406]: "11"
+      - generic "作品画卷" [ref=e407]:
+        - generic [ref=e408]:
+          - button "LaunchLens AI — desktop dashboard DESKTOP view details → next react react-dom +1 ● live LaunchLens AI 1 AI-powered go-to-market workspace — research, positioning & GTM briefs. 创业者最贵的成本是「想清楚再动手」——一份 GTM 报告要请咨询公司写 2–3 周、几十万元。LaunchLens 把市场调研、用户画像、竞品拆解、产品定位、首版营销文案一次性跑完，过去 2 周的工作压到一杯咖啡的时间。系统内置 30+ 行业模板和 6 套定位框架，AI 会主动追问并修正假设，最后输出一份能直接拿给投资人或团队开会的 BP 草稿。适合早期创业者、企划负责人、独立咨询顾问，5 分钟跑出过去需要 1 个分析师 1 周的产出。 TypeScript 99% +2 langs release v1.0.0 3.0 MB · 1 · 6d ago · MIT 25d old live github details" [ref=e410] [cursor=pointer]:
+            - generic [ref=e411]:
+              - generic [ref=e412]:
+                - img "LaunchLens AI — desktop dashboard" [ref=e414]
+                - generic [ref=e415]: DESKTOP
+                - generic [ref=e419]: view details →
+              - generic:
+                - generic: release
+                - strong: v1.0.0
+            - generic [ref=e420]:
+              - generic [ref=e421]:
+                - generic [ref=e422]:
+                  - generic [ref=e423]: next
+                  - generic [ref=e424]: react
+                  - generic [ref=e425]: react-dom
+                  - generic [ref=e426]: "+1"
+                - generic [ref=e427]: ● live
+              - generic [ref=e428]:
+                - heading "LaunchLens AI" [level=3] [ref=e429]
+                - generic [ref=e430]:
+                  - img [ref=e431]
+                  - text: "1"
+              - paragraph [ref=e433]: AI-powered go-to-market workspace — research, positioning & GTM briefs.
+              - paragraph [ref=e436]: 创业者最贵的成本是「想清楚再动手」——一份 GTM 报告要请咨询公司写 2–3 周、几十万元。LaunchLens 把市场调研、用户画像、竞品拆解、产品定位、首版营销文案一次性跑完，过去 2 周的工作压到一杯咖啡的时间。系统内置 30+ 行业模板和 6 套定位框架，AI 会主动追问并修正假设，最后输出一份能直接拿给投资人或团队开会的 BP 草稿。适合早期创业者、企划负责人、独立咨询顾问，5 分钟跑出过去需要 1 个分析师 1 周的产出。
+              - generic [ref=e437]:
+                - generic "TypeScript 99% · CSS 1% · JavaScript 0%" [ref=e438]
+                - generic [ref=e441]:
+                  - generic [ref=e442]: TypeScript 99%
+                  - generic [ref=e443]: +2 langs
+              - generic [ref=e445]:
+                - generic [ref=e446]: release
+                - generic [ref=e447]: v1.0.0
+              - generic [ref=e451]:
+                - generic [ref=e452]:
+                  - generic [ref=e453]: 3.0 MB
+                  - generic [ref=e454]: ·
+                  - generic [ref=e456]: "1"
+                  - generic [ref=e459]: ·
+                  - generic [ref=e460]: 6d ago
+                  - generic [ref=e461]: ·
+                  - generic [ref=e462]: MIT
+                - generic [ref=e463]: 25d old
+              - generic [ref=e464]:
+                - generic [ref=e465]:
+                  - link "live" [ref=e467]:
+                    - /url: https://launchlens-ai-two.vercel.app
+                    - generic [ref=e468]: live
+                    - generic [ref=e469]: →
+                  - link "github" [ref=e471]:
+                    - /url: https://github.com/Zhi-Chao-PAN/launchlens-ai
+                    - generic [ref=e472]: github
+                    - generic [ref=e473]: ↗
+                - generic [ref=e474]:
+                  - generic [ref=e475]: details
+                  - generic [ref=e476]: ⓘ
+          - button "LaunchLens Research Studio — dark mode DARK MODE view details → next react react-dom +1 ● live LaunchLens Research Studio Multi-agent market intelligence — 6 AI agents research any product in parallel. 一个想法值不值得做，过去要请咨询公司花几周时间、十几万元来验证。Research Studio 派出 6 个 AI 角色并行调研——市场分析师扒规模、竞品专家拆解对手、用户研究员还原真实使用场景、风控顾问挑刺、PM 估算落地难度——5 分钟内把竞品、用户、风险三个维度同时拉齐到一份决策级简报里。整套调研链路可审计、可重跑、可对比不同假设下的结论差异。适合产品经理、战略分析师、早期投资人快速判断「这个方向能不能投、要不要做」。 TypeScript 88% +2 langs tests passing 1,423 6.3 MB · 1 · 7d ago · MIT 21d old live github details" [ref=e478] [cursor=pointer]:
+            - generic [ref=e479]:
+              - generic [ref=e480]:
+                - img "LaunchLens Research Studio — dark mode" [ref=e482]
+                - generic [ref=e483]: DARK MODE
+                - generic [ref=e487]: view details →
+              - generic:
+                - generic: tests passing
+                - strong: 1,423
+            - generic [ref=e488]:
+              - generic [ref=e489]:
+                - generic [ref=e490]:
+                  - generic [ref=e491]: next
+                  - generic [ref=e492]: react
+                  - generic [ref=e493]: react-dom
+                  - generic [ref=e494]: "+1"
+                - generic [ref=e495]: ● live
+              - heading "LaunchLens Research Studio" [level=3] [ref=e497]
+              - paragraph [ref=e498]: Multi-agent market intelligence — 6 AI agents research any product in parallel.
+              - paragraph [ref=e501]: 一个想法值不值得做，过去要请咨询公司花几周时间、十几万元来验证。Research Studio 派出 6 个 AI 角色并行调研——市场分析师扒规模、竞品专家拆解对手、用户研究员还原真实使用场景、风控顾问挑刺、PM 估算落地难度——5 分钟内把竞品、用户、风险三个维度同时拉齐到一份决策级简报里。整套调研链路可审计、可重跑、可对比不同假设下的结论差异。适合产品经理、战略分析师、早期投资人快速判断「这个方向能不能投、要不要做」。
+              - generic [ref=e502]:
+                - generic "TypeScript 88% · CSS 8% · JavaScript 4%" [ref=e503]
+                - generic [ref=e507]:
+                  - generic [ref=e508]: TypeScript 88%
+                  - generic [ref=e509]: +2 langs
+              - generic [ref=e511]:
+                - generic [ref=e512]: tests passing
+                - generic [ref=e513]: 1,423
+              - generic [ref=e517]:
+                - generic [ref=e518]:
+                  - generic [ref=e519]: 6.3 MB
+                  - generic [ref=e520]: ·
+                  - generic [ref=e522]: "1"
+                  - generic [ref=e525]: ·
+                  - generic [ref=e526]: 7d ago
+                  - generic [ref=e527]: ·
+                  - generic [ref=e528]: MIT
+                - generic [ref=e529]: 21d old
+              - generic [ref=e530]:
+                - generic [ref=e531]:
+                  - link "live" [ref=e533]:
+                    - /url: https://launchlens-research-studio.vercel.app
+                    - generic [ref=e534]: live
+                    - generic [ref=e535]: →
+                  - link "github" [ref=e537]:
+                    - /url: https://github.com/Zhi-Chao-PAN/launchlens-research-studio
+                    - generic [ref=e538]: github
+                    - generic [ref=e539]: ↗
+                - generic [ref=e540]:
+                  - generic [ref=e541]: details
+                  - generic [ref=e542]: ⓘ
+          - button "Model Eval Studio — generated poster OG POSTER view details → next react react-dom +1 ● live Model Eval Studio Multi-model evaluation workspace — AI identifies models from screenshots & generates comparison reports. 选 AI 模型像开盲盒——参数表看不懂、第三方跑分不可信、自己测又没时间。Model Eval Studio 让你截图就识别模型、自动跑多维度对比，给出一份能拍板的选型报告。系统支持自定义评测集（多模态、推理、代码、长上下文都能配），自动产出 leaderboard + 成本曲线 + 失败案例分析。适合 AI 应用团队的架构师、CTO、模型采购决策者，把过去 2 周的选型会压成一个下午的可视化对比。 TypeScript 90% +2 langs 981 KB · 1 · 13d ago 18d old live github details" [ref=e544] [cursor=pointer]:
+            - generic [ref=e546]:
+              - img "Model Eval Studio — generated poster" [ref=e548]
+              - generic [ref=e549]: OG POSTER
+              - generic [ref=e553]: view details →
+            - generic [ref=e554]:
+              - generic [ref=e555]:
+                - generic [ref=e556]:
+                  - generic [ref=e557]: next
+                  - generic [ref=e558]: react
+                  - generic [ref=e559]: react-dom
+                  - generic [ref=e560]: "+1"
+                - generic [ref=e561]: ● live
+              - heading "Model Eval Studio" [level=3] [ref=e563]
+              - paragraph [ref=e564]: Multi-model evaluation workspace — AI identifies models from screenshots & generates comparison reports.
+              - paragraph [ref=e567]: 选 AI 模型像开盲盒——参数表看不懂、第三方跑分不可信、自己测又没时间。Model Eval Studio 让你截图就识别模型、自动跑多维度对比，给出一份能拍板的选型报告。系统支持自定义评测集（多模态、推理、代码、长上下文都能配），自动产出 leaderboard + 成本曲线 + 失败案例分析。适合 AI 应用团队的架构师、CTO、模型采购决策者，把过去 2 周的选型会压成一个下午的可视化对比。
+              - generic [ref=e568]:
+                - generic "TypeScript 90% · JavaScript 9% · CSS 1%" [ref=e569]
+                - generic [ref=e573]:
+                  - generic [ref=e574]: TypeScript 90%
+                  - generic [ref=e575]: +2 langs
+              - generic [ref=e578]:
+                - generic [ref=e579]:
+                  - generic [ref=e580]: 981 KB
+                  - generic [ref=e581]: ·
+                  - generic [ref=e583]: "1"
+                  - generic [ref=e586]: ·
+                  - generic [ref=e587]: 13d ago
+                - generic [ref=e588]: 18d old
+              - generic [ref=e589]:
+                - generic [ref=e590]:
+                  - link "live" [ref=e592]:
+                    - /url: https://model-test-assistant.vercel.app
+                    - generic [ref=e593]: live
+                    - generic [ref=e594]: →
+                  - link "github" [ref=e596]:
+                    - /url: https://github.com/Zhi-Chao-PAN/model-eval-studio
+                    - generic [ref=e597]: github
+                    - generic [ref=e598]: ↗
+                - generic [ref=e599]:
+                  - generic [ref=e600]: details
+                  - generic [ref=e601]: ⓘ
+          - button "AI Life Progress Coach — generated poster OG POSTER view details → next react react-dom +1 AI Life Progress Coach Local-first AI life operating system — goals, tasks, reviews, and privacy-safe progress evidence. 它不是又一个待办清单，而是把长期目标拆成每天可执行、可复盘、可解释的成长系统。任务、日记、恢复状态、周/月回顾和 AI 建议落在同一条证据链里，用户能看到自己为什么在前进、哪里卡住、下一步该做什么。 TypeScript +2 langs tests 830+ 1.3 MB · 1 · 1h ago 0d old details" [ref=e603] [cursor=pointer]:
+            - generic [ref=e604]:
+              - generic [ref=e605]:
+                - img "AI Life Progress Coach — generated poster" [ref=e607]
+                - generic [ref=e608]: OG POSTER
+                - generic [ref=e612]: view details →
+              - generic:
+                - generic: tests
+                - strong: 830+
+            - generic [ref=e613]:
+              - generic [ref=e615]:
+                - generic [ref=e616]: next
+                - generic [ref=e617]: react
+                - generic [ref=e618]: react-dom
+                - generic [ref=e619]: "+1"
+              - heading "AI Life Progress Coach" [level=3] [ref=e621]
+              - paragraph [ref=e622]: Local-first AI life operating system — goals, tasks, reviews, and privacy-safe progress evidence.
+              - paragraph [ref=e625]: 它不是又一个待办清单，而是把长期目标拆成每天可执行、可复盘、可解释的成长系统。任务、日记、恢复状态、周/月回顾和 AI 建议落在同一条证据链里，用户能看到自己为什么在前进、哪里卡住、下一步该做什么。
+              - generic [ref=e626]:
+                - generic "TypeScript 100% · CSS 0% · JavaScript 0%" [ref=e627]
+                - generic [ref=e629]:
+                  - generic [ref=e630]: TypeScript
+                  - generic [ref=e631]: +2 langs
+              - generic [ref=e633]:
+                - generic [ref=e634]: tests
+                - generic [ref=e635]: 830+
+              - generic [ref=e639]:
+                - generic [ref=e640]:
+                  - generic [ref=e641]: 1.3 MB
+                  - generic [ref=e642]: ·
+                  - generic [ref=e644]: "1"
+                  - generic [ref=e647]: ·
+                  - generic [ref=e648]: 1h ago
+                - generic [ref=e649]: 0d old
+              - generic [ref=e651]:
+                - generic [ref=e652]: details
+                - generic [ref=e653]: ⓘ
+          - button "Vision-Centric Financial Swarm — generated poster OG POSTER view details → colpali langgraph fastapi +1 Vision-Centric Financial Swarm Multi-modal financial RAG — ColPali retrieval, ROI cropping, and agentic verification. 传统 RAG 把 PDF 当文本拆，最容易丢掉图表、表格和页面布局。这个项目直接把财报页面当视觉对象处理：用 ColPali 做多向量检索，再通过 ROI 裁剪把关键区域送给视觉模型，最后由 agent 做跨页推理和数值校验。 Markdown 43% +3 langs token cost -80% 3.1 MB · 3 · 4mo ago · MIT 130d old details" [ref=e655] [cursor=pointer]:
+            - generic [ref=e656]:
+              - generic [ref=e657]:
+                - img "Vision-Centric Financial Swarm — generated poster" [ref=e659]
+                - generic [ref=e660]: OG POSTER
+                - generic [ref=e664]: view details →
+              - generic:
+                - generic: token cost
+                - strong: "-80%"
+            - generic [ref=e665]:
+              - generic [ref=e667]:
+                - generic [ref=e668]: colpali
+                - generic [ref=e669]: langgraph
+                - generic [ref=e670]: fastapi
+                - generic [ref=e671]: "+1"
+              - heading "Vision-Centric Financial Swarm" [level=3] [ref=e673]
+              - paragraph [ref=e674]: Multi-modal financial RAG — ColPali retrieval, ROI cropping, and agentic verification.
+              - paragraph [ref=e677]: 传统 RAG 把 PDF 当文本拆，最容易丢掉图表、表格和页面布局。这个项目直接把财报页面当视觉对象处理：用 ColPali 做多向量检索，再通过 ROI 裁剪把关键区域送给视觉模型，最后由 agent 做跨页推理和数值校验。
+              - generic [ref=e678]:
+                - generic "Markdown 43% · Python 27% · Other 22% · JSON 8%" [ref=e679]
+                - generic [ref=e684]:
+                  - generic [ref=e685]: Markdown 43%
+                  - generic [ref=e686]: +3 langs
+              - generic [ref=e688]:
+                - generic [ref=e689]: token cost
+                - generic [ref=e690]: "-80%"
+              - generic [ref=e694]:
+                - generic [ref=e695]:
+                  - generic [ref=e696]: 3.1 MB
+                  - generic [ref=e697]: ·
+                  - generic [ref=e699]: "3"
+                  - generic [ref=e704]: ·
+                  - generic [ref=e705]: 4mo ago
+                  - generic [ref=e706]: ·
+                  - generic [ref=e707]: MIT
+                - generic [ref=e708]: 130d old
+              - generic [ref=e710]:
+                - generic [ref=e711]: details
+                - generic [ref=e712]: ⓘ
+          - button "DeepNerve-3D — generated poster OG POSTER view details → torch monai swinunetr +1 DeepNerve-3D Research-style 3D medical segmentation — SwinUNETR, topology constraints, and CBCT nerve tracing. 这个项目的价值不在炫界面，而在把困难的医学影像问题讲清楚：3D CBCT 中下牙槽神经前景极少、对比度低、拓扑连续性要求高。DeepNerve-3D 用 SwinUNETR、滑窗推理和连通域约束，把研究思路落到可运行的分割 pipeline 里。 Python 62% +3 langs foreground <0.1% 63 KB · 2 · 5mo ago · MIT 156d old details" [ref=e714] [cursor=pointer]:
+            - generic [ref=e715]:
+              - generic [ref=e716]:
+                - img "DeepNerve-3D — generated poster" [ref=e718]
+                - generic [ref=e719]: OG POSTER
+                - generic [ref=e723]: view details →
+              - generic:
+                - generic: foreground
+                - strong: <0.1%
+            - generic [ref=e724]:
+              - generic [ref=e726]:
+                - generic [ref=e727]: torch
+                - generic [ref=e728]: monai
+                - generic [ref=e729]: swinunetr
+                - generic [ref=e730]: "+1"
+              - heading "DeepNerve-3D" [level=3] [ref=e732]
+              - paragraph [ref=e733]: Research-style 3D medical segmentation — SwinUNETR, topology constraints, and CBCT nerve tracing.
+              - paragraph [ref=e736]: 这个项目的价值不在炫界面，而在把困难的医学影像问题讲清楚：3D CBCT 中下牙槽神经前景极少、对比度低、拓扑连续性要求高。DeepNerve-3D 用 SwinUNETR、滑窗推理和连通域约束，把研究思路落到可运行的分割 pipeline 里。
+              - generic [ref=e737]:
+                - generic "Python 62% · Markdown 14% · Jupyter 12% · Other 11%" [ref=e738]
+                - generic [ref=e743]:
+                  - generic [ref=e744]: Python 62%
+                  - generic [ref=e745]: +3 langs
+              - generic [ref=e747]:
+                - generic [ref=e748]: foreground
+                - generic [ref=e749]: <0.1%
+              - generic [ref=e753]:
+                - generic [ref=e754]:
+                  - generic [ref=e755]: 63 KB
+                  - generic [ref=e756]: ·
+                  - generic [ref=e758]: "2"
+                  - generic [ref=e762]: ·
+                  - generic [ref=e763]: 5mo ago
+                  - generic [ref=e764]: ·
+                  - generic [ref=e765]: MIT
+                - generic [ref=e766]: 156d old
+              - generic [ref=e768]:
+                - generic [ref=e769]: details
+                - generic [ref=e770]: ⓘ
+          - button "CampusTradeAI — generated poster OG POSTER view details → wechat-miniprogram cloud-functions node +1 CampusTradeAI Campus marketplace mini-program — trading, trust, moderation, payment gates, and ops workflows. 校园二手交易不是一个商品列表就够了，真正难的是信任、审核、增长、支付边界和运营闭环。CampusTradeAI 把闲置交易、求购、校园服务、聊天、举报审核、校园币、店铺和运营体检组织成一套小程序系统，展示复杂业务流和移动端产品落地能力。 JavaScript 80% +3 langs files 1.4k 1.4 MB · 1 · 1h ago 0d old details" [ref=e772] [cursor=pointer]:
+            - generic [ref=e773]:
+              - generic [ref=e774]:
+                - img "CampusTradeAI — generated poster" [ref=e776]
+                - generic [ref=e777]: OG POSTER
+                - generic [ref=e781]: view details →
+              - generic:
+                - generic: files
+                - strong: 1.4k
+            - generic [ref=e782]:
+              - generic [ref=e784]:
+                - generic [ref=e785]: wechat-miniprogram
+                - generic [ref=e786]: cloud-functions
+                - generic [ref=e787]: node
+                - generic [ref=e788]: "+1"
+              - heading "CampusTradeAI" [level=3] [ref=e790]
+              - paragraph [ref=e791]: Campus marketplace mini-program — trading, trust, moderation, payment gates, and ops workflows.
+              - paragraph [ref=e794]: 校园二手交易不是一个商品列表就够了，真正难的是信任、审核、增长、支付边界和运营闭环。CampusTradeAI 把闲置交易、求购、校园服务、聊天、举报审核、校园币、店铺和运营体检组织成一套小程序系统，展示复杂业务流和移动端产品落地能力。
+              - generic [ref=e795]:
+                - generic "JavaScript 80% · TypeScript 20% · Shell 0% · Dockerfile 0%" [ref=e796]
+                - generic [ref=e799]:
+                  - generic [ref=e800]: JavaScript 80%
+                  - generic [ref=e801]: +3 langs
+              - generic [ref=e803]:
+                - generic [ref=e804]: files
+                - generic [ref=e805]: 1.4k
+              - generic [ref=e809]:
+                - generic [ref=e810]:
+                  - generic [ref=e811]: 1.4 MB
+                  - generic [ref=e812]: ·
+                  - generic [ref=e814]: "1"
+                  - generic [ref=e817]: ·
+                  - generic [ref=e818]: 1h ago
+                - generic [ref=e819]: 0d old
+              - generic [ref=e821]:
+                - generic [ref=e822]: details
+                - generic [ref=e823]: ⓘ
+          - button "Codex ↔ ZCode Remote Relay — generated poster OG POSTER view details → node json-rpc websocket Codex ↔ ZCode Remote Relay Local Codex-to-ZCode multi-agent relay — bounded delegation, worker pools, safety gates. 让多个 AI 协作听起来很美，做起来全是协调成本——谁负责什么、中间怎么交接、错了谁背锅、上下文怎么隔离，全是要自己造的轮子。这套本地中继让 Codex 和 ZCode 像一支有分工的团队：主代理分任务、子代理并行执行、每个任务有边界（不允许碰什么、最多跑多久、失败了怎么收尾），整个过程可审计、可中断、可恢复。整套系统不到 1000 行代码，单机就能跑，没有云依赖。适合需要把 AI 协作从「玩具演示」推进到「生产级流水线」的工程团队。 JavaScript 97% +2 langs lines of code < 1k 75 KB · 1 · 11d ago · MIT 11d old github details" [ref=e825] [cursor=pointer]:
+            - generic [ref=e826]:
+              - generic [ref=e827]:
+                - img "Codex ↔ ZCode Remote Relay — generated poster" [ref=e829]
+                - generic [ref=e830]: OG POSTER
+                - generic [ref=e834]: view details →
+              - generic:
+                - generic: lines of code
+                - strong: < 1k
+            - generic [ref=e835]:
+              - generic [ref=e837]:
+                - generic [ref=e838]: node
+                - generic [ref=e839]: json-rpc
+                - generic [ref=e840]: websocket
+              - heading "Codex ↔ ZCode Remote Relay" [level=3] [ref=e842]
+              - paragraph [ref=e843]: Local Codex-to-ZCode multi-agent relay — bounded delegation, worker pools, safety gates.
+              - paragraph [ref=e846]: 让多个 AI 协作听起来很美，做起来全是协调成本——谁负责什么、中间怎么交接、错了谁背锅、上下文怎么隔离，全是要自己造的轮子。这套本地中继让 Codex 和 ZCode 像一支有分工的团队：主代理分任务、子代理并行执行、每个任务有边界（不允许碰什么、最多跑多久、失败了怎么收尾），整个过程可审计、可中断、可恢复。整套系统不到 1000 行代码，单机就能跑，没有云依赖。适合需要把 AI 协作从「玩具演示」推进到「生产级流水线」的工程团队。
+              - generic [ref=e847]:
+                - generic "JavaScript 97% · PowerShell 2% · Python 1%" [ref=e848]
+                - generic [ref=e852]:
+                  - generic [ref=e853]: JavaScript 97%
+                  - generic [ref=e854]: +2 langs
+              - generic [ref=e856]:
+                - generic [ref=e857]: lines of code
+                - generic [ref=e858]: < 1k
+              - generic [ref=e862]:
+                - generic [ref=e863]:
+                  - generic [ref=e864]: 75 KB
+                  - generic [ref=e865]: ·
+                  - generic [ref=e867]: "1"
+                  - generic [ref=e870]: ·
+                  - generic [ref=e871]: 11d ago
+                  - generic [ref=e872]: ·
+                  - generic [ref=e873]: MIT
+                - generic [ref=e874]: 11d old
+              - generic [ref=e875]:
+                - link "github" [ref=e878]:
+                  - /url: https://github.com/Zhi-Chao-PAN/codex-zcode-remote-relay
+                  - generic [ref=e879]: github
+                  - generic [ref=e880]: ↗
+                - generic [ref=e881]:
+                  - generic [ref=e882]: details
+                  - generic [ref=e883]: ⓘ
+          - button "LangGraph Financial Swarm — generated poster OG POSTER view details → langchain langgraph llama-index +1 LangGraph Financial Swarm Multi-agent financial research system — LangGraph orchestration, local LLMs, tool use. 投研报告动辄几十页、引用链路散落十几个文件，谁来读、谁来核、结论怎么追溯？五个 AI 专家分头扒数据、交叉验证、最后合成可追溯的结论：宏观分析师讲周期、行业研究员拆赛道、公司专家读财报、风险官挑漏洞、PM 把结论落到投资决策。每一段结论都标注原始出处和推理路径，监管和合规可以直接审计。整套系统用 LangGraph 编排 + 本地 LLM，企业内网就能跑，数据不出域。适合券商研究所、买方投研、家族办公室，把分析师从 60% 的重复劳动里解放出来，专注真正的判断。 Python 98% +2 langs specialists 5 agents 117 KB · 1 · 3mo ago · MIT 155d old github details" [ref=e885] [cursor=pointer]:
+            - generic [ref=e886]:
+              - generic [ref=e887]:
+                - img "LangGraph Financial Swarm — generated poster" [ref=e889]
+                - generic [ref=e890]: OG POSTER
+                - generic [ref=e894]: view details →
+              - generic:
+                - generic: specialists
+                - strong: 5 agents
+            - generic [ref=e895]:
+              - generic [ref=e897]:
+                - generic [ref=e898]: langchain
+                - generic [ref=e899]: langgraph
+                - generic [ref=e900]: llama-index
+                - generic [ref=e901]: "+1"
+              - heading "LangGraph Financial Swarm" [level=3] [ref=e903]
+              - paragraph [ref=e904]: Multi-agent financial research system — LangGraph orchestration, local LLMs, tool use.
+              - paragraph [ref=e907]: 投研报告动辄几十页、引用链路散落十几个文件，谁来读、谁来核、结论怎么追溯？五个 AI 专家分头扒数据、交叉验证、最后合成可追溯的结论：宏观分析师讲周期、行业研究员拆赛道、公司专家读财报、风险官挑漏洞、PM 把结论落到投资决策。每一段结论都标注原始出处和推理路径，监管和合规可以直接审计。整套系统用 LangGraph 编排 + 本地 LLM，企业内网就能跑，数据不出域。适合券商研究所、买方投研、家族办公室，把分析师从 60% 的重复劳动里解放出来，专注真正的判断。
+              - generic [ref=e908]:
+                - generic "Python 98% · Dockerfile 1% · Makefile 1%" [ref=e909]
+                - generic [ref=e913]:
+                  - generic [ref=e914]: Python 98%
+                  - generic [ref=e915]: +2 langs
+              - generic [ref=e917]:
+                - generic [ref=e918]: specialists
+                - generic [ref=e919]: 5 agents
+              - generic [ref=e923]:
+                - generic [ref=e924]:
+                  - generic [ref=e925]: 117 KB
+                  - generic [ref=e926]: ·
+                  - generic [ref=e928]: "1"
+                  - generic [ref=e931]: ·
+                  - generic [ref=e932]: 3mo ago
+                  - generic [ref=e933]: ·
+                  - generic [ref=e934]: MIT
+                - generic [ref=e935]: 155d old
+              - generic [ref=e936]:
+                - link "github" [ref=e939]:
+                  - /url: https://github.com/Zhi-Chao-PAN/LangGraph-Financial-Swarm
+                  - generic [ref=e940]: github
+                  - generic [ref=e941]: ↗
+                - generic [ref=e942]:
+                  - generic [ref=e943]: details
+                  - generic [ref=e944]: ⓘ
+          - button "Safety-Critical Battery Prognostics — robustness comparison BENCHMARK view details → torch numpy pandas +1 Safety-Critical Battery Prognostics 4 Reproducible battery RUL — three-layer physics defense, uncertainty-aware evaluation. 电池剩余寿命（RUL）预测的误差，是电动车召回事故和储能保险理赔的分水岭——预测过乐观，车在路上趴窝；预测过保守，整批电池提前报废。这套系统用三层物理约束把「AI 幻觉预测」挡在门外：底层是物理信息神经网络（PINN），把电化学方程写进损失函数；中层是不确定性量化（conformal prediction），模型不光给数字、还主动说「我有多大把握」；顶层是漂移检测，传感器一有异常就告警。整套 pipeline 在公开数据集（NASA PCoE、Stanford、MIT-Stanford 快充老化）上验证，VR 错误率 0.00%。适合动力电池厂商、储能集成商、保险定损机构，把「靠经验拍脑袋」的预测变成可追溯、可认证的工程指标。 Python 99% +5 langs 3-layer defense VR 0.00% 46 MB · 1 · 3mo ago · MIT 154d old github details" [ref=e946] [cursor=pointer]:
+            - generic [ref=e947]:
+              - generic [ref=e948]:
+                - img "Safety-Critical Battery Prognostics — robustness comparison" [ref=e950]
+                - generic [ref=e951]: BENCHMARK
+                - generic [ref=e955]: view details →
+              - generic:
+                - generic: 3-layer defense
+                - strong: VR 0.00%
+            - generic [ref=e956]:
+              - generic [ref=e958]:
+                - generic [ref=e959]: torch
+                - generic [ref=e960]: numpy
+                - generic [ref=e961]: pandas
+                - generic [ref=e962]: "+1"
+              - generic [ref=e963]:
+                - heading "Safety-Critical Battery Prognostics" [level=3] [ref=e964]
+                - generic [ref=e965]:
+                  - img [ref=e966]
+                  - text: "4"
+              - paragraph [ref=e968]: Reproducible battery RUL — three-layer physics defense, uncertainty-aware evaluation.
+              - paragraph [ref=e971]: 电池剩余寿命（RUL）预测的误差，是电动车召回事故和储能保险理赔的分水岭——预测过乐观，车在路上趴窝；预测过保守，整批电池提前报废。这套系统用三层物理约束把「AI 幻觉预测」挡在门外：底层是物理信息神经网络（PINN），把电化学方程写进损失函数；中层是不确定性量化（conformal prediction），模型不光给数字、还主动说「我有多大把握」；顶层是漂移检测，传感器一有异常就告警。整套 pipeline 在公开数据集（NASA PCoE、Stanford、MIT-Stanford 快充老化）上验证，VR 错误率 0.00%。适合动力电池厂商、储能集成商、保险定损机构，把「靠经验拍脑袋」的预测变成可追溯、可认证的工程指标。
+              - generic [ref=e972]:
+                - generic "Python 99% · Jupyter Notebook 1% · Shell 0% · CSS 0% · Dockerfile 0% · Makefile 0%" [ref=e973]
+                - generic [ref=e976]:
+                  - generic [ref=e977]: Python 99%
+                  - generic [ref=e978]: +5 langs
+              - generic [ref=e980]:
+                - generic [ref=e981]: 3-layer defense
+                - generic [ref=e982]: VR 0.00%
+              - generic [ref=e986]:
+                - generic [ref=e987]:
+                  - generic [ref=e988]: 46 MB
+                  - generic [ref=e989]: ·
+                  - generic [ref=e991]: "1"
+                  - generic [ref=e994]: ·
+                  - generic [ref=e995]: 3mo ago
+                  - generic [ref=e996]: ·
+                  - generic [ref=e997]: MIT
+                - generic [ref=e998]: 154d old
+              - generic [ref=e999]:
+                - link "github" [ref=e1002]:
+                  - /url: https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics
+                  - generic [ref=e1003]: github
+                  - generic [ref=e1004]: ↗
+                - generic [ref=e1005]:
+                  - generic [ref=e1006]: details
+                  - generic [ref=e1007]: ⓘ
+          - button "Structure-Aware RAG — accuracy comparison BENCHMARK view details → torch transformers llama-index-core +1 Structure-Aware RAG (Empirical) Empirical study — Structure-Aware Parsing lifts Financial RAG accuracy by 37.5%. RAG 检索准不准，答案藏在文档结构里——金融研报里一张利润表胜过三段话、一份招股书的目录结构比 10 页正文更值钱。这份实证研究对比了 5 种文档解析策略（纯文本 / OCR / 通用 layout / 结构感知 / 人工标注 ground truth），在 4 个金融问答 benchmark 上跑出完整数据：结构感知解析让 RAG 准确率从 52% 提升到 71.5%，相对提升 37.5%，且错误率降低 60%。整套实验脚本、数据集、评测代码全部开源可复现。适合做 RAG 的工程团队、企业知识库负责人、AI 投资尽调——少走 3 个月弯路。 Python 98% +1 lang accuracy lift +37.5% 61 MB · 1 · 3mo ago · MIT 160d old github details" [ref=e1009] [cursor=pointer]:
+            - generic [ref=e1010]:
+              - generic [ref=e1011]:
+                - img "Structure-Aware RAG — accuracy comparison" [ref=e1013]
+                - generic [ref=e1014]: BENCHMARK
+                - generic [ref=e1018]: view details →
+              - generic:
+                - generic: accuracy lift
+                - strong: +37.5%
+            - generic [ref=e1019]:
+              - generic [ref=e1021]:
+                - generic [ref=e1022]: torch
+                - generic [ref=e1023]: transformers
+                - generic [ref=e1024]: llama-index-core
+                - generic [ref=e1025]: "+1"
+              - heading "Structure-Aware RAG (Empirical)" [level=3] [ref=e1027]
+              - paragraph [ref=e1028]: Empirical study — Structure-Aware Parsing lifts Financial RAG accuracy by 37.5%.
+              - paragraph [ref=e1031]: RAG 检索准不准，答案藏在文档结构里——金融研报里一张利润表胜过三段话、一份招股书的目录结构比 10 页正文更值钱。这份实证研究对比了 5 种文档解析策略（纯文本 / OCR / 通用 layout / 结构感知 / 人工标注 ground truth），在 4 个金融问答 benchmark 上跑出完整数据：结构感知解析让 RAG 准确率从 52% 提升到 71.5%，相对提升 37.5%，且错误率降低 60%。整套实验脚本、数据集、评测代码全部开源可复现。适合做 RAG 的工程团队、企业知识库负责人、AI 投资尽调——少走 3 个月弯路。
+              - generic [ref=e1032]:
+                - generic "Python 98% · Dockerfile 2%" [ref=e1033]
+                - generic [ref=e1036]:
+                  - generic [ref=e1037]: Python 98%
+                  - generic [ref=e1038]: +1 lang
+              - generic [ref=e1040]:
+                - generic [ref=e1041]: accuracy lift
+                - generic [ref=e1042]: +37.5%
+              - generic [ref=e1046]:
+                - generic [ref=e1047]:
+                  - generic [ref=e1048]: 61 MB
+                  - generic [ref=e1049]: ·
+                  - generic [ref=e1051]: "1"
+                  - generic [ref=e1054]: ·
+                  - generic [ref=e1055]: 3mo ago
+                  - generic [ref=e1056]: ·
+                  - generic [ref=e1057]: MIT
+                - generic [ref=e1058]: 160d old
+              - generic [ref=e1059]:
+                - link "github" [ref=e1062]:
+                  - /url: https://github.com/Zhi-Chao-PAN/structure-aware-rag-empirical
+                  - generic [ref=e1063]: github
+                  - generic [ref=e1064]: ↗
+                - generic [ref=e1065]:
+                  - generic [ref=e1066]: details
+                  - generic [ref=e1067]: ⓘ
+      - generic [ref=e1069]: scroll -> explore
+    - generic [ref=e1073]:
+      - generic [ref=e1074]:
+        - generic [ref=e1075]: "[ final signal / next system ]"
+        - heading "Not a demo. A system." [level=2] [ref=e1076]:
+          - text: Not a demo.
+          - generic [ref=e1077]: A system.
+        - generic [ref=e1078]:
+          - paragraph [ref=e1079]: 我不想把 AI 停留在演示里。
+          - paragraph [ref=e1080]: 我要把它推进到可以验证、可以交付、可以被真实使用的系统。
+          - paragraph [ref=e1081]: 如果你也在做应用型 AI、多智能体工作流、RAG、评测或产品工程，
+          - paragraph [ref=e1082]: 带一个真实问题来，我们从那里开始。
+        - paragraph [ref=e1083]: bring a real problem / make the boundary explicit / ship the useful version
+      - generic [ref=e1085]:
+        - generic [ref=e1086]:
+          - generic [ref=e1087]: system handoff
+          - generic [ref=e1088]: ready
+        - generic [ref=e1089]:
+          - generic [ref=e1090]:
+            - generic [ref=e1091]: "11"
+            - generic [ref=e1092]: public repos
+          - generic [ref=e1093]:
+            - generic [ref=e1094]: "5"
+            - generic [ref=e1095]: stars total
+          - generic [ref=e1096]:
+            - generic [ref=e1097]: "3"
+            - generic [ref=e1098]: live demos
+          - generic [ref=e1099]:
+            - generic [ref=e1100]: "123.5"
+            - generic [ref=e1101]: mb shipped
+        - generic [ref=e1102]:
+          - generic [ref=e1103]:
+            - generic [ref=e1104]: focus
+            - generic [ref=e1105]: applied AI / agents / evaluation
+          - generic [ref=e1106]:
+            - generic [ref=e1107]: direction
+            - generic [ref=e1108]: overseas graduate study in AI / computing
+          - generic [ref=e1109]:
+            - generic [ref=e1110]: mode
+            - generic [ref=e1111]: build, verify, iterate
+        - generic [ref=e1112]:
+          - link "github" [ref=e1113] [cursor=pointer]:
+            - /url: https://github.com/Zhi-Chao-PAN
+          - link "email" [ref=e1114] [cursor=pointer]:
+            - /url: mailto:18652585856@163.com
+          - button "restart" [ref=e1115]
+        - generic [ref=e1116]: "[ panzhichao.com / digital_lab / 2026 ]"
+  - button "Open Next.js Dev Tools" [ref=e1122] [cursor=pointer]:
+    - img [ref=e1123]

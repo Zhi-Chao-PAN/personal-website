@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T13:49:17.477Z",
+  "generatedAt": "2026-08-19T19:46:30.780Z",
   "source": "github-contents-api",
   "stacks": {
     "launchlens-ai": [
@@ -34,7 +34,7 @@
         "source": "package.json"
       },
       {
-        "name": "@upstash/redis",
+        "name": "@upstash/qstash",
         "source": "package.json"
       }
     ],
