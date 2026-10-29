@@ -29,7 +29,7 @@ for (const locale of ["en", "zh"] as const) {
     await page.goto(home);
     await expect(page.locator("h1")).toContainText("ZhiChao");
     await expect(page.locator("#work")).toBeVisible();
-    await expect(page.locator(".index-row")).toHaveCount(11);
+    await expect(page.locator(".index-row")).toHaveCount(data.projects.filter((p) => p.tier !== "flagship").length);
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -86,6 +86,9 @@ for (const locale of ["en", "zh"] as const) {
       "data-result",
       "fail",
     );
+    await page.goto(`${prefix}/projects/agent-shared-resources`);
+    await expect(page.getByTestId("shared-resources-art")).toBeVisible();
+    await expect(page.locator("#example")).toHaveCount(0);
     await page.goto(`${prefix}/projects/ai-cli-orchestrator`);
     for (const scenario of ["success", "capability", "timeout"]) {
       await page.getByTestId(`aiw-scenario-${scenario}`).click();
@@ -146,12 +149,13 @@ test("not found, sitemap and sharing images work", async ({ request }) => {
   expect((await request.get("/projects/not-a-project")).status()).toBe(404);
   expect((await request.get("/zh/projects/not-a-project")).status()).toBe(404);
   const map = await (await request.get("/sitemap.xml")).text();
-  expect((map.match(/<loc>/g) || []).length).toBe(30);
+  expect((map.match(/<loc>/g) || []).length).toBe(2 * (data.projects.length + 1));
   for (const slug of [
     "home",
     "launchlens-ai",
     "llm-evaluation-playbook",
     "ai-cli-orchestrator",
+    "agent-shared-resources",
   ]) {
     const r = await request.get(`/api/og/${slug}`);
     expect(r.status()).toBe(200);

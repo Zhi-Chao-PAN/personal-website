@@ -31,7 +31,12 @@ function wrap(text, limit, locale) {
   if (line) lines.push(line);
   return lines;
 }
-for (const project of [null, ...projects])
+const slug = process.argv[2];
+const entries = slug
+  ? (slug === "home" ? [null] : projects.filter((project) => project.slug === slug))
+  : [null, ...projects];
+if (entries.length === 0) throw new Error(`Unknown project slug: ${slug}`);
+for (const project of entries)
   for (const locale of ["en", "zh"]) {
     const title =
       project?.name ??
@@ -52,5 +57,5 @@ for (const project of [null, ...projects])
       );
   }
 console.log(
-  `Generated ${(projects.length + 1) * 2} local, bilingual sharing images.`,
+  `Generated ${entries.length * 2} local, bilingual sharing images.`,
 );
