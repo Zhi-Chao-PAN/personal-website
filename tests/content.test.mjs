@@ -19,7 +19,7 @@ const archivedTrace = JSON.parse(
 );
 test("curated catalog preserves legacy URLs, public visibility and flagship order", () => {
   const slugs = projects.map((p) => p.slug);
-  assert.equal(new Set(slugs).size, 14);
+  assert.equal(new Set(slugs).size, 15);
   for (const slug of [
     "CampusTradeAI",
     "LangGraph-Financial-Swarm",
@@ -30,11 +30,12 @@ test("curated catalog preserves legacy URLs, public visibility and flagship orde
     assert.ok(slugs.includes(slug));
   assert.deepEqual(
     projects.filter((p) => p.tier === "flagship").map((p) => p.slug),
-    ["launchlens-ai", "llm-evaluation-playbook", "ai-cli-orchestrator"],
+    ["launchlens-ai", "llm-evaluation-playbook", "agent-shared-resources"],
   );
   assert.deepEqual(
     projects.filter((p) => p.tier === "selected").map((p) => p.slug),
     [
+      "ai-cli-orchestrator",
       "autoresearch-evidence-pack",
       "model-eval-studio",
       "structure-aware-rag-empirical",
@@ -42,7 +43,7 @@ test("curated catalog preserves legacy URLs, public visibility and flagship orde
     ],
   );
   assert.equal(projects.filter((p) => p.tier === "archive").length, 7);
-  assert.equal(projects.filter((p) => p.repoUrl).length, 10);
+  assert.equal(projects.filter((p) => p.repoUrl).length, 11);
   assert.equal(projects.filter((p) => p.demoUrl).length, 3);
   for (const p of projects) {
     assert.ok(

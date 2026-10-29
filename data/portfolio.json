@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-23",
+  "updatedAt": "2026-10-29",
   "projects": [
     {
       "slug": "launchlens-ai",
@@ -15,7 +15,10 @@
         "Product workflows",
         "Evidence-grounded AI"
       ],
-      "related": ["launchlens-research-studio", "model-eval-studio"],
+      "related": [
+        "launchlens-research-studio",
+        "model-eval-studio"
+      ],
       "content": {
         "en": {
           "eyebrow": "AI product · from idea to action",
@@ -135,7 +138,10 @@
         "Numeric tolerances",
         "Task validation"
       ],
-      "related": ["model-eval-studio", "structure-aware-rag-empirical"],
+      "related": [
+        "model-eval-studio",
+        "structure-aware-rag-empirical"
+      ],
       "content": {
         "en": {
           "eyebrow": "Evaluation methods · criteria you can check",
@@ -258,9 +264,132 @@
       ]
     },
     {
+      "slug": "agent-shared-resources",
+      "name": "Agent Shared Resources",
+      "tier": "flagship",
+      "kind": "tool",
+      "repoUrl": "https://github.com/Zhi-Chao-PAN/agent-shared-resources",
+      "demoUrl": null,
+      "verifiedAt": "2026-10-29",
+      "tags": [
+        "Node.js",
+        "Skills / MCP",
+        "Conflict detection",
+        "Transactional recovery"
+      ],
+      "related": [
+        "ai-cli-orchestrator",
+        "codex-zcode-remote-relay"
+      ],
+      "content": {
+        "en": {
+          "eyebrow": "Agent tooling · Shared resources with recovery",
+          "summary": "A local CLI for sharing selected Skills and MCP entries across AI clients, with preview, conflict detection and receipt-based rollback.",
+          "problem": "Managing several AI clients can duplicate resources or overwrite settings. Sharing a resource should preserve each client’s configuration and approval boundaries.",
+          "role": [
+            "Defined the shared-resource workflow and its recovery boundaries from a locally used system.",
+            "Used AI-assisted implementation and reviewed configuration conflicts, receipts and tests in a sanitized public repository."
+          ],
+          "decisions": [
+            {
+              "title": "Preview before publishing",
+              "choice": "Separate resource selection and plan inspection from apply. Clients are disabled by default.",
+              "tradeoff": "The operator takes an explicit publishing step instead of automatic synchronization.",
+              "verification": "CLI tests exercise plans and selected-resource application."
+            },
+            {
+              "title": "Own only what the tool creates",
+              "choice": "Use resource receipts and refuse same-name content conflicts; preserve existing identical resources without claiming ownership.",
+              "tradeoff": "Conflicting or user-edited resources require review rather than an overwrite.",
+              "verification": "Tests cover ownership boundaries, preserved foreign entries and rollback."
+            },
+            {
+              "title": "Treat interrupted writes as recoverable work",
+              "choice": "Record transactions before changing client configuration and stop when concurrent edits invalidate recovery.",
+              "tradeoff": "Recovery is explicit; file consistency does not prove an OAuth login or a model tool call.",
+              "verification": "Tests exercise interrupted transactions and configuration drift; live client acceptance remains separate."
+            }
+          ],
+          "outcome": "The public Node.js implementation includes plan/apply/doctor/rollback/recover commands and an OS/Node CI matrix. It is a sanitized implementation, not an export of private accounts or client state.",
+          "limits": [
+            "File adaptation checks do not certify real model calls, OAuth, browser use or language servers.",
+            "The tool manages local resources; it does not share accounts, chats or memory."
+          ]
+        },
+        "zh": {
+          "eyebrow": "智能体工具 · 共享资源与恢复",
+          "summary": "面向多个本地 AI 客户端的 Skills / MCP 管理 CLI，提供发布预览、冲突检查、事务回执和按资源回滚。",
+          "problem": "多个 AI 客户端容易产生重复资源和配置覆盖。共享资源需要保留各端自己的模型、授权和确认规则。",
+          "role": [
+            "从实际使用方案中梳理资源共享、配置保留与恢复边界。",
+            "借助 AI 实现独立脱敏的公开版本，检查冲突处理、事务回执和测试结果。"
+          ],
+          "decisions": [
+            {
+              "title": "选择、预览和发布分开",
+              "choice": "先 select / plan，再显式 apply，默认不启用客户端。",
+              "tradeoff": "增加一次明确发布操作，避免未经检查的自动同步。",
+              "verification": "CLI 测试覆盖预览与选定资源的发布路径。"
+            },
+            {
+              "title": "只管理工具创建的入口",
+              "choice": "同名不同内容拒绝覆盖，既有相同资源不认领，回滚依照资源回执处理。",
+              "tradeoff": "遇到冲突或用户后续编辑时停止，交由人工检查。",
+              "verification": "测试覆盖所有权、保留外部条目和回滚边界。"
+            },
+            {
+              "title": "把中断写入做成可恢复事务",
+              "choice": "写入前记录事务，恢复时发现并发修改便停止。",
+              "tradeoff": "恢复需要明确操作；文件检查通过不等于 OAuth 或模型调用通过。",
+              "verification": "测试覆盖中断事务和配置漂移，真实客户端验收单独进行。"
+            }
+          ],
+          "outcome": "公开 Node.js 版本提供 plan/apply/doctor/rollback/recover 命令和操作系统、Node 版本 CI 矩阵。它是独立脱敏实现，不包含私人账号或客户端状态。",
+          "limits": [
+            "文件适配测试不能代替真实模型调用、OAuth、浏览器和语言服务器验收。",
+            "仅管理本机资源，不共享账号、聊天或记忆。"
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "label": {
+            "en": "Source and quick start",
+            "zh": "源码与快速开始"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/agent-shared-resources",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "Design and recovery",
+            "zh": "架构与恢复"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/agent-shared-resources/blob/main/docs/design.md",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "Compatibility boundaries",
+            "zh": "兼容与验收边界"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/agent-shared-resources/blob/main/docs/compatibility.md",
+          "type": "source"
+        },
+        {
+          "label": {
+            "en": "CI workflow and runs",
+            "zh": "CI 流程与运行记录"
+          },
+          "url": "https://github.com/Zhi-Chao-PAN/agent-shared-resources/actions/workflows/ci.yml",
+          "type": "report"
+        }
+      ]
+    },
+    {
       "slug": "ai-cli-orchestrator",
       "name": "AI CLI Orchestrator",
-      "tier": "flagship",
+      "tier": "selected",
       "kind": "tool",
       "repoUrl": "https://github.com/Zhi-Chao-PAN/ai-cli-orchestrator",
       "demoUrl": null,
@@ -271,7 +400,10 @@
         "Explicit routing",
         "Process lifecycle"
       ],
-      "related": ["codex-zcode-remote-relay", "LangGraph-Financial-Swarm"],
+      "related": [
+        "codex-zcode-remote-relay",
+        "LangGraph-Financial-Swarm"
+      ],
       "content": {
         "en": {
           "eyebrow": "Agent tooling · bounded local execution",
@@ -559,8 +691,16 @@
       "repoUrl": "https://github.com/Zhi-Chao-PAN/model-eval-studio",
       "demoUrl": "https://model-test-assistant.vercel.app",
       "verifiedAt": "2026-09-12",
-      "tags": ["Next.js", "TypeScript", "Artifact review", "Versioned reports"],
-      "related": ["llm-evaluation-playbook", "launchlens-ai"],
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "Artifact review",
+        "Versioned reports"
+      ],
+      "related": [
+        "llm-evaluation-playbook",
+        "launchlens-ai"
+      ],
       "content": {
         "en": {
           "eyebrow": "Evaluation product · inspect the evidence",
@@ -654,7 +794,12 @@
       "repoUrl": "https://github.com/Zhi-Chao-PAN/structure-aware-rag-empirical",
       "demoUrl": null,
       "verifiedAt": "2026-09-12",
-      "tags": ["Python", "RAG", "Document parsing", "Error analysis"],
+      "tags": [
+        "Python",
+        "RAG",
+        "Document parsing",
+        "Error analysis"
+      ],
       "related": [
         "llm-evaluation-playbook",
         "LangGraph-Financial-Swarm",
@@ -733,8 +878,16 @@
       "repoUrl": "https://github.com/Zhi-Chao-PAN/safety-critical-battery-prognostics",
       "demoUrl": null,
       "verifiedAt": "2026-09-23",
-      "tags": ["Python", "PyTorch", "Mechanism audit", "Held-out cells"],
-      "related": ["structure-aware-rag-empirical", "deepnerve-3d"],
+      "tags": [
+        "Python",
+        "PyTorch",
+        "Mechanism audit",
+        "Held-out cells"
+      ],
+      "related": [
+        "structure-aware-rag-empirical",
+        "deepnerve-3d"
+      ],
       "content": {
         "en": {
           "eyebrow": "Mechanism audit · capacity reconstruction",
@@ -826,8 +979,16 @@
       "repoUrl": "https://github.com/Zhi-Chao-PAN/launchlens-research-studio",
       "demoUrl": "https://launchlens-research-studio.vercel.app",
       "verifiedAt": "2026-09-12",
-      "tags": ["TypeScript", "Agent workflows", "SSE", "Structured exports"],
-      "related": ["launchlens-ai", "ai-cli-orchestrator"],
+      "tags": [
+        "TypeScript",
+        "Agent workflows",
+        "SSE",
+        "Structured exports"
+      ],
+      "related": [
+        "launchlens-ai",
+        "ai-cli-orchestrator"
+      ],
       "content": {
         "en": {
           "eyebrow": "Companion product · research to brief",
@@ -909,8 +1070,15 @@
       "repoUrl": "https://github.com/Zhi-Chao-PAN/codex-zcode-remote-relay",
       "demoUrl": null,
       "verifiedAt": "2026-09-12",
-      "tags": ["Node.js", "Local relay", "Worker handoff", "Result review"],
-      "related": ["ai-cli-orchestrator"],
+      "tags": [
+        "Node.js",
+        "Local relay",
+        "Worker handoff",
+        "Result review"
+      ],
+      "related": [
+        "ai-cli-orchestrator"
+      ],
       "content": {
         "en": {
           "eyebrow": "Earlier tooling · explicit handoffs",
@@ -976,8 +1144,16 @@
       "repoUrl": "https://github.com/Zhi-Chao-PAN/LangGraph-Financial-Swarm",
       "demoUrl": null,
       "verifiedAt": "2026-09-12",
-      "tags": ["Python", "LangGraph", "Local inference", "Tool orchestration"],
-      "related": ["structure-aware-rag-empirical", "ai-cli-orchestrator"],
+      "tags": [
+        "Python",
+        "LangGraph",
+        "Local inference",
+        "Tool orchestration"
+      ],
+      "related": [
+        "structure-aware-rag-empirical",
+        "ai-cli-orchestrator"
+      ],
       "content": {
         "en": {
           "eyebrow": "Agent study · explicit responsibilities",
@@ -1051,8 +1227,13 @@
       "repoUrl": null,
       "demoUrl": null,
       "verifiedAt": "2026-09-12",
-      "tags": ["Personal workflows", "Private project"],
-      "related": ["CampusTradeAI"],
+      "tags": [
+        "Personal workflows",
+        "Private project"
+      ],
+      "related": [
+        "CampusTradeAI"
+      ],
       "content": {
         "en": {
           "eyebrow": "Private project · public overview",
@@ -1079,7 +1260,9 @@
           "eyebrow": "私有项目 · 公开概述",
           "summary": "一个探索 AI 如何支持长期个人进展的私有原型。",
           "problem": "个人工具怎样把长期意图与定期回顾连接起来？",
-          "role": ["主导项目需求与取舍，借助 AI 完成实现，并进行检查与迭代。"],
+          "role": [
+            "主导项目需求与取舍，借助 AI 完成实现，并进行检查与迭代。"
+          ],
           "decisions": [
             {
               "title": "限定公开展示的范围",
@@ -1114,8 +1297,13 @@
       "repoUrl": null,
       "demoUrl": null,
       "verifiedAt": "2026-09-12",
-      "tags": ["Multimodal RAG", "Private project"],
-      "related": ["structure-aware-rag-empirical"],
+      "tags": [
+        "Multimodal RAG",
+        "Private project"
+      ],
+      "related": [
+        "structure-aware-rag-empirical"
+      ],
       "content": {
         "en": {
           "eyebrow": "Private project · public overview",
@@ -1142,7 +1330,9 @@
           "eyebrow": "私有项目 · 公开概述",
           "summary": "一个探索视觉检索、区域裁剪与智能体辅助核验的私有金融文档原型。",
           "problem": "财务页面的信息既存在于文字中，也存在于图表、表格和版式里。",
-          "role": ["主导项目需求与取舍，借助 AI 完成实现，并进行检查与迭代。"],
+          "role": [
+            "主导项目需求与取舍，借助 AI 完成实现，并进行检查与迭代。"
+          ],
           "decisions": [
             {
               "title": "限定公开展示的范围",
@@ -1177,8 +1367,13 @@
       "repoUrl": null,
       "demoUrl": null,
       "verifiedAt": "2026-09-12",
-      "tags": ["3D imaging", "Private project"],
-      "related": ["safety-critical-battery-prognostics"],
+      "tags": [
+        "3D imaging",
+        "Private project"
+      ],
+      "related": [
+        "safety-critical-battery-prognostics"
+      ],
       "content": {
         "en": {
           "eyebrow": "Private project · public overview",
@@ -1205,7 +1400,9 @@
           "eyebrow": "私有项目 · 公开概述",
           "summary": "一个面向三维 CBCT 下牙槽神经分割的私有研究原型。",
           "problem": "在三维扫描中追踪细小解剖结构，需要同时关注局部外观与连续性。",
-          "role": ["主导项目需求与取舍，借助 AI 完成实现，并进行检查与迭代。"],
+          "role": [
+            "主导项目需求与取舍，借助 AI 完成实现，并进行检查与迭代。"
+          ],
           "decisions": [
             {
               "title": "限定公开展示的范围",
@@ -1240,8 +1437,13 @@
       "repoUrl": null,
       "demoUrl": null,
       "verifiedAt": "2026-09-12",
-      "tags": ["Campus services", "Private project"],
-      "related": ["ai-life-progress-coach"],
+      "tags": [
+        "Campus services",
+        "Private project"
+      ],
+      "related": [
+        "ai-life-progress-coach"
+      ],
       "content": {
         "en": {
           "eyebrow": "Private project · public overview",
@@ -1268,7 +1470,9 @@
           "eyebrow": "私有项目 · 公开概述",
           "summary": "一个面向学生流程的私有校园交易与服务原型。",
           "problem": "校园交易除了发布物品，还涉及服务与协作需求。",
-          "role": ["主导项目需求与取舍，借助 AI 完成实现，并进行检查与迭代。"],
+          "role": [
+            "主导项目需求与取舍，借助 AI 完成实现，并进行检查与迭代。"
+          ],
           "decisions": [
             {
               "title": "限定公开展示的范围",
