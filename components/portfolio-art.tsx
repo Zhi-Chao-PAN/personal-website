@@ -83,6 +83,28 @@ export function PortfolioArt({
         </div>
       </div>
     );
+  if (slug === "agent-shared-resources")
+    return (
+      <div className="work-art orchestration-art" data-testid="shared-resources-art">
+        <div className="art-topline">
+          <span>Agent Shared Resources</span>
+          <span>{zh ? "发布与恢复流程" : "Publish and recover"}</span>
+        </div>
+        <div className="routing-figure">
+          <span className="route-node route-input">{zh ? "选择客户端和资源" : "Select clients and resources"}</span>
+          <span className="route-connector" aria-hidden="true">↓</span>
+          <div className="route-workers">
+            <span>{zh ? "预览变更" : "Preview changes"}</span>
+            <span>{zh ? "检查冲突" : "Check conflicts"}</span>
+          </div>
+          <span className="route-connector" aria-hidden="true">↓</span>
+          <span className="route-node route-output">{zh ? "发布并记录回执" : "Apply and record receipts"}</span>
+          <span className="route-connector" aria-hidden="true">↓</span>
+          <span className="route-review">{zh ? "按资源回滚，保留用户修改" : "Roll back resources; preserve user edits"}</span>
+        </div>
+        <div className="art-caption">{zh ? "文件适配通过后，仍需真实客户端验收。" : "File checks are followed by live client acceptance."}</div>
+      </div>
+    );
   return (
     <div className="work-art orchestration-art">
       <div className="art-topline">

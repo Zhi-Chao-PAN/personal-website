@@ -21,7 +21,11 @@ export function PortfolioCase({
     t = ui[locale],
     zh = locale === "zh";
   const flagship = project.tier === "flagship";
-  const hasExample = flagship || project.slug === "autoresearch-evidence-pack";
+  // Interactive examples are a capability of each case, not its homepage tier.
+  const hasExample = [
+    "launchlens-ai", "llm-evaluation-playbook", "ai-cli-orchestrator",
+    "autoresearch-evidence-pack",
+  ].includes(project.slug);
   const exampleLabel =
     project.slug === "autoresearch-evidence-pack"
       ? zh
